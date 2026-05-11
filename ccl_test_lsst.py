@@ -1,0 +1,253 @@
+import time
+import numpy as np
+import pyccl as ccl
+from pyccl import nl_pt as pt
+
+# ── Configuration ──────────────────────────────────────────────
+nz_lens_file = "lsst_y1_lens.nz"
+nz_source_file = "lsst_y1_source.nz"
+lens_ntomo = 5
+source_ntomo = 5
+n_theta = 26
+theta_min_arcmin = 2.5
+theta_max_arcmin = 900.0
+
+# GGL pairs to exclude (format: [lens_bin, source_bin])
+ggl_exclude = []
+ 
+# Benchmark settings
+n_warmup = 1
+n_bench = 10
+rng_seed = 42
+ 
+# Fiducial cosmology
+fid_params = dict(
+  Omega_c=0.27, Omega_b=0.045, h=0.67,
+  sigma8=0.83, n_s=0.96,
+)
+ 
+# Fiducial TATT parameters (perturbed in benchmark loop)
+fid_tatt = dict(A1=0.7, A2=-1.36, eta1=-1.7, eta2=-2.5)
+z_pivot = 0.62
+ 
+# Galaxy bias (fiducial — perturbed in benchmark loop)
+fid_bias = {f'b{i}': 1.2 + 0.1 * i for i in range(lens_ntomo)}
+ 
+# Photo-z shifts: fiducial = 0, perturbed additively (multiplicative
+# perturbation of 0 doesn't do anything). sigma ~ 0.01 is realistic
+# for stage-IV surveys.
+dz_sigma = 0.01
+ 
+# z grid for IA
+z_ia = np.linspace(0.0, 3.0, 200)
+ 
+# ── Read n(z) once (doesn't depend on cosmology) ──────────────
+def load_nz(filename, ntomo):
+  data = np.loadtxt(filename)
+  z = data[:, 0]
+  nz = [data[:, i + 1] for i in range(ntomo)]
+  return z, nz
+ 
+z_lens, nz_lens = load_nz(nz_lens_file, lens_ntomo)
+z_source, nz_source = load_nz(nz_source_file, source_ntomo)
+ 
+# ── Angular / theta scales (fixed) ────────────────────────────
+ell_low = np.arange(2, 50)
+ell_mid = np.unique(np.geomspace(50, 3000, 150).astype(int))
+ell_high = np.unique(np.geomspace(3000, 30000, 150).astype(int))
+ell = np.unique(np.concatenate([ell_low, ell_mid, ell_high]))
+ 
+theta_arcmin = np.logspace(
+  np.log10(theta_min_arcmin),
+  np.log10(theta_max_arcmin),
+  n_theta
+)
+theta_deg = theta_arcmin / 60.0
+ 
+ggl_set = {tuple(p) for p in ggl_exclude}
+ 
+# ── Single 3x2pt evaluation ───────────────────────────────────
+def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
+  """Compute 3x2pt data vector for given cosmology + nuisance params."""
+ 
+  cosmo = ccl.Cosmology(
+    **params,
+    transfer_function='eisenstein_hu',
+  )
+ 
+  galaxy_bias = [bias[f'b{i}'] for i in range(lens_ntomo)]
+ 
+  # TATT: A → c
+  A1_z = tatt['A1'] * ((1.0 + z_ia) / (1.0 + z_pivot))**tatt['eta1']
+  A2_z = tatt['A2'] * ((1.0 + z_ia) / (1.0 + z_pivot))**tatt['eta2']
+  c1, c2, cdelta = pt.translate_IA_norm(
+    cosmo, z=z_ia, a1=A1_z, a1delta=A1_z, a2=A2_z
+  )
+ 
+  # PT tracers + calculator
+  ptt_m = pt.PTMatterTracer()
+  ptt_ia = pt.PTIntrinsicAlignmentTracer(
+    c1=(z_ia, c1), c2=(z_ia, c2), cdelta=(z_ia, cdelta),
+  )
+  a_arr = 1.0 / (1.0 + np.linspace(0, 3.0, 50)[::-1])
+  ptc = pt.EulerianPTCalculator(
+    with_NC=True, with_IA=True,
+    log10k_min=-4, log10k_max=2, nk_per_decade=20,
+    cosmo=cosmo, a_arr=a_arr,
+  )
+  ptc.update_ingredients(cosmo)
+ 
+  pk_mm = ptc.get_biased_pk2d(ptt_m, tracer2=ptt_m)
+  pk_mi = ptc.get_biased_pk2d(ptt_m, tracer2=ptt_ia)
+  pk_ii = ptc.get_biased_pk2d(ptt_ia, tracer2=ptt_ia)
+ 
+  cosmo.compute_linear_power()
+  pk_mm_lin = cosmo.get_linear_power('delta_matter:delta_matter')
+ 
+  # Angular tracers (with photo-z shifts: z -> z - dz, valid z >= 0)
+  source_L, source_IA = [], []
+  for i in range(source_ntomo):
+    z_shifted = z_source - dz_source[i]
+    mask = z_shifted >= 0.0
+    dndz_src = (z_shifted[mask], nz_source[i][mask])
+    source_L.append(ccl.WeakLensingTracer(
+      cosmo, dndz=dndz_src,
+      has_shear=True, ia_bias=None,
+    ))
+    source_IA.append(ccl.WeakLensingTracer(
+      cosmo, dndz=dndz_src,
+      has_shear=False,
+      ia_bias=(z_shifted[mask], np.ones(mask.sum())),
+      use_A_ia=True,
+    ))
+  lens_tracers = []
+  for i in range(lens_ntomo):
+    z_shifted = z_lens - dz_lens[i]
+    mask = z_shifted >= 0.0
+    lens_tracers.append(ccl.NumberCountsTracer(
+      cosmo, has_rsd=False,
+      dndz=(z_shifted[mask], nz_lens[i][mask]),
+      bias=(z_shifted[mask], galaxy_bias[i] * np.ones(mask.sum())),
+    ))
+ 
+  # Shear C_ell with TATT
+  cls_shear = {}
+  for i in range(source_ntomo):
+    for j in range(i, source_ntomo):
+      cl_gg = ccl.angular_cl(cosmo, source_L[i], source_L[j],
+                             ell, p_of_k_a=pk_mm)
+      cl_gi = ccl.angular_cl(cosmo, source_L[i], source_IA[j],
+                             ell, p_of_k_a=pk_mi)
+      cl_ig = ccl.angular_cl(cosmo, source_IA[i], source_L[j],
+                             ell, p_of_k_a=pk_mi)
+      cl_ii = ccl.angular_cl(cosmo, source_IA[i], source_IA[j],
+                             ell, p_of_k_a=pk_ii)
+      cls_shear[(i, j)] = cl_gg + cl_gi + cl_ig + cl_ii
+ 
+  # GGL C_ell with TATT
+  cls_ggl = {}
+  for i in range(lens_ntomo):
+    for j in range(source_ntomo):
+      cl_gG = ccl.angular_cl(cosmo, lens_tracers[i], source_L[j],
+                             ell, p_of_k_a=pk_mm)
+      cl_gI = ccl.angular_cl(cosmo, lens_tracers[i], source_IA[j],
+                             ell, p_of_k_a=pk_mi)
+      cls_ggl[(i, j)] = cl_gG + cl_gI
+ 
+  # Clustering C_ell, non-Limber, autos only
+  cls_clustering = {}
+  for i in range(lens_ntomo):
+    cls_clustering[(i, i)] = ccl.angular_cl(
+      cosmo, lens_tracers[i], lens_tracers[i], ell,
+      p_of_k_a=pk_mm, p_of_k_a_lin=pk_mm_lin,
+      l_limber=100,
+      non_limber_integration_method='FKEM',
+      fkem_chi_min=None, fkem_Nchi=500,
+    )
+ 
+  # Correlation functions
+  xi_p, xi_m = {}, {}
+  for i in range(source_ntomo):
+    for j in range(i, source_ntomo):
+      xi_p[(i, j)] = ccl.correlation(
+        cosmo, ell=ell, C_ell=cls_shear[(i, j)],
+        theta=theta_deg, type='GG+', method='FFTLog')
+      xi_m[(i, j)] = ccl.correlation(
+        cosmo, ell=ell, C_ell=cls_shear[(i, j)],
+        theta=theta_deg, type='GG-', method='FFTLog')
+ 
+  gammat = {}
+  for i in range(lens_ntomo):
+    for j in range(source_ntomo):
+      gammat[(i, j)] = ccl.correlation(
+        cosmo, ell=ell, C_ell=cls_ggl[(i, j)],
+        theta=theta_deg, type='NG', method='FFTLog')
+ 
+  wtheta = {}
+  for i in range(lens_ntomo):
+    wtheta[(i, i)] = ccl.correlation(
+      cosmo, ell=ell, C_ell=cls_clustering[(i, i)],
+      theta=theta_deg, type='NN', method='FFTLog')
+ 
+  # Flatten
+  datavec = np.concatenate([
+    *[xi_p[(i, j)] for i in range(source_ntomo)
+      for j in range(i, source_ntomo)],
+    *[xi_m[(i, j)] for i in range(source_ntomo)
+      for j in range(i, source_ntomo)],
+    *[gammat[(i, j)] for i in range(lens_ntomo)
+      for j in range(source_ntomo) if (i, j) not in ggl_set],
+    *[wtheta[(i, i)] for i in range(lens_ntomo)],
+  ])
+  return datavec
+ 
+# ── Generate perturbed cosmologies ────────────────────────────
+rng = np.random.default_rng(rng_seed)
+ 
+def perturb(params, scale=0.05):
+  """Multiply each param by (1 + N(0, scale))."""
+  return {k: v * (1.0 + scale * rng.standard_normal())
+          for k, v in params.items()}
+ 
+cosmo_list = [perturb(fid_params) for _ in range(n_warmup + n_bench)]
+tatt_list = [perturb(fid_tatt) for _ in range(n_warmup + n_bench)]
+bias_list = [perturb(fid_bias) for _ in range(n_warmup + n_bench)]
+dz_lens_list = [rng.normal(0.0, dz_sigma, lens_ntomo)
+                for _ in range(n_warmup + n_bench)]
+dz_source_list = [rng.normal(0.0, dz_sigma, source_ntomo)
+                  for _ in range(n_warmup + n_bench)]
+ 
+# ── Warmup ─────────────────────────────────────────────────────
+print(f"Warmup ({n_warmup} run(s), not timed)...")
+for k in range(n_warmup):
+  _ = compute_3x2pt(cosmo_list[k], tatt_list[k], bias_list[k],
+                    dz_lens_list[k], dz_source_list[k])
+  print(f"  warmup {k+1}/{n_warmup} done")
+ 
+# ── Benchmark ──────────────────────────────────────────────────
+print(f"\nBenchmark ({n_bench} cosmologies)...")
+times = []
+for k in range(n_bench):
+  params = cosmo_list[n_warmup + k]
+  tatt = tatt_list[n_warmup + k]
+  bias = bias_list[n_warmup + k]
+  dz_l = dz_lens_list[n_warmup + k]
+  dz_s = dz_source_list[n_warmup + k]
+  t0 = time.perf_counter()
+  dv = compute_3x2pt(params, tatt, bias, dz_l, dz_s)
+  dt = time.perf_counter() - t0
+  times.append(dt)
+  print(f"  [{k+1:2d}/{n_bench}]  {dt:6.2f}s  "
+        f"(Om_c={params['Omega_c']:.4f}, "
+        f"sig8={params['sigma8']:.4f}, "
+        f"A1={tatt['A1']:.3f}, "
+        f"b0={bias['b0']:.3f}, "
+        f"dz_s0={dz_s[0]:+.4f})")
+ 
+times = np.array(times)
+print(f"\n  mean:   {times.mean():.2f}s")
+print(f"  std:    {times.std():.2f}s")
+print(f"  min:    {times.min():.2f}s")
+print(f"  max:    {times.max():.2f}s")
+print(f"  total:  {times.sum():.2f}s for {n_bench} evals")
+print(f"  datavec length: {len(dv)}")
