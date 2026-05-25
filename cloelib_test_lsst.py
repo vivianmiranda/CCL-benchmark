@@ -1,51 +1,39 @@
-"""cloelib analog of ccl_test_roman_curved.py — 3x2pt benchmark on Roman.
+"""cloelib analog of the LSST Y1 CCL 3x2pt benchmark.
 
-This is what cloelib can express today; see the COMPAT block below for the
-list of CCL-script features that don't translate. The benchmark structure
-(warmup + timed loop, per-cosmology perturbation of cosmo/IA/bias/photo-z)
-mirrors the CCL script exactly so the timings are comparable.
+What's timed: only the cloelib pipeline (tracer construction, get_Cl,
+get_xi, flattening). CAMBBackground + CAMBNonLinearPerturbations
+construction is done OUTSIDE the timed region.
+
+JAX is pinned to CPU (no GPU usage) via JAX_PLATFORMS=cpu set before
+import.
 
 ═════════════════════════════════════════════════════════════════════════
-COMPAT NOTES — what's missing relative to ccl_test_roman_curved.py
+COMPAT NOTES — what's missing relative to the LSST CCL script
 ═════════════════════════════════════════════════════════════════════════
 
 1. IA model: TATT → NLA.
    cloelib's ShearTracer only supports the NLA model via (AIA, CIA, EtaIA).
-   There is no `translate_IA_norm`, no `PTIntrinsicAlignmentTracer`, and no
-   pathway to include A2/eta2 (tidal-torquing) or A1δ (density-tidal) terms.
-   We map TATT's A1 → AIA and TATT's eta1 → EtaIA. A2, eta2 are simply
-   dropped. C_IA is set to the standard CCL/DES NLA normalisation 5e-14
-   (cloelib's example uses 0.0134, but that's the older Bridle&King units;
-   we keep cloelib's example value here — the difference is a constant
-   prefactor only and doesn't affect runtime).
+   There is no `translate_IA_norm`, no `PTIntrinsicAlignmentTracer`, and
+   no pathway for A2/eta2 (tidal-torquing) or A1δ (density-tidal) terms.
+   We map A1→AIA, eta1→EtaIA; A2, eta2 are dropped.
 
 2. Galaxy clustering w(θ): non-Limber FKEM → Limber.
-   The CCL script used `non_limber_integration_method='FKEM'` with
-   `l_limber=100` and `fkem_Nchi=500` for the lens autocorrelations.
-   cloelib's `AngularTwoPoint.get_Cl` is Limber-only (no FKEM, no
-   Levin-collocation alternative). For Roman lens bins this matters at
-   ell ≲ 50–100 — expect a sub-percent-to-percent bias on w(θ) at the
-   largest separations.
+   cloelib's AngularTwoPoint.get_Cl is Limber-only. The CCL LSST script
+   used FKEM with l_limber=100, fkem_Nchi=500 for the lens autos.
 
-3. Bin-averaged ξ → point evaluation at geometric bin centers.
-   cloelib's `AngularCorrelationFunctionWigner` is curved-sky (Wigner small-d
-   projection — equivalent to CCL's `method='Legendre'`) but does NOT take
-   a `theta_max`/upper-edge argument. There is no analytic bin averaging.
-   We evaluate at the geometric mean of each bin's edges; this matches what
-   CCL gave you before the bin-averaging PR.
+3. ξ projection: flat-sky FFTLog → curved-sky Wigner-d.
+   The LSST CCL script uses `method='FFTLog'` (flat-sky, point evaluation
+   at scalar θ — no `theta_max`, no bin averaging). cloelib uses
+   `AngularCorrelationFunctionWigner` (curved-sky Wigner small-d, also
+   point evaluation). The geometries differ by O((θ/rad)²) at large θ —
+   relevant for θ up to 900' (=15°) at the wide end.
 
-4. Cosmology parameterisation: sigma8 → As.
-   CAMBBackground takes As, not sigma8. We use As=2.1e-9 → sigma8≈0.84 for
-   the fiducial. The benchmark perturbs As by 10% to roughly preserve the
-   5% sigma8 perturbation magnitude in the CCL script (sigma8 ∝ √As).
+4. Cosmology parameterisation: σ8 → As.
+   CAMBBackground takes As, not σ8. Fiducial As=2.1e-9 anchors σ8≈0.84.
+   We perturb As by 10% rather than σ8 by 5% (σ8 ∝ √As).
 
-5. No PT pipeline at all.
-   No equivalent of `EulerianPTCalculator`, no get_biased_pk2d. Linear bias
-   only, through cloelib's `galaxy_bias_model='per_bin'`.
-
-6. Output ordering. Same convention as the CCL datavec: xi+, xi-, gammat
-   (with the three GGL exclusions), w(θ). Indexing converted from CCL's
-   0-based to cloelib's 1-based.
+5. No PT pipeline.
+   Linear bias only, through cloelib's `galaxy_bias_model='per_bin'`.
 
 ═════════════════════════════════════════════════════════════════════════
 """
@@ -54,8 +42,7 @@ import os
 import time
 import numpy as np
 
-# Pin JAX to CPU + float64 BEFORE importing jax. JAX_PLATFORMS is read
-# at import time; setting it later via jax.config has no effect.
+# Pin JAX to CPU + float64 BEFORE importing jax.
 os.environ["JAX_PLATFORMS"] = "cpu"
 os.environ["JAX_ENABLE_X64"] = "True"
 
@@ -79,16 +66,16 @@ from cloelib.summary_statistics.angular_correlation_function_wigner import (
 )
 
 # ── Configuration ──────────────────────────────────────────────
-nz_lens_file = "roman_example1.nz"
-nz_source_file = "roman_example1.nz"
-lens_ntomo = 8
-source_ntomo = 8
-n_theta = 15
+nz_lens_file = "lsst_y1_lens.nz"
+nz_source_file = "lsst_y1_source.nz"
+lens_ntomo = 5
+source_ntomo = 5
+n_theta = 26
 theta_min_arcmin = 2.5
-theta_max_arcmin = 250.0
+theta_max_arcmin = 900.0
 
-# GGL pairs to exclude — CCL 0-indexed, cloelib 1-indexed → shift by +1
-ggl_excl_set = {(7, 1), (8, 1), (8, 2)}   # was [[6,0],[7,0],[7,1]]
+# No GGL exclusions in the LSST setup
+ggl_excl_set = set()
 
 n_warmup = 1
 n_bench = 10
@@ -146,23 +133,23 @@ dndz_l = jnp.asarray(nz_lens)
 dndz_s = jnp.asarray(nz_source)
 
 # ── ell, theta, k grids ───────────────────────────────────────
-ell_low = np.arange(2, 60)
-ell_high = np.unique(np.geomspace(60, 50000, 400).astype(int))
-ell = np.unique(np.concatenate([ell_low, ell_high]))
+# Match the LSST CCL script's 3-segment ell construction
+ell_low = np.arange(2, 50)
+ell_mid = np.unique(np.geomspace(50, 3000, 150).astype(int))
+ell_high = np.unique(np.geomspace(3000, 30000, 150).astype(int))
+ell = np.unique(np.concatenate([ell_low, ell_mid, ell_high]))
 ell_j = jnp.asarray(ell)
 
-theta_edges_arcmin = np.logspace(
-  np.log10(theta_min_arcmin), np.log10(theta_max_arcmin), n_theta + 1,
+# theta as direct points (not edges) — matches the CCL FFTLog call
+theta_arcmin = np.logspace(
+  np.log10(theta_min_arcmin), np.log10(theta_max_arcmin), n_theta,
 )
-theta_centres_arcmin = np.sqrt(theta_edges_arcmin[:-1] * theta_edges_arcmin[1:])
-theta_rad = jnp.deg2rad(jnp.asarray(theta_centres_arcmin / 60.0))
+theta_rad = jnp.deg2rad(jnp.asarray(theta_arcmin / 60.0))
 
 ks_j = jnp.logspace(-4, 2, 256)
 
 # ── CAMB setup (NOT timed) ────────────────────────────────────
 def make_perturbations(params):
-  """Build the CAMB nonlinear perturbations object. Excluded from the
-  cloelib timing — this is the Boltzmann solver, not cloelib."""
   bg = CAMBBackground(**params)
   pert = CAMBNonLinearPerturbations(
     background=bg, linearperturbations=None, redshifts=z_grid_np,
@@ -171,7 +158,6 @@ def make_perturbations(params):
 
 # ── cloelib 3x2pt evaluation (TIMED) ──────────────────────────
 def compute_3x2pt_cloelib(pert, nla, bias, dz_lens, dz_source):
-  """Pure cloelib pipeline: tracers → C_ell → ξ → flatten."""
   shear_nuisance = dict(AIA=nla['AIA'], CIA=CIA, EtaIA=nla['EtaIA'])
   for i in range(source_ntomo):
     shear_nuisance[f'multiplicative_bias_{i+1}'] = 0.0
@@ -193,12 +179,10 @@ def compute_3x2pt_cloelib(pert, nla, bias, dz_lens, dz_source):
     galaxy_bias_model='per_bin', nuisance_params=pos_nuisance,
   )
 
-  # C_ell — one call per probe type
   ap_she_she = AngularTwoPoint(shear_tracer, shear_tracer)
   ap_pos_she = AngularTwoPoint(pos_tracer, shear_tracer)
   ap_pos_pos = AngularTwoPoint(pos_tracer, pos_tracer)
 
-  # ξ via curved-sky Wigner-d projection (no bin averaging)
   acf_shear = AngularCorrelationFunctionWigner(ap_she_she, ell_j, ks_j)
   acf_ggl   = AngularCorrelationFunctionWigner(ap_pos_she, ell_j, ks_j)
   acf_wt    = AngularCorrelationFunctionWigner(ap_pos_pos, ell_j, ks_j)
@@ -207,7 +191,7 @@ def compute_3x2pt_cloelib(pert, nla, bias, dz_lens, dz_source):
   xi_ggl   = acf_ggl.get_xi(theta_rad)
   xi_wt    = acf_wt.get_xi(theta_rad)
 
-  # Block-concretise (forces JAX dispatch to complete before timing stops)
+  # Block-concretise (force JAX dispatch to complete before timer stops)
   blocks = []
   for i in range(1, source_ntomo + 1):
     for j in range(i, source_ntomo + 1):
@@ -247,6 +231,9 @@ dz_source_l = [rng.normal(0.0, dz_sigma, source_ntomo)
 
 # ── Warmup ─────────────────────────────────────────────────────
 print(f"JAX backend: {jax.default_backend()} (CPU pinned)")
+print(f"Setup: {lens_ntomo} lens × {source_ntomo} source bins, "
+      f"{n_theta} θ in [{theta_min_arcmin}, {theta_max_arcmin}] arcmin, "
+      f"ell ∈ [{ell.min()}, {ell.max()}]")
 print(f"Warmup ({n_warmup} run(s), not timed)...")
 for k in range(n_warmup):
   pert = make_perturbations(cosmo_list[k])
@@ -265,12 +252,10 @@ for k in range(n_bench):
   dz_l   = dz_lens_l[n_warmup + k]
   dz_s   = dz_source_l[n_warmup + k]
 
-  # CAMB setup — measured for reference but NOT in the cloelib total
   t0 = time.perf_counter()
   pert = make_perturbations(params)
   t_camb = time.perf_counter() - t0
 
-  # cloelib pipeline — this is the headline number
   t0 = time.perf_counter()
   dv = compute_3x2pt_cloelib(pert, nla, bias, dz_l, dz_s)
   t_cl = time.perf_counter() - t0
