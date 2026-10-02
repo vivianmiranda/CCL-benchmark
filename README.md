@@ -72,7 +72,8 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
   - Bins: CoCoA's log $\theta$ bins (LSST-Y1: 26 bins from 2.5' to 900';
     Roman-Real: 15 bins from 2.5' to 250').
   - Pairs: CoCoA's bin pairs, ordering and $\gamma_t$ exclusions
-    (Roman-Real: lens-source pairs (6,0), (7,0) and (7,1), 0-indexed).
+    (Roman-Real: lens-source pairs (7, 1), (8, 1) and (8, 2)). Bins count
+    from 1 in the text and the figures.
   - Masks: LSST-Y1 `lsst_y1_M1_GGLOLAP0.05.mask` (959 of 1560 points);
     Roman-Real `example1.mask` (1950 of 2115 points).
 - **Models.**
@@ -123,8 +124,8 @@ DESC-CCL (reference settings) vs CoCoA:
 | $n_s = 1.01$ | 8.45 | 0.0014 | 7.06 | 5.97 | 0.215 | 0.055 | 0.259 | 0.091 |
 
 Per-probe columns zero the other probes' entries of $d$; the cross-covariance
-makes them not add up to the 3x2pt value. In Roman-Real, the pair lens 7 -
-source 2 (0-indexed) is left out: 13 points the mask keeps
+makes them not add up to the 3x2pt value. In Roman-Real, the pair lens 8 -
+source 3 is left out: 13 points the mask keeps
 ([finding 4](#ccl_findings)). CoCoA's $\gamma_t$ on them is below
 $3\times10^{-12}$ (lens behind source) and gives $\Delta\chi^2 = 2\times10^{-11}$
 on its own.
@@ -250,8 +251,8 @@ the errors are smaller than in a full analysis):
    $w(\theta)$) and 0.0005 in Roman-Real. The reference moves by 0.0014 and
    0.0002 against a finer run (`fkem_Nchi=4000`, 3000 log $\ell$).
 4. **DESC-CCL transform failures.**
-   - The pairs (0-indexed): LSST-Y1 lens 4 - source 0 and Roman-Real lens
-     7 - source 2 (panel (8, 3) of the Roman-Real $\gamma_t$ figure).
+   - The pairs: LSST-Y1 lens 5 - source 1 and Roman-Real lens 8 - source 3
+     (panel (8, 3) of the Roman-Real $\gamma_t$ figure).
      In both, the lens bin lies behind the source bin, so the Limber
      $C_{gs}$ is zero at every $\ell$. FKEM gives a nonzero $C_{gs}$ below
      $\ell = 150$, and the Limber part above is zero.
@@ -277,8 +278,8 @@ one-sigma difference. One curve per cosmology. Each row of panels has its own
 y-range. A panel marked $1/\alpha = f$ shows the difference divided by $f$:
 the difference is $f$ times what the axis reads. LSST-Y1 shows every
 $\theta$; the $\Delta\chi^2$ above uses the mask. Roman-Real leaves the
-masked points blank. Panel labels: $\gamma_t$ (lens, source) and
-$w(\theta)$ (lens) count from 1; $\xi_\pm$ (bin $i$, bin $j$) count from 0.
+masked points blank. Panel labels: $\gamma_t$ (lens, source),
+$w(\theta)$ (lens), $\xi_\pm$ (bin $i$, bin $j$).
 The maxima below are over the five cosmologies and every plotted point.
 
 **LSST-Y1, $\gamma_t$.** DESC-CCL's FKEM offset from finding 2 reaches
@@ -319,8 +320,8 @@ $0.059\sigma$ ($\xi_-$).
 |---|---|---|
 | `CCLError` 1040 for full-sky $\xi_\pm$ | CCL 3.3 has no full-sky $\xi_\pm$ | pyccl built from PR #1296 (CMake against the conda env's GSL and FFTW; SWIG from conda-forge) |
 | `AttributeError: np.trapz` in FAST-PT 4.0.0 | numpy 2.4 removed `np.trapz` | `np.trapz = np.trapezoid` before importing pyccl (no package changed) |
-| `ccl_angular_cls_limber(): integration error`, Roman-Real lens bins 6 and 7 with RSD | the growth table of `cocoa_export.py` ended at $z = 6$ | growth from CAMB to $z = 49$ |
-| same error, lens bin 7, $\ell = 2$ only | the Limber RSD kernel evaluates the background at $\chi_{\ell+1} = \chi\,(\ell + 3/2)/(\ell + 1/2)$, $1.4\chi$ at $\ell = 2$ ($z \approx 14$ for $z = 4$); `ccl_compute.py` cut CoCoA's $\chi(z)$ table at $z = 10$ | CoCoA's $\chi(z)$ to $z = 50$ |
+| `ccl_angular_cls_limber(): integration error`, Roman-Real lens bins 7 and 8 with RSD | the growth table of `cocoa_export.py` ended at $z = 6$ | growth from CAMB to $z = 49$ |
+| same error, lens bin 8, $\ell = 2$ only | the Limber RSD kernel evaluates the background at $\chi_{\ell+1} = \chi\,(\ell + 3/2)/(\ell + 1/2)$, $1.4\chi$ at $\ell = 2$ ($z \approx 14$ for $z = 4$); `ccl_compute.py` cut CoCoA's $\chi(z)$ table at $z = 10$ | CoCoA's $\chi(z)$ to $z = 50$ |
 | $H(z)$ off by $3\times10^{-4}$ above $z = 3$ | `np.gradient` of $\chi(z)$ where the $z$ grid coarsens | cubic-spline derivative (agrees with CCL's own $H(z)$ to $10^{-5}$) |
 | Eisenstein-Hu cosmology needs $\sigma_8$ | the benchmark modeling uses DESC-CCL's own $P(k)$ | `ccl.sigma8` of the CAMB-table cosmology |
 | `correlation` fails for two $\gamma_t$ pairs | finding 4 | not worked around: pairs left out |
@@ -387,7 +388,7 @@ Versions of this study's runs (4 OpenMP threads for every run):
 
 | component | version |
 |---|---|
-| Cocoa | `v5.02`, cosmolike_core `v5.03` + 4 commits (`b4025bf`): nested $N_a$ above `accuracyboost: 1` (enters only the high-accuracy row), a testing fix, the per-row `ylim` plotting option |
+| Cocoa | `v5.02`, cosmolike_core `v5.03` + 5 commits (`26191ec`): nested $N_a$ above `accuracyboost: 1` (enters only the high-accuracy row), a testing fix, plotting (per-row `ylim`, bin labels from 1) |
 | CAMB (Cocoa environment) | 1.6.7, Python 3.11.12, NumPy 1.26.3 |
 | pyccl | PR #1296 build, commit `647ad4a` (2026-09-18), first on `PYTHONPATH` |
 | `ccl` conda environment | Python 3.12.13, NumPy 2.4.3, SciPy 1.17.1, FAST-PT 4.0.0, GSL 2.7, FFTW 3.3.11, SWIG 4.5.1 |
