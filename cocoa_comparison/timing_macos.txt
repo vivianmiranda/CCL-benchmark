@@ -1,0 +1,10 @@
+[05:38:42] start; load 2.85 4.81 4.21
+COCOA lsst_y1 nla threads 8: likelihood mean 0.0459 median 0.0460 min 0.0444 max 0.0468 s/eval (n = 20 after 2 warm-up calls); CAMB 0.176 s/eval (excluded)
+COCOA lsst_y1 tatt threads 8: likelihood mean 0.0528 median 0.0527 min 0.0517 max 0.0554 s/eval (n = 20 after 2 warm-up calls); CAMB 0.176 s/eval (excluded)
+COCOA roman_real nla threads 8: likelihood mean 0.0703 median 0.0715 min 0.0655 max 0.0751 s/eval (n = 20 after 2 warm-up calls); CAMB 0.180 s/eval (excluded)
+COCOA roman_real tatt threads 8: likelihood mean 0.0764 median 0.0762 min 0.0726 max 0.0827 s/eval (n = 20 after 2 warm-up calls); CAMB 0.181 s/eval (excluded)
+CCL lsst_y1 nla ref threads 8: mean 10.450 median 10.488 min 10.303 max 10.505 s/eval (n = 10 after 2 warm-up calls; reading the tables 0.005 s, subtracted)
+CCL lsst_y1 tatt ref threads 8: mean 15.414 median 15.400 min 15.346 max 15.512 s/eval (n = 10 after 2 warm-up calls; reading the tables 0.006 s, subtracted)
+CCL roman_real nla ref threads 8: mean 17.962 median 17.944 min 17.814 max 18.112 s/eval (n = 10 after 2 warm-up calls; reading the tables 0.010 s, subtracted)
+CCL roman_real tatt ref threads 8: mean 22.747 median 22.562 min 22.456 max 24.277 s/eval (n = 10 after 2 warm-up calls; reading the tables 0.013 s, subtracted)
+[05:53:31] done; load 5.09 5.50 5.20

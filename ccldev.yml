@@ -1,0 +1,23 @@
+# What DESC-CCL (pyccl) needs to be built from source and to run the
+# scripts of this repository. pyccl itself is not in this environment:
+# cocoa_comparison/build_ccl_pr.sh builds it (LSSTDESC/CCL PR #1296).
+#   conda env create --file=ccldev.yml
+#   conda activate ccldev
+name: ccldev
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.13
+  - numpy=2.4.3
+  - scipy=1.17.1
+  - matplotlib-base=3.10.8
+  - pyyaml=6.0.3
+  - fast-pt=4.1.0
+  - gsl=2.7
+  - fftw=3.3.11=nompi_*
+  - swig=4.5.1
+  - cmake=4.0.2
+  - make=4.4.1
+  - pkg-config=0.29.2
+  - c-compiler=1.11.0
+  - cxx-compiler=1.11.0
