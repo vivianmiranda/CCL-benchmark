@@ -1,0 +1,5 @@
+*.npz
+*.log
+*.modelvector
+data_*/
+__pycache__/
