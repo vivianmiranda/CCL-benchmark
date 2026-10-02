@@ -24,13 +24,16 @@ fails for a bin pair, the failure is recorded and that pair is left out
 
 Variants (each a single change from "ref" unless stated):
   ref        non-Limber C_gg and C_gs below l = 150 (FKEM, the same switch as
-             CoCoA), RSD in clustering, full-sky (Legendre) transforms
+             CoCoA), RSD in clustering only (CoCoA's model: include_RSD_GG = 1,
+             include_RSD_GS = 0), full-sky (Legendre) transforms
              averaged over each theta bin, CAMB's linear and nonlinear tables,
              converged FKEM sampling (fkem_Nchi 2000, 1500 log-spaced l above
              400)
   limgs      C_gs in Limber (the CCL-benchmark scripts)
   limber     C_gs and C_gg in Limber
   norsd      no RSD (the CCL-benchmark scripts)
+  rsd_gs     RSD also in the lens tracer of gamma_t (CCL's has_rsd applies
+             to every correlation of the tracer; CoCoA omits it in C_gs)
   flat       flat-sky FFTLog transform at the bin centers (the CCL-benchmark
              scripts; FFTLog has no bin averaging)
   points     full-sky correlations at the bin centers, no bin averaging
@@ -42,9 +45,13 @@ Variants (each a single change from "ref" unless stated):
              no RSD, flat-sky FFTLog at the bin centers, l_limber = 100,
              fkem_Nchi = 500
   harmonic   Limber C_l at CoCoA's exported multipoles (no real-space step)
+
+A CCL call that fails for a bin pair (angular_cl or correlation) is recorded
+in the output's "failures" list and that pair is left out (NaN).
 """
 import json, os, sys, time
 import numpy as np
+from scipy.interpolate import CubicSpline
 if not hasattr(np, "trapz"):     # FAST-PT/numpy 2.4 pairing of the local ccl env
   np.trapz = np.trapezoid
 import pyccl as ccl
@@ -54,7 +61,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 ex = np.load(src)
 meta = json.loads(str(ex["meta"]))
 project = meta["project"]; par = meta["pars"]; pt = meta["point"]
-V = dict(nonlimber_gs=True, nonlimber_gg=True, rsd=True, method="legendre",
+V = dict(nonlimber_gs=True, nonlimber_gg=True, rsd=True, rsd_gs=False, method="legendre",
          binavg=True, native=False, separable=False, l_limber=150, fkem_nchi=2000,
          nell_log=1500, ell_max=65000 if project == "lsst_y1" else 100000)
 CHANGES = {
@@ -62,6 +69,7 @@ CHANGES = {
   "limgs": dict(nonlimber_gs=False),
   "limber": dict(nonlimber_gs=False, nonlimber_gg=False),
   "norsd": dict(rsd=False),
+  "rsd_gs": dict(rsd_gs=True),
   "flat": dict(method="fftlog", binavg=False),
   "points": dict(binavg=False),
   "separable": dict(separable=True),
@@ -81,9 +89,12 @@ common = dict(Omega_c=par["omegam"] - par["omegab"] - Onu, Omega_b=par["omegab"]
               n_s=par["ns"], A_s=par["As"], m_nu=par["mnu"], mass_split="single",
               w0=par["w"], wa=par.get("wa", 0.0))
 def calculator():
+  # CoCoA's chi(z) over its whole table (z <= 50): CCL's Limber RSD kernel
+  # at l = 2 reads the background at 1.4 chi (z ~ 14 for lenses at z = 4).
+  # H(z) from a cubic-spline derivative: np.gradient is off by 3e-4 where
+  # the z grid coarsens (z > 3); the spline matches CCL's own H(z) to 1e-5
   z1, chi1 = ex["z1"], ex["chi1"]
-  sel = z1 <= 10.0; z1, chi1 = z1[sel], chi1[sel]
-  dchidz = np.gradient(chi1, z1)
+  dchidz = CubicSpline(z1, chi1).derivative()(z1)
   hoh0 = (ccl.physical_constants.CLIGHT/1e3/par["H0"])/dchidz
   zg, kg = ex["zg"], ex["kg"]
   a_bg = 1.0/(1.0 + z1[::-1])
@@ -133,6 +144,9 @@ ia = lambda z: (z, c1_ratio*A1*((1.0 + z)/1.62)**eta)
 src_t = [ccl.WeakLensingTracer(cosmo, dndz=(zs, nzs[i]), ia_bias=ia(zs), use_A_ia=True) for i in range(S)]
 lens_t = [ccl.NumberCountsTracer(cosmo, dndz=(zl, nzl[i]), has_rsd=V["rsd"],
           bias=(zl, pt["%sB1_%d" % (pre, i + 1)]*np.ones_like(zl))) for i in range(L)]
+# the lens tracer of gamma_t: RSD only on request (CoCoA: include_RSD_GS = 0)
+lens_tgs = [ccl.NumberCountsTracer(cosmo, dndz=(zl, nzl[i]), has_rsd=V["rsd"] and V["rsd_gs"],
+            bias=(zl, pt["%sB1_%d" % (pre, i + 1)]*np.ones_like(zl))) for i in range(L)]
 excl = set()
 ef = os.path.join(H, "ggl_exclude_%s.txt" % project)
 if os.path.isfile(ef) and os.path.getsize(ef) > 0:
@@ -152,7 +166,7 @@ if variant == "harmonic":
   eh = ex["ell_h"]
   lim = lambda t1, t2: ccl.angular_cl(cosmo, t1, t2, eh)
   css = np.array([[lim(src_t[i], src_t[j]) for j in range(S)] for i in range(S)])
-  cgs = np.array([[lim(lens_t[l], src_t[s]) for s in range(S)] for l in range(L)])
+  cgs = np.array([[lim(lens_tgs[l], src_t[s]) for s in range(S)] for l in range(L)])
   cgg = np.array([lim(lens_t[l], lens_t[l]) for l in range(L)])
   lens_nr = [ccl.NumberCountsTracer(cosmo, dndz=(zl, nzl[i]), has_rsd=False,
              bias=(zl, pt["%sB1_%d" % (pre, i + 1)]*np.ones_like(zl))) for i in range(L)]
@@ -167,11 +181,19 @@ def _corr(c, typ):
     return ccl.correlation(cosmo, ell=ell, C_ell=c, theta=edges[:-1], theta_max=edges[1:], type=typ, method=V["method"])
   return ccl.correlation(cosmo, ell=ell, C_ell=c, theta=np.sqrt(edges[:-1]*edges[1:]), type=typ, method=V["method"])
 FAILURES = []
+def safe_cl(t1, t2, nonlimber, typ, label):
+  try:
+    return cl(t1, t2, nonlimber)
+  except Exception as e:   # a CCL limitation: recorded, the pair left out
+    FAILURES.append(dict(pair=label, type=typ, stage="angular_cl",
+                         error=str(e).strip().splitlines()[-1][:160]))
+    return None
 def corr(c, typ, label=""):
+  if c is None: return np.full(meta["ntheta"], np.nan)
   try:
     return _corr(c, typ)
   except Exception as e:   # a CCL limitation: recorded, the pair left out
-    FAILURES.append(dict(pair=label, type=typ, error=str(e).strip().splitlines()[-1][:160],
+    FAILURES.append(dict(pair=label, type=typ, stage="correlation", error=str(e).strip().splitlines()[-1][:160],
                          nonpositive_last=bool(np.any(c[-2:] <= 0))))
     return np.full(meta["ntheta"], np.nan)
 
@@ -184,13 +206,13 @@ xim = [corr(c, "GG-", "s%d-s%d" % p) for c, p in zip(css, pairs_ss)]
 for l in range(L):
   for s in range(S):
     if (l, s) in excl: continue
-    gt.append(corr(cl(lens_t[l], src_t[s], V["nonlimber_gs"]), "NG", "l%d-s%d" % (l, s)))
+    gt.append(corr(safe_cl(lens_tgs[l], src_t[s], V["nonlimber_gs"], "NG", "l%d-s%d" % (l, s)), "NG", "l%d-s%d" % (l, s)))
 for l in range(L):
-  w.append(corr(cl(lens_t[l], lens_t[l], V["nonlimber_gg"]), "NN", "l%d-l%d" % (l, l)))
+  w.append(corr(safe_cl(lens_t[l], lens_t[l], V["nonlimber_gg"], "NN", "l%d-l%d" % (l, l)), "NN", "l%d-l%d" % (l, l)))
 dv = np.concatenate(xip + xim + gt + w)
 dt = time.perf_counter() - t0
 sizes = list(ex["sizes"])
 ok = len(dv) == len(ex["dv"])
 np.savez(out, dv=dv, variant=variant, V=json.dumps(V), time=dt, pyccl=ccl.__file__,
          failures=json.dumps(FAILURES))
-print("CCL %s %s %s len %d (CoCoA %d, %s) %.1f s, failed pairs: %s" % (project, meta["model"], variant, len(dv), len(ex["dv"]), "ok" if ok else "MISMATCH", dt, [f["pair"] + ":" + f["type"] for f in FAILURES] or "none"), flush=True)
+print("CCL %s %s %s len %d (CoCoA %d, %s) %.1f s, failed pairs: %s" % (project, meta["model"], variant, len(dv), len(ex["dv"]), "ok" if ok else "MISMATCH", dt, [f["pair"] + ":" + f["type"] + ":" + f["stage"] for f in FAILURES] or "none"), flush=True)
