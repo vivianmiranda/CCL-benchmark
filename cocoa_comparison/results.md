@@ -29,6 +29,22 @@
 | DESC-CCL full-sky, bin centers vs CoCoA | 10.311 | 2.003 | 3.586 | 8.656 | 0 |
 | DESC-CCL the CCL-benchmark modeling vs CoCoA | 153.590 | 5.692 | 14.694 | 166.482 | 0 |
 
+| TATT: DESC-CCL (reference settings) vs CoCoA | 3x2pt | shear | $\gamma_t$ | $w(\theta)$ | points left out |
+|---|---|---|---|---|---|
+| fiducial | 8.890 | 1.8e-03 | 7.461 | 6.259 | 0 |
+| $\Omega_m = 0.25$ | 6.624 | 5.8e-04 | 4.958 | 5.477 | 0 |
+| $\Omega_m = 0.35$ | 10.764 | 5.9e-03 | 9.735 | 6.459 | 0 |
+| $n_s = 0.92$ | 9.209 | 1.8e-03 | 7.740 | 6.547 | 0 |
+| $n_s = 1.01$ | 8.586 | 2.0e-03 | 7.223 | 5.972 | 0 |
+
+| TATT, fiducial, one choice at a time | 3x2pt | shear | $\gamma_t$ | $w(\theta)$ | points left out |
+|---|---|---|---|---|---|
+| TATT vs NLA in CoCoA (size of the TATT terms) | 1741.599 | 1677.107 | 90.806 | 0 | 0 |
+| CoCoA default vs CoCoA high accuracy (TATT) | 4.8e-03 | 1.3e-03 | 3.8e-04 | 3.7e-03 | 0 |
+| DESC-CCL PT tables at 320 k per decade vs 160 (TATT) | 7.9e-09 | 7.9e-09 | 3.9e-12 | 0 | 0 |
+| both in Limber: DESC-CCL vs CoCoA (TATT) | 0.159 | 1.8e-03 | 1.1e-03 | 0.157 | 0 |
+| DESC-CCL, separable $P_{\rm lin}$ (diagnostic), vs CoCoA (TATT) | 0.222 | 1.8e-03 | 0.078 | 0.165 | 0 |
+
 | DESC-CCL run | pair | type | call | error |
 |---|---|---|---|---|
 | fid_ccl_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
@@ -40,10 +56,18 @@
 | fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_rsd_gs | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_separable | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| fid_tattcheck | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | ns_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_pt_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_separable | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_ns_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | w_m1_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 
 ### Roman-Real
@@ -77,6 +101,22 @@
 | DESC-CCL full-sky, bin centers vs CoCoA | 22.771 | 28.309 | 84.600 | 13.843 | 13 |
 | DESC-CCL the CCL-benchmark modeling vs CoCoA | 55.938 | 13.128 | 41.945 | 64.066 | 0 |
 
+| TATT: DESC-CCL (reference settings) vs CoCoA | 3x2pt | shear | $\gamma_t$ | $w(\theta)$ | points left out |
+|---|---|---|---|---|---|
+| fiducial | 0.237 | 0.058 | 0.280 | 0.096 | 13 |
+| $\Omega_m = 0.25$ | 0.168 | 0.022 | 0.196 | 0.087 | 13 |
+| $\Omega_m = 0.35$ | 0.306 | 0.123 | 0.378 | 0.098 | 13 |
+| $n_s = 0.92$ | 0.244 | 0.055 | 0.291 | 0.099 | 13 |
+| $n_s = 1.01$ | 0.222 | 0.056 | 0.269 | 0.091 | 13 |
+
+| TATT, fiducial, one choice at a time | 3x2pt | shear | $\gamma_t$ | $w(\theta)$ | points left out |
+|---|---|---|---|---|---|
+| TATT vs NLA in CoCoA (size of the TATT terms) | 1307.436 | 1292.799 | 978.407 | 0 | 0 |
+| CoCoA default vs CoCoA high accuracy (TATT) | 7.7e-03 | 2.0e-03 | 3.4e-03 | 6.4e-03 | 0 |
+| DESC-CCL PT tables at 320 k per decade vs 160 (TATT) | 4.0e-07 | 4.0e-07 | 3.0e-09 | 0 | 13 |
+| both in Limber: DESC-CCL vs CoCoA (TATT) | 0.031 | 0.058 | 0.061 | 0.011 | 0 |
+| DESC-CCL, separable $P_{\rm lin}$ (diagnostic), vs CoCoA (TATT) | 0.066 | 0.058 | 0.106 | 0.010 | 13 |
+
 | DESC-CCL run | pair | type | call | error |
 |---|---|---|---|---|
 | fid_ccl_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
@@ -92,5 +132,12 @@
 | ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_pt_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_fid_separable | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_ns_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| tatt_omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | w_m09_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 

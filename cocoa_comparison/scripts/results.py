@@ -58,6 +58,26 @@ for p, P in PROJ.items():
     if a is not None and b is not None:
       R[p][lab] = dchi2(p, a, b); md.append(row(lab, R[p][lab]))
   md.append("")
+  # TATT (IA_model 1, CFASTPT in CoCoA; pyccl EulerianPTCalculator in DESC-CCL)
+  ta = {m: load("cocoa_%s_tatt_%s.npz" % (p, m)) for m, _ in MODELS}
+  if any(x is not None for x in ta.values()):
+    md.append(head % "TATT: DESC-CCL (reference settings) vs CoCoA")
+    for m, lab in MODELS:
+      a = load("ccl_%s_tatt_%s_ref.npz" % (p, m))
+      if a is not None and ta[m] is not None:
+        R[p]["tatt_ref_" + m] = dchi2(p, a, ta[m]); md.append(row(lab, R[p]["tatt_ref_" + m]))
+    md.append("")
+    md.append(head % "TATT, fiducial, one choice at a time")
+    for lab, fa, fb in (
+        ("TATT vs NLA in CoCoA (size of the TATT terms)", "cocoa_%s_tatt_fid.npz" % p, "cocoa_%s_fid.npz" % p),
+        ("CoCoA default vs CoCoA high accuracy (TATT)", "cocoa_%s_tatt_fid.npz" % p, "cocoa_%s_tatt_fidhi.npz" % p),
+        ("DESC-CCL PT tables at 320 k per decade vs 160 (TATT)", "ccl_%s_tatt_fid_pt_hi.npz" % p, "ccl_%s_tatt_fid_ref.npz" % p),
+        ("both in Limber: DESC-CCL vs CoCoA (TATT)", "ccl_%s_tatt_fid_limber.npz" % p, "cocoa_%s_tatt_fidlimber.npz" % p),
+        ("DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA (TATT)", "ccl_%s_tatt_fid_separable.npz" % p, "cocoa_%s_tatt_fid.npz" % p)):
+      a, b = load(fa), load(fb)
+      if a is not None and b is not None:
+        R[p][lab] = dchi2(p, a, b); md.append(row(lab, R[p][lab]))
+    md.append("")
   # CCL calls that failed (pair left out), per run
   fl = []
   for f in sorted(os.listdir(W)):

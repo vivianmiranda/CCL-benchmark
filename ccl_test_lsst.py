@@ -27,7 +27,9 @@ fid_params = dict(
 )
  
 # Fiducial TATT parameters (perturbed in benchmark loop)
-fid_tatt = dict(A1=0.7, A2=-1.36, eta1=-1.7, eta2=-2.5)
+# bta = b_TA: the density weighting of the tidal-alignment term,
+# A1delta(z) = b_TA A1(z) (a TATT parameter in CoCoA as well)
+fid_tatt = dict(A1=0.7, A2=-1.36, eta1=-1.7, eta2=-2.5, bta=1.0)
 z_pivot = 0.62
  
 # Galaxy bias (fiducial — perturbed in benchmark loop)
@@ -39,7 +41,10 @@ fid_bias = {f'b{i}': 1.2 + 0.1 * i for i in range(lens_ntomo)}
 dz_sigma = 0.01
  
 # z grid for IA
-z_ia = np.linspace(0.0, 3.0, 200)
+# IA amplitudes and PT tables to z = 4: the source n(z) reach z ~ 4
+# (Roman-Fourier study: 20 k per decade and tables to z = 3 were 0.16
+# off in Delta chi2; 40 k per decade and z = 4 leave 9e-4)
+z_ia = np.linspace(0.0, 4.0, 267)
  
 # ── Read n(z) once (doesn't depend on cosmology) ──────────────
 def load_nz(filename, ntomo):
@@ -81,7 +86,7 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   A1_z = tatt['A1'] * ((1.0 + z_ia) / (1.0 + z_pivot))**tatt['eta1']
   A2_z = tatt['A2'] * ((1.0 + z_ia) / (1.0 + z_pivot))**tatt['eta2']
   c1, c2, cdelta = pt.translate_IA_norm(
-    cosmo, z=z_ia, a1=A1_z, a1delta=A1_z, a2=A2_z
+    cosmo, z=z_ia, a1=A1_z, a1delta=tatt['bta'] * A1_z, a2=A2_z
   )
  
   # PT tracers + calculator
@@ -89,10 +94,10 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   ptt_ia = pt.PTIntrinsicAlignmentTracer(
     c1=(z_ia, c1), c2=(z_ia, c2), cdelta=(z_ia, cdelta),
   )
-  a_arr = 1.0 / (1.0 + np.linspace(0, 3.0, 50)[::-1])
+  a_arr = 1.0 / (1.0 + np.linspace(0, 4.0, 67)[::-1])
   ptc = pt.EulerianPTCalculator(
     with_NC=True, with_IA=True,
-    log10k_min=-4, log10k_max=2, nk_per_decade=20,
+    log10k_min=-4, log10k_max=2, nk_per_decade=40,
     cosmo=cosmo, a_arr=a_arr,
   )
   ptc.update_ingredients(cosmo)
@@ -100,6 +105,8 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   pk_mm = ptc.get_biased_pk2d(ptt_m, tracer2=ptt_m)
   pk_mi = ptc.get_biased_pk2d(ptt_m, tracer2=ptt_ia)
   pk_ii = ptc.get_biased_pk2d(ptt_ia, tracer2=ptt_ia)
+  pk_ii_bb = ptc.get_biased_pk2d(ptt_ia, tracer2=ptt_ia,
+                                    return_ia_bb=True)
  
   cosmo.compute_linear_power()
   pk_mm_lin = cosmo.get_linear_power('delta_matter:delta_matter')
@@ -114,11 +121,15 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
       cosmo, dndz=dndz_src,
       has_shear=True, ia_bias=None,
     ))
+    # IA-only tracer: unit IA bias and use_A_ia=False, because the TATT
+    # amplitudes (with their -C1 rho_crit Omega_m/D normalization and sign)
+    # already sit in c1, c2, cdelta of the PT tracer; use_A_ia=True would
+    # apply that normalization a second time and flip the sign
     source_IA.append(ccl.WeakLensingTracer(
       cosmo, dndz=dndz_src,
       has_shear=False,
       ia_bias=(z_shifted[mask], np.ones(mask.sum())),
-      use_A_ia=True,
+      use_A_ia=False,
     ))
   lens_tracers = []
   for i in range(lens_ntomo):
@@ -131,7 +142,7 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
     ))
  
   # Shear C_ell with TATT
-  cls_shear = {}
+  cls_shear, cls_shear_bb = {}, {}
   for i in range(source_ntomo):
     for j in range(i, source_ntomo):
       cl_gg = ccl.angular_cl(cosmo, source_L[i], source_L[j],
@@ -143,6 +154,9 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
       cl_ii = ccl.angular_cl(cosmo, source_IA[i], source_IA[j],
                              ell, p_of_k_a=pk_ii)
       cls_shear[(i, j)] = cl_gg + cl_gi + cl_ig + cl_ii
+      # B-modes come only from the IA auto term (TATT)
+      cls_shear_bb[(i, j)] = ccl.angular_cl(cosmo, source_IA[i], source_IA[j],
+                                            ell, p_of_k_a=pk_ii_bb)
  
   # GGL C_ell with TATT
   cls_ggl = {}
@@ -170,10 +184,10 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   for i in range(source_ntomo):
     for j in range(i, source_ntomo):
       xi_p[(i, j)] = ccl.correlation(
-        cosmo, ell=ell, C_ell=cls_shear[(i, j)],
+        cosmo, ell=ell, C_ell=cls_shear[(i, j)] + cls_shear_bb[(i, j)],
         theta=theta_deg, type='GG+', method='FFTLog')
       xi_m[(i, j)] = ccl.correlation(
-        cosmo, ell=ell, C_ell=cls_shear[(i, j)],
+        cosmo, ell=ell, C_ell=cls_shear[(i, j)] - cls_shear_bb[(i, j)],
         theta=theta_deg, type='GG-', method='FFTLog')
  
   gammat = {}

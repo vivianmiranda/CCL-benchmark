@@ -34,6 +34,19 @@ Cocoa README only cites it).
    claim) and of the README (the cocoa-maintenance skill's README rules:
    less is more, tables over prose, LaTeX math, no adjectives).
 
+## 0.5 Saved Fable 5 results (read before asking Fable again)
+
+Fable 5 runs are expensive: every insight they produce is saved here and
+reused. Read the relevant file before spawning a new review.
+
+| file | what it verified (with file:line evidence) |
+|---|---|
+| `references/fable_review_A_physics_and_numbers.md` | CCL FKEM mixes P_lin(k,z) (Limber subtraction) with D^2 P_lin(k,0) (FKEM term); CoCoA's per-lens-bin pivot in cosmo2D.c; the transform-failure path (ccl_f1d log-log extrapolation); every convention row (NLA factor, Z_LOW n(z), RSD gates, lmax, covariance columns 9+10); all study numbers |
+| `references/fable_review_B_writing_and_figures.md` | README rules (cocoa-maintenance Section 3) applied to the study; caption self-sufficiency; figure checks (alpha, indexing, excluded panels); Reproduce as Step blocks |
+| `references/fable_review_C_referee_completeness.md` | what a code comparison must contain: truth anchor, parameter-shift interpretation, varying the parameter that drives a difference within one project, direct harmonic comparison of the disagreeing layer, two-sided convergence, transform isolation, scope statement, bounds on left-out points, version table |
+| `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map: C1/C2/C_delta normalizations and signs, FAST-PT kernel mapping, B-modes, the gamma_t split (C1 in FKEM, extras in Limber), PT settings, the recipe of the "tatt:" variant |
+| `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
+
 ## 1. Pipeline
 
 1. CoCoA side, cocoa env (`start_cocoa.sh` sourced), from `Cocoa/`:
@@ -130,6 +143,20 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   (bias.py: LSST-Y1 biases absorb 6.74 of 8.76, ~1 sigma each; Omega_m,
   n_s < 0.11 sigma). State the scope (NLA, linear bias, no systematics)
   and that neither code is compared with the exact integral.
+- TATT (2026-10-02): CoCoA IA_model 1 with CFASTPT (IA_code 0) vs pyccl
+  EulerianPTCalculator; recipe and conventions in references/tatt_conventions.md
+  (variant prefix "tatt:" in ccl_compute.py). Check first: TATT with
+  A2 = b_TA = 0 must reproduce the NLA reference (8e-5). Results: xi_pm agree
+  as with NLA (0.0018 / 0.058) against a TATT signal of 1677 / 1293; gamma_t
+  and w keep the FKEM offset; PT tables converged (320 vs 160 per decade,
+  < 1e-6). High-l C_EE (l > 5e4) differs where TATT dominates: CoCoA's TATT
+  kernels end at k = 334 h/Mpc (1e6 H0/c), CCL extrapolates; no effect on
+  xi_pm above 2.5'. FAST-PT needs an even number of k nodes. A variant name
+  with a prefix must be compared through its base name (the harmonic branch
+  once tested `variant == "harmonic"` and silently ran the real-space run).
+  The repository's benchmark scripts had use_A_ia=True on the IA-only tracer
+  (IA normalization twice, sign flipped), b_TA fixed, no B-modes: fixed in
+  b8bfec7.
 - Final numbers (2026-10-01): LSST-Y1 8.76 (6.6-10.5 over five models;
   gamma_t 7.29, w 6.26, shear 0.0013), separable diagnostic 0.21;
   Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script

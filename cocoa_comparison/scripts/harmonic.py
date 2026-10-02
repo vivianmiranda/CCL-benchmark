@@ -47,3 +47,38 @@ for p, P in (("lsst_y1", "LSST-Y1"), ("roman_real", "Roman-Real")):
   r = np.array([cc["cgg_nl"][l]/co["cl_gg_nl"][:, l, l] - 1.0 for l in range(L)])   # (L, n_ell)
   cells = ["%+.2f%% to %+.2f%%" % (100*r[:, list(enl).index(l)].min(), 100*r[:, list(enl).index(l)].max()) for l in NL]
   print("| %s | %s |" % (P, " | ".join(cells)))
+
+# TATT: Limber C_l^EE, C_l^BB (II B-modes) and C_gs of both codes
+# (cocoa_<p>_tatt_fid, ccl_<p>_tatt_fid_harmonic), same statistics as above
+rows = []
+for p, P in (("lsst_y1", "LSST-Y1"), ("roman_real", "Roman-Real")):
+  fc, fh = os.path.join(W, "cocoa_%s_tatt_fid.npz" % p), os.path.join(W, "ccl_%s_tatt_fid_harmonic.npz" % p)
+  if not (os.path.isfile(fc) and os.path.isfile(fh)): continue
+  co, cc = np.load(fc), np.load(fh)
+  ell = co["ell_h"]
+  ef = os.path.join(H, "ggl_exclude_%s.txt" % p)
+  excl = {tuple(int(x) for x in l.split()) for l in open(ef) if l.strip()} if os.path.isfile(ef) else set()
+  S = cc["css"].shape[0]; L = cc["cgs"].shape[0]
+  probes = {
+    "$C_{ss}^{EE}$": (np.array([cc["css"][i, j] for i in range(S) for j in range(i, S)]),
+                      np.array([co["cl_ss"][0][:, i, j] for i in range(S) for j in range(i, S)])),
+    "$C_{ss}^{BB}$": (np.array([cc["cssbb"][i, j] for i in range(S) for j in range(i, S)]),
+                      np.array([co["cl_ss"][1][:, i, j] for i in range(S) for j in range(i, S)])),
+    "$C_{gs}$": (np.array([cc["cgs"][l, k] for l in range(L) for k in range(S) if (l, k) not in excl]),
+                 np.array([co["cl_gs"][:, l, k] for l in range(L) for k in range(S) if (l, k) not in excl])),
+  }
+  for nm, (a, b) in probes.items():
+    with np.errstate(all="ignore"):
+      r = np.abs(a/b - 1.0)
+    sig = np.abs(b) > 0.01*np.abs(b).max(axis=0)[None, :]
+    cells = []
+    for lo, hi in RANGES:
+      s = (ell >= lo) & (ell < hi)
+      rr = r[:, s]; ss = sig[:, s]
+      cells.append("%.1e / %.1e" % (np.nanmedian(np.where(ss, rr, np.nan)), np.nanmax(np.where(ss, rr, np.nan))))
+    rows.append("| %s | %s | %s |" % (P, nm, " | ".join(cells)))
+if rows:
+  print()
+  print("| TATT | probe | " + " | ".join("$%d \\le \\ell < %d$" % r for r in RANGES) + " |")
+  print("|---|---|" + "---|"*len(RANGES))
+  print("\n".join(rows))

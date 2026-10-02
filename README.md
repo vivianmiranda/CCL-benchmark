@@ -11,8 +11,9 @@ Contents:
 3. [Results](#ccl_results)
 4. [Findings](#ccl_findings)
 5. [Figures](#ccl_figures)
-6. [What it took to run DESC-CCL](#ccl_run)
-7. [Reproduce](#ccl_reproduce)
+6. [TATT intrinsic alignments](#ccl_tatt)
+7. [What it took to run DESC-CCL](#ccl_run)
+8. [Reproduce](#ccl_reproduce)
 
 ## Summary <a name="ccl_summary"></a>
 
@@ -32,6 +33,9 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
 - In LSST-Y1 the difference moves the lens biases by $-0.85\sigma$ to
   $-1.17\sigma$; $\Omega_m$ and $n_s$ move by $0.07\sigma$ and $0.11\sigma$
   ([parameter shifts](#ccl_results)).
+- With TATT intrinsic alignments the codes agree on the TATT terms:
+  $\xi_\pm$ differ by 0.0018 (LSST-Y1) and 0.058 (Roman-Real), as with NLA,
+  while TATT moves $\xi_\pm$ by 1677 and 1293 ([TATT](#ccl_tatt)).
 - 0.2 is CoCoA's tolerance between runs of one code, quoted as a scale, not
   as a cross-code acceptance criterion.
 - The modeling of this repository's DESC-CCL benchmark scripts differs from
@@ -72,9 +76,10 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
   - Variations: $\Omega_m = 0.25, 0.35$ and $n_s = 0.92, 1.01$, at fixed $A_s$;
     each project also at the other project's $w$ (LSST-Y1 at $w = -1$,
     Roman-Real at $w = -0.9$). $m_\nu$ is not varied.
-  - Scope: NLA and linear bias with every systematic at zero. Magnification,
-    photo-z shifts, shear calibration, TATT and baryons are outside this
-    comparison.
+  - Scope: intrinsic alignment NLA in both codes in every section except
+    [TATT](#ccl_tatt), which repeats the comparison with TATT; linear bias;
+    every systematic at zero. Magnification, photo-z shifts, shear
+    calibration and baryons are outside this comparison.
 - **DESC-CCL settings** (reference run):
   - `angular_cl(..., l_limber=150, non_limber_integration_method="FKEM", fkem_Nchi=2000)`
     for $C_{gg}$ and $C_{gs}$, the same switch as CoCoA;
@@ -147,10 +152,11 @@ The benchmark-modeling row applies the modeling choices of
 - $C_{gs}$ in Limber, no RSD, `l_limber=100`, `fkem_Nchi=500`;
 - flat-sky FFTLog at the bin centers.
 
-The intrinsic alignment stays NLA; the scripts use TATT. The row describes
-the settings of the benchmark scripts behind the timings in the note above,
-not DESC-CCL itself; the $P(k)$-source row isolates the one ingredient
-unique to it.
+The row copies every modeling choice of those scripts except the intrinsic
+alignment: the scripts use TATT, the row uses NLA, as every other row. It
+describes the settings of the benchmark scripts behind the timings in the
+note above, not DESC-CCL itself; the $P(k)$-source row isolates the one
+ingredient unique to it.
 
 Limber $C_\ell$ at 32 $\ell$ from 20 to $\ell_{\max}$,
 $|C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1|$ (median over bin pairs / maximum
@@ -219,7 +225,19 @@ the errors are smaller than in a full analysis):
    CoCoA `v5.02` evaluates both linear terms with the same separable
    spectrum, $(D(z)/D(z_{\rm piv}))^2\,P_{\rm lin}(k, z_{\rm piv})$ with
    $z_{\rm piv}$ the lens bin's mean redshift (`cosmo2D.c`), so the pair
-   cancels at the Limber limit; DESC-CCL mixes the two forms. Diagnostic: DESC-CCL given the
+   cancels at the Limber limit; DESC-CCL mixes the two forms. Neither form
+   keeps the $k$ dependence of the growth, but CoCoA's anchor limits that
+   error to the bin's redshift width instead of the whole range from
+   $z = 0$: the largest $|P_{\rm sep}/P_{\rm lin} - 1|$ over
+   $k = 0.01$ to $0.2\ {\rm Mpc}^{-1}$ and the central 90% of each lens
+   bin's $n(z)$ is
+
+   | project | anchor at $z = 0$ (DESC-CCL's FKEM term) | anchor at the bin's mean redshift (CoCoA) |
+   |---|---|---|
+   | LSST-Y1 | $1.0\%$ to $1.9\%$ | $0.15\%$ to $0.28\%$ |
+   | Roman-Real | $0.16\%$ to $0.96\%$ | $0.05\%$ to $0.21\%$ |
+
+   (`scripts/diag_anchor.py`). Diagnostic: DESC-CCL given the
    separable table lowers the fiducial $\Delta\chi^2$ from 8.76 to 0.21
    (LSST-Y1, $\gamma_t$ 7.29 to 0.064, $w$ 6.26 to 0.16) and from 0.228 to
    0.062 (Roman-Real). The $\Delta\chi^2$ of the non-Limber effect on
@@ -300,6 +318,99 @@ $0.059\sigma$ ($\xi_-$).
 ![Roman-Real xi+](cocoa_comparison/figures/roman_real_cosmologies_xip.png)
 ![Roman-Real xi-](cocoa_comparison/figures/roman_real_cosmologies_xim.png)
 
+## TATT intrinsic alignments <a name="ccl_tatt"></a>
+
+The comparison repeated with TATT: CoCoA with `IA_model: 1` and its TATT
+terms from CFASTPT (`IA_code: 0`, the C port of FAST-PT in cosmolike);
+DESC-CCL with `EulerianPTCalculator` (FAST-PT 4.0.0), variant `tatt:` of
+`ccl_compute.py`. TATT point of this repository's benchmark scripts:
+$A_1 = 0.7$, $\eta_1 = -1.7$, $A_2 = -1.36$, $\eta_2 = -2.5$, $b_{\rm TA} = 1$,
+pivot $z = 0.62$ (CoCoA's $(1+z)/1.62$), at the five cosmologies.
+
+| convention | CoCoA | DESC-CCL setting |
+|---|---|---|
+| $C_1$ | $A_1(z)\,C_1\rho_{\rm crit}\,\Omega_m/D$, $C_1\rho_{\rm crit} = 0.01389$ (sign in the integrand) | `translate_IA_norm(a1=A1(z) 0.01389/(5e-14 RHO_CRITICAL))`, so $c_1 = -C_1$ |
+| $C_{1\delta}$ | $b_{\rm TA} C_1$ | `a1delta = b_TA a1` |
+| $C_2$ | $A_2(z)\,C_1\rho_{\rm crit}\,\Omega_m/D^2$, times 5 in the kernels | `a2` with the same factor, `Om_m2_for_c2=False`, so $c_2 = 5 C_2$ |
+| one-loop terms | FAST-PT kernels (CFASTPT) of $P_{\rm lin}(k,0)$ times $D^4$ | FAST-PT kernels of $P_{\rm lin}(k,0)$ times $D^4$ |
+| tree-level term | $C_1 P_{\rm nl}$ | `b1_pk_kind="nonlinear"` |
+| $\xi_\pm$ | $C_{EE}$ (GG + GI + IG + II) $\pm$ $C_{BB}$ (II) | `correlation` of $C_{EE} \pm C_{BB}$ (`return_ia_bb=True`) |
+| $\gamma_t$ | non-Limber term with the $C_1$ part only (as NLA); the $b_{\rm TA}$ and $A_2$ terms in Limber | the reference FKEM call, plus Limber $C_{gI}$ from the `m:cdelta` and `m:c2` templates |
+| PT tables | 1100 $k$, $1.7\times10^{-5}$ to $334\ h\,{\rm Mpc}^{-1}$ | 160 per decade, $10^{-5}$ to $200\ {\rm Mpc}^{-1}$, FAST-PT windows as CoCoA |
+
+The mapping, with file:line evidence in both codes, is in
+`.claude/skills/cocoa-ccl-comparison/references/tatt_conventions.md`. With
+$A_2 = b_{\rm TA} = 0$ the `tatt:` variant reproduces the NLA reference to
+$\Delta\chi^2 = 8\times10^{-5}$.
+
+DESC-CCL (reference settings) vs CoCoA, TATT:
+
+| model | LSST-Y1 3x2pt | $\xi_\pm$ | $\gamma_t$ | $w(\theta)$ | Roman-Real 3x2pt | $\xi_\pm$ | $\gamma_t$ | $w(\theta)$ |
+|---|---|---|---|---|---|---|---|---|
+| fiducial | 8.89 | 0.0018 | 7.46 | 6.26 | 0.237 | 0.058 | 0.280 | 0.096 |
+| $\Omega_m = 0.25$ | 6.62 | 0.0006 | 4.96 | 5.48 | 0.168 | 0.022 | 0.196 | 0.087 |
+| $\Omega_m = 0.35$ | 10.76 | 0.0059 | 9.74 | 6.46 | 0.306 | 0.123 | 0.378 | 0.098 |
+| $n_s = 0.92$ | 9.21 | 0.0018 | 7.74 | 6.55 | 0.244 | 0.055 | 0.291 | 0.099 |
+| $n_s = 1.01$ | 8.59 | 0.0020 | 7.22 | 5.97 | 0.222 | 0.056 | 0.269 | 0.091 |
+
+| comparison (fiducial, TATT, 3x2pt) | LSST-Y1 | Roman-Real |
+|---|---|---|
+| TATT vs NLA in CoCoA (size of the TATT terms; $\xi_\pm$ alone) | 1742 (1677) | 1307 (1293) |
+| CoCoA default vs CoCoA high accuracy | 0.005 | 0.008 |
+| DESC-CCL PT tables at 320 vs 160 $k$ per decade | $8\times10^{-9}$ | $4\times10^{-7}$ |
+| both codes in Limber | 0.159 | 0.031 |
+| DESC-CCL separable $P_{\rm lin}$ (diagnostic) vs CoCoA | 0.22 | 0.066 |
+
+Limber $C_\ell$ with TATT, $|C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1|$ (median / maximum, as above):
+
+| project | probe | $20 \le \ell < 66$ | $66 \le \ell < 1000$ | $1000 \le \ell \le 5000$ | $5000 < \ell \le \ell_{\max}$ |
+|---|---|---|---|---|---|
+| LSST-Y1 | $C_{ss}^{EE}$ | 2.7e-4 / 1.2e-3 | 6.1e-5 / 7.5e-4 | 6.4e-5 / 5.7e-3 | 2.2e-4 / 2.5e-2 |
+| LSST-Y1 | $C_{ss}^{BB}$ | 7.1e-4 / 5.5e-3 | 7.0e-4 / 5.4e-3 | 1.4e-3 / 5.2e-3 | 1.4e-3 / 5.1e-3 |
+| LSST-Y1 | $C_{gs}$ | 3.6e-5 / 2.5e-3 | 4.5e-5 / 3.3e-3 | 5.4e-5 / 5.1e-3 | 9.8e-5 / 2.6e-2 |
+| Roman-Real | $C_{ss}^{EE}$ | 5.3e-5 / 6.2e-4 | 7.3e-5 / 1.2e-3 | 8.4e-5 / 1.8e-3 | 1.7e-4 / 4.9e-1 |
+| Roman-Real | $C_{ss}^{BB}$ | 3.3e-5 / 1.2e-4 | 2.2e-5 / 1.1e-4 | 3.8e-5 / 1.2e-4 | 1.2e-4 / 4.3e-3 |
+| Roman-Real | $C_{gs}$ | 3.1e-5 / 1.7e-3 | 5.4e-5 / 1.9e-3 | 6.8e-5 / 4.9e-3 | 1.2e-4 / 1.2e-1 |
+
+1. **The TATT terms agree.** $\xi_\pm$ differ by 0.0018 (LSST-Y1) and
+   0.058 (Roman-Real), at the NLA level (NLA: 0.0013 and 0.058), while TATT
+   moves $\xi_\pm$ by 1677
+   and 1293 from NLA; both codes in Limber give 0.159 and 0.031, as with
+   NLA. Both codes are converged (CoCoA high accuracy, DESC-CCL PT tables).
+2. **The rest is finding 2.** The TATT $b_{\rm TA}$ and $A_2$ terms enter
+   $\gamma_t$ in Limber in both codes; the fiducial 8.89 and 0.237 are
+   essentially the NLA FKEM offset (NLA: 8.76 and 0.23), and the separable
+   diagnostic lowers them to 0.22 and 0.066.
+3. **$k$ support above $\ell \approx 5\times10^4$.** CoCoA's TATT kernels end at
+   $k = 334\ h\,{\rm Mpc}^{-1}$; DESC-CCL extrapolates the PT spectra. Where
+   TATT dominates $C_{EE}$ the two differ: in the Roman-Real source pair
+   1-4, whose $C_{EE}$ with TATT is $-2$ times its NLA value, by 8% at
+   $\ell = 6.9\times10^4$ and 49% at $\ell = 10^5$; the source-1 auto
+   spectrum by 10% at $\ell = 6.9\times10^4$; in LSST-Y1 the source-1 auto
+   spectrum by 2.5% at $\ell = 6.5\times10^4$. The real-space $\xi_\pm$
+   difference matches the NLA one, so these multipoles do not reach the
+   data vector above 2.5'.
+4. **The benchmark scripts.** This repository's DESC-CCL scripts set up TATT
+   as above since commit `b8bfec7`: IA-only tracer with `use_A_ia=False`
+   (with `use_A_ia=True`, as before, the IA normalization is applied a
+   second time and its sign flips), $b_{\rm TA}$ as a parameter, and $C_{BB}$
+   in $\xi_\pm$. The timings in the note above were measured before that
+   commit.
+
+Figures, as above ($(d_{\rm CCL} - d_{\rm CoCoA})/\sigma$, five
+cosmologies). LSST-Y1 $\xi_+$ (at most $0.020\sigma$; $\xi_-$ $0.010\sigma$)
+and $\gamma_t$ (the FKEM offset, at most $0.534\sigma$; $w(\theta)$ is the NLA
+figure):
+
+![LSST-Y1 xi+ TATT](cocoa_comparison/figures/lsst_y1_tatt_cosmologies_xip.png)
+![LSST-Y1 gamma_t TATT](cocoa_comparison/figures/lsst_y1_tatt_cosmologies_gammat.png)
+
+Roman-Real $\xi_+$ (at most $0.049\sigma$; $\xi_-$ $0.059\sigma$) and
+$\gamma_t$ (at most $0.045\sigma$):
+
+![Roman-Real xi+ TATT](cocoa_comparison/figures/roman_real_tatt_cosmologies_xip.png)
+![Roman-Real gamma_t TATT](cocoa_comparison/figures/roman_real_tatt_cosmologies_gammat.png)
+
 ## What it took to run DESC-CCL <a name="ccl_run"></a>
 
 | symptom | cause | resolution |
@@ -368,7 +479,8 @@ CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/
 ```
 
 The diagnostics behind findings 2 and 4 are `scripts/diag_fkem_offset.py`,
-`scripts/diag_growth.py` and `scripts/diag_l7s2.py` (usage in each file).
+`scripts/diag_growth.py`, `scripts/diag_anchor.py` and `scripts/diag_l7s2.py`
+(usage in each file).
 
 Versions of this study's runs (4 OpenMP threads for every run):
 

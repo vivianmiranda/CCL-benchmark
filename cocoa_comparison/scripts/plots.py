@@ -262,4 +262,11 @@ for p in PROJ:
     if os.path.isfile(os.path.join(W, f)):
       cur.append(nsigma(p, ld(f), ld("cocoa_%s_%s.npz" % (p, m)))); lab.append(l)
   if cur: figures(p, cur, lab, "cosmologies")
+  # TATT (IA_model 1): the same figures from the cocoa_<p>_tatt_* exports
+  cur, lab = [], []
+  for m, l in MODELS:
+    f = "ccl_%s_tatt_%s_ref.npz" % (p, m)
+    if os.path.isfile(os.path.join(W, f)):
+      cur.append(nsigma(p, ld(f), ld("cocoa_%s_tatt_%s.npz" % (p, m)))); lab.append(l)
+  if cur: figures(p, cur, lab, "tatt_cosmologies")
   print("figures for", p)
