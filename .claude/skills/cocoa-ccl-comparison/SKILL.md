@@ -188,7 +188,11 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   does not. Variant growth_sub (D at k = 0.05/Mpc, NLA amplitude kept)
   gives 3x2pt Delta chi2 0.168 / 0.064 at w = -0.9 and 0.136 / 0.071 at
   w = -1 (LSST-Y1 / Roman-Real), the both-Limber level. diag_growth.py
-  prints the k profile. Never explain a w dependence before measuring
+  prints the k profile; diag_de_perturbations.py proves the cause (CAMB
+  field "___no_perturbations": with it the step vanishes; setting
+  "no_perturbations" silently does nothing). The owner's point: the
+  formulas (separable form, NLA) assume k-independent growth, so k0 is
+  harmless until CAMB's growth depends on k. Never explain a w dependence before measuring
   the growth's k profile on horizon scales.
 
 ## 4. Plots (owner's preferences, learned the hard way)

@@ -217,6 +217,10 @@ D(z) = \sqrt{P_{\rm lin}(k_0, z)/P_{\rm lin}(k_0, 0)}, \qquad k_0 = 5\times10^{-
 ```
 
 (`G_growth` in each project's `likelihood/_cosmolike_prototype_base.py`).
+The formulas that use $`D(z)`$, the separable form above and the NLA
+amplitude, assume a growth independent of $`k`$; for such a growth the
+ratio gives the same $`D(z)`$ at every $`k`$, and $`k_0`$ is as good as any
+other wavenumber.
 DESC-CCL's two terms cancel only if $`D(z)`$ is also the growth of
 $`P_{\rm lin}(k, z)`$ at the wavenumbers that matter, $`k \approx 0.01`$ to
 $`0.2\ {\rm Mpc}^{-1}`$. CoCoA uses one spectrum in both terms, so they
@@ -231,6 +235,17 @@ which change the growth on horizon scales, and $`k_0`$ is a horizon scale
 |---|---|---|---|---|---|
 | $`w = -0.9`$ | +0.43% | +0.72% | +0.79% | +0.86% | +0.88% |
 | $`w = -1`$ | +0.02% | +0.03% | +0.06% | +0.13% | +0.16% |
+
+The step at $`w = -0.9`$ is the dark-energy perturbations: with them
+switched off, the growth at $`w = -0.9`$ is as flat in $`k`$ as at
+$`w = -1`$ (`scripts/diag_de_perturbations.py`, standalone CAMB at its
+default accuracy, so the values differ slightly from the table above):
+
+| $`D(k, z)/D(k_0, z) - 1`$ at $`z = 1`$, standalone CAMB | $`k = 10^{-3}\ {\rm Mpc}^{-1}`$ | $`k = 3\times10^{-3}\ {\rm Mpc}^{-1}`$ | $`k = 0.01\ {\rm Mpc}^{-1}`$ | $`k = 0.05\ {\rm Mpc}^{-1}`$ | $`k = 0.2\ {\rm Mpc}^{-1}`$ |
+|---|---|---|---|---|---|
+| $`w = -0.9`$, $`m_\nu = 0`$, dark-energy perturbations on | +0.48% | +0.77% | +0.81% | +0.81% | +0.81% |
+| $`w = -0.9`$, $`m_\nu = 0`$, dark-energy perturbations off | +0.02% | +0.02% | +0.02% | +0.02% | +0.02% |
+| $`w = -1`$, $`m_\nu = 0`$ | +0.02% | +0.02% | +0.02% | +0.02% | +0.02% |
 
 1. At $`w = -0.9`$ the growth steps up by 0.7% between $`k_0`$ and
    $`k = 3\times10^{-3}\ {\rm Mpc}^{-1}`$: the dark-energy perturbations.
