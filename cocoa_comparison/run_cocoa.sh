@@ -38,6 +38,18 @@ for p, pre, mode in (("lsst_y1", "LSST_", "dv"), ("roman_real", "roman_", "cov")
   print(p, mode, "%sA1_1=%.8g" % (pre, pt[pre + "A1_1"] + 0.1), "A1")
   print(p, mode, "%sA1_2=%.8g" % (pre, pt[pre + "A1_2"] + 0.2), "eta")
 PY
+# TATT (IA_model 1) from CFASTPT (IA_code 0): the CCL-benchmark scripts' TATT
+# point (A1 0.7, eta1 -1.7, A2 -1.36, eta2 -2.5, b_TA 1; pivot z = 0.62) at
+# the five cosmologies, plus Limber and high-accuracy fiducial runs
+for p in lsst_y1 roman_real; do
+  pre=$([ ${p} = lsst_y1 ] && echo LSST || echo roman); mode=$([ ${p} = lsst_y1 ] && echo dv || echo cov)
+  T="${pre}_A1_1=0.7,${pre}_A1_2=-1.7,${pre}_A2_1=-1.36,${pre}_A2_2=-2.5,${pre}_BTA_1=1"
+  for m in "fid:" "omm_lo:omegam=0.25," "omm_hi:omegam=0.35," "ns_lo:ns=0.92," "ns_hi:ns=1.01,"; do
+    EXPORT_MODE=${mode} COCOA_OVR='{"IA_model": 1, "IA_code": 0}' ex ${p} "${m#*:}${T}" "${W}/cocoa_${p}_tatt_${m%%:*}.npz"
+  done
+  EXPORT_MODE=${mode} COCOA_OVR='{"IA_model": 1, "IA_code": 0, "adopt_limber_gs": 1, "adopt_limber_gg": 1}' ex ${p} "${T}" "${W}/cocoa_${p}_tatt_fidlimber.npz"
+  EXPORT_MODE=${mode} COCOA_OVR='{"IA_model": 1, "IA_code": 0, "integration_accuracy": 1, "accuracyboost": 2.0}' ex ${p} "${T}" "${W}/cocoa_${p}_tatt_fidhi.npz"
+done
 while read -r p mode set tag; do
   EXPORT_MODE=${mode} ex ${p} "${set}" "${W}/cocoa_${p}_d_${tag}.npz"
 done < "${W}/fisher_models.txt"

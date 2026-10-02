@@ -142,6 +142,20 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   (bias.py: LSST-Y1 biases absorb 6.74 of 8.76, ~1 sigma each; Omega_m,
   n_s < 0.11 sigma). State the scope (NLA, linear bias, no systematics)
   and that neither code is compared with the exact integral.
+- TATT (2026-10-02): CoCoA IA_model 1 with CFASTPT (IA_code 0) vs pyccl
+  EulerianPTCalculator; recipe and conventions in references/tatt_conventions.md
+  (variant prefix "tatt:" in ccl_compute.py). Check first: TATT with
+  A2 = b_TA = 0 must reproduce the NLA reference (8e-5). Results: xi_pm agree
+  as with NLA (0.0018 / 0.058) against a TATT signal of 1677 / 1293; gamma_t
+  and w keep the FKEM offset; PT tables converged (320 vs 160 per decade,
+  < 1e-6). High-l C_EE (l > 5e4) differs where TATT dominates: CoCoA's TATT
+  kernels end at k = 334 h/Mpc (1e6 H0/c), CCL extrapolates; no effect on
+  xi_pm above 2.5'. FAST-PT needs an even number of k nodes. A variant name
+  with a prefix must be compared through its base name (the harmonic branch
+  once tested `variant == "harmonic"` and silently ran the real-space run).
+  The repository's benchmark scripts had use_A_ia=True on the IA-only tracer
+  (IA normalization twice, sign flipped), b_TA fixed, no B-modes: fixed in
+  b8bfec7.
 - Final numbers (2026-10-01): LSST-Y1 8.76 (6.6-10.5 over five models;
   gamma_t 7.29, w 6.26, shear 0.0013), separable diagnostic 0.21;
   Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script

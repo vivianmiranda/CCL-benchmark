@@ -14,3 +14,8 @@ for p in lsst_y1 roman_real; do
     cc cocoa_${p}_fid.npz ${v} ccl_${p}_fid_${v}.npz
   done
 done
+# TATT on the CoCoA TATT exports
+for p in lsst_y1 roman_real; do
+  for m in fid omm_lo omm_hi ns_lo ns_hi; do cc cocoa_${p}_tatt_${m}.npz tatt:ref ccl_${p}_tatt_${m}_ref.npz; done
+  for v in limber separable harmonic pt_hi; do cc cocoa_${p}_tatt_fid.npz tatt:${v} ccl_${p}_tatt_fid_${v}.npz; done
+done

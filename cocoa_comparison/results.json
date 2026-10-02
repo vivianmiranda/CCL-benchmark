@@ -161,6 +161,76 @@
    "gammat": 14.693589388118415,
    "w": 166.48249878071482
   },
+  "tatt_ref_fid": {
+   "3x2pt": 8.890030060995256,
+   "left_out_kept": 0,
+   "shear": 0.0017850757844355394,
+   "gammat": 7.460834390333076,
+   "w": 6.258881157991349
+  },
+  "tatt_ref_omm_lo": {
+   "3x2pt": 6.624233384527229,
+   "left_out_kept": 0,
+   "shear": 0.0005835819473791087,
+   "gammat": 4.958313421205494,
+   "w": 5.477014506402292
+  },
+  "tatt_ref_omm_hi": {
+   "3x2pt": 10.76393244812719,
+   "left_out_kept": 0,
+   "shear": 0.005870341144583464,
+   "gammat": 9.734830403618645,
+   "w": 6.458659789836193
+  },
+  "tatt_ref_ns_lo": {
+   "3x2pt": 9.209127111177862,
+   "left_out_kept": 0,
+   "shear": 0.0017813893156720338,
+   "gammat": 7.7403610571111825,
+   "w": 6.5473281385425635
+  },
+  "tatt_ref_ns_hi": {
+   "3x2pt": 8.586436051579984,
+   "left_out_kept": 0,
+   "shear": 0.0019674005842304286,
+   "gammat": 7.222647991886002,
+   "w": 5.971680717595416
+  },
+  "TATT vs NLA in CoCoA (size of the TATT terms)": {
+   "3x2pt": 1741.5991138774134,
+   "left_out_kept": 0,
+   "shear": 1677.1070538714166,
+   "gammat": 90.80586941680305,
+   "w": 0.0
+  },
+  "CoCoA default vs CoCoA high accuracy (TATT)": {
+   "3x2pt": 0.004774724838235279,
+   "left_out_kept": 0,
+   "shear": 0.0012683345955646027,
+   "gammat": 0.00038162350990760105,
+   "w": 0.0036669105582698433
+  },
+  "DESC-CCL PT tables at 320 k per decade vs 160 (TATT)": {
+   "3x2pt": 7.875956297754377e-09,
+   "left_out_kept": 0,
+   "shear": 7.871903666856102e-09,
+   "gammat": 3.916957053085262e-12,
+   "w": 0.0
+  },
+  "both in Limber: DESC-CCL vs CoCoA (TATT)": {
+   "3x2pt": 0.15871379625927612,
+   "left_out_kept": 0,
+   "shear": 0.0017850757844355394,
+   "gammat": 0.001055164757257279,
+   "w": 0.15742376622998194
+  },
+  "DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA (TATT)": {
+   "3x2pt": 0.22168489480484474,
+   "left_out_kept": 0,
+   "shear": 0.0017852425021451655,
+   "gammat": 0.07798919452832569,
+   "w": 0.16490325678343212
+  },
   "failures": [
    "| fid_ccl_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_ccl_numerics | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
@@ -171,10 +241,18 @@
    "| fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_rsd_gs | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_separable | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_tattcheck | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| ns_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_pt_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_separable | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_ns_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| w_m1_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
   ]
  },
@@ -340,6 +418,76 @@
    "gammat": 41.94462746833125,
    "w": 64.06628734652514
   },
+  "tatt_ref_fid": {
+   "3x2pt": 0.23655630812716938,
+   "left_out_kept": 13,
+   "shear": 0.05754602236444084,
+   "gammat": 0.2795337401439908,
+   "w": 0.09620101327312067
+  },
+  "tatt_ref_omm_lo": {
+   "3x2pt": 0.16763412489454238,
+   "left_out_kept": 13,
+   "shear": 0.022246497176971882,
+   "gammat": 0.19631014928075896,
+   "w": 0.08674165811994827
+  },
+  "tatt_ref_omm_hi": {
+   "3x2pt": 0.3055214772017644,
+   "left_out_kept": 13,
+   "shear": 0.12280598516254407,
+   "gammat": 0.378099721591999,
+   "w": 0.09756039278884196
+  },
+  "tatt_ref_ns_lo": {
+   "3x2pt": 0.24424428205489457,
+   "left_out_kept": 13,
+   "shear": 0.054993502061896765,
+   "gammat": 0.29076151788924404,
+   "w": 0.09862828266030445
+  },
+  "tatt_ref_ns_hi": {
+   "3x2pt": 0.22248192420706173,
+   "left_out_kept": 13,
+   "shear": 0.05558544812370482,
+   "gammat": 0.26883129008553724,
+   "w": 0.090875227541058
+  },
+  "TATT vs NLA in CoCoA (size of the TATT terms)": {
+   "3x2pt": 1307.4355366965956,
+   "left_out_kept": 0,
+   "shear": 1292.7989887835886,
+   "gammat": 978.407197980107,
+   "w": 0.0
+  },
+  "CoCoA default vs CoCoA high accuracy (TATT)": {
+   "3x2pt": 0.007650698991606265,
+   "left_out_kept": 0,
+   "shear": 0.001997079083834237,
+   "gammat": 0.003440197481100245,
+   "w": 0.006412615450367503
+  },
+  "DESC-CCL PT tables at 320 k per decade vs 160 (TATT)": {
+   "3x2pt": 3.9892155219954497e-07,
+   "left_out_kept": 13,
+   "shear": 3.986178389088728e-07,
+   "gammat": 2.959907775635892e-09,
+   "w": 0.0
+  },
+  "both in Limber: DESC-CCL vs CoCoA (TATT)": {
+   "3x2pt": 0.03055568828465868,
+   "left_out_kept": 0,
+   "shear": 0.05754602236444084,
+   "gammat": 0.06059750961855341,
+   "w": 0.011233065052641098
+  },
+  "DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA (TATT)": {
+   "3x2pt": 0.06612673573112908,
+   "left_out_kept": 13,
+   "shear": 0.0575435333159761,
+   "gammat": 0.10608502843724069,
+   "w": 0.010417151904448344
+  },
   "failures": [
    "| fid_ccl_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_ccl_numerics | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
@@ -354,6 +502,13 @@
    "| ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_pt_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_fid_separable | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_ns_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| tatt_omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| w_m09_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
   ]
  }
