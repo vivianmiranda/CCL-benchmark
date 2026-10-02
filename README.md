@@ -236,7 +236,19 @@ the errors are smaller than in a full analysis):
    CoCoA `v5.02` evaluates both linear terms with the same separable
    spectrum, $(D(z)/D(z_{\rm piv}))^2\,P_{\rm lin}(k, z_{\rm piv})$ with
    $z_{\rm piv}$ the lens bin's mean redshift (`cosmo2D.c`), so the pair
-   cancels at the Limber limit; DESC-CCL mixes the two forms. Diagnostic: DESC-CCL given the
+   cancels at the Limber limit; DESC-CCL mixes the two forms. Neither form
+   keeps the $k$ dependence of the growth, but CoCoA's anchor limits that
+   error to the bin's redshift width instead of the whole range from
+   $z = 0$: the largest $|P_{\rm sep}/P_{\rm lin} - 1|$ over
+   $k = 0.01$ to $0.2\ {\rm Mpc}^{-1}$ and the central 90% of each lens
+   bin's $n(z)$ is
+
+   | project | anchor at $z = 0$ (DESC-CCL's FKEM term) | anchor at the bin's mean redshift (CoCoA) |
+   |---|---|---|
+   | LSST-Y1 | $1.0\%$ to $1.9\%$ | $0.15\%$ to $0.28\%$ |
+   | Roman-Real | $0.16\%$ to $0.96\%$ | $0.05\%$ to $0.21\%$ |
+
+   (`scripts/diag_anchor.py`). Diagnostic: DESC-CCL given the
    separable table lowers the fiducial $\Delta\chi^2$ from 8.76 to 0.21
    (LSST-Y1, $\gamma_t$ 7.29 to 0.064, $w$ 6.26 to 0.16) and from 0.228 to
    0.062 (Roman-Real). The $\Delta\chi^2$ of the non-Limber effect on
@@ -385,7 +397,8 @@ CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/
 ```
 
 The diagnostics behind findings 2 and 4 are `scripts/diag_fkem_offset.py`,
-`scripts/diag_growth.py` and `scripts/diag_l7s2.py` (usage in each file).
+`scripts/diag_growth.py`, `scripts/diag_anchor.py` and `scripts/diag_l7s2.py`
+(usage in each file).
 
 Versions of this study's runs (4 OpenMP threads for every run):
 
