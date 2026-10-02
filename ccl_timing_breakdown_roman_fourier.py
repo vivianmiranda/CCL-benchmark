@@ -71,11 +71,14 @@ ggl_set = {tuple(p) for p in ggl_exclude}
 def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   """Compute Fourier-space 3x2pt data vector."""
 
+  _t = [time.perf_counter()]
   cosmo = ccl.Cosmology(
     **params,
     transfer_function='eisenstein_hu',
   )
 
+  cosmo.compute_linear_power(); cosmo.compute_nonlin_power()
+  _t.append(time.perf_counter())
   galaxy_bias = [bias[f'b{i}'] for i in range(lens_ntomo)]
 
   # TATT: A → c
@@ -109,6 +112,7 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   pk_mi = ptc.get_biased_pk2d(ptt_m, tracer2=ptt_ia)
   pk_ii = ptc.get_biased_pk2d(ptt_ia, tracer2=ptt_ia)
 
+  _t.append(time.perf_counter())
   # Angular tracers (with photo-z shifts: z -> z - dz, valid z >= 0)
   source_L, source_IA = [], []
   for i in range(source_ntomo):
@@ -135,6 +139,7 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
       bias=(z_shifted[mask], galaxy_bias[i] * np.ones(mask.sum())),
     ))
 
+  _t.append(time.perf_counter())
   # Shear C_ell with TATT (l_min >= 30, Limber is accurate)
   cls_shear = {}
   for i in range(source_ntomo):
@@ -167,6 +172,8 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
       p_of_k_a=pk_mm,
     )
 
+  _t.append(time.perf_counter())
+  STAGES.append(np.diff(_t))
   # Flatten data vector: C_ell directly (no real-space transform)
   datavec = np.concatenate([
     *[cls_shear[(i, j)] for i in range(source_ntomo)
@@ -177,6 +184,7 @@ def compute_3x2pt(params, tatt, bias, dz_lens, dz_source):
   ])
   return datavec
 
+STAGES = []
 # ── Generate perturbed cosmologies + nuisance ────────────────
 rng = np.random.default_rng(rng_seed)
 
@@ -237,3 +245,6 @@ print(f"  GGL C_ell:        {n_ggl} pairs x {n_cl} = {n_ggl * n_cl}"
       f"  ({len(ggl_exclude)} excluded)")
 print(f"  clustering C_ell: {n_wth} pairs x {n_cl} = {n_wth * n_cl}  (auto only)")
 print(f"  datavec length:   {len(dv)}")
+st = np.array(STAGES[n_warmup:])
+names = ["Cosmology + Eisenstein-Hu + halofit", "FAST-PT (TATT + NC)", "tracers", "angular_cl"]
+for nm, m in zip(names, st.mean(0)): print("STAGE %-36s %.3f s  (%4.1f%%)" % (nm, m, 100*m/st.sum(1).mean()))

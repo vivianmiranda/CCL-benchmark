@@ -1,0 +1,360 @@
+{
+ "lsst_y1": {
+  "ref_fid": {
+   "3x2pt": 8.756706253362834,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 7.28972219049393,
+   "w": 6.258881157991349
+  },
+  "ref_omm_lo": {
+   "3x2pt": 6.558719352550869,
+   "left_out_kept": 0,
+   "shear": 0.000473989480031862,
+   "gammat": 4.8693346936022515,
+   "w": 5.477014506402292
+  },
+  "ref_omm_hi": {
+   "3x2pt": 10.50167248163053,
+   "left_out_kept": 0,
+   "shear": 0.00318322987929032,
+   "gammat": 9.441666782107866,
+   "w": 6.458659789836193
+  },
+  "ref_ns_lo": {
+   "3x2pt": 9.069554392374638,
+   "left_out_kept": 0,
+   "shear": 0.0013300294299959641,
+   "gammat": 7.562706475781232,
+   "w": 6.5473281385425635
+  },
+  "ref_ns_hi": {
+   "3x2pt": 8.453904370976307,
+   "left_out_kept": 0,
+   "shear": 0.0013989833952739465,
+   "gammat": 7.056984041993343,
+   "w": 5.971680717595416
+  },
+  "CoCoA default vs CoCoA high accuracy": {
+   "3x2pt": 0.00398310745662584,
+   "left_out_kept": 0,
+   "shear": 0.0004907677281121613,
+   "gammat": 0.0003810913853868176,
+   "w": 0.0036669105582698433
+  },
+  "DESC-CCL default FKEM/$\\ell$ sampling vs reference": {
+   "3x2pt": 0.3445260831825114,
+   "left_out_kept": 0,
+   "shear": 1.3044758752348969e-06,
+   "gammat": 0.02678779150827791,
+   "w": 0.39468554115931154
+  },
+  "both in Limber: DESC-CCL vs CoCoA": {
+   "3x2pt": 0.15826478594916898,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 0.0010821329475469343,
+   "w": 0.15742376622998194
+  },
+  "non-Limber effect in CoCoA": {
+   "3x2pt": 159.5533375902328,
+   "left_out_kept": 0,
+   "shear": 0.0,
+   "gammat": 1.97870528566385,
+   "w": 151.43373649766093
+  },
+  "non-Limber effect in DESC-CCL": {
+   "3x2pt": 149.10948812772247,
+   "left_out_kept": 0,
+   "shear": 0.0,
+   "gammat": 11.2122726550922,
+   "w": 134.64371219955257
+  },
+  "non-Limber effect in DESC-CCL, separable $P_{\\rm lin}$ (diagnostic)": {
+   "3x2pt": 144.23547465690206,
+   "left_out_kept": 0,
+   "shear": 0.0,
+   "gammat": 2.062565088291553,
+   "w": 136.71183121334533
+  },
+  "DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA": {
+   "3x2pt": 0.20809992332271965,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 0.06350266673577132,
+   "w": 0.16490325678343212
+  },
+  "RSD in $\\gamma_t$: effect in DESC-CCL": {
+   "3x2pt": 0.357859740465923,
+   "left_out_kept": 0,
+   "shear": 0.0,
+   "gammat": 0.357859740465923,
+   "w": 0.0
+  },
+  "DESC-CCL finer sampling (ccl_hi) vs reference": {
+   "3x2pt": 0.0014291300514004508,
+   "left_out_kept": 0,
+   "shear": 1.4701553263962946e-07,
+   "gammat": 0.00020706503209591464,
+   "w": 0.0016580164717175814
+  },
+  "DESC-CCL transform of CoCoA's Limber $C_\\ell$ vs CoCoA in Limber": {
+   "3x2pt": 0.008898375554042904,
+   "left_out_kept": 0,
+   "shear": 3.2561066312431236e-05,
+   "gammat": 9.290496037087707e-05,
+   "w": 0.008961586139707507
+  },
+  "DESC-CCL Eisenstein-Hu + halofit vs reference": {
+   "3x2pt": 21.279501809386307,
+   "left_out_kept": 0,
+   "shear": 8.459188908788159,
+   "gammat": 18.29943508939268,
+   "w": 23.42401921176654
+  },
+  "DESC-CCL vs CoCoA at the other project's $w$": {
+   "3x2pt": 0.3433517895369428,
+   "left_out_kept": 0,
+   "shear": 0.001486730706095338,
+   "gammat": 0.21095580087674107,
+   "w": 0.2791639016751654
+  },
+  "DESC-CCL $C_{gs}$ in Limber vs CoCoA": {
+   "3x2pt": 9.22763655445329,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 2.0167668533125607,
+   "w": 6.258881157991349
+  },
+  "DESC-CCL no RSD vs CoCoA": {
+   "3x2pt": 115.40158699610808,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 7.28972219049393,
+   "w": 117.49942249143122
+  },
+  "DESC-CCL RSD also in $\\gamma_t$ vs CoCoA": {
+   "3x2pt": 8.703389136353294,
+   "left_out_kept": 0,
+   "shear": 0.0013361794869173628,
+   "gammat": 6.689909549920534,
+   "w": 6.258881157991349
+  },
+  "DESC-CCL flat-sky FFTLog, bin centers vs CoCoA": {
+   "3x2pt": 12.684005136748233,
+   "left_out_kept": 0,
+   "shear": 1.8176308160614634,
+   "gammat": 7.709601707146467,
+   "w": 10.87054281389177
+  },
+  "DESC-CCL full-sky, bin centers vs CoCoA": {
+   "3x2pt": 10.311124610878714,
+   "left_out_kept": 0,
+   "shear": 2.0025523729933745,
+   "gammat": 3.586350342254611,
+   "w": 8.655803002906373
+  },
+  "DESC-CCL the CCL-benchmark modeling vs CoCoA": {
+   "3x2pt": 153.5895966084022,
+   "left_out_kept": 0,
+   "shear": 5.691627633265756,
+   "gammat": 14.693589388118415,
+   "w": 166.48249878071482
+  },
+  "failures": [
+   "| fid_ccl_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_ccl_numerics | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_eh | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_flat | l4-s0 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |",
+   "| fid_norsd | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_points | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_rsd_gs | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_separable | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| ns_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| w_m1_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
+  ]
+ },
+ "roman_real": {
+  "ref_fid": {
+   "3x2pt": 0.2284412952708634,
+   "left_out_kept": 13,
+   "shear": 0.05797578528254939,
+   "gammat": 0.2693094705084183,
+   "w": 0.09620101327312067
+  },
+  "ref_omm_lo": {
+   "3x2pt": 0.165513305023256,
+   "left_out_kept": 13,
+   "shear": 0.02254767555915229,
+   "gammat": 0.1929197912518402,
+   "w": 0.08674165811994827
+  },
+  "ref_omm_hi": {
+   "3x2pt": 0.2909869023349337,
+   "left_out_kept": 13,
+   "shear": 0.12329002340964183,
+   "gammat": 0.36016583253697154,
+   "w": 0.09756039278884196
+  },
+  "ref_ns_lo": {
+   "3x2pt": 0.23582687776753472,
+   "left_out_kept": 13,
+   "shear": 0.05518920125729639,
+   "gammat": 0.28029557545178574,
+   "w": 0.09862828266030445
+  },
+  "ref_ns_hi": {
+   "3x2pt": 0.21457765361087636,
+   "left_out_kept": 13,
+   "shear": 0.05536192381730792,
+   "gammat": 0.2589577745200119,
+   "w": 0.090875227541058
+  },
+  "CoCoA default vs CoCoA high accuracy": {
+   "3x2pt": 0.007346995618366577,
+   "left_out_kept": 0,
+   "shear": 0.0018684032367733013,
+   "gammat": 0.003439278416739424,
+   "w": 0.006412615450367503
+  },
+  "DESC-CCL default FKEM/$\\ell$ sampling vs reference": {
+   "3x2pt": 0.0004747750460015364,
+   "left_out_kept": 13,
+   "shear": 2.4839865358639603e-06,
+   "gammat": 0.00017457509893147055,
+   "w": 0.00033552781351792643
+  },
+  "both in Limber: DESC-CCL vs CoCoA": {
+   "3x2pt": 0.03067851960734175,
+   "left_out_kept": 0,
+   "shear": 0.05797578528254939,
+   "gammat": 0.06045283811175116,
+   "w": 0.011233065052641098
+  },
+  "non-Limber effect in CoCoA": {
+   "3x2pt": 9.844953002343141,
+   "left_out_kept": 0,
+   "shear": 0.0,
+   "gammat": 0.488283292640756,
+   "w": 8.705670343833793
+  },
+  "non-Limber effect in DESC-CCL": {
+   "3x2pt": 9.29262830938035,
+   "left_out_kept": 13,
+   "shear": 0.0,
+   "gammat": 0.7905933639346481,
+   "w": 7.910155597505466
+  },
+  "non-Limber effect in DESC-CCL, separable $P_{\\rm lin}$ (diagnostic)": {
+   "3x2pt": 9.262852138927808,
+   "left_out_kept": 13,
+   "shear": 0.0,
+   "gammat": 0.4690887742985205,
+   "w": 8.189230005925392
+  },
+  "DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA": {
+   "3x2pt": 0.062442700374582,
+   "left_out_kept": 13,
+   "shear": 0.05797578528254939,
+   "gammat": 0.10179932128801042,
+   "w": 0.010417151904448344
+  },
+  "RSD in $\\gamma_t$: effect in DESC-CCL": {
+   "3x2pt": 0.07579464172111938,
+   "left_out_kept": 13,
+   "shear": 0.0,
+   "gammat": 0.07579464172111938,
+   "w": 0.0
+  },
+  "DESC-CCL finer sampling (ccl_hi) vs reference": {
+   "3x2pt": 0.0001716966708429786,
+   "left_out_kept": 13,
+   "shear": 1.97124466764504e-06,
+   "gammat": 0.0001073001871884139,
+   "w": 0.0002938566167388022
+  },
+  "DESC-CCL transform of CoCoA's Limber $C_\\ell$ vs CoCoA in Limber": {
+   "3x2pt": 0.0005957969085978433,
+   "left_out_kept": 0,
+   "shear": 0.00038931064996189255,
+   "gammat": 0.0011505923849890753,
+   "w": 0.0006867360636698688
+  },
+  "DESC-CCL Eisenstein-Hu + halofit vs reference": {
+   "3x2pt": 58.78322071153897,
+   "left_out_kept": 13,
+   "shear": 31.457830596785783,
+   "gammat": 105.32599496890882,
+   "w": 50.0165585998671
+  },
+  "DESC-CCL vs CoCoA at the other project's $w$": {
+   "3x2pt": 7.565561094240799,
+   "left_out_kept": 13,
+   "shear": 0.046321728076532086,
+   "gammat": 9.306703992241175,
+   "w": 3.667934908691072
+  },
+  "DESC-CCL $C_{gs}$ in Limber vs CoCoA": {
+   "3x2pt": 0.7084209752292465,
+   "left_out_kept": 0,
+   "shear": 0.05797578528254939,
+   "gammat": 0.5800584639422846,
+   "w": 0.09620101327312067
+  },
+  "DESC-CCL no RSD vs CoCoA": {
+   "3x2pt": 6.982328780573181,
+   "left_out_kept": 13,
+   "shear": 0.05797578528254939,
+   "gammat": 0.2693094705084183,
+   "w": 7.206567733469356
+  },
+  "DESC-CCL RSD also in $\\gamma_t$ vs CoCoA": {
+   "3x2pt": 0.2578430104705779,
+   "left_out_kept": 13,
+   "shear": 0.05797578528254939,
+   "gammat": 0.25337814686132826,
+   "w": 0.09620101327312067
+  },
+  "DESC-CCL flat-sky FFTLog, bin centers vs CoCoA": {
+   "3x2pt": 22.601920423297045,
+   "left_out_kept": 13,
+   "shear": 19.416592189592684,
+   "gammat": 58.27313145063354,
+   "w": 13.692776066395455
+  },
+  "DESC-CCL full-sky, bin centers vs CoCoA": {
+   "3x2pt": 22.771253264995842,
+   "left_out_kept": 13,
+   "shear": 28.309442001100706,
+   "gammat": 84.59961817064435,
+   "w": 13.842679390402882
+  },
+  "DESC-CCL the CCL-benchmark modeling vs CoCoA": {
+   "3x2pt": 55.93843352094078,
+   "left_out_kept": 0,
+   "shear": 13.127630286878203,
+   "gammat": 41.94462746833125,
+   "w": 64.06628734652514
+  },
+  "failures": [
+   "| fid_ccl_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_ccl_numerics | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_eh | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_flat | l7-s2 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |",
+   "| fid_norsd | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_points | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_rsd_gs | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| fid_separable | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| ns_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| w_m09_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
+  ]
+ }
+}
