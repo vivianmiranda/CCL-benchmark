@@ -71,8 +71,6 @@ in the output's "failures" list and that pair is left out (NaN).
 import json, os, sys, time
 import numpy as np
 from scipy.interpolate import CubicSpline
-if not hasattr(np, "trapz"):     # FAST-PT/numpy 2.4 pairing of the local ccl env
-  np.trapz = np.trapezoid
 import pyccl as ccl
 
 src, variant, out = sys.argv[1:4]

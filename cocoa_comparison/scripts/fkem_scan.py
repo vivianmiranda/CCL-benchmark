@@ -4,7 +4,6 @@ knobs), on CoCoA's inputs (same CosmologyCalculator as ccl_compute.py).
 python fkem_scan.py <cocoa export .npz> <lens> <source>"""
 import json, os, sys
 import numpy as np
-if not hasattr(np, "trapz"): np.trapz = np.trapezoid
 sys.argv = [sys.argv[0], sys.argv[1], os.environ.get("VARIANT", "matched"), "/dev/null"] + sys.argv[2:]
 lens, srcb = int(sys.argv[4]), int(sys.argv[5])
 H = os.path.dirname(os.path.abspath(__file__))

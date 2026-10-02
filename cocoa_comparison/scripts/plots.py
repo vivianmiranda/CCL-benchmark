@@ -203,7 +203,15 @@ def style(n):
 # from the most to the least visible
 VISIBLE = [(0, (9, 3)), "dashed", "dashdot", (0, (3, 1, 1, 1)), "dotted", (0, (1, 1))]
 
-def figures(p, curves, labels, tag):
+# Roman-Real reads one n(z) file for lenses and sources, so a lens bin behind
+# its source bin has almost no gamma_t. Such a panel is left blank ("lens
+# behind source") when CoCoA's |gamma_t|/sigma stays below this value at every
+# theta the mask keeps; the Delta chi2 of the tables still includes it.
+NOSIGNAL = {"roman_real": 1.0}
+
+def figures(p, curves, labels, tag, ref):
+  """ref: CoCoA's fiducial data vector of the same IA model (sets the
+  panels NOSIGNAL leaves blank)."""
   ones = unpack(p, np.ones_like(curves[0]))
   meta = ones[4]
   e = np.logspace(np.log10(meta["theta_min"]), np.log10(meta["theta_max"]), meta["ntheta"] + 1)
@@ -211,8 +219,16 @@ def figures(p, curves, labels, tag):
   U = [unpack(p, c) for c in curves]
   par = list(range(len(curves)))
   S, L = meta["source_ntomo"], meta["lens_ntomo"]
-  def prep(k, rows):
+  blank = []
+  if p in NOSIGNAL:
+    g, sg = unpack(p, ref)[2], unpack(p, sigma(p))[2]
+    with np.errstate(all="ignore"):
+      snr = np.nanmax(np.abs(g/sg), axis=0)
+    blank = [(l, s) for l in range(L) for s in range(S) if np.any(g[:, l, s]) and snr[l, s] < NOSIGNAL[p]]
+  def prep(k, rows, zero=()):
     R = np.array([u[k] for u in U])
+    for (i, j) in zero:   # all-zero curves: the plotter's blank-panel path
+      R[:, :, i, j] = 0.0
     a, lims = row_ranges(R, rows)
     D = np.where(np.isfinite(R) & ~np.all(R == 0, axis=(0, 1))[None, None], np.abs(R - 1.0), np.nan)
     print("  %s %s: max |Delta/sigma| %.3f; 1/alpha != 1 in %d panels"
@@ -233,12 +249,15 @@ def figures(p, curves, labels, tag):
         mark(axes[j, i], a[i, j], np.array([r[:, i, j] for r in R]) - 1.0, pct(lims[j]), th, show)
     top_legend(fig, axes)
     fig.savefig(os.path.join(OUT, "%s_%s_%s.png" % (p, tag, nm)), dpi=180, bbox_inches="tight", bbox_extra_artists=fig.legends); plt.close(fig)
-  R, a, lims = prep(2, [[(i, j) for i in range(L)] for j in range(S)])
+  R, a, lims = prep(2, [[(i, j) for i in range(L)] for j in range(S)], zero=blank)
   fig, axes = pdv.plot_gammat_tomo_limber([(th, r) for r in R], gammat_ref=(th, ones[2]), param=par,
                                           legend=labels, legendloc=(0.92, 0.40), ylim=bands(lims), thetashow=show,
                                           figsize=(16 + 1.2*S, 12 + 1.1*L), bintextpos=[0.1, 0.85], bintextsize=22,
                                           yaxislabelsize=24, yaxisticklabelsize=19, xaxisticklabelsize=22, **style(len(curves)))
   set_rows([[axes[j, i] for i in range(L)] for j in range(S)], lims, r"$\Delta\gamma_t/\sigma$")
+  for (l, s) in blank:
+    for t in axes[s, l].texts:
+      if t.get_text() == "excluded": t.set_text("lens behind\nsource")
   for i in range(L):
     for j in range(S):
       mark(axes[j, i], a[i, j], np.array([r[:, i, j] for r in R]) - 1.0, pct(lims[j]), th, show)
@@ -261,12 +280,12 @@ for p in PROJ:
     f = "ccl_%s_%s_ref.npz" % (p, m)
     if os.path.isfile(os.path.join(W, f)):
       cur.append(nsigma(p, ld(f), ld("cocoa_%s_%s.npz" % (p, m)))); lab.append(l)
-  if cur: figures(p, cur, lab, "cosmologies")
+  if cur: figures(p, cur, lab, "cosmologies", ld("cocoa_%s_fid.npz" % p))
   # TATT (IA_model 1): the same figures from the cocoa_<p>_tatt_* exports
   cur, lab = [], []
   for m, l in MODELS:
     f = "ccl_%s_tatt_%s_ref.npz" % (p, m)
     if os.path.isfile(os.path.join(W, f)):
       cur.append(nsigma(p, ld(f), ld("cocoa_%s_tatt_%s.npz" % (p, m)))); lab.append(l)
-  if cur: figures(p, cur, lab, "tatt_cosmologies")
+  if cur: figures(p, cur, lab, "tatt_cosmologies", ld("cocoa_%s_tatt_fid.npz" % p))
   print("figures for", p)

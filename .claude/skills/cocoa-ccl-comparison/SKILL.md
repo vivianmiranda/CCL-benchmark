@@ -37,7 +37,14 @@ Cocoa README only cites it).
    Downloads (git clones, conda/pip packages) need explicit permission.
    <= 8 threads total. Never copy the cocoa environment dump (it holds a
    secret token) anywhere.
-5. At the end: a Fable 5 review of the comparison (precision of every
+5. The metric is Delta chi2 (owner, 2026-10-02). No parameter shifts or
+   Fisher biases: they depend on the model (which parameters are free or
+   marginalized).
+6. Every number in the README names its quantity in place
+   (Delta chi2 = 0.34, |Delta xi+|/sigma = 0.050, a percent of what), and
+   every table header names the quantity of its column (Cocoa skill,
+   Section 3.1).
+7. At the end: a Fable 5 review of the comparison (precision of every
    claim) and of the README (the cocoa-maintenance skill's README rules:
    less is more, tables over prose, LaTeX math, no adjectives).
 
@@ -145,11 +152,13 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   through CCL's transform (variant cocoa_cl: 0.009 / 0.0006) to isolate
   the transform layer; a finer CCL run (ccl_hi: 0.0014 / 0.0002) for
   two-sided convergence; the harmonic check to lmax and non-Limber C_gg
-  directly (CCL 0.8-1.7% below CoCoA in LSST-Y1, flat in l); parameter
-  shifts with a Fisher matrix marginalized over the lens biases and NLA
-  (bias.py: LSST-Y1 biases absorb 6.74 of 8.76, ~1 sigma each; Omega_m,
-  n_s < 0.11 sigma). State the scope (NLA, linear bias, no systematics)
-  and that neither code is compared with the exact integral.
+  directly (CCL 0.8-1.7% below CoCoA in LSST-Y1, flat in l). State the
+  scope (NLA, linear bias, no systematics) and that neither code is
+  compared with the exact integral.
+- The metric is Delta chi2, never parameter shifts (owner, 2026-10-02):
+  a Fisher parameter bias depends on the model (which parameters are free,
+  which are marginalized), so the study does not report one; the earlier
+  bias.py was removed for that reason.
 - TATT (2026-10-02): CoCoA IA_model 1 with CFASTPT (IA_code 0) vs pyccl
   EulerianPTCalculator; recipe and conventions in references/tatt_conventions.md
   (variant prefix "tatt:" in ccl_compute.py). Check first: TATT with
@@ -194,6 +203,16 @@ with these adaptations (all in `plots.py`):
   is wrong.
 - Legend above the panels in ONE row; bin label and 1/alpha in the free
   left corner (top or bottom).
+- sigma = sqrt(C_ii) ignores the correlations between points: the README
+  says so in a NOTE next to the figures (a point at 1 is one sigma for
+  that point alone; the tables' Delta chi2 uses the full covariance).
+- Roman-Real gamma_t (one n(z) file for lenses and sources): panels where
+  the lens bin lies behind the source bin and CoCoA's |gamma_t|/sigma < 1
+  at every kept theta are blank, labeled "lens behind source"
+  (NOSIGNAL in plots.py, applied to each IA model's own fiducial); the
+  Delta chi2 keeps them. The difference is a fraction of the signal, so
+  such panels only add flat lines ((6, 4): gamma_t/sigma <= 0.087;
+  (2, 6): 93).
 - Large fonts: y label 24, y ticks 19, x ticks 22, x label 24, bin text
   22, legend 22; dpi 180.
 - Colors: twilight_shifted without its pale middle, luminance capped at

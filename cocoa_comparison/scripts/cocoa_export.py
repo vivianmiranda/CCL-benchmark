@@ -3,7 +3,7 @@
 python cocoa_export.py <project> <model> <out.npz>
 project: lsst_y1 | roman_real (EXAMPLE_EVALUATE2, 3x2pt, NLA)
 model:   fid | omm_lo | omm_hi | ns_lo | ns_hi | w_m1 | w_m09, or settings
-         "name=value,name=value" (parameter derivatives)
+         "name=value,name=value" (the TATT points of run_cocoa.sh)
 
 Photo-z shifts and shear calibration are set to zero (magnification,
 b2 and point masses already are), so both codes see the same n(z) and no
@@ -21,8 +21,8 @@ MODELS = {"fid": {}, "omm_lo": {"omegam": 0.25}, "omm_hi": {"omegam": 0.35},
           "ns_lo": {"ns": 0.92}, "ns_hi": {"ns": 1.01},
           # the other project's w (wa = w0pwa - w stays 0)
           "w_m1": {"w": -1.0, "w0pwa": -1.0}, "w_m09": {"w": -0.9, "w0pwa": -0.9}}
-# any other model name is a list of settings, e.g. "LSST_B1_1=1.76,LSST_A1_1=0.7"
-# (the Fisher derivatives of bias.py)
+# any other model name is a list of settings, e.g. "LSST_A1_1=0.7,LSST_A2_1=-1.36"
+# (the TATT points of run_cocoa.sh)
 if mname not in MODELS:
   MODELS[mname] = {k: float(v) for k, v in (x.split("=") for x in mname.split(","))}
 R = os.environ["ROOTDIR"]; os.chdir(R)
