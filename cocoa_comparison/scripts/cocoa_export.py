@@ -2,7 +2,8 @@
 
 python cocoa_export.py <project> <model> <out.npz>
 project: lsst_y1 | roman_real (EXAMPLE_EVALUATE2, 3x2pt, NLA)
-model:   fid | omm_lo | omm_hi | ns_lo | ns_hi
+model:   fid | omm_lo | omm_hi | ns_lo | ns_hi | w_m1 | w_m09, or settings
+         "name=value,name=value" (parameter derivatives)
 
 Photo-z shifts and shear calibration are set to zero (magnification,
 b2 and point masses already are), so both codes see the same n(z) and no
@@ -17,7 +18,13 @@ from cobaya.yaml import yaml_load_file
 
 project, mname, out = sys.argv[1:4]
 MODELS = {"fid": {}, "omm_lo": {"omegam": 0.25}, "omm_hi": {"omegam": 0.35},
-          "ns_lo": {"ns": 0.92}, "ns_hi": {"ns": 1.01}}
+          "ns_lo": {"ns": 0.92}, "ns_hi": {"ns": 1.01},
+          # the other project's w (wa = w0pwa - w stays 0)
+          "w_m1": {"w": -1.0, "w0pwa": -1.0}, "w_m09": {"w": -0.9, "w0pwa": -0.9}}
+# any other model name is a list of settings, e.g. "LSST_B1_1=1.76,LSST_A1_1=0.7"
+# (the Fisher derivatives of bias.py)
+if mname not in MODELS:
+  MODELS[mname] = {k: float(v) for k, v in (x.split("=") for x in mname.split(","))}
 R = os.environ["ROOTDIR"]; os.chdir(R)
 info = yaml_load_file("./projects/%s/EXAMPLE_EVALUATE2.yaml" % project)
 ov = dict(info["sampler"]["evaluate"]["override"]); info.pop("sampler"); info.pop("output", None)
@@ -63,11 +70,21 @@ icov = np.array(ci.get_inv_cov_masked()); mask = np.array(ci.get_mask())
 sizes = list(ci.compute_data_vector_3x2pt_real_sizes())
 dv = np.array(ci.compute_data_vector_masked())
 
-# harmonic-space spectra at a few multipoles (Limber, as cosmolike's
-# *_tomo_limber bindings compute them), for the C_l-level comparison
-ell_h = np.geomspace(20.0, 5000.0, 24)
+# harmonic-space spectra (Limber, as cosmolike's *_tomo_limber bindings
+# compute them) for the C_l-level comparison: 24 multipoles from 20 to
+# 5000, then 8 more to the real-space lmax
+lmax = float(lb.get("lmax", 100000))
+ell_h = np.concatenate((np.geomspace(20.0, 5000.0, 24), np.geomspace(5000.0, lmax, 9)[1:]))
 cl_ss = np.array(ci.C_ss_tomo_limber(l=ell_h)); cl_gs = np.array(ci.C_gs_tomo_limber(l=ell_h))
 cl_gg = np.array(ci.C_gg_tomo_limber(l=ell_h))
+# non-Limber C_gg below the Limber switch (C_gg_tomo: exact below l = 150)
+ell_nl = np.array([2.0, 3.0, 5.0, 10.0, 20.0, 50.0, 100.0, 140.0])
+cl_gg_nl = np.array(ci.C_gg_tomo(l=ell_nl))
+# Limber C_l on DESC-CCL's multipole grid (ccl_compute.py "ell"), for the
+# transform-only test (variant cocoa_cl): CoCoA's C_l through CCL's transform
+ell_d = np.unique(np.concatenate([np.arange(2, 400), np.geomspace(400, lmax, 1500).astype(int)])).astype(float)
+cld_ss = np.array(ci.C_ss_tomo_limber(l=ell_d)); cld_gs = np.array(ci.C_gs_tomo_limber(l=ell_d))
+cld_gg = np.array(ci.C_gg_tomo_limber(l=ell_d))
 # the P(k) cosmolike was given (CAMB through cobaya, same extrapolation)
 prov = model.provider
 h = prov.get_param("H0")/100.0
@@ -94,7 +111,8 @@ for p in ("H0", "omegam", "omegab", "ns", "As", "mnu", "w", "wa", "omnuh2"):
   try: pars[p] = float(prov.get_param(p))
   except Exception: pass
 np.savez(out, dv=dv, icov=icov, mask=mask, sizes=sizes, chi2=-2.0*post.loglikes[0],
-         ell_h=ell_h, cl_ss=cl_ss, cl_gs=cl_gs, cl_gg=cl_gg, zg=zg, kg=kg, lnPL=lnPL, lnPN=lnPN, chi=chi, D0=D0, zD=zD, DD=DD, z1=z1, chi1=chi1,
+         ell_h=ell_h, cl_ss=cl_ss, cl_gs=cl_gs, cl_gg=cl_gg, ell_nl=ell_nl, cl_gg_nl=cl_gg_nl,
+         ell_d=ell_d, cld_ss=cld_ss, cld_gs=cld_gs, cld_gg=cld_gg, zg=zg, kg=kg, lnPL=lnPL, lnPN=lnPN, chi=chi, D0=D0, zD=zD, DD=DD, z1=z1, chi1=chi1,
          meta=json.dumps(dict(project=project, model=mname, point=point, pars=pars,
                               dataset=ds, path=lik.path, rootdir=R, ntheta=int(lik.ntheta),
                               theta_min=float(lik.theta_min_arcmin), theta_max=float(lik.theta_max_arcmin),

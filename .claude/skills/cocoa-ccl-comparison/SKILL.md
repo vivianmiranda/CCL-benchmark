@@ -119,6 +119,17 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   gives C_l != 0 only below l = 150; CCL's correlation builds the C_l
   spline with log-log extrapolation beyond lmax (needs positive end
   values) and reports "ran out of memory" / "failed to create spline".
+- Referee checks that closed the study (Fable 5, part C): swap w between
+  the projects (LSST-Y1 at w = -1: 0.34; Roman-Real at w = -0.9: 7.57) to
+  turn the w attribution into a measurement; push CoCoA's Limber C_l
+  through CCL's transform (variant cocoa_cl: 0.009 / 0.0006) to isolate
+  the transform layer; a finer CCL run (ccl_hi: 0.0014 / 0.0002) for
+  two-sided convergence; the harmonic check to lmax and non-Limber C_gg
+  directly (CCL 0.8-1.7% below CoCoA in LSST-Y1, flat in l); parameter
+  shifts with a Fisher matrix marginalized over the lens biases and NLA
+  (bias.py: LSST-Y1 biases absorb 6.74 of 8.76, ~1 sigma each; Omega_m,
+  n_s < 0.11 sigma). State the scope (NLA, linear bias, no systematics)
+  and that neither code is compared with the exact integral.
 - Final numbers (2026-10-01): LSST-Y1 8.76 (6.6-10.5 over five models;
   gamma_t 7.29, w 6.26, shear 0.0013), separable diagnostic 0.21;
   Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script

@@ -44,7 +44,12 @@ for p, P in PROJ.items():
            ("non-Limber effect in DESC-CCL", "ccl_%s_fid_ref.npz" % p, "ccl_%s_fid_limber.npz" % p),
            ("non-Limber effect in DESC-CCL, separable $P_{\\rm lin}$ (diagnostic)", "ccl_%s_fid_separable.npz" % p, "ccl_%s_fid_limber.npz" % p),
            ("DESC-CCL, separable $P_{\\rm lin}$ (diagnostic), vs CoCoA", "ccl_%s_fid_separable.npz" % p, "cocoa_%s_fid.npz" % p),
-           ("RSD in $\\gamma_t$: effect in DESC-CCL", "ccl_%s_fid_rsd_gs.npz" % p, "ccl_%s_fid_ref.npz" % p)]
+           ("RSD in $\\gamma_t$: effect in DESC-CCL", "ccl_%s_fid_rsd_gs.npz" % p, "ccl_%s_fid_ref.npz" % p),
+           ("DESC-CCL finer sampling (ccl_hi) vs reference", "ccl_%s_fid_ccl_hi.npz" % p, "ccl_%s_fid_ref.npz" % p),
+           ("DESC-CCL transform of CoCoA's Limber $C_\\ell$ vs CoCoA in Limber", "ccl_%s_fid_cocoa_cl.npz" % p, "cocoa_%s_fidlimber.npz" % p),
+           ("DESC-CCL Eisenstein-Hu + halofit vs reference", "ccl_%s_fid_eh.npz" % p, "ccl_%s_fid_ref.npz" % p),
+           ("DESC-CCL vs CoCoA at the other project's $w$", "ccl_%s_%s_ref.npz" % (p, "w_m1" if p == "lsst_y1" else "w_m09"),
+            "cocoa_%s_%s.npz" % (p, "w_m1" if p == "lsst_y1" else "w_m09"))]
   for v, lab in (("limgs", "$C_{gs}$ in Limber"), ("norsd", "no RSD"), ("rsd_gs", "RSD also in $\\gamma_t$"), ("flat", "flat-sky FFTLog, bin centers"),
                  ("points", "full-sky, bin centers"), ("bench", "the CCL-benchmark modeling")):
     pairs.append(("DESC-CCL %s vs CoCoA" % lab, "ccl_%s_fid_%s.npz" % (p, v), "cocoa_%s_fid.npz" % p))

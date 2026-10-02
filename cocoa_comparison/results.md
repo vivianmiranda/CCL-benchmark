@@ -18,6 +18,10 @@
 | non-Limber effect in DESC-CCL, separable $P_{\rm lin}$ (diagnostic) | 144.235 | 0 | 2.063 | 136.712 | 0 |
 | DESC-CCL, separable $P_{\rm lin}$ (diagnostic), vs CoCoA | 0.208 | 1.3e-03 | 0.064 | 0.165 | 0 |
 | RSD in $\gamma_t$: effect in DESC-CCL | 0.358 | 0 | 0.358 | 0 | 0 |
+| DESC-CCL finer sampling (ccl_hi) vs reference | 1.4e-03 | 1.5e-07 | 2.1e-04 | 1.7e-03 | 0 |
+| DESC-CCL transform of CoCoA's Limber $C_\ell$ vs CoCoA in Limber | 8.9e-03 | 3.3e-05 | 9.3e-05 | 9.0e-03 | 0 |
+| DESC-CCL Eisenstein-Hu + halofit vs reference | 21.280 | 8.459 | 18.299 | 23.424 | 0 |
+| DESC-CCL vs CoCoA at the other project's $w$ | 0.343 | 1.5e-03 | 0.211 | 0.279 | 0 |
 | DESC-CCL $C_{gs}$ in Limber vs CoCoA | 9.228 | 1.3e-03 | 2.017 | 6.259 | 0 |
 | DESC-CCL no RSD vs CoCoA | 115.402 | 1.3e-03 | 7.290 | 117.499 | 0 |
 | DESC-CCL RSD also in $\gamma_t$ vs CoCoA | 8.703 | 1.3e-03 | 6.690 | 6.259 | 0 |
@@ -27,7 +31,9 @@
 
 | DESC-CCL run | pair | type | call | error |
 |---|---|---|---|---|
+| fid_ccl_hi | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_ccl_numerics | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| fid_eh | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_flat | l4-s0 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |
 | fid_norsd | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_points | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
@@ -38,6 +44,7 @@
 | ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| w_m1_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 
 ### Roman-Real
 
@@ -59,6 +66,10 @@
 | non-Limber effect in DESC-CCL, separable $P_{\rm lin}$ (diagnostic) | 9.263 | 0 | 0.469 | 8.189 | 13 |
 | DESC-CCL, separable $P_{\rm lin}$ (diagnostic), vs CoCoA | 0.062 | 0.058 | 0.102 | 0.010 | 13 |
 | RSD in $\gamma_t$: effect in DESC-CCL | 0.076 | 0 | 0.076 | 0 | 13 |
+| DESC-CCL finer sampling (ccl_hi) vs reference | 1.7e-04 | 2.0e-06 | 1.1e-04 | 2.9e-04 | 13 |
+| DESC-CCL transform of CoCoA's Limber $C_\ell$ vs CoCoA in Limber | 6.0e-04 | 3.9e-04 | 1.2e-03 | 6.9e-04 | 0 |
+| DESC-CCL Eisenstein-Hu + halofit vs reference | 58.783 | 31.458 | 105.326 | 50.017 | 13 |
+| DESC-CCL vs CoCoA at the other project's $w$ | 7.566 | 0.046 | 9.307 | 3.668 | 13 |
 | DESC-CCL $C_{gs}$ in Limber vs CoCoA | 0.708 | 0.058 | 0.580 | 0.096 | 0 |
 | DESC-CCL no RSD vs CoCoA | 6.982 | 0.058 | 0.269 | 7.207 | 13 |
 | DESC-CCL RSD also in $\gamma_t$ vs CoCoA | 0.258 | 0.058 | 0.253 | 0.096 | 13 |
@@ -68,7 +79,9 @@
 
 | DESC-CCL run | pair | type | call | error |
 |---|---|---|---|---|
+| fid_ccl_hi | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_ccl_numerics | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| fid_eh | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_flat | l7-s2 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |
 | fid_norsd | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | fid_points | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
@@ -79,4 +92,5 @@
 | ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 | omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
+| w_m09_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |
 

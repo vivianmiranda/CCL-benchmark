@@ -40,6 +40,12 @@ Variants (each a single change from "ref" unless stated):
   separable  diagnostic: the linear table in the separable form
              P_lin(k,0) D(z)^2 that FKEM's FFTLog term assumes
   ccl_numerics  CCL's default FKEM sampling and l sampling
+  ccl_hi     finer than ref: fkem_Nchi 4000, 3000 log-spaced l above 400
+  eh         CCL's own Eisenstein-Hu linear and halofit nonlinear P(k)
+             (sigma8 of CoCoA's linear table), nothing else changed
+  cocoa_cl   transform-only test: CoCoA's Limber C_l (the export's cld_*,
+             on this script's l grid) through CCL's real-space transform;
+             compare with CoCoA's Limber run (cocoa_<project>_fidlimber)
   bench      the CCL-benchmark real-space scripts on CoCoA's layout: CCL's own
              Eisenstein-Hu linear and halofit nonlinear P(k), C_gs in Limber,
              no RSD, flat-sky FFTLog at the bin centers, l_limber = 100,
@@ -61,7 +67,7 @@ H = os.path.dirname(os.path.abspath(__file__))
 ex = np.load(src)
 meta = json.loads(str(ex["meta"]))
 project = meta["project"]; par = meta["pars"]; pt = meta["point"]
-V = dict(nonlimber_gs=True, nonlimber_gg=True, rsd=True, rsd_gs=False, method="legendre",
+V = dict(nonlimber_gs=True, nonlimber_gg=True, rsd=True, rsd_gs=False, cocoa_cl=False, method="legendre",
          binavg=True, native=False, separable=False, l_limber=150, fkem_nchi=2000,
          nell_log=1500, ell_max=65000 if project == "lsst_y1" else 100000)
 CHANGES = {
@@ -74,6 +80,9 @@ CHANGES = {
   "points": dict(binavg=False),
   "separable": dict(separable=True),
   "ccl_numerics": dict(fkem_nchi=None, nell_log=500),
+  "ccl_hi": dict(fkem_nchi=4000, nell_log=3000),
+  "eh": dict(native=True),
+  "cocoa_cl": dict(nonlimber_gs=False, nonlimber_gg=False, cocoa_cl=True),
   "bench": dict(native=True, nonlimber_gs=False, rsd=False, method="fftlog",
                 binavg=False, l_limber=100, fkem_nchi=500, nell_log=500),
 }
@@ -171,7 +180,12 @@ if variant == "harmonic":
   lens_nr = [ccl.NumberCountsTracer(cosmo, dndz=(zl, nzl[i]), has_rsd=False,
              bias=(zl, pt["%sB1_%d" % (pre, i + 1)]*np.ones_like(zl))) for i in range(L)]
   cgg_nr = np.array([lim(lens_nr[l], lens_nr[l]) for l in range(L)])
-  np.savez(out, ell=eh, css=css, cgs=cgs, cgg=cgg, cgg_nr=cgg_nr, pyccl=ccl.__file__)
+  extra = {}
+  if "ell_nl" in ex.files:   # non-Limber C_gg (FKEM, reference settings)
+    enl = ex["ell_nl"]
+    kw = dict(l_limber=V["l_limber"], non_limber_integration_method="FKEM", fkem_Nchi=V["fkem_nchi"])
+    extra = dict(ell_nl=enl, cgg_nl=np.array([ccl.angular_cl(cosmo, lens_t[l], lens_t[l], enl, **kw) for l in range(L)]))
+  np.savez(out, ell=eh, css=css, cgs=cgs, cgg=cgg, cgg_nr=cgg_nr, pyccl=ccl.__file__, **extra)
   print("CCL %s %s harmonic done" % (project, meta["model"])); sys.exit(0)
 
 # ---- theta bins: CoCoA's log bins ----------------------------------------
@@ -199,16 +213,24 @@ def corr(c, typ, label=""):
 
 t0 = time.perf_counter()
 xip, xim, gt, w = [], [], [], []
-css = [cl(src_t[i], src_t[j], False) for i in range(S) for j in range(i, S)]
+if V["cocoa_cl"]:   # CoCoA's Limber C_l, on this script's l grid
+  assert np.array_equal(ex["ell_d"], ell), "the export's ell_d is not this script's l grid"
+  ccs = lambda i, j: ex["cld_ss"][0][:, i, j]
+  cgs_ = lambda l, s: ex["cld_gs"][:, l, s]
+  cgg_ = lambda l: ex["cld_gg"][:, l, l]
+css = ([ccs(i, j) for i in range(S) for j in range(i, S)] if V["cocoa_cl"] else
+       [cl(src_t[i], src_t[j], False) for i in range(S) for j in range(i, S)])
 pairs_ss = [(i, j) for i in range(S) for j in range(i, S)]
 xip = [corr(c, "GG+", "s%d-s%d" % p) for c, p in zip(css, pairs_ss)]
 xim = [corr(c, "GG-", "s%d-s%d" % p) for c, p in zip(css, pairs_ss)]
 for l in range(L):
   for s in range(S):
     if (l, s) in excl: continue
-    gt.append(corr(safe_cl(lens_tgs[l], src_t[s], V["nonlimber_gs"], "NG", "l%d-s%d" % (l, s)), "NG", "l%d-s%d" % (l, s)))
+    c = cgs_(l, s) if V["cocoa_cl"] else safe_cl(lens_tgs[l], src_t[s], V["nonlimber_gs"], "NG", "l%d-s%d" % (l, s))
+    gt.append(corr(c, "NG", "l%d-s%d" % (l, s)))
 for l in range(L):
-  w.append(corr(safe_cl(lens_t[l], lens_t[l], V["nonlimber_gg"], "NN", "l%d-l%d" % (l, l)), "NN", "l%d-l%d" % (l, l)))
+  c = cgg_(l) if V["cocoa_cl"] else safe_cl(lens_t[l], lens_t[l], V["nonlimber_gg"], "NN", "l%d-l%d" % (l, l))
+  w.append(corr(c, "NN", "l%d-l%d" % (l, l)))
 dv = np.concatenate(xip + xim + gt + w)
 dt = time.perf_counter() - t0
 sizes = list(ex["sizes"])
