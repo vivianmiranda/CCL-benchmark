@@ -86,7 +86,9 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   subtracted Limber term uses P_lin(k,z); a flat ~-0.85% offset in C_gs
   below l = 150 even for well-separated lens-source pairs. Diagnostic:
   pass P_lin(k,0) D(z)^2 -> offset gone (LSST-Y1 3x2pt 8.7 -> 0.68).
-  CoCoA v5.02 uses the separable form consistently on both terms.
+  CoCoA v5.02 uses one separable form on both terms, anchored per lens
+  bin: (D(z)/D(z_piv))^2 P_lin(k, z_piv), z_piv = the bin's mean redshift
+  (cosmo2D.c), not z = 0 (a first draft said z = 0; Fable caught it).
 - CCL Legendre and FFTLog transforms fail ("ran out of memory" /
   "failed to create spline") on C_l with non-positive tails
   (lens-behind-source gamma_t pairs); real failure, pair left out.

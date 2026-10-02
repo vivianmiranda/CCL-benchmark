@@ -79,7 +79,7 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
 - **DESC-CCL settings** (reference run):
   - `angular_cl(..., l_limber=150, non_limber_integration_method="FKEM", fkem_Nchi=2000)`
     for $C_{gg}$ and $C_{gs}$, the same switch as CoCoA;
-  - $\ell$: every integer to 400, then 1500 log-spaced values to
+  - $\ell$: every integer from 2 to 400, then 1500 log-spaced values to
     $\ell_{\max} = 6.5\times10^4$ (LSST-Y1) or $10^5$ (Roman-Real), CoCoA's
     `lmax`, also used as `ELL_MAX_CORR`;
   - `correlation(..., theta=lower edges, theta_max=upper edges, method="legendre")`.
@@ -172,8 +172,10 @@ largest):
      and the separable table;
    - the Limber $C_\ell$ do not change.
 
-   CoCoA `v5.02` evaluates both linear terms with $D^2(z)\,P_{\rm lin}(k,0)$,
-   while DESC-CCL mixes the two forms. Diagnostic: DESC-CCL given the
+   CoCoA `v5.02` evaluates both linear terms with the same separable
+   spectrum, $(D(z)/D(z_{\rm piv}))^2\,P_{\rm lin}(k, z_{\rm piv})$ with
+   $z_{\rm piv}$ the lens bin's mean redshift (`cosmo2D.c`), so the pair
+   cancels at the Limber limit; DESC-CCL mixes the two forms. Diagnostic: DESC-CCL given the
    separable table lowers the fiducial $\Delta\chi^2$ from 8.76 to 0.21
    (LSST-Y1, $\gamma_t$ 7.29 to 0.064, $w$ 6.26 to 0.16) and from 0.228 to
    0.062 (Roman-Real). The $\Delta\chi^2$ of the non-Limber effect on
@@ -192,7 +194,8 @@ largest):
      `ran out of memory` and FFTLog `failed to create spline`. The failing
      call builds the $C_\ell$ spline with log-log extrapolation beyond
      $\ell_{\max}$ (`ccl_f1d_extrap_logx_logy` in `ccl_correlation.c`),
-     which needs positive values at the end.
+     which needs the last two values nonzero and of one sign; here they are
+     exactly zero.
    - Both pairs are left out of the comparison. CoCoA's mask removes the
      LSST-Y1 pair; in Roman-Real, 13 points the mask keeps are left out.
 5. **Modeling choices** (one-change table): RSD is 115 (LSST-Y1, in
@@ -217,7 +220,7 @@ $-0.53\sigma$ near 100'. The same shape appears at every cosmology.
 
 ![LSST-Y1 gamma_t](cocoa_comparison/figures/lsst_y1_cosmologies_gammat.png)
 
-**LSST-Y1, $w(\theta)$.** The same FKEM offset: $-0.4\sigma$ to $-1.39\sigma$
+**LSST-Y1, $w(\theta)$.** The same FKEM offset: $-0.3\sigma$ to $-1.39\sigma$
 per point below 100' (at most $0.89\sigma$ on the points the mask keeps).
 
 ![LSST-Y1 w](cocoa_comparison/figures/lsst_y1_cosmologies_w.png)
