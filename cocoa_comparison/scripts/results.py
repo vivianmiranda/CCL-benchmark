@@ -48,8 +48,12 @@ for p, P in PROJ.items():
            ("DESC-CCL finer sampling (ccl_hi) vs reference", "ccl_%s_fid_ccl_hi.npz" % p, "ccl_%s_fid_ref.npz" % p),
            ("DESC-CCL transform of CoCoA's Limber $C_\\ell$ vs CoCoA in Limber", "ccl_%s_fid_cocoa_cl.npz" % p, "cocoa_%s_fidlimber.npz" % p),
            ("DESC-CCL Eisenstein-Hu + halofit vs reference", "ccl_%s_fid_eh.npz" % p, "ccl_%s_fid_ref.npz" % p),
-           ("DESC-CCL vs CoCoA at the other project's $w$", "ccl_%s_%s_ref.npz" % (p, "w_m1" if p == "lsst_y1" else "w_m09"),
-            "cocoa_%s_%s.npz" % (p, "w_m1" if p == "lsst_y1" else "w_m09"))]
+           ("DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA", "ccl_%s_fid_growth_sub.npz" % p, "cocoa_%s_fid.npz" % p)]
+  # each project also at the other project's w (LSST-Y1 fiducial w = -0.9, Roman-Real w = -1)
+  ws, wl = ("w_m1", "$w = -1$") if p == "lsst_y1" else ("w_m09", "$w = -0.9$")
+  pairs += [("DESC-CCL vs CoCoA, %s" % wl, "ccl_%s_%s_ref.npz" % (p, ws), "cocoa_%s_%s.npz" % (p, ws)),
+            ("DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA, %s" % wl,
+             "ccl_%s_%s_growth_sub.npz" % (p, ws), "cocoa_%s_%s.npz" % (p, ws))]
   for v, lab in (("limgs", "$C_{gs}$ in Limber"), ("norsd", "no RSD"), ("rsd_gs", "RSD also in $\\gamma_t$"), ("flat", "flat-sky FFTLog, bin centers"),
                  ("points", "full-sky, bin centers"), ("bench", "the CCL-benchmark modeling")):
     pairs.append(("DESC-CCL %s vs CoCoA" % lab, "ccl_%s_fid_%s.npz" % (p, v), "cocoa_%s_fid.npz" % p))

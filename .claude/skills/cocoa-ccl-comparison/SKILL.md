@@ -178,6 +178,19 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script
   modeling: 154 and 56.
 
+- The FKEM offset is a growth-factor input effect (2026-10-02, owner asked
+  "why would w = -0.9 be less smooth?"). CoCoA's D(z) is
+  sqrt(P_lin(k0,z)/P_lin(k0,0)) at k0 = 5e-4/Mpc (G_growth in
+  _cosmolike_prototype_base.py), about 2 H0/c: a horizon scale. For
+  w != -1 CAMB's dark-energy perturbations raise the growth between k0 and
+  k ~ 3e-3 by 0.5-0.9% (z = 0.5-2); above that only the neutrino slope
+  (~0.1-0.3%). FKEM's D^2(z) P_lin(k,0) inherits it; CoCoA's pivot ratio
+  does not. Variant growth_sub (D at k = 0.05/Mpc, NLA amplitude kept)
+  gives 3x2pt Delta chi2 0.168 / 0.064 at w = -0.9 and 0.136 / 0.071 at
+  w = -1 (LSST-Y1 / Roman-Real), the both-Limber level. diag_growth.py
+  prints the k profile. Never explain a w dependence before measuring
+  the growth's k profile on horizon scales.
+
 ## 4. Plots (owner's preferences, learned the hard way)
 
 The general figure style (notebook rcParams, plotter defaults, the rules

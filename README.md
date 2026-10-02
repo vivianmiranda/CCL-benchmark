@@ -46,8 +46,8 @@ runs of one code differ by $`\Delta\chi^2 < 0.2`$. The study quotes that
 number as a scale, not as a cross-code acceptance criterion.
 
 The fiducial cosmologies of the two projects differ only in the dark-energy
-equation of state: $`w = -0.9`$ in LSST-Y1, $`w = -1`$ in Roman-Real. The
-last two rows run both projects at both values.
+equation of state: $`w = -0.9`$ in LSST-Y1, $`w = -1`$ in Roman-Real. The rows
+that set $`w`$ run both projects at both values.
 
 | data vector and cosmology (NLA) | $`\Delta\chi^2`$ DESC-CCL vs CoCoA, LSST-Y1 | $`\Delta\chi^2`$ DESC-CCL vs CoCoA, Roman-Real |
 |---|---|---|
@@ -59,16 +59,21 @@ last two rows run both projects at both values.
 | $`w(\theta)`$ only, fiducial cosmology | 6.26 | 0.096 |
 | 3x2pt, $`w = -0.9`$, other parameters fiducial | 8.76 | 7.57 |
 | 3x2pt, $`w = -1`$, other parameters fiducial | 0.34 | 0.228 |
+| 3x2pt, $`w = -0.9`$, DESC-CCL given the growth factor at $`k = 0.05\ {\rm Mpc}^{-1}`$ (diagnostic) | 0.168 | 0.064 |
 
 1. Cosmic shear agrees in both projects: $`\Delta\chi^2 = 0.0013`$
    (LSST-Y1) and $`\Delta\chi^2 = 0.058`$ (Roman-Real) in $`\xi_\pm`$.
-2. Galaxy-galaxy lensing and clustering differ in LSST-Y1. DESC-CCL's
-   non-Limber method (FKEM) subtracts two terms that should cancel at high
-   $`\ell`$, but computes them with different linear power spectra
-   ([Section 4](#ccl_fkem)).
-3. The difference follows $`w`$, not the survey: at $`w = -0.9`$ both
-   projects differ by $`\Delta\chi^2 \ge 7.57`$, at $`w = -1`$ both by
-   $`\Delta\chi^2 \le 0.34`$ (last two rows).
+2. Galaxy-galaxy lensing and clustering differ at $`w = -0.9`$, in both
+   projects. DESC-CCL's non-Limber method (FKEM) multiplies
+   $`P_{\rm lin}(k, 0)`$ by the growth factor it receives, CoCoA's $`D(z)`$,
+   which CoCoA measures at $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. For
+   $`w \neq -1`$, CAMB's dark-energy perturbations make the growth at that
+   horizon scale about 1% different from the growth at
+   $`k = 0.01`$ to $`0.2\ {\rm Mpc}^{-1}`$ ([Section 4](#ccl_fkem)).
+3. Given the growth factor at $`k = 0.05\ {\rm Mpc}^{-1}`$, DESC-CCL agrees
+   with CoCoA at $`w = -0.9`$: $`\Delta\chi^2 = 0.168`$ (LSST-Y1) and
+   $`\Delta\chi^2 = 0.064`$ (Roman-Real) (last row; $`w = -1`$ in
+   [Section 4](#ccl_fkem)).
 4. With TATT intrinsic alignments the TATT terms agree: $`\xi_\pm`$ differ
    by $`\Delta\chi^2 = 0.0018`$ (LSST-Y1) and $`\Delta\chi^2 = 0.058`$
    (Roman-Real) ([Section 6](#ccl_tatt)).
@@ -86,7 +91,7 @@ enters.
 |---|---|
 | linear and nonlinear $`P(k,z)`$ | $`z \le 6`$, $`10^{-5} \le k \le 200\ {\rm Mpc}^{-1}`$ |
 | comoving distance $`\chi(z)`$, and $`H(z)`$ from $`d\chi/dz`$ | $`z \le 50`$ |
-| growth factor $`D(z) = \sqrt{P_{\rm lin}(k_0, z)/P_{\rm lin}(k_0, 0)}`$ with $`k_0 = 5\times 10^{-4}\ {\rm Mpc}^{-1}`$, and $`f = d\ln D/d\ln a`$ | $`z \le 49`$ |
+| growth factor $`D(z) = \sqrt{P_{\rm lin}(k_0, z)/P_{\rm lin}(k_0, 0)}`$ with $`k_0 = 5\times 10^{-4}\ {\rm Mpc}^{-1}`$, and $`f = d\ln D/d\ln a`$ (CoCoA's `G_growth`) | $`z \le 49`$ |
 
 | setting | LSST-Y1 | Roman-Real |
 |---|---|---|
@@ -173,14 +178,16 @@ One change at a time, fiducial cosmology, 3x2pt $`\Delta\chi^2`$:
 | 4 | CoCoA's Limber $`C_\ell`$ through DESC-CCL's transform vs CoCoA, both in Limber | 0.009 | 0.0006 |
 | 5 | DESC-CCL vs CoCoA, both in Limber | 0.16 | 0.031 |
 | 6 | DESC-CCL given a separable linear $`P(k,z)`$ (diagnostic, [Section 4](#ccl_fkem)) vs CoCoA | 0.21 | 0.062 |
-| 7 | DESC-CCL vs CoCoA | 8.76 | 0.228 |
+| 7 | DESC-CCL given the growth factor at $`k = 0.05\ {\rm Mpc}^{-1}`$ (diagnostic, [Section 4](#ccl_fkem)) vs CoCoA | 0.168 | 0.071 |
+| 8 | DESC-CCL vs CoCoA | 8.76 | 0.228 |
 
 1. Rows 1 and 2: each code is converged at its settings.
 2. Row 3: DESC-CCL's default sampling is not converged in LSST-Y1 (in
    $`w(\theta)`$); every DESC-CCL run here uses the reference sampling.
 3. Row 4: the real-space transforms agree.
 4. Row 5: the Limber $`C_\ell`$ agree ([Appendix](#ccl_appendix_cl)).
-5. Rows 6 and 7: the non-Limber term carries the difference.
+5. Rows 6 to 8: the non-Limber term carries the difference, through the
+   growth factor DESC-CCL receives.
 
 ## Why galaxy-galaxy lensing and clustering differ <a name="ccl_fkem"></a>
 
@@ -202,47 +209,76 @@ $`P_{\rm lin}(k)`$.
 | DESC-CCL (`pyccl/nonlimber/_nonlimber_FKEM.py`) | $`D^2(z)\,P_{\rm lin}(k, 0)`$ | CAMB's $`P_{\rm lin}(k, z)`$ |
 | CoCoA `v5.02` (`cosmo2D.c`) | $`[D(z)/D(z_{\rm piv})]^2\,P_{\rm lin}(k, z_{\rm piv})`$ | the same |
 
-Here $`z_{\rm piv}`$ is the lens bin's mean redshift. When the linear growth
-depends on $`k`$, $`D^2(z)\,P_{\rm lin}(k,0)`$ differs from
-$`P_{\rm lin}(k,z)`$. CoCoA `v5.02` uses one spectrum in both terms, so they
-cancel at the Limber limit. DESC-CCL uses two, so its terms leave an offset
-in $`C_{gs}`$ and $`C_{gg}`$ below $`\ell = 150`$.
+Here $`z_{\rm piv}`$ is the lens bin's mean redshift, and $`D(z)`$ is
+CoCoA's growth factor, which DESC-CCL receives:
 
-The evidence (fiducial cosmology unless a row sets $`w`$):
+```math
+D(z) = \sqrt{P_{\rm lin}(k_0, z)/P_{\rm lin}(k_0, 0)}, \qquad k_0 = 5\times10^{-4}\ {\rm Mpc}^{-1}
+```
 
-| check | LSST-Y1 | Roman-Real |
+(`G_growth` in each project's `likelihood/_cosmolike_prototype_base.py`).
+DESC-CCL's two terms cancel only if $`D(z)`$ is also the growth of
+$`P_{\rm lin}(k, z)`$ at the wavenumbers that matter, $`k \approx 0.01`$ to
+$`0.2\ {\rm Mpc}^{-1}`$. CoCoA uses one spectrum in both terms, so they
+cancel for any $`D(z)`$.
+
+At $`w = -0.9`$ the growth at $`k_0`$ is not the growth at those
+wavenumbers. For $`w \neq -1`$, CAMB evolves dark-energy perturbations,
+which change the growth on horizon scales, and $`k_0`$ is a horizon scale
+(`scripts/diag_growth.py`):
+
+| $`D(k, z)/D(k_0, z) - 1`$ at $`z = 1`$ | $`k = 10^{-3}\ {\rm Mpc}^{-1}`$ | $`k = 3\times10^{-3}\ {\rm Mpc}^{-1}`$ | $`k = 0.01\ {\rm Mpc}^{-1}`$ | $`k = 0.05\ {\rm Mpc}^{-1}`$ | $`k = 0.2\ {\rm Mpc}^{-1}`$ |
+|---|---|---|---|---|---|
+| $`w = -0.9`$ | +0.43% | +0.72% | +0.79% | +0.86% | +0.88% |
+| $`w = -1`$ | +0.02% | +0.03% | +0.06% | +0.13% | +0.16% |
+
+1. At $`w = -0.9`$ the growth steps up by 0.7% between $`k_0`$ and
+   $`k = 3\times10^{-3}\ {\rm Mpc}^{-1}`$: the dark-energy perturbations.
+2. Above that, both values of $`w`$ rise by the same 0.1%: the massive
+   neutrinos ($`m_\nu = 0.06`$ eV).
+3. DESC-CCL's FKEM term therefore has a linear power spectrum about 1.7%
+   low at $`z = 1`$ for $`w = -0.9`$, and the subtracted Limber term does
+   not.
+
+Giving DESC-CCL a growth factor measured at $`k = 0.05\ {\rm Mpc}^{-1}`$
+instead (variant `growth_sub` of `ccl_compute.py`, diagnostic; the NLA
+amplitude stays CoCoA's) removes the difference at both values of $`w`$:
+
+| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA (other parameters fiducial) | LSST-Y1 | Roman-Real |
 |---|---|---|
-| fiducial $`w`$ | −0.9 | −1 |
-| $`k`$ dependence of the growth: $`D(k,z)/D(k_0,z) - 1`$ for $`k`$ from 0.01 to $`0.2\ {\rm Mpc}^{-1}`$ and $`z`$ from 0.5 to 2 | +0.5% to +1.2% | +0.03% to +0.3% |
+| $`w = -0.9`$, DESC-CCL given CoCoA's $`D(z)`$ at $`k_0`$ | 8.76 | 7.57 |
+| $`w = -0.9`$, DESC-CCL given the growth at $`k = 0.05\ {\rm Mpc}^{-1}`$ | 0.168 | 0.064 |
+| $`w = -1`$, DESC-CCL given CoCoA's $`D(z)`$ at $`k_0`$ | 0.343 | 0.228 |
+| $`w = -1`$, DESC-CCL given the growth at $`k = 0.05\ {\rm Mpc}^{-1}`$ | 0.136 | 0.071 |
+| fiducial $`w`$, DESC-CCL given the separable table $`D^2(z)\,P_{\rm lin}(k,0)`$ | 0.21 | 0.062 |
+| both codes in Limber, fiducial $`w`$ (for scale) | 0.16 | 0.031 |
+
+With the growth at $`k = 0.05\ {\rm Mpc}^{-1}`$, the codes differ by about
+as much as when both are in Limber. At $`w = -1`$ the remaining change
+(0.343 to 0.136 in LSST-Y1) is the neutrino rise between $`k_0`$ and
+$`k = 0.05\ {\rm Mpc}^{-1}`$.
+
+At the fiducial cosmology the offset is visible in the spectra:
+
+| fiducial cosmology | LSST-Y1 ($`w = -0.9`$) | Roman-Real ($`w = -1`$) |
+|---|---|---|
 | DESC-CCL $`C_{gs}`$ below $`\ell = 150`$: $`C_\ell`$ with CAMB's table / $`C_\ell`$ with the separable table − 1 | −0.7% to −1.5% | −0.03% to −0.4% |
 | DESC-CCL $`C_{gg}`$ / CoCoA $`C_{gg}`$ − 1, every lens bin, $`\ell`$ from 2 to 140 | −1.74% to −0.80% | −0.58% to +0.30% |
-| 3x2pt $`\Delta\chi^2`$, DESC-CCL given the separable table vs CoCoA | 0.21 | 0.062 |
-| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA, $`w = -0.9`$, other parameters fiducial | 8.76 | 7.57 |
-| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA, $`w = -1`$, other parameters fiducial | 0.34 | 0.228 |
+| $`\Delta\chi^2`$ between non-Limber and Limber $`\gamma_t`$, CoCoA | 1.98 | 0.488 |
+| $`\Delta\chi^2`$ between non-Limber and Limber $`\gamma_t`$, DESC-CCL | 11.2 | 0.791 |
+| $`\Delta\chi^2`$ between non-Limber and Limber $`\gamma_t`$, DESC-CCL given the separable table | 2.06 | 0.469 |
 
-1. The LSST-Y1 $`C_{gg}`$ offset is flat in $`\ell`$. A non-Limber effect
-   changes with $`\ell`$; two terms that fail to cancel leave a constant
-   fraction.
-2. Given CoCoA's separable table, DESC-CCL agrees with CoCoA.
-3. The $`k`$ dependence of the growth is larger at $`w = -0.9`$, and so is
-   the difference, in both projects (last two rows).
-
-DESC-CCL's leftover is larger than the non-Limber effect it corrects.
-$`\Delta\chi^2`$ between non-Limber and Limber $`\gamma_t`$ in one code,
-LSST-Y1:
-
-| code | $`\Delta\chi^2`$, non-Limber vs Limber $`\gamma_t`$ |
-|---|---|
-| CoCoA | 1.98 |
-| DESC-CCL | 11.2 |
-| DESC-CCL given the separable table | 2.06 |
+The LSST-Y1 $`C_{gg}`$ offset is flat in $`\ell`$: two terms that fail to
+cancel leave a constant fraction, while a non-Limber effect changes with
+$`\ell`$. In LSST-Y1 the leftover is larger than the non-Limber effect it
+corrects.
 
 Neither code evaluates the exact integral when the growth depends on
 $`k`$. CoCoA's anchor at the lens bin's mean redshift limits the error to
 the bin's redshift width; DESC-CCL's anchor at $`z = 0`$ carries it from
 $`z = 0`$. Largest $`\lvert P_{\rm sep}/P_{\rm lin} - 1\rvert`$ for $`k`$
 from 0.01 to $`0.2\ {\rm Mpc}^{-1}`$ over the central 90% of each lens bin's
-$`n(z)`$ (`scripts/diag_anchor.py`):
+$`n(z)`$, with CoCoA's $`D(z)`$ (`scripts/diag_anchor.py`):
 
 | project (lowest to highest lens bin) | $`\max\lvert P_{\rm sep}/P_{\rm lin} - 1\rvert`$, anchor at $`z = 0`$ (DESC-CCL) | $`\max\lvert P_{\rm sep}/P_{\rm lin} - 1\rvert`$, anchor at the lens bin's mean redshift (CoCoA) |
 |---|---|---|
