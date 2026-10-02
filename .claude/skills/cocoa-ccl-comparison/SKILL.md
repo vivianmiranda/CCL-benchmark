@@ -50,10 +50,14 @@ Cocoa README only cites it).
    magnification are set to zero.
 2. CCL side, ccl conda env with the PR build first on PYTHONPATH:
    `ccl_compute.py <cocoa npz> <variant> <out.npz>` (variants in its
-   docstring: ref, limgs, limber, norsd, flat, points, separable
+   docstring: ref, limgs, limber, norsd, rsd_gs, flat, points, separable
    (diagnostic), ccl_numerics, bench, harmonic). Needs `COCOA_ROOTDIR`.
-3. `results.py` -> results.md/json (Delta chi2 = d^T C^-1 d, masked
-   inverse covariance, per probe); `plots.py <outdir>` (cocoa env).
+   A failing CCL call (angular_cl or correlation) is recorded per pair in
+   the output's `failures` and the pair is NaN.
+3. `CMP_WORK=<run folder>`: `results.py` -> results.md/json (Delta chi2 =
+   d^T C^-1 d, masked inverse covariance, per probe, failures table);
+   `harmonic.py` (Limber C_l medians/maxima); `plots.py <outdir>` (cocoa
+   env). `run_cocoa.sh` and `run_ccl.sh` run the whole campaign.
 
 Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
 
@@ -65,9 +69,11 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
 | NLA amplitude | A1 ((1+z)/1.62)^eta Omega_m 0.01389/D | ia_bias scaled by 0.01389/(5e-14 RHO_CRITICAL) |
 | galaxy bias | b1 per bin, constant | bias=(z, b1) |
 | non-Limber switch | l < 150 (gg and gs) | l_limber = 150, FKEM |
-| RSD | in gg (Limber and non-Limber) | has_rsd=True |
+| RSD | in gg only (include_RSD_GG = 1, include_RSD_GS = 0) | has_rsd=True in the w tracer, False in the gamma_t lens tracer (has_rsd applies to EVERY correlation of a tracer) |
 | transform | full-sky, bin-averaged | PR #1296 legendre with theta_max |
-| spin-2 l factor | exact | exact (WL tracer prefactor) |
+| growth | D = sqrt(P_lin(k0,z)/P_lin(k0,0)), k0 = 5e-4/Mpc | the same table, to z = 49 |
+| background | chi(z) on z_interp_1D to z = 50 | the full table; H from a cubic-spline derivative |
+| covariance | C = cov_g + cov_ng (columns 9, 10) | sigma = sqrt(C_ii) for the figures |
 
 ## 3. Lessons (2026-10-01 study)
 
@@ -97,14 +103,52 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
 - Local env: FAST-PT 4.0.0 calls np.trapz (removed in numpy 2.4): alias
   `np.trapz = np.trapezoid` before importing pyccl; building the PR needs
   swig (conda-forge, installed in the ccl env with the owner's OK).
+- RSD in gamma_t: CCL's `has_rsd` puts RSD in gamma_t too; CoCoA does not
+  (include_RSD_GS = 0). Use a separate lens tracer without RSD for
+  gamma_t; report the size (LSST-Y1 0.36, Roman-Real 0.076).
+- CCL's Limber RSD kernel evaluates the background at
+  chi_{l+1} = chi (l + 3/2)/(l + 1/2): 1.4 chi at l = 2 (z ~ 14 for lenses
+  at z = 4). Pass chi(z) to z = 50 or l = 2 fails ("integration error").
+- The FKEM offset depends on the scale dependence of the linear growth:
+  with w = -0.9 (LSST-Y1 fiducial) CAMB's D(k,z)/D(k0,z) - 1 is 0.5-1.2%
+  (k = 0.01-0.2, z = 0.5-2), with w = -1 (Roman-Real) 0.03-0.3%. Offset in
+  C_gs below l = 150: -0.7 to -1.5% (LSST-Y1), -0.03 to -0.4% (Roman).
+- Failing gamma_t pairs: lens behind source, Limber C_gs exactly 0; FKEM
+  gives C_l != 0 only below l = 150; CCL's correlation builds the C_l
+  spline with log-log extrapolation beyond lmax (needs positive end
+  values) and reports "ran out of memory" / "failed to create spline".
+- Final numbers (2026-10-01): LSST-Y1 8.76 (6.6-10.5 over five models;
+  gamma_t 7.29, w 6.26, shear 0.0013), separable diagnostic 0.21;
+  Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script
+  modeling: 154 and 56.
 
-## 4. Plots
+## 4. Plots (owner's preferences, learned the hard way)
+
+The general figure style (notebook rcParams, plotter defaults, the rules
+the owner applies by eye) is in the Cocoa skill, Section 8.8, "The
+maintainer's figure style": read it first. This study's figures:
 
 Use cosmolike_core `cosmolike_notebook_utils/plot_datavectors.py`
-(`plot_xi`, `plot_gammat_tomo_limber`, `plot_wtheta_tomo`) in ratio mode:
-curves = CCL/CoCoA (one per model), reference = ones (zero for excluded
-pairs). Copy the notebooks' style exactly (rcParams block of
-EXAMPLE_EVALUATE notebooks, twilight_shifted, linewidth/linestyle lists,
-bintextsize 20, axis labels 17, legend 17, figsize (18, 13) grids and
-(18, 13/5) for w, tight ylim from the data). The owner rejects plots with
-white space, small fonts or small captions.
+(`plot_xi`, `plot_gammat_tomo_limber`, `plot_wtheta_tomo`) in ratio mode,
+with these adaptations (all in `plots.py`):
+
+- Plot (CCL - CoCoA)/sigma, sigma = sqrt(C_ii) (1 = one sigma). Curves
+  enter as 1 + that, reference = ones (0 for excluded pairs). Ratios are
+  rejected: they spike where w(theta) and gamma_t cross zero.
+- Only real CCL vs CoCoA in figures (one curve per cosmology). Modeling
+  variants live in tables only ("way too many cases").
+- One y-range PER ROW, fitted to the data, not symmetric, 0 included, 10%
+  padding; outlier panels (spread > 2.5x the row median) get alpha and the
+  panel prints "1/alpha = f" with f in 2, 3, 5, 10, 20, ... Pass the
+  rows' bands through the plotters' per-row `ylim` (a list of one
+  [1 + lo, 1 + hi] per row; cosmolike_core df58d62). Never monkey-patch
+  matplotlib or the plotters (Cocoa skill, Section 8.5): a missing option
+  is added to the plotter. If every panel of a row needs alpha, the range
+  is wrong.
+- Legend above the panels in ONE row; bin label and 1/alpha in the free
+  left corner (top or bottom).
+- Large fonts: y label 24, y ticks 19, x ticks 22, x label 24, bin text
+  22, legend 22; dpi 180.
+- Colors: twilight_shifted without its pale middle, luminance capped at
+  0.5; fiducial solid; the lightest colors get the long dash and wide
+  lines, the darkest the dots (a light dotted thin line is invisible).

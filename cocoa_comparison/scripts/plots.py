@@ -39,13 +39,6 @@ OUT = sys.argv[1]; os.makedirs(OUT, exist_ok=True)
 pd_path = os.path.join(os.environ["ROOTDIR"], "external_modules/code/cosmolike_core/cosmolike_notebook_utils/plot_datavectors.py")
 spec = importlib.util.spec_from_file_location("plot_datavectors", pd_path)
 pdv = importlib.util.module_from_spec(spec); spec.loader.exec_module(pdv)
-# the plotters share one y-axis across the whole grid in ratio mode; share it
-# per row instead, so each row keeps its own y-range (row_ranges)
-_subplots = pdv.plt.subplots
-def _subplots_by_row(*args, **kw):
-  if kw.get("sharey") is True: kw["sharey"] = "row"
-  return _subplots(*args, **kw)
-pdv.plt.subplots = _subplots_by_row
 
 PROJ = {"lsst_y1": "LSST-Y1", "roman_real": "Roman-Real"}
 MODELS = [("fid", "fiducial"), ("omm_lo", r"$\Omega_m=0.25$"), ("omm_hi", r"$\Omega_m=0.35$"),
@@ -127,13 +120,16 @@ def row_ranges(R, rows):
       a[ij] = ok[0] if ok else ALPHAS[-1]
   return a, lims
 
+def bands(lims):
+  # the plotters' ratio-mode ylim: one [1 + lo, 1 + hi] band per row
+  return [[1.0 + lo, 1.0 + hi] for lo, hi in (x if x is not None else (-0.1, 0.1) for x in lims)]
+
 def set_rows(axrows, lims, ylabel):
   from matplotlib.ticker import MaxNLocator
   for axs, lim in zip(axrows, lims):
     axs[0].set_ylabel(ylabel, fontsize=24)
     if lim is None: continue
     for ax in axs:
-      ax.set_ylim(lim)
       ax.yaxis.set_major_locator(MaxNLocator(nbins=5, prune="both"))
       ax.tick_params(axis="y", labelsize=19)
       ax.tick_params(axis="x", labelsize=22)
@@ -203,7 +199,6 @@ def figures(p, curves, labels, tag):
   U = [unpack(p, c) for c in curves]
   par = list(range(len(curves)))
   S, L = meta["source_ntomo"], meta["lens_ntomo"]
-  dummy = [0.99, 1.01]   # replaced row by row
   def prep(k, rows):
     R = np.array([u[k] for u in U])
     a, lims = row_ranges(R, rows)
@@ -213,7 +208,7 @@ def figures(p, curves, labels, tag):
     rows = [[(i, j) for i in range(j + 1)] for j in range(S)]
     R, a, lims = prep(k, rows)
     fig, axes = pdv.plot_xi(pm, [(th, r, r) for r in R], xi_ref=(th, ones[0], ones[1]), param=par,
-                            legend=labels, legendloc=(0.62, 0.62), ylim=dummy, thetashow=show,
+                            legend=labels, legendloc=(0.62, 0.62), ylim=bands(lims), thetashow=show,
                             figsize=(16 + 1.2*S, 12 + 1.1*S), bintextpos=[[0.1, 0.85], [0.1, 0.85]],
                             bintextsize=22, yaxislabelsize=24, yaxisticklabelsize=19, xaxisticklabelsize=22,
                             wspace=0.4, **style(len(curves)))
@@ -226,7 +221,7 @@ def figures(p, curves, labels, tag):
     fig.savefig(os.path.join(OUT, "%s_%s_%s.png" % (p, tag, nm)), dpi=180, bbox_inches="tight", bbox_extra_artists=fig.legends); plt.close(fig)
   R, a, lims = prep(2, [[(i, j) for i in range(L)] for j in range(S)])
   fig, axes = pdv.plot_gammat_tomo_limber([(th, r) for r in R], gammat_ref=(th, ones[2]), param=par,
-                                          legend=labels, legendloc=(0.92, 0.40), ylim=dummy, thetashow=show,
+                                          legend=labels, legendloc=(0.92, 0.40), ylim=bands(lims), thetashow=show,
                                           figsize=(16 + 1.2*S, 12 + 1.1*L), bintextpos=[0.1, 0.85], bintextsize=22,
                                           yaxislabelsize=24, yaxisticklabelsize=19, xaxisticklabelsize=22, **style(len(curves)))
   set_rows([[axes[j, i] for i in range(L)] for j in range(S)], lims, r"$\Delta\gamma_t/\sigma$")
@@ -237,7 +232,7 @@ def figures(p, curves, labels, tag):
   fig.savefig(os.path.join(OUT, "%s_%s_gammat.png" % (p, tag)), dpi=180, bbox_inches="tight", bbox_extra_artists=fig.legends); plt.close(fig)
   R, a, lims = prep(3, [[(i, i) for i in range(L)]])
   fig, axes = pdv.plot_wtheta_tomo([(th, r) for r in R], theta_wtheta_ref=(th, ones[3]), param=par,
-                                   legend=labels, legendloc=(0.915, 0.05), ylim=dummy, thetashow=show,
+                                   legend=labels, legendloc=(0.915, 0.05), ylim=bands(lims)[0], thetashow=show,
                                    figsize=(18, 13./5), bintextpos=[0.1, 0.85], bintextsize=22,
                                    yaxislabelsize=24, yaxisticklabelsize=19, xaxisticklabelsize=22, **style(len(curves)))
   set_rows([[axes[i] for i in range(L)]], lims, r"$\Delta w/\sigma$")
