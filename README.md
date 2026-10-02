@@ -26,8 +26,9 @@ Contents:
 4. [Findings](#ccl_findings)
 5. [Figures](#ccl_figures)
 6. [TATT intrinsic alignments](#ccl_tatt)
-7. [What it took to run DESC-CCL](#ccl_run)
-8. [Reproduce](#ccl_reproduce)
+7. [Execution time (macOS, 8 cores)](#ccl_time)
+8. [What it took to run DESC-CCL](#ccl_run)
+9. [Reproduce](#ccl_reproduce)
 
 ## Summary <a name="ccl_summary"></a>
 
@@ -425,6 +426,34 @@ $\gamma_t$ (at most $0.045\sigma$):
 ![Roman-Real xi+ TATT](cocoa_comparison/figures/roman_real_tatt_cosmologies_xip.png)
 ![Roman-Real gamma_t TATT](cocoa_comparison/figures/roman_real_tatt_cosmologies_gammat.png)
 
+## Execution time (macOS, 8 cores) <a name="ccl_time"></a>
+
+Time per data-vector evaluation on an Apple M2 Pro laptop (macOS 13.7.5),
+8 OpenMP threads, one job at a time. CAMB is excluded on both sides: both
+codes receive the same CAMB tables.
+- CoCoA: Cobaya's timer of the likelihood component (the interpolation of
+  the CAMB tables, cosmolike's data vector and $\chi^2$), mean of 20
+  evaluations.
+- DESC-CCL: from the CAMB tables to the data vector at the reference
+  sampling, the one that moves by $\Delta\chi^2 = 0.0014$ against a finer run
+  (`CosmologyCalculator`, tracers, the TATT PT step, every $C_\ell$, the
+  full-sky bin-averaged transforms of PR #1296), mean of 10 evaluations.
+
+Every evaluation is a new cosmology (the five models in turn), after two
+warm-up evaluations that are not timed.
+
+| case | CoCoA (s) | DESC-CCL (s) | DESC-CCL / CoCoA |
+|---|---|---|---|
+| LSST-Y1, NLA | 0.046 | 10.45 | 228 |
+| LSST-Y1, TATT | 0.053 | 15.41 | 292 |
+| Roman-Real, NLA | 0.070 | 17.96 | 256 |
+| Roman-Real, TATT | 0.076 | 22.75 | 298 |
+
+Every evaluation is within 9% (CoCoA) and 7% (DESC-CCL) of the mean
+(`cocoa_comparison/timing_macos.txt`). The note at the top times this
+repository's benchmark scripts (their modeling, Intel CPU); this table times
+the configurations compared in this study.
+
 ## What it took to run DESC-CCL <a name="ccl_run"></a>
 
 | symptom | cause | resolution |
@@ -490,6 +519,13 @@ CMP_WORK=<run folder> python cocoa_comparison/scripts/bias.py
 
 ```bash
 CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
+```
+
+**Step :six:**: Time both codes (8 OpenMP threads; run nothing else
+meanwhile; Conda cocoa environment with `start_cocoa.sh` sourced)
+
+```bash
+CCL_PYTHON=<ccl env python> CCL_PR=<PR build folder> bash cocoa_comparison/run_timing.sh <run folder>
 ```
 
 The diagnostics behind findings 2 and 4 are `scripts/diag_fkem_offset.py`,
