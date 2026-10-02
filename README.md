@@ -86,9 +86,11 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
   - Variations: $\Omega_m = 0.25, 0.35$ and $n_s = 0.92, 1.01$, at fixed $A_s$;
     each project also at the other project's $w$ (LSST-Y1 at $w = -1$,
     Roman-Real at $w = -0.9$). $m_\nu$ is not varied.
-  - Scope: NLA and linear bias with every systematic at zero. Magnification,
-    photo-z shifts, shear calibration, TATT and baryons are outside this
-    comparison.
+  - Scope: intrinsic alignment NLA in both codes, in every model and every
+    row of the tables below; linear bias; every systematic at zero.
+    Magnification, photo-z shifts, shear calibration, TATT and baryons are
+    outside this comparison. (The timings in the note above use TATT; this
+    study does not.)
 - **DESC-CCL settings** (reference run):
   - `angular_cl(..., l_limber=150, non_limber_integration_method="FKEM", fkem_Nchi=2000)`
     for $C_{gg}$ and $C_{gs}$, the same switch as CoCoA;
@@ -161,10 +163,11 @@ The benchmark-modeling row applies the modeling choices of
 - $C_{gs}$ in Limber, no RSD, `l_limber=100`, `fkem_Nchi=500`;
 - flat-sky FFTLog at the bin centers.
 
-The intrinsic alignment stays NLA; the scripts use TATT. The row describes
-the settings of the benchmark scripts behind the timings in the note above,
-not DESC-CCL itself; the $P(k)$-source row isolates the one ingredient
-unique to it.
+The row copies every modeling choice of those scripts except the intrinsic
+alignment: the scripts use TATT, the row uses NLA, as every other row. It
+describes the settings of the benchmark scripts behind the timings in the
+note above, not DESC-CCL itself; the $P(k)$-source row isolates the one
+ingredient unique to it.
 
 Limber $C_\ell$ at 32 $\ell$ from 20 to $\ell_{\max}$,
 $|C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1|$ (median over bin pairs / maximum
