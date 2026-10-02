@@ -19,34 +19,36 @@ CoCoA `v5.02` and DESC-CCL compute the same real-space 3x2pt data vectors
 cosmologies. The differences are measured with each project's covariance.
 Scripts, tables and figures: [`cocoa_comparison/`](cocoa_comparison).
 
-## Summary
+Contents:
+1. [Summary](#ccl_summary)
+2. [Method](#ccl_method)
+3. [Results](#ccl_results)
+4. [Findings](#ccl_findings)
+5. [Figures](#ccl_figures)
+6. [What it took to run DESC-CCL](#ccl_run)
+7. [Reproduce](#ccl_reproduce)
+
+## Summary <a name="ccl_summary"></a>
 
 $\Delta\chi^2 = (d_{\rm CCL} - d_{\rm CoCoA})^{T} C^{-1} (d_{\rm CCL} - d_{\rm CoCoA})$,
 with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
 
-| project | five cosmologies | fiducial: $\xi_\pm$ / $\gamma_t$ / $w(\theta)$ | after the diagnostic below |
+| project | five cosmologies | fiducial: $\xi_\pm$ / $\gamma_t$ / $w(\theta)$ | separable $P_{\rm lin}$ diagnostic |
 |---|---|---|---|
 | LSST-Y1 | 6.6 to 10.5 | 0.0013 / 7.29 / 6.26 | 0.21 |
 | Roman-Real | 0.17 to 0.29 | 0.058 / 0.27 / 0.096 | 0.062 |
 
-- Cosmic shear agrees in both projects. In LSST-Y1, $\Delta\chi^2 = 0.0013$.
-- $\gamma_t$ and $w(\theta)$ differ because of DESC-CCL's non-Limber method
-  (FKEM) when the linear growth depends on $k$. DESC-CCL subtracts a Limber
-  term computed with $P_{\rm lin}(k,z)$ and adds a non-Limber term computed
-  with $D^2(z)\,P_{\rm lin}(k,0)$; these do not cancel when $P_{\rm lin}(k,z)
-  \neq D^2(z)\,P_{\rm lin}(k,0)$. CoCoA `v5.02` uses $D^2(z)\,P_{\rm lin}(k,0)$
-  in both terms.
-- Diagnostic (not used in the figures): DESC-CCL given
-  $P_{\rm lin}(k,z) = D^2(z)\,P_{\rm lin}(k,0)$ agrees with CoCoA to
-  $\Delta\chi^2 = 0.21$ (LSST-Y1) and $0.062$ (Roman-Real).
+- Cosmic shear agrees in both projects.
+- $\gamma_t$ and $w(\theta)$ differ through DESC-CCL's non-Limber (FKEM)
+  term when the linear growth depends on $k$ ([finding 2](#ccl_findings)).
 - The modeling of this repository's DESC-CCL benchmark scripts differs from
-  CoCoA by $\Delta\chi^2 = 154$ (LSST-Y1) and $56$ (Roman-Real). RSD alone is
-  115 (LSST-Y1).
+  CoCoA by $\Delta\chi^2 = 154$ (LSST-Y1) and $56$ (Roman-Real)
+  ([finding 5](#ccl_findings)).
 
-## Method
+## Method <a name="ccl_method"></a>
 
 - **Same inputs.** DESC-CCL receives, through `pyccl.CosmologyCalculator`,
-  the tables cosmolike receives at the same point:
+  the tables CoCoA receives at the same point:
   - CAMB's linear and nonlinear $P(k,z)$ ($z \le 6$,
     $10^{-5} \le k \le 200\ {\rm Mpc}^{-1}$);
   - $\chi(z)$ and $H(z)$ (from $d\chi/dz$) to $z = 50$;
@@ -58,8 +60,7 @@ with the projects' masks (CoCoA's tests pass at $\Delta\chi^2 < 0.2$):
   No Boltzmann or background difference enters.
 - **DESC-CCL build.** pyccl from
   [LSSTDESC/CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296) (commit
-  `647ad4a`). It provides full-sky $\xi_\pm$ and exact bin averaging;
-  CCL 3.3 refuses full-sky $\xi_\pm$ (error 1040).
+  `647ad4a`): full-sky $\xi_\pm$ and exact bin averaging.
 - **Layout.**
   - Bins: CoCoA's log $\theta$ bins (LSST-Y1: 26 bins from 2.5' to 900';
     Roman-Real: 15 bins from 2.5' to 250').
@@ -97,7 +98,7 @@ $\gamma_t$ lens tracer has it off to match CoCoA's model. Switching it on
 moves DESC-CCL's $\gamma_t$ by $\Delta\chi^2 = 0.36$ (LSST-Y1) and $0.076$
 (Roman-Real).
 
-## Results
+## Results <a name="ccl_results"></a>
 
 DESC-CCL (reference settings) vs CoCoA:
 
@@ -111,7 +112,8 @@ DESC-CCL (reference settings) vs CoCoA:
 
 Per-probe columns zero the other probes' entries of $d$; the cross-covariance
 makes them not add up to the 3x2pt value. In Roman-Real, the pair lens 7 -
-source 2 is left out (13 kept points; see failures below).
+source 2 (0-indexed) is left out: 13 points the mask keeps
+([finding 4](#ccl_findings)).
 
 Fiducial cosmology, one change at a time (3x2pt $\Delta\chi^2$):
 
@@ -150,7 +152,7 @@ largest):
 | Roman-Real | $C_{gs}$ | 3.0e-4 / 1.9e-3 | 3.6e-4 / 1.9e-3 | 3.3e-4 / 1.8e-3 |
 | Roman-Real | $C_{gg}$ | 9.3e-4 / 4.3e-3 | 4.2e-5 / 1.0e-3 | 2.7e-5 / 3.0e-3 |
 
-## Findings
+## Findings <a name="ccl_findings"></a>
 
 1. **Limber layer.** The codes agree in harmonic space (table above) and in
    real space with both codes in Limber ($\Delta\chi^2$ 0.16 and 0.031).
@@ -174,13 +176,15 @@ largest):
    while DESC-CCL mixes the two forms. Diagnostic: DESC-CCL given the
    separable table lowers the fiducial $\Delta\chi^2$ from 8.76 to 0.21
    (LSST-Y1, $\gamma_t$ 7.29 to 0.064, $w$ 6.26 to 0.16) and from 0.228 to
-   0.062 (Roman-Real). The non-Limber effect on LSST-Y1 $\gamma_t$ is 1.98
-   in CoCoA, 11.2 in DESC-CCL and 2.06 in DESC-CCL with the separable table.
+   0.062 (Roman-Real). The $\Delta\chi^2$ of the non-Limber effect on
+   LSST-Y1 $\gamma_t$ (non-Limber vs Limber in the same code) is 1.98 in
+   CoCoA, 11.2 in DESC-CCL and 2.06 in DESC-CCL with the separable table.
 3. **DESC-CCL numerics.** DESC-CCL's default FKEM sampling (`fkem_Nchi`
    default, 500 log $\ell$) is 0.34 from the converged run in LSST-Y1 (in
    $w(\theta)$) and 0.0005 in Roman-Real.
 4. **DESC-CCL transform failures.**
-   - The pairs: LSST-Y1 lens 4 - source 0 and Roman-Real lens 7 - source 2.
+   - The pairs (0-indexed): LSST-Y1 lens 4 - source 0 and Roman-Real lens
+     7 - source 2 (panel (8, 3) of the Roman-Real $\gamma_t$ figure).
      In both, the lens bin lies behind the source bin, so the Limber
      $C_{gs}$ is zero at every $\ell$. FKEM gives a nonzero $C_{gs}$ below
      $\ell = 150$, and the Limber part above is zero.
@@ -190,13 +194,13 @@ largest):
      $\ell_{\max}$ (`ccl_f1d_extrap_logx_logy` in `ccl_correlation.c`),
      which needs positive values at the end.
    - Both pairs are left out of the comparison. CoCoA's mask removes the
-     LSST-Y1 pair; 13 kept Roman-Real points are left out.
+     LSST-Y1 pair; in Roman-Real, 13 points the mask keeps are left out.
 5. **Modeling choices** (one-change table): RSD is 115 (LSST-Y1, in
    $w(\theta)$); $C_{gs}$ in Limber 9.2; values at bin centers instead of
    bin averages 10.3 (LSST-Y1) and 22.8 (Roman-Real, whose bins are wider:
    $\Delta\ln\theta = 0.31$ against 0.23).
 
-## Figures
+## Figures <a name="ccl_figures"></a>
 
 Each panel shows $(d_{\rm CCL} - d_{\rm CoCoA})/\sigma$ at the same
 cosmology, with $\sigma = \sqrt{C_{ii}}$ from the project's covariance: 1 is a
@@ -204,78 +208,102 @@ one-sigma difference. One curve per cosmology. Each row of panels has its own
 y-range. A panel marked $1/\alpha = f$ shows the difference divided by $f$:
 the difference is $f$ times what the axis reads. LSST-Y1 shows every
 $\theta$; the $\Delta\chi^2$ above uses the mask. Roman-Real leaves the
-masked points blank.
+masked points blank. Panel labels: $\gamma_t$ (lens, source) and
+$w(\theta)$ (lens) count from 1; $\xi_\pm$ (bin $i$, bin $j$) count from 0.
+The maxima below are over the five cosmologies and every plotted point.
 
 **LSST-Y1, $\gamma_t$.** DESC-CCL's FKEM offset from finding 2 reaches
-$-0.5\sigma$ near 100'. The same shape appears at every cosmology.
+$-0.53\sigma$ near 100'. The same shape appears at every cosmology.
 
 ![LSST-Y1 gamma_t](cocoa_comparison/figures/lsst_y1_cosmologies_gammat.png)
 
-**LSST-Y1, $w(\theta)$.** The same FKEM offset: $-0.5\sigma$ to $-1.3\sigma$
-per point below 100' (at most $0.84\sigma$ on the points the mask keeps).
+**LSST-Y1, $w(\theta)$.** The same FKEM offset: $-0.4\sigma$ to $-1.39\sigma$
+per point below 100' (at most $0.89\sigma$ on the points the mask keeps).
 
 ![LSST-Y1 w](cocoa_comparison/figures/lsst_y1_cosmologies_w.png)
 
-**LSST-Y1, $\xi_+$ and $\xi_-$.** At most $0.01\sigma$.
+**LSST-Y1, $\xi_+$ and $\xi_-$.** At most $0.014\sigma$ ($\xi_+$) and
+$0.010\sigma$ ($\xi_-$).
 
 ![LSST-Y1 xi+](cocoa_comparison/figures/lsst_y1_cosmologies_xip.png)
 ![LSST-Y1 xi-](cocoa_comparison/figures/lsst_y1_cosmologies_xim.png)
 
-**Roman-Real, $\gamma_t$.** At most $0.03\sigma$. Pair lens 8 - source 3
-(1-indexed) is blank: DESC-CCL's transform fails (finding 4).
+**Roman-Real, $\gamma_t$.** At most $0.045\sigma$. Panels marked
+"excluded" are CoCoA's $\gamma_t$ exclusions (Method, Layout); panel (8, 3)
+is blank because DESC-CCL's transform fails ([finding 4](#ccl_findings)).
 
 ![Roman-Real gamma_t](cocoa_comparison/figures/roman_real_cosmologies_gammat.png)
 
-**Roman-Real, $w(\theta)$.** At most $0.09\sigma$.
+**Roman-Real, $w(\theta)$.** At most $0.088\sigma$.
 
 ![Roman-Real w](cocoa_comparison/figures/roman_real_cosmologies_w.png)
 
-**Roman-Real, $\xi_+$ and $\xi_-$.** At most $0.04\sigma$.
+**Roman-Real, $\xi_+$ and $\xi_-$.** At most $0.050\sigma$ ($\xi_+$) and
+$0.059\sigma$ ($\xi_-$).
 
 ![Roman-Real xi+](cocoa_comparison/figures/roman_real_cosmologies_xip.png)
 ![Roman-Real xi-](cocoa_comparison/figures/roman_real_cosmologies_xim.png)
 
-## What it took to run DESC-CCL
+## What it took to run DESC-CCL <a name="ccl_run"></a>
 
 | symptom | cause | resolution |
 |---|---|---|
 | `CCLError` 1040 for full-sky $\xi_\pm$ | CCL 3.3 has no full-sky $\xi_\pm$ | pyccl built from PR #1296 (CMake against the conda env's GSL and FFTW; SWIG from conda-forge) |
 | `AttributeError: np.trapz` in FAST-PT 4.0.0 | numpy 2.4 removed `np.trapz` | `np.trapz = np.trapezoid` before importing pyccl (no package changed) |
-| `ccl_angular_cls_limber(): integration error`, Roman-Real lens bins 6 and 7 with RSD | the harness's growth table ended at $z = 6$ | growth from CAMB to $z = 49$ |
-| same error, lens bin 7, $\ell = 2$ only | the Limber RSD kernel evaluates the background at $\chi_{\ell+1} = \chi\,(\ell + 3/2)/(\ell + 1/2)$, $1.4\chi$ at $\ell = 2$ ($z \approx 14$ for $z = 4$); the harness's $\chi(z)$ table ended at $z = 10$ | CoCoA's $\chi(z)$ to $z = 50$ |
+| `ccl_angular_cls_limber(): integration error`, Roman-Real lens bins 6 and 7 with RSD | the growth table of `cocoa_export.py` ended at $z = 6$ | growth from CAMB to $z = 49$ |
+| same error, lens bin 7, $\ell = 2$ only | the Limber RSD kernel evaluates the background at $\chi_{\ell+1} = \chi\,(\ell + 3/2)/(\ell + 1/2)$, $1.4\chi$ at $\ell = 2$ ($z \approx 14$ for $z = 4$); `ccl_compute.py` cut CoCoA's $\chi(z)$ table at $z = 10$ | CoCoA's $\chi(z)$ to $z = 50$ |
 | $H(z)$ off by $3\times10^{-4}$ above $z = 3$ | `np.gradient` of $\chi(z)$ where the $z$ grid coarsens | cubic-spline derivative (agrees with CCL's own $H(z)$ to $10^{-5}$) |
 | Eisenstein-Hu cosmology needs $\sigma_8$ | the benchmark modeling uses DESC-CCL's own $P(k)$ | `ccl.sigma8` of the CAMB-table cosmology |
 | `correlation` fails for two $\gamma_t$ pairs | finding 4 | not worked around: pairs left out |
 
 CoCoA side:
-- `init_data_real` runs once per process, so the full vector (a scratch
-  dataset with `ones.mask`) and the masked covariance come from separate
-  runs;
+- cosmolike reads the data files once per process, so the full vector (a
+  scratch dataset with `ones.mask`) and the masked covariance come from
+  separate runs;
 - the Roman-Real covariance is not positive definite with every point, so
   Roman-Real uses its mask;
 - Cobaya returns $\chi(z)$ only at requested redshifts, so it is read on the
   likelihood's $z$ grid.
 
-## Reproduce
+## Reproduce <a name="ccl_reproduce"></a>
+
+We assume users run the commands from the CCL-benchmark root folder, have a
+Cocoa installation with the lsst_y1 and roman_real projects and their data,
+a conda environment `ccl` with pyccl's dependencies, and a pyccl build of
+[LSSTDESC/CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296) (the
+folder that contains its `pyccl` package). `<run folder>` is the same path in
+every step.
+
+**Step :one:**: Export CoCoA's data vectors, tables and covariances (Conda
+cocoa environment, from the `Cocoa/` folder: `source start_cocoa.sh`
+first, then come back to the CCL-benchmark root)
 
 ```bash
-# 1. CoCoA exports: cocoa environment, start_cocoa.sh sourced
 bash cocoa_comparison/run_cocoa.sh <run folder>
 ```
 
-```bash
-# 2. DESC-CCL runs: ccl conda environment and the PR #1296 build
-CCL_PYTHON=<ccl env python> CCL_PR=<PR build> COCOA_ROOTDIR=<Cocoa> bash cocoa_comparison/run_ccl.sh <run folder>
-```
+**Step :two:**: Compute the DESC-CCL data vectors (`CCL_PYTHON` is the python
+of the `ccl` environment; `CCL_PR` the PR #1296 build folder; `COCOA_ROOTDIR`
+the `Cocoa/` folder)
 
 ```bash
-# 3. tables (results.md, results.json) and figures
+CCL_PYTHON=<ccl env python> CCL_PR=<PR build folder> COCOA_ROOTDIR=<Cocoa folder> bash cocoa_comparison/run_ccl.sh <run folder>
+```
+
+**Step :three:**: Write the tables (any python with numpy)
+
+```bash
 CMP_WORK=<run folder> python cocoa_comparison/scripts/results.py
 CMP_WORK=<run folder> python cocoa_comparison/scripts/harmonic.py
+```
+
+**Step :four:**: Draw the figures (Conda cocoa environment with
+`start_cocoa.sh` sourced: `plots.py` uses cosmolike_core's
+`plot_datavectors.py`)
+
+```bash
 CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
 ```
 
-Run `plots.py` in the cocoa environment: it uses cosmolike_core's
-`plot_datavectors.py`. The diagnostics behind findings 2 and 4 are
-`scripts/diag_fkem_offset.py`, `scripts/diag_l7s2.py` and
-`scripts/diag_growth.py`.
+The diagnostics behind findings 2 and 4 are `scripts/diag_fkem_offset.py`,
+`scripts/diag_growth.py` and `scripts/diag_l7s2.py` (usage in each file).

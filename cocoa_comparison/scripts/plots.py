@@ -96,11 +96,14 @@ def row_ranges(R, rows):
   """One y-range per row of panels, fitted to the data (not symmetric):
   from the lowest to the highest value of the row's typical panels, 0
   included, 10% padding. Typical = the panels whose spread is within 2.5
-  times the row's median. Any panel that leaves its row's range gets
+  times the median spread of the panels holding at least 10% of the row's
+  largest. Any panel that leaves its row's range gets
   alpha = 1/f, f the first of the ladder that brings it inside.
   R: (ncurve, ntheta, n1, n2), 1 + (DESC-CCL - CoCoA)/sigma; rows: list of
   lists of (i, j)."""
   D = np.where(np.isfinite(R), R - 1.0, np.nan)
+  # a pair the project excludes arrives as zeros (unpack): no range, no alpha
+  D[:, :, np.all(R == 0, axis=(0, 1))] = np.nan
   with np.errstate(all="ignore"):
     lo_p, hi_p = np.nanmin(D, axis=(0, 1)), np.nanmax(D, axis=(0, 1))
   a = np.ones(lo_p.shape); lims = []
@@ -109,7 +112,11 @@ def row_ranges(R, rows):
     if not core:
       lims.append(None); continue
     spread = np.array([max(-lo_p[ij], hi_p[ij], 0.0) for ij in core])
-    keep = [ij for ij, x in zip(core, spread) if x <= 2.5*np.median(spread)] or core
+    # the typical spread: median over the panels with at least 10% of the
+    # row's largest (panels near zero, such as lens-behind-source gamma_t,
+    # do not set the range)
+    typical = np.median(spread[spread >= 0.1*spread.max()])
+    keep = [ij for ij, x in zip(core, spread) if x <= 2.5*typical] or core
     lo = min(0.0, min(lo_p[ij] for ij in keep)); hi = max(0.0, max(hi_p[ij] for ij in keep))
     if hi - lo <= 0: lo, hi = -0.1, 0.1
     pad = 0.10*(hi - lo); lo, hi = lo - pad, hi + pad
@@ -129,8 +136,13 @@ def set_rows(axrows, lims, ylabel):
   for axs, lim in zip(axrows, lims):
     axs[0].set_ylabel(ylabel, fontsize=24)
     if lim is None: continue
+    # ticks at least 8% inside the row's range, so the labels of adjacent
+    # (glued) rows never touch
+    span = lim[1] - lim[0]
+    ticks = [t for t in MaxNLocator(nbins=5).tick_values(lim[0], lim[1])
+             if lim[0] + 0.08*span <= t <= lim[1] - 0.08*span]
     for ax in axs:
-      ax.yaxis.set_major_locator(MaxNLocator(nbins=5, prune="both"))
+      ax.set_yticks(ticks)
       ax.tick_params(axis="y", labelsize=19)
       ax.tick_params(axis="x", labelsize=22)
       if ax.get_xlabel(): ax.set_xlabel(r"$\theta$ [arcmin]", fontsize=24)
@@ -202,7 +214,9 @@ def figures(p, curves, labels, tag):
   def prep(k, rows):
     R = np.array([u[k] for u in U])
     a, lims = row_ranges(R, rows)
-    print("  %s %s: 1/alpha != 1 in %d panels" % (p, "xip xim gammat w".split()[k], int((a != 1).sum())))
+    D = np.where(np.isfinite(R) & ~np.all(R == 0, axis=(0, 1))[None, None], np.abs(R - 1.0), np.nan)
+    print("  %s %s: max |Delta/sigma| %.3f; 1/alpha != 1 in %d panels"
+          % (p, "xip xim gammat w".split()[k], np.nanmax(D), int((a != 1).sum())))
     return [scaled(r, a) for r in R], a, lims
   for pm, nm, k in ((1, "xip", 0), (-1, "xim", 1)):
     rows = [[(i, j) for i in range(j + 1)] for j in range(S)]
