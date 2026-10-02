@@ -26,7 +26,14 @@ Cocoa README only cites it).
    recorded and the pair left out (NaN), never worked around.
 3. Wording: never "bug fixed in X on date". Say "CoCoA v5.02 does this
    consistently, while CCL ...".
-4. Never time anything (the owner times on the Intel test machine).
+4. Time only when the owner asks, and then (2026-10-02 rules): one job
+   on the machine and NOTHING else of the session running (no monitors,
+   no tail -f, no agents, no edits); discard the first calls (two warm-up
+   evaluations: CoCoA does once-per-run work in them) and average many
+   calls, each a new cosmology; CAMB excluded on both sides; DESC-CCL at
+   the sampling validated to reach CoCoA's accuracy (the reference), never
+   at its faster default. Scripts: run_timing.sh, scripts/cocoa_timing.py,
+   scripts/ccl_timing.py.
    Downloads (git clones, conda/pip packages) need explicit permission.
    <= 8 threads total. Never copy the cocoa environment dump (it holds a
    secret token) anywhere.
