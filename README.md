@@ -31,6 +31,10 @@ restricted to the project's mask. For scale, CoCoA's own tests pass when two
 runs of one code differ by $`\Delta\chi^2 < 0.2`$. The study quotes that
 number as a scale, not as a cross-code acceptance criterion.
 
+The fiducial cosmologies of the two projects differ only in the dark-energy
+equation of state: $`w = -0.9`$ in LSST-Y1, $`w = -1`$ in Roman-Real. The
+last two rows run both projects at both values.
+
 | data vector and cosmology (NLA) | $`\Delta\chi^2`$ DESC-CCL vs CoCoA, LSST-Y1 | $`\Delta\chi^2`$ DESC-CCL vs CoCoA, Roman-Real |
 |---|---|---|
 | 3x2pt, fiducial cosmology | 8.76 | 0.228 |
@@ -39,7 +43,8 @@ number as a scale, not as a cross-code acceptance criterion.
 | $`\xi_\pm`$ only, fiducial cosmology | 0.0013 | 0.058 |
 | $`\gamma_t`$ only, fiducial cosmology | 7.29 | 0.269 |
 | $`w(\theta)`$ only, fiducial cosmology | 6.26 | 0.096 |
-| 3x2pt, fiducial cosmology at the other project's $`w`$ | 0.34 (at $`w = -1`$) | 7.57 (at $`w = -0.9`$) |
+| 3x2pt, $`w = -0.9`$, other parameters fiducial | 8.76 | 7.57 |
+| 3x2pt, $`w = -1`$, other parameters fiducial | 0.34 | 0.228 |
 
 1. Cosmic shear agrees in both projects: $`\Delta\chi^2 = 0.0013`$
    (LSST-Y1) and $`\Delta\chi^2 = 0.058`$ (Roman-Real) in $`\xi_\pm`$.
@@ -47,8 +52,9 @@ number as a scale, not as a cross-code acceptance criterion.
    non-Limber method (FKEM) subtracts two terms that should cancel at high
    $`\ell`$, but computes them with different linear power spectra
    ([Section 4](#ccl_fkem)).
-3. The difference follows $`w`$, not the survey: swapping the projects'
-   $`w`$ swaps the size of the difference (last row).
+3. The difference follows $`w`$, not the survey: at $`w = -0.9`$ both
+   projects differ by $`\Delta\chi^2 \ge 7.57`$, at $`w = -1`$ both by
+   $`\Delta\chi^2 \le 0.34`$ (last two rows).
 4. With TATT intrinsic alignments the TATT terms agree: $`\xi_\pm`$ differ
    by $`\Delta\chi^2 = 0.0018`$ (LSST-Y1) and $`\Delta\chi^2 = 0.058`$
    (Roman-Real) ([Section 6](#ccl_tatt)).
@@ -89,7 +95,8 @@ Cosmologies:
     omm_hi:    omegam = 0.35 (As fixed)
     ns_lo:     ns = 0.92
     ns_hi:     ns = 1.01
-    w swap:    LSST-Y1 at w = -1, Roman-Real at w = -0.9
+    w_m1:      LSST-Y1 with w = -1 (Roman-Real's fiducial value)
+    w_m09:     Roman-Real with w = -0.9 (LSST-Y1's fiducial value)
 
 DESC-CCL reference settings:
 
@@ -187,23 +194,24 @@ $`P_{\rm lin}(k,z)`$. CoCoA `v5.02` uses one spectrum in both terms, so they
 cancel at the Limber limit. DESC-CCL uses two, so its terms leave an offset
 in $`C_{gs}`$ and $`C_{gg}`$ below $`\ell = 150`$.
 
-The evidence, at the fiducial cosmology:
+The evidence (fiducial cosmology unless a row sets $`w`$):
 
-| check | LSST-Y1 ($`w = -0.9`$) | Roman-Real ($`w = -1`$) |
+| check | LSST-Y1 | Roman-Real |
 |---|---|---|
+| fiducial $`w`$ | −0.9 | −1 |
 | $`k`$ dependence of the growth: $`D(k,z)/D(k_0,z) - 1`$ for $`k`$ from 0.01 to $`0.2\ {\rm Mpc}^{-1}`$ and $`z`$ from 0.5 to 2 | +0.5% to +1.2% | +0.03% to +0.3% |
 | DESC-CCL $`C_{gs}`$ below $`\ell = 150`$: $`C_\ell`$ with CAMB's table / $`C_\ell`$ with the separable table − 1 | −0.7% to −1.5% | −0.03% to −0.4% |
 | DESC-CCL $`C_{gg}`$ / CoCoA $`C_{gg}`$ − 1, every lens bin, $`\ell`$ from 2 to 140 | −1.74% to −0.80% | −0.58% to +0.30% |
-| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA | 8.76 | 0.228 |
 | 3x2pt $`\Delta\chi^2`$, DESC-CCL given the separable table vs CoCoA | 0.21 | 0.062 |
-| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA at the other project's $`w`$ | 0.34 (at $`w = -1`$) | 7.57 (at $`w = -0.9`$) |
+| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA, $`w = -0.9`$, other parameters fiducial | 8.76 | 7.57 |
+| 3x2pt $`\Delta\chi^2`$, DESC-CCL vs CoCoA, $`w = -1`$, other parameters fiducial | 0.34 | 0.228 |
 
 1. The LSST-Y1 $`C_{gg}`$ offset is flat in $`\ell`$. A non-Limber effect
    changes with $`\ell`$; two terms that fail to cancel leave a constant
    fraction.
 2. Given CoCoA's separable table, DESC-CCL agrees with CoCoA.
-3. The $`k`$ dependence of the growth is larger at $`w = -0.9`$, and the
-   difference follows $`w`$.
+3. The $`k`$ dependence of the growth is larger at $`w = -0.9`$, and so is
+   the difference, in both projects (last two rows).
 
 DESC-CCL's leftover is larger than the non-Limber effect it corrects.
 $`\Delta\chi^2`$ between non-Limber and Limber $`\gamma_t`$ in one code,
