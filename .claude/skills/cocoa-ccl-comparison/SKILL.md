@@ -44,7 +44,8 @@ reused. Read the relevant file before spawning a new review.
 | `references/fable_review_A_physics_and_numbers.md` | CCL FKEM mixes P_lin(k,z) (Limber subtraction) with D^2 P_lin(k,0) (FKEM term); CoCoA's per-lens-bin pivot in cosmo2D.c; the transform-failure path (ccl_f1d log-log extrapolation); every convention row (NLA factor, Z_LOW n(z), RSD gates, lmax, covariance columns 9+10); all study numbers |
 | `references/fable_review_B_writing_and_figures.md` | README rules (cocoa-maintenance Section 3) applied to the study; caption self-sufficiency; figure checks (alpha, indexing, excluded panels); Reproduce as Step blocks |
 | `references/fable_review_C_referee_completeness.md` | what a code comparison must contain: truth anchor, parameter-shift interpretation, varying the parameter that drives a difference within one project, direct harmonic comparison of the disagreeing layer, two-sided convergence, transform isolation, scope statement, bounds on left-out points, version table |
-| `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map (when present) |
+| `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map: C1/C2/C_delta normalizations and signs, FAST-PT kernel mapping, B-modes, the gamma_t split (C1 in FKEM, extras in Limber), PT settings, the recipe of the "tatt:" variant |
+| `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
 
 ## 1. Pipeline
 

@@ -387,20 +387,23 @@ Limber $C_\ell$ with TATT, $|C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1|$ (median /
 | Roman-Real | $C_{gs}$ | 3.1e-5 / 1.7e-3 | 5.4e-5 / 1.9e-3 | 6.8e-5 / 4.9e-3 | 1.2e-4 / 1.2e-1 |
 
 1. **The TATT terms agree.** $\xi_\pm$ differ by 0.0018 (LSST-Y1) and
-   0.058 (Roman-Real), the NLA values, while TATT moves $\xi_\pm$ by 1677
+   0.058 (Roman-Real), at the NLA level (NLA: 0.0013 and 0.058), while TATT
+   moves $\xi_\pm$ by 1677
    and 1293 from NLA; both codes in Limber give 0.159 and 0.031, as with
    NLA. Both codes are converged (CoCoA high accuracy, DESC-CCL PT tables).
 2. **The rest is finding 2.** The TATT $b_{\rm TA}$ and $A_2$ terms enter
-   $\gamma_t$ in Limber in both codes; the fiducial 8.89 and 0.237 are the
-   NLA FKEM offset, and the separable diagnostic lowers them to 0.22 and
-   0.066.
+   $\gamma_t$ in Limber in both codes; the fiducial 8.89 and 0.237 are
+   essentially the NLA FKEM offset (NLA: 8.76 and 0.23), and the separable
+   diagnostic lowers them to 0.22 and 0.066.
 3. **$k$ support above $\ell \approx 5\times10^4$.** CoCoA's TATT kernels end at
-   $k = 334\ h\,{\rm Mpc}^{-1}$; DESC-CCL extrapolates the PT spectra. In
-   pairs with the first source bin, where TATT dominates $C_{EE}$ (Roman-Real
-   sources 1-4: TATT is $-2$ times NLA), the two differ by 8% at
-   $\ell = 6.9\times10^4$ and 49% at $\ell = 10^5$ (2.5% at $\ell = 6.5\times10^4$
-   in LSST-Y1). The real-space $\xi_\pm$ difference equals the NLA one, so
-   these multipoles do not reach the data vector above 2.5'.
+   $k = 334\ h\,{\rm Mpc}^{-1}$; DESC-CCL extrapolates the PT spectra. Where
+   TATT dominates $C_{EE}$ the two differ: in the Roman-Real source pair
+   1-4, whose $C_{EE}$ with TATT is $-2$ times its NLA value, by 8% at
+   $\ell = 6.9\times10^4$ and 49% at $\ell = 10^5$; the source-1 auto
+   spectrum by 10% at $\ell = 6.9\times10^4$; in LSST-Y1 the source-1 auto
+   spectrum by 2.5% at $\ell = 6.5\times10^4$. The real-space $\xi_\pm$
+   difference matches the NLA one, so these multipoles do not reach the
+   data vector above 2.5'.
 4. **The benchmark scripts.** This repository's DESC-CCL scripts set up TATT
    as above since commit `b8bfec7`: IA-only tracer with `use_A_ia=False`
    (with `use_A_ia=True`, as before, the IA normalization is applied a
@@ -410,7 +413,7 @@ Limber $C_\ell$ with TATT, $|C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1|$ (median /
 
 Figures, as above ($(d_{\rm CCL} - d_{\rm CoCoA})/\sigma$, five
 cosmologies). LSST-Y1 $\xi_+$ (at most $0.020\sigma$; $\xi_-$ $0.010\sigma$)
-and $\gamma_t$ (the FKEM offset, at most $0.53\sigma$; $w(\theta)$ is the NLA
+and $\gamma_t$ (the FKEM offset, at most $0.534\sigma$; $w(\theta)$ is the NLA
 figure):
 
 ![LSST-Y1 xi+ TATT](cocoa_comparison/figures/lsst_y1_tatt_cosmologies_xip.png)
