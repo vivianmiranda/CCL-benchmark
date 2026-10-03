@@ -39,6 +39,8 @@ Variants (each a single change from "ref" unless stated):
   points     full-sky correlations at the bin centers, no bin averaging
   separable  diagnostic: the linear table in the separable form
              P_lin(k,0) D(z)^2 that FKEM's FFTLog term assumes
+  growth_sub diagnostic: the growth factor at k = 0.05/Mpc instead of
+             CoCoA's k0 = 5e-4/Mpc (NLA amplitude kept CoCoA's)
   ccl_numerics  CCL's default FKEM sampling and l sampling
   ccl_hi     finer than ref: fkem_Nchi 4000, 3000 log-spaced l above 400
   eh         CCL's own Eisenstein-Hu linear and halofit nonlinear P(k)
@@ -79,7 +81,7 @@ ex = np.load(src)
 meta = json.loads(str(ex["meta"]))
 project = meta["project"]; par = meta["pars"]; pt = meta["point"]
 V = dict(nonlimber_gs=True, nonlimber_gg=True, rsd=True, rsd_gs=False, cocoa_cl=False, tatt=False, pt_nk=160, method="legendre",
-         binavg=True, native=False, separable=False, l_limber=150, fkem_nchi=2000,
+         binavg=True, native=False, separable=False, growth_k=None, l_limber=150, fkem_nchi=2000,
          nell_log=1500, ell_max=65000 if project == "lsst_y1" else 100000)
 CHANGES = {
   "ref": {}, "harmonic": {},
@@ -90,6 +92,7 @@ CHANGES = {
   "flat": dict(method="fftlog", binavg=False),
   "points": dict(binavg=False),
   "separable": dict(separable=True),
+  "growth_sub": dict(growth_k=0.05),
   "ccl_numerics": dict(fkem_nchi=None, nell_log=500),
   "ccl_hi": dict(fkem_nchi=4000, nell_log=3000),
   "eh": dict(native=True),
@@ -110,6 +113,7 @@ Onu = par["omnuh2"]/h**2
 common = dict(Omega_c=par["omegam"] - par["omegab"] - Onu, Omega_b=par["omegab"], h=h,
               n_s=par["ns"], A_s=par["As"], m_nu=par["mnu"], mass_split="single",
               w0=par["w"], wa=par.get("wa", 0.0))
+GROWTH_RATIO = [lambda z: np.ones_like(z)]   # growth_sub: D(k, z)/D(k0, z)
 def calculator():
   # CoCoA's chi(z) over its whole table (z <= 50): CCL's Limber RSD kernel
   # at l = 2 reads the background at 1.4 chi (z ~ 14 for lenses at z = 4).
@@ -126,6 +130,17 @@ def calculator():
     a_D = 1.0/(1.0 + ex["zD"][::-1]); DDa = ex["DD"][::-1]
   else:
     a_D, DDa = a_pk, D
+  if V["growth_k"] is not None:
+    # diagnostic: the growth factor at a sub-horizon k instead of k0 = 5e-4/Mpc
+    # (for w != -1, CAMB's dark-energy perturbations change the growth on
+    # horizon scales): D -> D r(z), r = D(k, z)/D(k0, z) from CAMB's linear
+    # table (z <= 6; held at r(6) above)
+    lk = np.log(ex["kg"]); lp = ex["lnPL"]
+    lnP = lambda kk: np.array([np.interp(np.log(kk), lk, row) for row in lp])
+    r = np.exp(0.5*(lnP(V["growth_k"]) - lnP(V["growth_k"])[0]) - 0.5*(lnP(5e-4) - lnP(5e-4)[0]))
+    GROWTH_RATIO[0] = lambda z: np.interp(z, ex["zg"], r)
+    D = D*GROWTH_RATIO[0](ex["zg"])[::-1]
+    DDa = DDa*GROWTH_RATIO[0](1.0/a_D - 1.0)
   f = np.gradient(np.log(DDa), np.log(a_D))
   # the linear table CCL receives: CAMB's P_lin(k, z), or (separable
   # variants) P_lin(k, 0) D(z)^2, the separable form FKEM's FFTLog term
@@ -162,7 +177,9 @@ zs, nzs = read_nz(ds["nz_source_file"], S)
 pre = "LSST_" if project == "lsst_y1" else "roman_"
 A1, eta = pt[pre + "A1_1"], pt[pre + "A1_2"]
 c1_ratio = 0.01389/(5e-14*ccl.physical_constants.RHO_CRITICAL)   # cosmolike / CCL C1 rho_crit
-ia = lambda z: (z, c1_ratio*A1*((1.0 + z)/1.62)**eta)
+# CCL's NLA divides by its growth factor: growth_sub multiplies by the same
+# ratio, so the IA amplitude stays CoCoA's
+ia = lambda z: (z, c1_ratio*A1*((1.0 + z)/1.62)**eta*GROWTH_RATIO[0](z))
 src_t = [ccl.WeakLensingTracer(cosmo, dndz=(zs, nzs[i]), ia_bias=ia(zs), use_A_ia=True) for i in range(S)]
 lens_t = [ccl.NumberCountsTracer(cosmo, dndz=(zl, nzl[i]), has_rsd=V["rsd"],
           bias=(zl, pt["%sB1_%d" % (pre, i + 1)]*np.ones_like(zl))) for i in range(L)]

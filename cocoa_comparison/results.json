@@ -112,12 +112,26 @@
    "gammat": 18.29943508939268,
    "w": 23.42401921176654
   },
-  "DESC-CCL vs CoCoA at the other project's $w$": {
+  "DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA": {
+   "3x2pt": 0.16778706454775835,
+   "left_out_kept": 0,
+   "shear": 0.0013357965075935262,
+   "gammat": 0.07025976574089335,
+   "w": 0.1118380249145068
+  },
+  "DESC-CCL vs CoCoA, $w = -1$": {
    "3x2pt": 0.3433517895369428,
    "left_out_kept": 0,
    "shear": 0.001486730706095338,
    "gammat": 0.21095580087674107,
    "w": 0.2791639016751654
+  },
+  "DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA, $w = -1$": {
+   "3x2pt": 0.13629158791571874,
+   "left_out_kept": 0,
+   "shear": 0.0014867329656723216,
+   "gammat": 0.07812314700766272,
+   "w": 0.07849919804397945
   },
   "DESC-CCL $C_{gs}$ in Limber vs CoCoA": {
    "3x2pt": 9.22763655445329,
@@ -236,6 +250,7 @@
    "| fid_ccl_numerics | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_eh | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_flat | l4-s0 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |",
+   "| fid_growth_sub | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_norsd | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_points | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
@@ -253,6 +268,7 @@
    "| tatt_ns_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| tatt_omm_hi_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| tatt_omm_lo_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| w_m1_growth_sub | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| w_m1_ref | l4-s0 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
   ]
  },
@@ -369,12 +385,26 @@
    "gammat": 105.32599496890882,
    "w": 50.0165585998671
   },
-  "DESC-CCL vs CoCoA at the other project's $w$": {
+  "DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA": {
+   "3x2pt": 0.07130840976715208,
+   "left_out_kept": 13,
+   "shear": 0.05797578926639983,
+   "gammat": 0.12923210611181535,
+   "w": 0.013840895625152885
+  },
+  "DESC-CCL vs CoCoA, $w = -0.9$": {
    "3x2pt": 7.565561094240799,
    "left_out_kept": 13,
    "shear": 0.046321728076532086,
    "gammat": 9.306703992241175,
    "w": 3.667934908691072
+  },
+  "DESC-CCL, growth factor at k = 0.05/Mpc (diagnostic), vs CoCoA, $w = -0.9$": {
+   "3x2pt": 0.06424941332608287,
+   "left_out_kept": 13,
+   "shear": 0.04632146227120358,
+   "gammat": 0.11997897538140492,
+   "w": 0.013871538615118738
   },
   "DESC-CCL $C_{gs}$ in Limber vs CoCoA": {
    "3x2pt": 0.7084209752292465,
@@ -493,6 +523,7 @@
    "| fid_ccl_numerics | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_eh | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_flat | l7-s2 | NG | correlation | Error CCL_ERROR_SPLINE: ccl_correlation.c: ccl_tracer_corr_fftlog(): failed to create spline |",
+   "| fid_growth_sub | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_norsd | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_points | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| fid_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
@@ -509,6 +540,7 @@
    "| tatt_ns_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| tatt_omm_hi_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| tatt_omm_lo_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
+   "| w_m09_growth_sub | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |",
    "| w_m09_ref | l7-s2 | NG | correlation | Error CCL_ERROR_MEMORY: ccl_correlation.c: ccl_tracer_corr_legendre(): ran out of memory |"
   ]
  }

@@ -8,9 +8,11 @@ cc() { ( cd "${W:?}"; PYTHONPATH="${CCL_PR:?}" COCOA_ROOTDIR="${COCOA_ROOTDIR:?}
          "${CCL_PYTHON:?}" "${S:?}/ccl_compute.py" "$@" 2>&1 | grep -E "^CCL|Error" ) ; }
 cc cocoa_lsst_y1_w_m1.npz ref ccl_lsst_y1_w_m1_ref.npz
 cc cocoa_roman_real_w_m09.npz ref ccl_roman_real_w_m09_ref.npz
+cc cocoa_lsst_y1_w_m1.npz growth_sub ccl_lsst_y1_w_m1_growth_sub.npz
+cc cocoa_roman_real_w_m09.npz growth_sub ccl_roman_real_w_m09_growth_sub.npz
 for p in lsst_y1 roman_real; do
   for m in fid omm_lo omm_hi ns_lo ns_hi; do cc cocoa_${p}_${m}.npz ref ccl_${p}_${m}_ref.npz; done
-  for v in limgs limber norsd rsd_gs flat points separable ccl_numerics ccl_hi eh cocoa_cl bench harmonic; do
+  for v in limgs limber norsd rsd_gs flat points separable growth_sub ccl_numerics ccl_hi eh cocoa_cl bench harmonic; do
     cc cocoa_${p}_fid.npz ${v} ccl_${p}_fid_${v}.npz
   done
 done

@@ -60,6 +60,7 @@ reused. Read the relevant file before spawning a new review.
 | `references/fable_review_C_referee_completeness.md` | what a code comparison must contain: truth anchor, parameter-shift interpretation, varying the parameter that drives a difference within one project, direct harmonic comparison of the disagreeing layer, two-sided convergence, transform isolation, scope statement, bounds on left-out points, version table |
 | `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map: C1/C2/C_delta normalizations and signs, FAST-PT kernel mapping, B-modes, the gamma_t split (C1 in FKEM, extras in Limber), PT settings, the recipe of the "tatt:" variant |
 | `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
+| (cosmolike_core) `.claude/skills/cosmolike-dev/references/fable_review_growth_factor.md` | origin of the 1/D in NLA/TATT (linear theory, no k_NL); every growfac consumer in cosmolike; options for the G_growth sampling k (recommends 0.05/Mpc) |
 
 ## 1. Pipeline
 
@@ -177,6 +178,23 @@ Models: fiducial, Omega_m 0.25/0.35, n_s 0.92/1.01.
   gamma_t 7.29, w 6.26, shear 0.0013), separable diagnostic 0.21;
   Roman-Real 0.228 (0.17-0.29), diagnostic 0.062. Benchmark-script
   modeling: 154 and 56.
+
+- The FKEM offset is a growth-factor input effect (2026-10-02, owner asked
+  "why would w = -0.9 be less smooth?"). CoCoA's D(z) is
+  sqrt(P_lin(k0,z)/P_lin(k0,0)) at k0 = 5e-4/Mpc (G_growth in
+  _cosmolike_prototype_base.py), about 2 H0/c: a horizon scale. For
+  w != -1 CAMB's dark-energy perturbations raise the growth between k0 and
+  k ~ 3e-3 by 0.5-0.9% (z = 0.5-2); above that only the neutrino slope
+  (~0.1-0.3%). FKEM's D^2(z) P_lin(k,0) inherits it; CoCoA's pivot ratio
+  does not. Variant growth_sub (D at k = 0.05/Mpc, NLA amplitude kept)
+  gives 3x2pt Delta chi2 0.168 / 0.064 at w = -0.9 and 0.136 / 0.071 at
+  w = -1 (LSST-Y1 / Roman-Real), the both-Limber level. diag_growth.py
+  prints the k profile; diag_de_perturbations.py proves the cause (CAMB
+  field "___no_perturbations": with it the step vanishes; setting
+  "no_perturbations" silently does nothing). The owner's point: the
+  formulas (separable form, NLA) assume k-independent growth, so k0 is
+  harmless until CAMB's growth depends on k. Never explain a w dependence before measuring
+  the growth's k profile on horizon scales.
 
 ## 4. Plots (owner's preferences, learned the hard way)
 
