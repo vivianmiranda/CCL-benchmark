@@ -1,16 +1,24 @@
 > [!NOTE]
-> (From CoCoA notes)
-> `v4.11.1` benchmark: do not include CAMB (or the Hybrid Emulator); **Includes TATT in** ($\xi_{\pm}, \gamma_t$) **and non-limber in** $w_{gg}(\theta)$.
-> CLOE-LIB caveat: We were not able to make TATT work on CloeLib. We were also not able to speed-up cloelib with `OMP_NUM_THREADS` flag
+> CoCoA `v5.02` benchmark (cosmolike only times) 
+> CPU: `Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz` (`1/8 OpenMP cores`).
 >
-> CPU: `Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz` (`1/8 OpenMP cores`). *Times are approximate*.
+> Modeling: Full-sky on real functions except for DESC-CCL (unknown for CLOE-LIB).
 >
-> - **LSST-Y1-Real 3x2pt**: (CoCoA) `0.29/0.06s`, (DESC-CCL)`7.96/1.72s`, (CLOE-LIB) 0.23/0.23s. **CoCoA speed-up (CCL)**: `27/28x`
-> - **Roman-Real 3x2pt**: (CoCoA) `0.45/0.095s`, (DESC-CCL) `8.17/1.96s`, (CLOE-LIB) 0.27/0.27s. **CoCoA speed-up (CCL)**: `18/20x`
-> - **Roman-Fourier 3x2pt**:  (CoCoA) `0.08/0.03s`, (DESC-CCL) `0.65/0.36s`. **CoCoA speed-up**: `7.5/21x`
-> - **DES-Y3xPlanck 6x2pt**  (CoCoA) `0.40/0.075s`
-> - **DES-Y3-Real 3x2pt (des_y3 repo)**  (CoCoA)~`0.25/0.05s`
-> 
+> Modeling: **IA=TATT** in ($\xi_{\pm}, \gamma_t$) except in CLOE-LIB and DES-Y3-Real 6x2pt+N. 
+>
+> Modeling: **Non-limber** $C_{gg}(l)$ in real space; **non-limber** $C_{gs}(l)$ in CoCoA LSST-Y1/Roman-Real.
+>
+> Modeling: Roman-Fourier and Roman-Real-KL CoCoA compute the exact (**non-Limber**) $C_{gg}(l)$ and $C_{gs}(l)$
+> below $l = 150$ with RSD; DESC-CCL uses Limber without RSD.
+>
+> - **LSST-Y1-Real 3x2pt**: (CoCoA) `0.27/0.06s`, (DESC-CCL)`7.96/1.72s`, (CLOE-LIB) 0.23/0.23s.
+> - **Roman-Real 3x2pt**: (CoCoA) `0.45/0.09s`, (DESC-CCL) `8.17/1.96s`, (CLOE-LIB) 0.27/0.27s.
+> - **Roman-Fourier 3x2pt**:  (CoCoA) `0.27/0.08s`, (DESC-CCL) `0.65/0.36s`.
+> - **Roman-Real-KL 3x2pt**: (CoCoA) `0.162/0.08s`. 
+> - **DES-Y3xPlanck 6x2pt (w/ CMB)**  (CoCoA) `0.34/0.07s`.
+> - **DES-Y3-Real 3x2pt**  (CoCoA) `0.27/0.06s`.
+> - **DES-YX-Real 6x2pt+N (clusters)**  (CoCoA) `0.71/0.14s` (YX = not yet production cov, n(z), dv, Y6 analysis).
+>
 
 # CoCoA vs DESC-CCL: real-space 3x2pt code comparison
 
