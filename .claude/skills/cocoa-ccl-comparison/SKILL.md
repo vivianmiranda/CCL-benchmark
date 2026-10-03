@@ -60,6 +60,7 @@ reused. Read the relevant file before spawning a new review.
 | `references/fable_review_C_referee_completeness.md` | what a code comparison must contain: truth anchor, parameter-shift interpretation, varying the parameter that drives a difference within one project, direct harmonic comparison of the disagreeing layer, two-sided convergence, transform isolation, scope statement, bounds on left-out points, version table |
 | `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map: C1/C2/C_delta normalizations and signs, FAST-PT kernel mapping, B-modes, the gamma_t split (C1 in FKEM, extras in Limber), PT settings, the recipe of the "tatt:" variant |
 | `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
+| (cosmolike_core) `.claude/skills/cosmolike-dev/references/fable_review_growth_factor.md` | origin of the 1/D in NLA/TATT (linear theory, no k_NL); every growfac consumer in cosmolike; options for the G_growth sampling k (recommends 0.05/Mpc) |
 
 ## 1. Pipeline
 
