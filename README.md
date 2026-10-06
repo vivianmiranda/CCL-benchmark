@@ -1,12 +1,37 @@
 # CoCoA vs DESC-CCL: real-space 3x2pt code comparison
 
-CoCoA `v5.02` and DESC-CCL compute the real-space 3x2pt data vectors of
+This study compares the real-space 3x2pt data vectors from CoCoA `v5.02`
+and the DESC-CCL PR #1296 build for
 LSST-Y1 and Roman-Real at five cosmologies, from the same CAMB tables: cosmic
 shear $`\xi_\pm`$, galaxy-galaxy lensing $`\gamma_t`$ and galaxy clustering
 $`w(\theta)`$. Scripts, tables and figures:
 [`cocoa_comparison/`](cocoa_comparison).
 
+> [!NOTE]
+> **Recorded comparison: 2026-10-01–02.** The tables, figures and timings
+> below describe the [recorded versions](#ccl_appendix_versions), not a
+> fresh comparison of the current CoCoA checkout. The M2 Pro timing table
+> uses accuracy-tested sampling in each code; see
+> [Execution time](#ccl_time).
+>
+> Current CoCoA samples the growth factor at
+> $`k = 0.05\ {\rm Mpc}^{-1}`$. The saved study and its export script use
+> $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. CoCoA changed this choice because
+> horizon-scale dark-energy perturbations make the old reference
+> unrepresentative of the sub-horizon growth used by these observables.
+> [Why the reference changed](#ccl_growth_choice) connects that decision
+> to the tests below and explains the remaining neutrino dependence.
+
+> [!WARNING]
+> **CLI for production; notebook wrappers for exploration.**
+> CoCoA's timings here use its production likelihood interface through
+> Cobaya. Notebook wrappers expose intermediate quantities and copy or
+> rearrange arrays; their runtimes are not the production timings quoted
+> below. This study compares data vectors. Covariance-generation results
+> belong to the [OneCovariance comparison](https://github.com/vivianmiranda/OneCov-benchmark-).
+
 Contents:
+
 1. [Summary](#ccl_summary)
 2. [Setup](#ccl_method)
 3. [Results](#ccl_results)
@@ -15,8 +40,9 @@ Contents:
 6. [TATT intrinsic alignments](#ccl_tatt)
 7. [Execution time (macOS, 8 cores)](#ccl_time)
 8. [What it took to run DESC-CCL](#ccl_run)
-9. [Reproduce](#ccl_reproduce)
-10. [Appendix](#ccl_appendix)
+9. [Installation and compilation](#ccl_installation)
+10. [Reproduce](#ccl_reproduce)
+11. [Appendix](#ccl_appendix)
 
 ## Summary <a name="ccl_summary"></a>
 
@@ -52,7 +78,8 @@ that set $`w`$ run both projects at both values.
 2. Galaxy-galaxy lensing and clustering differ at $`w = -0.9`$, in both
    projects. DESC-CCL's non-Limber method (FKEM) multiplies
    $`P_{\rm lin}(k, 0)`$ by the growth factor it receives, CoCoA's $`D(z)`$,
-   which CoCoA measures at $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. For
+   which the recorded CoCoA version measures at
+   $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. For
    $`w \neq -1`$, CAMB's dark-energy perturbations make the growth at that
    horizon scale about 1% different from the growth at
    $`k = 0.01`$ to $`0.2\ {\rm Mpc}^{-1}`$ ([Section 4](#ccl_fkem)).
@@ -69,8 +96,8 @@ that set $`w`$ run both projects at both values.
 
 ## Setup <a name="ccl_method"></a>
 
-Both codes receive the same tables at each cosmology; DESC-CCL reads them
-through `pyccl.CosmologyCalculator`. No Boltzmann or background difference
+In the saved comparison, both codes receive the same tables at each
+cosmology; DESC-CCL reads them through `pyccl.CosmologyCalculator`. No Boltzmann or background difference
 enters.
 
 | table (CAMB, computed in Cocoa) | range |
@@ -167,7 +194,8 @@ One change at a time, fiducial cosmology, 3x2pt $`\Delta\chi^2`$:
 | 7 | DESC-CCL given the growth factor at $`k = 0.05\ {\rm Mpc}^{-1}`$ (diagnostic, [Section 4](#ccl_fkem)) vs CoCoA | 0.168 | 0.071 |
 | 8 | DESC-CCL vs CoCoA | 8.76 | 0.228 |
 
-1. Rows 1 and 2: each code is converged at its settings.
+1. Rows 1 and 2: the specified refinements change each fiducial data vector
+   by less than $`\Delta\chi^2 = 0.2`$.
 2. Row 3: DESC-CCL's default sampling is not converged in LSST-Y1 (in
    $`w(\theta)`$); every DESC-CCL run here uses the reference sampling.
 3. Row 4: the real-space transforms agree.
@@ -186,8 +214,8 @@ C_\ell = C_\ell^{\rm Limber}[P_{\rm nl}] + C_\ell^{\rm exact}[P_{\rm lin}] - C_\
 ```
 
 The last two terms cancel where Limber is accurate, but only if both use the
-same linear spectrum. The exact term uses FFTLog, which needs a spectrum
-separable in $`k`$ and $`z`$: a growth factor squared times one fixed
+same linear spectrum. The FFTLog construction used here assumes a
+spectrum separable in $`k`$ and $`z`$: a growth factor squared times one fixed
 $`P_{\rm lin}(k)`$.
 
 | code | $`P_{\rm lin}`$ in $`C_\ell^{\rm exact}`$ | $`P_{\rm lin}`$ in $`C_\ell^{\rm Limber}[P_{\rm lin}]`$ |
@@ -288,6 +316,50 @@ $`n(z)`$, with CoCoA's $`D(z)`$ (`scripts/diag_anchor.py`):
 
 The study measures the difference between the codes, not either code's
 distance from the exact $`C_\ell`$.
+
+### Why CoCoA changed its growth reference <a name="ccl_growth_choice"></a>
+
+The single growth factor used in NLA/TATT amplitudes and the separable
+non-Limber correction is meant to represent the evolution of structure
+well inside the horizon. The tests above explain the choice:
+
+- **Recorded CoCoA default:** $`k_0 = 5\times10^{-4}\ {\rm Mpc}^{-1}`$,
+  only about $`2.2H_0/c`$ for this cosmology. This is close to the present
+  Hubble wavenumber, not a reference safely inside the horizon throughout
+  the growth table.
+- **Current CoCoA default:** `growth_k: 0.05`, in inverse Mpc. This samples
+  CAMB's **linear** power on a sub-horizon scale, where the measured
+  dark-energy step has flattened. It is a fixed reference wavenumber,
+  not the redshift-dependent scale where density fluctuations become
+  nonlinear.
+
+At $`w = -0.9`$, the massless-neutrino diagnostic above shows that turning
+CAMB's dark-energy perturbations off removes the step between the old
+reference and sub-horizon modes. That is the evidence motivating the
+change: a horizon-scale growth history should not set a common amplitude
+for those smaller-scale modes. The change retains CAMB's dark-energy
+perturbations; it samples their result at a different wavenumber.
+
+CAMB's matter-density transfer functions are in synchronous gauge, as
+specified in its [transfer-variable documentation](https://camb.readthedocs.io/en/latest/transfer_variables.html).
+Density growth near the horizon needs that gauge convention to be stated.
+The saved on/off test identifies a dark-energy-perturbation effect within
+CAMB's convention; it does not show a gauge-transformation error in CAMB.
+
+**Massive neutrinos are a separate limitation.** Their free streaming makes
+linear growth depend on wavenumber even inside the horizon; see
+[Lesgourgues & Pastor, Section 0.6.3](https://arxiv.org/html/1212.6154v1).
+Choosing $`0.05\ {\rm Mpc}^{-1}`$ avoids the measured horizon-scale step
+but does not make $`P_{\rm lin}(k,z)`$ exactly separable. The residual
+wavenumber dependence in the tables above, and the per-bin pivot test
+above, remain relevant. No single fixed reference removes that dependence
+for every neutrino mass and redshift.
+
+The saved `growth_sub` row changes only the growth supplied to DESC-CCL
+and keeps the old IA amplitude. Changing CoCoA's default also changes the
+growth used by its IA amplitudes. Consequently that diagnostic establishes
+the motivation, not the numerical result of a comparison with current
+CoCoA. Such a comparison must supply matching growth inputs to both codes.
 
 ## Figures <a name="ccl_figures"></a>
 
@@ -445,39 +517,46 @@ blank with TATT ($`\gamma_t/\sigma < 1`$) but not with NLA.
 
 ## Execution time (macOS, 8 cores) <a name="ccl_time"></a>
 
-Time per data-vector evaluation on an Apple M2 Pro laptop (macOS 13.7.5),
-8 OpenMP threads, one job on the machine:
+Measured on **2026-10-02**, using an **Apple M2 Pro**, macOS 13.7.5 and
+**8 OpenMP threads**. Each entry is a mean time per data-vector evaluation
+at the study's reference settings:
 
 | case | CoCoA, time per evaluation (s) | DESC-CCL, time per evaluation (s) | time ratio DESC-CCL / CoCoA |
 |---|---|---|---|
-| LSST-Y1, NLA | 0.046 | 10.45 | 228 |
-| LSST-Y1, TATT | 0.053 | 15.41 | 292 |
-| Roman-Real, NLA | 0.070 | 17.96 | 256 |
-| Roman-Real, TATT | 0.076 | 22.75 | 298 |
+| LSST-Y1, NLA | 0.0459 | 10.450 | 228 |
+| LSST-Y1, TATT | 0.0528 | 15.414 | 292 |
+| Roman-Real, NLA | 0.0703 | 17.962 | 256 |
+| Roman-Real, TATT | 0.0764 | 22.747 | 298 |
 
 What is timed:
+
 1. CoCoA: Cobaya's timer of the likelihood (interpolation of the CAMB
    tables, cosmolike's data vector and $`\chi^2`$).
 2. DESC-CCL: from the CAMB tables to the data vector at the reference
    sampling (`CosmologyCalculator`, tracers, the TATT PT step, every
-   $`C_\ell`$, the PR #1296 transforms).
+   $`C_\ell`$, the PR #1296 transforms), with table-read time subtracted.
 3. CAMB is excluded on both sides: both codes receive the same CAMB tables.
 
 How it is timed:
+
 1. Two warm-up evaluations are not timed.
 2. Each timed evaluation is a new cosmology (the five models in turn).
 3. CoCoA's time is the mean of 20 evaluations, DESC-CCL's the mean of 10.
 4. Every evaluation is within 9% (CoCoA) and 7% (DESC-CCL) of the mean
-   (`cocoa_comparison/timing_macos.txt`).
+   ([saved timing log](cocoa_comparison/timing_macos.txt)).
 
-The note at the top times this repository's benchmark scripts (their
-modeling, Intel CPU); this table times the configurations of this study.
+Both timed configurations include full-sky, bin-averaged transforms and
+non-Limber galaxy clustering and galaxy–shear spectra below
+$`\ell = 150`$. The older Intel benchmark used different sampling and
+modeling, including Limber galaxy–shear spectra in DESC-CCL; its timings
+are not mixed into this table. These measurements apply to the recorded
+configurations, not to every CCL release or survey likelihood.
 
 ## What it took to run DESC-CCL <a name="ccl_run"></a>
 
 | symptom | cause | resolution |
 |---|---|---|
-| `CCLError` 1040 for full-sky $`\xi_\pm`$ | CCL 3.3 has no full-sky $`\xi_\pm`$ | pyccl built from PR #1296 (`build_ccl_pr.sh`) |
+| `CCLError` 1040 for full-sky $`\xi_\pm`$ | CCL 3.3 has no full-sky $`\xi_\pm`$ | pyccl built from PR #1296 ([compilation recipe](#ccl_installation)) |
 | `AttributeError` for `np.trapz` in FAST-PT 4.0.0 | NumPy 2.4 removed `np.trapz` | FAST-PT 4.1.0 (`ccldev.yml`), whose TATT data vectors match 4.0.0 bit for bit |
 | `ccl_angular_cls_limber(): integration error`, Roman-Real lens bins 7 and 8 with RSD | the growth table of `cocoa_export.py` ended at $`z = 6`$ | growth from CAMB to $`z = 49`$ |
 | same error, lens bin 8, $`\ell = 2`$ only | the Limber RSD kernel evaluates the background at $`\chi_{\ell+1} = \chi\,(\ell + 3/2)/(\ell + 1/2)`$, which is $`1.4\chi`$ at $`\ell = 2`$ ($`z \approx 14`$ for $`z = 4`$); `ccl_compute.py` cut CoCoA's $`\chi(z)`$ table at $`z = 10`$ | CoCoA's $`\chi(z)`$ to $`z = 50`$ |
@@ -494,80 +573,239 @@ CoCoA side:
 3. Cobaya returns $`\chi(z)`$ only at requested redshifts, so the export
    reads it on the likelihood's $`z`$ grid.
 
-## Reproduce <a name="ccl_reproduce"></a>
+## Installation and compilation <a name="ccl_installation"></a>
 
-We assume users have Conda, a Cocoa installation with the lsst_y1 and
-roman_real projects and their data, and run every command from the
-CCL-benchmark folder. `<run folder>` is the same path in every step.
+We assume Conda is installed. Open a fresh Bash terminal in
+`CCL-benchmark/`, separate from Cocoa's runtime environment.
 
-**Step :one:**: Create the `ccldev` Conda environment (once)
+This follows the OneCovariance benchmark's setup/compile/start/stop
+sequence. The pinned [ccldev.yml](ccldev.yml) supplies a Python 3.12 Conda
+base; `.local` is private to this repository. Cocoa keeps its own
+Python 3.11 environment.
+
+**Step :one:**: create the Conda base once.
 
 ```bash
 conda env create --file=ccldev.yml
 ```
 
-**Step :two:**: Build pyccl of
-[LSSTDESC/CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296) into
-`<PR build folder>` (once; the script clones the PR there)
+**Step :two:**: activate the base.
 
 ```bash
 conda activate ccldev
-bash cocoa_comparison/build_ccl_pr.sh <PR build folder>
 ```
 
-**Step :three:**: Export CoCoA's data vectors, tables and covariances (Conda
-cocoa environment)
+**Step :three:**: inspect
+[set_installation_options.sh](set_installation_options.sh).
+It selects the CCL PR revision and checkout path. To reuse an existing
+PR checkout, edit `CCL_PATH` in that file to its absolute path. Setup checks
+its revision and leaves an existing checkout unchanged.
+
+**Step :four:**: create `.local` and prepare the pinned CCL checkout.
 
 ```bash
-conda activate cocoapy311
-cd <Cocoa folder>
-source start_cocoa.sh
-cd <CCL-benchmark folder>
-bash cocoa_comparison/run_cocoa.sh <run folder>
+source setup_ccl.sh
 ```
 
-**Step :four:**: Compute the DESC-CCL data vectors
+**Step :five:**: compile CCL with the Conda libraries and check its import.
 
 ```bash
-CCL_PYTHON=<ccldev python> CCL_PR=<PR build folder> COCOA_ROOTDIR=<Cocoa folder> bash cocoa_comparison/run_ccl.sh <run folder>
+source compile_ccl.sh
 ```
 
-- `CCL_PYTHON`: the python of the `ccldev` environment (`conda run -n ccldev which python` prints it).
-- `CCL_PR`: the folder given to `build_ccl_pr.sh`.
-- `COCOA_ROOTDIR`: the `Cocoa/` folder.
-
-**Step :five:**: Write the tables (any python with NumPy)
+**Step :six:**: activate the private environment.
 
 ```bash
-CMP_WORK=<run folder> python cocoa_comparison/scripts/results.py
-CMP_WORK=<run folder> python cocoa_comparison/scripts/harmonic.py
+source start_ccl.sh
 ```
 
-**Step :six:**: Draw the figures (Conda cocoa environment with
-`start_cocoa.sh` sourced, as in Step :three:)
+| File | Purpose |
+| --- | --- |
+| [ccldev.yml](ccldev.yml) | Create the pinned Conda base. |
+| [set_installation_options.sh](set_installation_options.sh) | Select CCL PR #1296 at commit `647ad4a` and its checkout path. |
+| [setup_ccl.sh](setup_ccl.sh) | Create `.local`; clone the pinned source if it is absent. |
+| [compile_ccl.sh](compile_ccl.sh) | Build the prepared source and connect it to `.local`. |
+| [start_ccl.sh](start_ccl.sh) | Activate the private Python environment. |
+| [stop_ccl.sh](stop_ccl.sh) | Restore the shell's previous Python environment. |
 
-```bash
-CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
-```
+The study still uses [CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296).
+Installing a released `pyccl` package instead does not reproduce its
+full-sky, bin-averaged transforms. The environment scripts preserve
+that revision and the CMake build recipe.
 
 > [!NOTE]
-> The figures use cosmolike_core's `plot_datavectors.py`, which renders text
-> with LaTeX (`usetex=True`): a LaTeX installation must be on `PATH`.
+> Shell syntax and environment activation have been checked. A fresh
+> dependency installation and native build through this recipe have not
+> yet been tested.
 
-**Step :seven:**: Time both codes (8 OpenMP threads; Conda cocoa environment
-with `start_cocoa.sh` sourced, as in Step :three:)
+### Starting and stopping later sessions
+
+After installation, open a fresh Bash terminal in `CCL-benchmark/`.
+Setup and compilation are not needed for each calculation.
+
+**Step :one:**: activate the Conda base.
 
 ```bash
-CCL_PYTHON=<ccldev python> CCL_PR=<PR build folder> bash cocoa_comparison/run_timing.sh <run folder>
+conda activate ccldev
 ```
 
-> [!TIP]
-> Run nothing else on the machine while timing; see
-> [Execution time](#ccl_time) for what is timed.
+**Step :two:**: activate the private environment.
+
+```bash
+source start_ccl.sh
+```
+
+**Step :three:**: after the calculation, leave the private environment.
+
+```bash
+source stop_ccl.sh
+```
+
+## Reproduce <a name="ccl_reproduce"></a>
+
+> [!WARNING]
+> Use the [recorded CoCoA versions](#ccl_appendix_versions) to reproduce the
+> saved comparison. `cocoa_export.py` fixes the exported growth reference
+> at $`5\times10^{-4}\ {\rm Mpc}^{-1}`$, while current CoCoA uses
+> `growth_k: 0.05` for the [physical reason above](#ccl_growth_choice).
+> Running the script unchanged against current CoCoA would give the two
+> codes different growth inputs. The saved
+> `growth_sub` diagnostic changes DESC-CCL's growth only; it is not a
+> rerun of the current CoCoA model.
+
+### Export CoCoA inputs
+
+We assume Cocoa is installed with the LSST Y1 and Roman real projects
+and their data. Follow the
+[Cocoa Conda recipe](https://github.com/CosmoLike/cocoa#required_packages_conda)
+for its Python 3.11 base. Open a separate Bash terminal in `Cocoa/`.
+Replace `cocoa` if the installed Conda base has another name.
+Use the same absolute `<run folder>` path throughout this section.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
+source start_cocoa.sh
+```
+
+**Step :three:**: enter this benchmark repository.
+
+```bash
+cd "<CCL-benchmark folder>"
+```
+
+**Step :four:**: export the data vectors, tables and covariances.
+
+```bash
+bash cocoa_comparison/run_cocoa.sh "<run folder>"
+```
+
+### Compute DESC-CCL data vectors
+
+We assume installation is complete. Open a fresh Bash terminal in
+`CCL-benchmark/`. `<PR build folder>` is the absolute checkout path selected
+in `set_installation_options.sh`; `<Cocoa folder>` ends in `Cocoa/`.
+
+**Step :one:**: activate the Conda base.
+
+```bash
+conda activate ccldev
+```
+
+**Step :two:**: activate the private CCL environment.
+
+```bash
+source start_ccl.sh
+```
+
+**Step :three:**: run CCL on the exported inputs.
+
+```bash
+CCL_PYTHON="$PWD/.local/bin/python" CCL_PR="<PR build folder>" COCOA_ROOTDIR="<Cocoa folder>" bash cocoa_comparison/run_ccl.sh "<run folder>"
+```
+
+### Write tables and figures
+
+We assume Cocoa is installed. Open a fresh Bash terminal in `Cocoa/`.
+The figures use cosmolike_core's `plot_datavectors.py`, with LaTeX text
+rendering: a LaTeX installation must be on `PATH`.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
+source start_cocoa.sh
+```
+
+**Step :three:**: enter the benchmark repository.
+
+```bash
+cd "<CCL-benchmark folder>"
+```
+
+**Step :four:**: write the data-vector comparison tables.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/results.py
+```
+
+**Step :five:**: write the angular-spectrum comparison tables.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/harmonic.py
+```
+
+**Step :six:**: draw the figures.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
+```
+
+### Measure execution time
+
+We assume both codes are installed and the five-cosmology exports exist.
+Open a fresh Bash terminal in `Cocoa/`. Run one timing campaign at a time
+on a quiet machine. The script uses eight OpenMP threads; see
+[Execution time](#ccl_time) for the measured work.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
+source start_cocoa.sh
+```
+
+**Step :three:**: enter the benchmark repository.
+
+```bash
+cd "<CCL-benchmark folder>"
+```
+
+**Step :four:**: time both codes sequentially.
+
+```bash
+CCL_PYTHON="$PWD/.local/bin/python" CCL_PR="<PR build folder>" bash cocoa_comparison/run_timing.sh "<run folder>"
+```
 
 The diagnostics behind [Section 4](#ccl_fkem) and the transform failures are
-`scripts/diag_fkem_offset.py`, `scripts/diag_growth.py`,
-`scripts/diag_anchor.py` and `scripts/diag_l7s2.py` (usage in each file).
+`cocoa_comparison/scripts/diag_fkem_offset.py`, `diag_growth.py`,
+`diag_anchor.py` and `diag_l7s2.py` (usage in each file).
 
 ## Appendix <a name="ccl_appendix"></a>
 
@@ -630,8 +868,8 @@ The benchmark-modeling row applies the choices of `ccl_test_lsst.py` and
 5. flat-sky FFTLog at the bin centers;
 6. NLA intrinsic alignments, as every other row (the scripts use TATT).
 
-The row describes the settings of the benchmark scripts behind the timings
-in the note at the top, not DESC-CCL itself.
+The row describes the legacy benchmark scripts, not the reference
+configuration used for the [M2 Pro timings](#ccl_time).
 
 ### FAQ: Which galaxy-galaxy lensing pairs can DESC-CCL not transform? <a name="ccl_appendix_fail"></a>
 
@@ -664,8 +902,8 @@ $`\Delta\chi^2 = 2\times10^{-11}`$ on its own.
 | $`\gamma_t`$ | non-Limber term with the $`C_1`$ part only (as NLA); the $`b_{\rm TA}`$ and $`A_2`$ terms in Limber | the reference FKEM call, plus Limber $`C_{gI}`$ from the `m:cdelta` and `m:c2` templates |
 | PT tables | 1100 $`k`$, $`1.7\times10^{-5}`$ to $`334\ h\,{\rm Mpc}^{-1}`$ | 160 per decade, $`10^{-5}`$ to $`200\ {\rm Mpc}^{-1}`$, FAST-PT windows as CoCoA |
 
-The mapping, with file:line evidence in both codes, is in
-`.claude/skills/cocoa-ccl-comparison/references/tatt_conventions.md`.
+The [comparison script](cocoa_comparison/scripts/ccl_compute.py) applies
+these conversions before calling DESC-CCL's TATT calculation.
 
 Limber $`C_\ell`$ with TATT,
 $`\lvert C_\ell^{\rm CCL}/C_\ell^{\rm CoCoA} - 1\rvert`$ (median / maximum,
@@ -702,10 +940,15 @@ commit `b8bfec7` on:
 2. $`b_{\rm TA}`$ as a parameter;
 3. $`C_{BB}`$ in $`\xi_\pm`$.
 
-The timings in the note at the top were measured with the scripts before
-that commit.
+The legacy Intel timings were measured before that commit. The
+[M2 Pro timings](#ccl_time) use the TATT mapping documented here.
 
 ### Versions of this study's runs <a name="ccl_appendix_versions"></a>
+
+These are the versions behind the saved 2026-10-01–02 results. Version
+numbers here identify measurements; they are not installation targets for
+current CoCoA. Changing the growth convention, power-spectrum tables or
+likelihood defaults requires fresh data vectors and timings.
 
 | component | version |
 |---|---|

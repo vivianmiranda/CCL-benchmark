@@ -9,6 +9,21 @@ Scripts: `cocoa_comparison/scripts/`. Results, figures and the write-up
 live in this repository (the main README carries the study; the main
 Cocoa README only cites it).
 
+## Environment lifecycle
+
+Follow the OneCov/Cocoa installation schema: the pinned ccldev.yml Conda
+base, a repository-private .local environment, installation choices in
+set_installation_options.sh, and sourced setup_ccl.sh, compile_ccl.sh,
+start_ccl.sh and stop_ccl.sh. Preserve PR #1296 commit 647ad4a; do not replace
+it with a released CCL package. Keep Cocoa's Python 3.11 environment in a
+separate terminal. Installation downloads need authorization.
+
+The new lifecycle scripts have not yet had a fresh dependency installation
+or native build test. Validate that before calling the recipe fully tested;
+shell syntax and activation checks alone do not validate compilation.
+Do not change saved scientific results or dependency versions while editing
+the recipe. README command flows use one command per numbered Step box.
+
 ## 0. Owner's rules (non-negotiable)
 
 1. **Real CCL vs CoCoA.** The only adaptations allowed on the CCL side:
@@ -61,6 +76,15 @@ reused. Read the relevant file before spawning a new review.
 | `references/tatt_conventions.md` | CoCoA (CFASTPT, IA_code 0) vs pyccl TATT convention map: C1/C2/C_delta normalizations and signs, FAST-PT kernel mapping, B-modes, the gamma_t split (C1 in FKEM, extras in Limber), PT settings, the recipe of the "tatt:" variant |
 | `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
 | (cosmolike_core) `.claude/skills/cosmolike-dev/references/fable_review_growth_factor.md` | origin of the 1/D in NLA/TATT (linear theory, no k_NL); every growfac consumer in cosmolike; options for the G_growth sampling k (recommends 0.05/Mpc) |
+
+## Current-code reruns
+
+Read `references/readme_audit_20261006.md` before refreshing the study.
+The saved October 1–2 results use CoCoA v5.02's growth reference at
+5e-4/Mpc; current LSST/Roman likelihoods use growth_k=0.05/Mpc. The export
+script still hardcodes 5e-4/Mpc. Match that input and the IA convention
+before running a current-code comparison. Do not relabel the saved
+`growth_sub` diagnostic or old timings as a new comparison.
 
 ## 1. Pipeline
 
