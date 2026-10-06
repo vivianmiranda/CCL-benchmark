@@ -77,6 +77,15 @@ reused. Read the relevant file before spawning a new review.
 | `references/fable_review_D_tatt.md` | the TATT harness checked against that map; every TATT number recomputed; finding 3 per source pair |
 | (cosmolike_core) `.claude/skills/cosmolike-dev/references/fable_review_growth_factor.md` | origin of the 1/D in NLA/TATT (linear theory, no k_NL); every growfac consumer in cosmolike; options for the G_growth sampling k (recommends 0.05/Mpc) |
 
+## Current-code reruns
+
+Read `references/readme_audit_20261006.md` before refreshing the study.
+The saved October 1–2 results use CoCoA v5.02's growth reference at
+5e-4/Mpc; current LSST/Roman likelihoods use growth_k=0.05/Mpc. The export
+script still hardcodes 5e-4/Mpc. Match that input and the IA convention
+before running a current-code comparison. Do not relabel the saved
+`growth_sub` diagnostic or old timings as a new comparison.
+
 ## 1. Pipeline
 
 1. CoCoA side, cocoa env (`start_cocoa.sh` sourced), from `Cocoa/`:
