@@ -16,8 +16,11 @@ $`w(\theta)`$. Scripts, tables and figures:
 >
 > Current CoCoA samples the growth factor at
 > $`k = 0.05\ {\rm Mpc}^{-1}`$. The saved study and its export script use
-> $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. This matters for the non-Limber
-> comparison and must be matched before rerunning with current CoCoA.
+> $`k = 5\times10^{-4}\ {\rm Mpc}^{-1}`$. CoCoA changed this choice because
+> horizon-scale dark-energy perturbations make the old reference
+> unrepresentative of the sub-horizon growth used by these observables.
+> [Why the reference changed](#ccl_growth_choice) connects that decision
+> to the tests below and explains the remaining neutrino dependence.
 
 > [!WARNING]
 > **CLI for production; notebook wrappers for exploration.**
@@ -211,8 +214,8 @@ C_\ell = C_\ell^{\rm Limber}[P_{\rm nl}] + C_\ell^{\rm exact}[P_{\rm lin}] - C_\
 ```
 
 The last two terms cancel where Limber is accurate, but only if both use the
-same linear spectrum. The exact term uses FFTLog, which needs a spectrum
-separable in $`k`$ and $`z`$: a growth factor squared times one fixed
+same linear spectrum. The FFTLog construction used here assumes a
+spectrum separable in $`k`$ and $`z`$: a growth factor squared times one fixed
 $`P_{\rm lin}(k)`$.
 
 | code | $`P_{\rm lin}`$ in $`C_\ell^{\rm exact}`$ | $`P_{\rm lin}`$ in $`C_\ell^{\rm Limber}[P_{\rm lin}]`$ |
@@ -313,6 +316,50 @@ $`n(z)`$, with CoCoA's $`D(z)`$ (`scripts/diag_anchor.py`):
 
 The study measures the difference between the codes, not either code's
 distance from the exact $`C_\ell`$.
+
+### Why CoCoA changed its growth reference <a name="ccl_growth_choice"></a>
+
+The single growth factor used in NLA/TATT amplitudes and the separable
+non-Limber correction is meant to represent the evolution of structure
+well inside the horizon. The tests above explain the choice:
+
+- **Recorded CoCoA default:** $`k_0 = 5\times10^{-4}\ {\rm Mpc}^{-1}`$,
+  only about $`2.2H_0/c`$ for this cosmology. This is close to the present
+  Hubble wavenumber, not a reference safely inside the horizon throughout
+  the growth table.
+- **Current CoCoA default:** `growth_k: 0.05`, in inverse Mpc. This samples
+  CAMB's **linear** power on a sub-horizon scale, where the measured
+  dark-energy step has flattened. It is a fixed reference wavenumber,
+  not the redshift-dependent scale where density fluctuations become
+  nonlinear.
+
+At $`w = -0.9`$, the massless-neutrino diagnostic above shows that turning
+CAMB's dark-energy perturbations off removes the step between the old
+reference and sub-horizon modes. That is the evidence motivating the
+change: a horizon-scale growth history should not set a common amplitude
+for those smaller-scale modes. The change retains CAMB's dark-energy
+perturbations; it samples their result at a different wavenumber.
+
+CAMB's matter-density transfer functions are in synchronous gauge, as
+specified in its [transfer-variable documentation](https://camb.readthedocs.io/en/latest/transfer_variables.html).
+Density growth near the horizon needs that gauge convention to be stated.
+The saved on/off test identifies a dark-energy-perturbation effect within
+CAMB's convention; it does not show a gauge-transformation error in CAMB.
+
+**Massive neutrinos are a separate limitation.** Their free streaming makes
+linear growth depend on wavenumber even inside the horizon; see
+[Lesgourgues & Pastor, Section 0.6.3](https://arxiv.org/html/1212.6154v1).
+Choosing $`0.05\ {\rm Mpc}^{-1}`$ avoids the measured horizon-scale step
+but does not make $`P_{\rm lin}(k,z)`$ exactly separable. The residual
+wavenumber dependence in the tables above, and the per-bin pivot test
+above, remain relevant. No single fixed reference removes that dependence
+for every neutrino mass and redshift.
+
+The saved `growth_sub` row changes only the growth supplied to DESC-CCL
+and keeps the old IA amplitude. Changing CoCoA's default also changes the
+growth used by its IA amplitudes. Consequently that diagnostic establishes
+the motivation, not the numerical result of a comparison with current
+CoCoA. Such a comparison must supply matching growth inputs to both codes.
 
 ## Figures <a name="ccl_figures"></a>
 
@@ -620,8 +667,9 @@ source stop_ccl.sh
 > Use the [recorded CoCoA versions](#ccl_appendix_versions) to reproduce the
 > saved comparison. `cocoa_export.py` fixes the exported growth reference
 > at $`5\times10^{-4}\ {\rm Mpc}^{-1}`$, while current CoCoA uses
-> `growth_k: 0.05`. Running the script unchanged against current CoCoA
-> would give the two codes different growth inputs. The saved
+> `growth_k: 0.05` for the [physical reason above](#ccl_growth_choice).
+> Running the script unchanged against current CoCoA would give the two
+> codes different growth inputs. The saved
 > `growth_sub` diagnostic changes DESC-CCL's growth only; it is not a
 > rerun of the current CoCoA model.
 

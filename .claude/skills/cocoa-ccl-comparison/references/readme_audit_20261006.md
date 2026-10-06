@@ -28,6 +28,33 @@ Saved results, figures and numerical scripts remain unchanged.
 - All twelve linked figures and saved result/timing files exist. Figures
   were not regenerated. The README no longer cites the Claude skill.
 
+## Why the growth reference changed
+
+The README retains the original Section4 growth/FKEM derivation, dark-energy
+on/off tables, growth_sub diagnostics and per-bin pivot comparisons. A
+follow-up subsection connects them to the current CoCoA default; a mere
+mismatch warning does not explain the physical motivation.
+
+Evidence:
+
+- LSST project commit a257e7ec9c1f8c68df631afbb654b255929f2619 changes the
+  fixed linear-power reference from5e-4 to0.05/Mpc in both table construction
+  and normalization. It records the sub-horizon motivation. Current LSST
+  and Roman prototype files retain that choice.
+- The README's existing massless-neutrino CAMB dark-energy toggle isolates
+  the horizon-scale step for w=-0.9. Do not recast this as proof of a gauge
+  bug, a problem specific to all non-Lambda cosmologies, or a new numerical
+  result from the current checkout.
+- CAMB transfer-variable documentation specifies synchronous-gauge density
+  inputs: https://camb.readthedocs.io/en/latest/transfer_variables.html
+- Lesgourgues & Pastor, arXiv1212.6154v1, Section0.6.3 describes the separate
+  massive-neutrino free-streaming effect and scale-dependent linear growth:
+  https://arxiv.org/html/1212.6154v1
+- A sub-horizon reference does not make the true P(k,z) separable. The old
+  growth_sub experiment keeps the old IA amplitude, whereas changing
+  CoCoA's growth table also changes its IA factors. Fresh current-code
+  measurements are still required.
+
 ## Work required for a current-code numerical comparison
 
 1. Record current Cocoa/core/project commits and all resolved settings.
@@ -55,6 +82,11 @@ Saved results, figures and numerical scripts remain unchanged.
 - Headline fiducial statistics match results.json.
 - No numerical source, saved result or figure is changed; git diff --check
   passes. This audit did not check remote URLs or execute numerical recipes.
+
+Follow-up explanation checks: the full original table rows and image links
+remain unchanged; Markdown-it renders26 tables and5 blockquotes, and all36
+internal anchors and23 local links resolve. No numerical code was edited.
+The CAMB and arXiv primary-source pages were opened during this follow-up.
 
 ## Archived Intel note
 
