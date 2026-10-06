@@ -1,0 +1,5 @@
+.local/
+external_modules/code/
+work/
+__pycache__/
+*.pyc

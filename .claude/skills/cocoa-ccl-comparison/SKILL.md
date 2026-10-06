@@ -9,6 +9,21 @@ Scripts: `cocoa_comparison/scripts/`. Results, figures and the write-up
 live in this repository (the main README carries the study; the main
 Cocoa README only cites it).
 
+## Environment lifecycle
+
+Follow the OneCov/Cocoa installation schema: the pinned ccldev.yml Conda
+base, a repository-private .local environment, installation choices in
+set_installation_options.sh, and sourced setup_ccl.sh, compile_ccl.sh,
+start_ccl.sh and stop_ccl.sh. Preserve PR #1296 commit 647ad4a; do not replace
+it with a released CCL package. Keep Cocoa's Python 3.11 environment in a
+separate terminal. Installation downloads need authorization.
+
+The new lifecycle scripts have not yet had a fresh dependency installation
+or native build test. Validate that before calling the recipe fully tested;
+shell syntax and activation checks alone do not validate compilation.
+Do not change saved scientific results or dependency versions while editing
+the recipe. README command flows use one command per numbered Step box.
+
 ## 0. Owner's rules (non-negotiable)
 
 1. **Real CCL vs CoCoA.** The only adaptations allowed on the CCL side:

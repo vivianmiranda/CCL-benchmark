@@ -37,8 +37,9 @@ Contents:
 6. [TATT intrinsic alignments](#ccl_tatt)
 7. [Execution time (macOS, 8 cores)](#ccl_time)
 8. [What it took to run DESC-CCL](#ccl_run)
-9. [Reproduce](#ccl_reproduce)
-10. [Appendix](#ccl_appendix)
+9. [Installation and compilation](#ccl_installation)
+10. [Reproduce](#ccl_reproduce)
+11. [Appendix](#ccl_appendix)
 
 ## Summary <a name="ccl_summary"></a>
 
@@ -516,80 +517,224 @@ CoCoA side:
 3. Cobaya returns $`\chi(z)`$ only at requested redshifts, so the export
    reads it on the likelihood's $`z`$ grid.
 
-## Reproduce <a name="ccl_reproduce"></a>
+## Installation and compilation <a name="ccl_installation"></a>
 
-We assume users have Conda, a Cocoa installation with the lsst_y1 and
-roman_real projects and their data, and run every command from the
-CCL-benchmark folder. `<run folder>` is the same path in every step.
+We assume Conda is installed. Open a fresh Bash terminal in
+`CCL-benchmark/`, separate from Cocoa's runtime environment.
 
-**Step :one:**: Create the `ccldev` Conda environment (once)
+This follows the OneCovariance benchmark's setup/compile/start/stop
+sequence. The pinned [ccldev.yml](ccldev.yml) supplies a Python 3.12 Conda
+base; `.local` is private to this repository. Cocoa keeps its own
+Python 3.11 environment.
+
+**Step :one:**: create the Conda base once.
 
 ```bash
 conda env create --file=ccldev.yml
 ```
 
-**Step :two:**: Build pyccl of
-[LSSTDESC/CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296) into
-`<PR build folder>` (once; the script clones the PR there)
+**Step :two:**: activate the base.
 
 ```bash
 conda activate ccldev
-bash cocoa_comparison/build_ccl_pr.sh <PR build folder>
 ```
 
-**Step :three:**: Export CoCoA's data vectors, tables and covariances (Conda
-cocoa environment)
+**Step :three:**: inspect
+[set_installation_options.sh](set_installation_options.sh).
+It selects the CCL PR revision and checkout path. To reuse an existing
+PR build, set `CCL_PATH` to that directory before setup.
+
+**Step :four:**: create `.local` and prepare the pinned CCL checkout.
 
 ```bash
-conda activate cocoapy311
-cd <Cocoa folder>
+source setup_ccl.sh
+```
+
+**Step :five:**: compile CCL with the Conda libraries and check its import.
+
+```bash
+source compile_ccl.sh
+```
+
+**Step :six:**: activate the private environment.
+
+```bash
+source start_ccl.sh
+```
+
+| File | Purpose |
+| --- | --- |
+| [ccldev.yml](ccldev.yml) | Create the pinned Conda base. |
+| [set_installation_options.sh](set_installation_options.sh) | Select CCL PR #1296 at commit `647ad4a` and its checkout path. |
+| [setup_ccl.sh](setup_ccl.sh) | Create `.local`; clone the pinned source if it is absent. |
+| [compile_ccl.sh](compile_ccl.sh) | Build the prepared source and connect it to `.local`. |
+| [start_ccl.sh](start_ccl.sh) | Activate the private Python environment. |
+| [stop_ccl.sh](stop_ccl.sh) | Restore the shell's previous Python environment. |
+
+The study still uses [CCL PR #1296](https://github.com/LSSTDESC/CCL/pull/1296).
+Installing a released `pyccl` package instead does not reproduce its
+full-sky, bin-averaged transforms. The new environment scripts preserve
+that revision and the existing CMake build recipe; a fresh installation
+with these scripts has not yet been tested.
+
+### Starting and stopping later sessions
+
+After installation, open a fresh Bash terminal in `CCL-benchmark/`.
+Setup and compilation are not needed for each calculation.
+
+**Step :one:**: activate the Conda base.
+
+```bash
+conda activate ccldev
+```
+
+**Step :two:**: activate the private environment.
+
+```bash
+source start_ccl.sh
+```
+
+**Step :three:**: after the calculation, leave the private environment.
+
+```bash
+source stop_ccl.sh
+```
+
+## Reproduce <a name="ccl_reproduce"></a>
+
+### Export CoCoA inputs
+
+We assume Cocoa is installed with the LSST Y1 and Roman real projects
+and their data. Follow the
+[Cocoa Conda recipe](https://github.com/CosmoLike/cocoa#required_packages_conda)
+for its Python 3.11 base. Open a separate Bash terminal in `Cocoa/`.
+Replace `cocoa` if the installed Conda base has another name.
+Use the same absolute `<run folder>` path throughout this section.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
 source start_cocoa.sh
-cd <CCL-benchmark folder>
-bash cocoa_comparison/run_cocoa.sh <run folder>
 ```
 
-**Step :four:**: Compute the DESC-CCL data vectors
+**Step :three:**: enter this benchmark repository.
 
 ```bash
-CCL_PYTHON=<ccldev python> CCL_PR=<PR build folder> COCOA_ROOTDIR=<Cocoa folder> bash cocoa_comparison/run_ccl.sh <run folder>
+cd "<CCL-benchmark folder>"
 ```
 
-- `CCL_PYTHON`: the python of the `ccldev` environment (`conda run -n ccldev which python` prints it).
-- `CCL_PR`: the folder given to `build_ccl_pr.sh`.
-- `COCOA_ROOTDIR`: the `Cocoa/` folder.
-
-**Step :five:**: Write the tables (any python with NumPy)
+**Step :four:**: export the data vectors, tables and covariances.
 
 ```bash
-CMP_WORK=<run folder> python cocoa_comparison/scripts/results.py
-CMP_WORK=<run folder> python cocoa_comparison/scripts/harmonic.py
+bash cocoa_comparison/run_cocoa.sh "<run folder>"
 ```
 
-**Step :six:**: Draw the figures (Conda cocoa environment with
-`start_cocoa.sh` sourced, as in Step :three:)
+### Compute DESC-CCL data vectors
+
+We assume installation is complete. Open a fresh Bash terminal in
+`CCL-benchmark/`. `<PR build folder>` is the absolute checkout path selected
+in `set_installation_options.sh`; `<Cocoa folder>` ends in `Cocoa/`.
+
+**Step :one:**: activate the Conda base.
 
 ```bash
-CMP_WORK=<run folder> python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
+conda activate ccldev
 ```
 
-> [!NOTE]
-> The figures use cosmolike_core's `plot_datavectors.py`, which renders text
-> with LaTeX (`usetex=True`): a LaTeX installation must be on `PATH`.
-
-**Step :seven:**: Time both codes (8 OpenMP threads; Conda cocoa environment
-with `start_cocoa.sh` sourced, as in Step :three:)
+**Step :two:**: activate the private CCL environment.
 
 ```bash
-CCL_PYTHON=<ccldev python> CCL_PR=<PR build folder> bash cocoa_comparison/run_timing.sh <run folder>
+source start_ccl.sh
 ```
 
-> [!TIP]
-> Run nothing else on the machine while timing; see
-> [Execution time](#ccl_time) for what is timed.
+**Step :three:**: run CCL on the exported inputs.
+
+```bash
+CCL_PYTHON="$PWD/.local/bin/python" CCL_PR="<PR build folder>" COCOA_ROOTDIR="<Cocoa folder>" bash cocoa_comparison/run_ccl.sh "<run folder>"
+```
+
+### Write tables and figures
+
+We assume Cocoa is installed. Open a fresh Bash terminal in `Cocoa/`.
+The figures use cosmolike_core's `plot_datavectors.py`, with LaTeX text
+rendering: a LaTeX installation must be on `PATH`.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
+source start_cocoa.sh
+```
+
+**Step :three:**: enter the benchmark repository.
+
+```bash
+cd "<CCL-benchmark folder>"
+```
+
+**Step :four:**: write the data-vector comparison tables.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/results.py
+```
+
+**Step :five:**: write the angular-spectrum comparison tables.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/harmonic.py
+```
+
+**Step :six:**: draw the figures.
+
+```bash
+CMP_WORK="<run folder>" python cocoa_comparison/scripts/plots.py cocoa_comparison/figures
+```
+
+### Measure execution time
+
+We assume both codes are installed and the five-cosmology exports exist.
+Open a fresh Bash terminal in `Cocoa/`. Run one timing campaign at a time
+on a quiet machine. The script uses eight OpenMP threads; see
+[Execution time](#ccl_time) for the measured work.
+
+**Step :one:**: activate Cocoa's Conda base.
+
+```bash
+conda activate cocoa
+```
+
+**Step :two:**: load Cocoa's runtime environment.
+
+```bash
+source start_cocoa.sh
+```
+
+**Step :three:**: enter the benchmark repository.
+
+```bash
+cd "<CCL-benchmark folder>"
+```
+
+**Step :four:**: time both codes sequentially.
+
+```bash
+CCL_PYTHON="$PWD/.local/bin/python" CCL_PR="<PR build folder>" bash cocoa_comparison/run_timing.sh "<run folder>"
+```
 
 The diagnostics behind [Section 4](#ccl_fkem) and the transform failures are
-`scripts/diag_fkem_offset.py`, `scripts/diag_growth.py`,
-`scripts/diag_anchor.py` and `scripts/diag_l7s2.py` (usage in each file).
+`cocoa_comparison/scripts/diag_fkem_offset.py`, `diag_growth.py`,
+`diag_anchor.py` and `diag_l7s2.py` (usage in each file).
 
 ## Appendix <a name="ccl_appendix"></a>
 
