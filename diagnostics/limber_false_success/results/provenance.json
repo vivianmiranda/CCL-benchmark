@@ -1,0 +1,23 @@
+{
+  "ccl_version": "3.3.3",
+  "ccl_file": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/python3.12/site-packages/pyccl/__init__.py",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "pr_head": "8978d57e02e07e6557428ff50e134f3f21d70ab9",
+  "tomography_sha256": "08ade45f772525918ef3d8edc07e5a666516ff814446eb2a1950d099c328cd69",
+  "peak": {
+    "logk": -2.2611483140093336,
+    "k_Mpc_inverse": 0.10423072640449574,
+    "z": 0.9944080397630426,
+    "FWHM_logk": 0.10634549519919068,
+    "kronrod_nodes_in_FWHM": 2,
+    "gauss_nodes_in_FWHM": 1
+  },
+  "settings": {
+    "INTEGRATION_LIMBER_EPSREL": 0.0001,
+    "INTEGRATION_LIMBER_GAUSS_KRONROD_POINTS": 4,
+    "N_ITERATION": 1000
+  }
+}

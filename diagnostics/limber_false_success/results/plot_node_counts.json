@@ -1,0 +1,12 @@
+{
+  "half_maximum_logk": [
+    -2.311700955205471,
+    -2.20535546000628
+  ],
+  "nodes_in_width": {
+    "kronrod": 2,
+    "gauss": 1,
+    "cocoa": 55
+  },
+  "cocoa_spectra_reproduced_bitwise": true
+}

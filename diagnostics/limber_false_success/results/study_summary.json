@@ -1,0 +1,235 @@
+{
+  "status": "completed",
+  "scope": "CCL quadrature false-success diagnostic; no production source changes or Fisher inference",
+  "provenance": {
+    "ccl_version": "3.3.3",
+    "ccl_file": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/python3.12/site-packages/pyccl/__init__.py",
+    "gsl_version": "2.7",
+    "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+    "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+    "platform": "macOS-13.7.5-arm64-arm-64bit",
+    "pr_head": "8978d57e02e07e6557428ff50e134f3f21d70ab9",
+    "tomography_sha256": "08ade45f772525918ef3d8edc07e5a666516ff814446eb2a1950d099c328cd69",
+    "peak": {
+      "logk": -2.2611483140093336,
+      "k_Mpc_inverse": 0.10423072640449574,
+      "z": 0.9944080397630426,
+      "FWHM_logk": 0.10634549519919068,
+      "kronrod_nodes_in_FWHM": 2,
+      "gauss_nodes_in_FWHM": 1
+    },
+    "settings": {
+      "INTEGRATION_LIMBER_EPSREL": 0.0001,
+      "INTEGRATION_LIMBER_GAUSS_KRONROD_POINTS": 4,
+      "N_ITERATION": 1000
+    }
+  },
+  "reported_case": {
+    "w": -1.0389,
+    "ell": 355.655882,
+    "pair_zero_based": [
+      3,
+      4
+    ]
+  },
+  "reproduced_case": {
+    "w": -1.0389272675840322,
+    "pair": [
+      3,
+      4
+    ],
+    "ell": 355.655882,
+    "bounds": [
+      -2.8702459908603517,
+      0.21223213085532666
+    ],
+    "native": {
+      "qag_quad": 3.2299469642377736e-07,
+      "spline": 3.3652721508951997e-07
+    },
+    "qag": [
+      {
+        "parts": 1,
+        "value": 3.229946964237772e-07,
+        "estimated_error": 3.5859614880149014e-21,
+        "status": [
+          0
+        ],
+        "function_calls": 41
+      },
+      {
+        "parts": 2,
+        "value": 3.365332156782499e-07,
+        "estimated_error": 6.182067972095159e-12,
+        "status": [
+          0,
+          0
+        ],
+        "function_calls": 246
+      },
+      {
+        "parts": 4,
+        "value": 3.3653328503635954e-07,
+        "estimated_error": 3.197185351614568e-12,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "function_calls": 328
+      },
+      {
+        "parts": 8,
+        "value": 3.3653328450532097e-07,
+        "estimated_error": 3.19650010253142e-12,
+        "status": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "function_calls": 328
+      }
+    ],
+    "cquad": {
+      "value": 3.3653154695468126e-07,
+      "estimated_error": 3.3479978820131537e-15,
+      "status": 0,
+      "function_calls": 14011
+    },
+    "fixed": [
+      {
+        "nodes": 64,
+        "logk": 3.366384444263204e-07,
+        "a": 3.3652764694628313e-07
+      },
+      {
+        "nodes": 96,
+        "logk": 3.3653668078399887e-07,
+        "a": 3.3653185982156963e-07
+      },
+      {
+        "nodes": 128,
+        "logk": 3.365253301404079e-07,
+        "a": 3.365296048021473e-07
+      },
+      {
+        "nodes": 256,
+        "logk": 3.3653319578171597e-07,
+        "a": 3.365365391111675e-07
+      },
+      {
+        "nodes": 512,
+        "logk": 3.365311988466896e-07,
+        "a": 3.36526262110905e-07
+      },
+      {
+        "nodes": 1024,
+        "logk": 3.3653159604577893e-07,
+        "a": 3.365319555318913e-07
+      }
+    ],
+    "native_qag_fractional_error_vs_cquad": -0.040224610897256596
+  },
+  "sampled_false_acceptance_w_range": [
+    -1.038947267584032,
+    -1.0389072675840323
+  ],
+  "w_scan_step": 5e-06,
+  "native_spline_fractional_change_across_scan": 5.0271178991367904e-05,
+  "cquad_epsrel_1e8_to_1e9_fractional_change": 4.4842130009215e-11,
+  "endpoint_controls": [
+    {
+      "upper_logk_shift": -0.01,
+      "qag_calls": 205,
+      "qag_fractional_error": -5.199457244975392e-06,
+      "cquad_fractional_change": -5.000417080402997e-09
+    },
+    {
+      "upper_logk_shift": -0.001,
+      "qag_calls": 205,
+      "qag_fractional_error": -4.8466821016557304e-06,
+      "cquad_fractional_change": -4.866634872868758e-10
+    },
+    {
+      "upper_logk_shift": 0.001,
+      "qag_calls": 287,
+      "qag_fractional_error": 3.807640113429045e-06,
+      "cquad_fractional_change": 4.841040901482074e-10
+    },
+    {
+      "upper_logk_shift": 0.01,
+      "qag_calls": 287,
+      "qag_fractional_error": -1.2177049690365038e-05,
+      "cquad_fractional_change": 4.715682289102574e-09
+    }
+  ],
+  "controlled_diagnosis": "Varying geometry/tracer kernels at frozen power changes the sign of initial K41-G20 and exits the false-acceptance interval. Varying power at fixed root geometry retains 41-call false acceptance at both neighboring control cosmologies. Constant per-bin galaxy biases only multiply both rules.",
+  "cocoa": {
+    "cases": 3,
+    "multipoles": 26,
+    "galaxy_pairs": 15,
+    "power_input": "Native CCL tables, imported into CoCoA documented units, 1500 seed k nodes refined by committed helper to11993; fixed across quadrature levels.",
+    "covariance_density_only": true,
+    "covariance_default_nodes_per_panel": 96,
+    "covariance_reference_nodes_per_panel": 1024,
+    "panels": 7,
+    "covariance_default_max_abs_fractional_change": 6.94911481327054e-05,
+    "covariance_512_vs_1024_max_abs_fractional_change": 9.37374116105616e-08,
+    "reported_pair_root_default_fractional_change": -1.6052763679219595e-05,
+    "data_vector_autos_default_128_vs_1024_max_abs_fractional_change": 0.00019692777272917183,
+    "data_vector_scope": "Actual DV includes extended-Limber RSD and supports autos only. Compare its quadrature levels internally, not as identical physics to density-only CCL cross spectrum. Levels3and4 both use1024 DV nodes; not independent refinements.",
+    "limitations": "No immunity claim for other n(z), cosmologies or derivatives. Within-code refinement holds input and power interpolation fixed. No direct interpretation of cross-code absolute spectrum residual as quadrature error.",
+    "core_commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+    "lsst_y1_commit": "c187522125986ad181985c39143aeebbaad50a61"
+  },
+  "files_sha256": {
+    "plot_trigger.py": "20c5e6fc9567913ef9f173d641317dd250f4e17042b604313bb8d45ddfa724ff",
+    "cocoa_case1_level4.npz": "380d2a6ee892b242cb258988f0c87e5ea3508fb75370d098eb7e4f51e6bf2171",
+    "cocoa_case1_level0.npz": "27ba435ac4d2915e6cc8181c08b3e14fa7b816bd3ea721b82436eaaba6908071",
+    "cocoa_case1_level1.npz": "584a12692ec7213446c9b0e740f09d5235504368f1c6223051ebeff347bbace4",
+    "provenance.json": "a12db8b165c252eb2e32b2c14b682867a3185f358c137d3bc3b2b6bf537747f2",
+    "endpoint_controls.json": "3d258d073950ca768a09fc31ccbc21b2724c534cd9bbd16731bd29fc7338155c",
+    "probe_quadrature.py": "115838527f278829bccac3a72b773bbc2a0a518707e3b43fe7b9b8f3b1179b83",
+    "ccl_scan.npz": "d4d63892d0fe6b2ea5e105aa92eb1493a5632ebeb859f1c78170fb0b7fc57dda",
+    "cocoa_case1_level3.npz": "a0e5f36b579e4108bce45c3868b1ec74b388490664de81f5c8eab404c73a1fd6",
+    "cocoa_case1_level2.npz": "f25cde3356315c080af1639b8135715295dbecd9cb26d54902d34d34095c93e2",
+    "find_first_panel.py": "a16d2cf5e3c356e1aa510ba3b950ddb91fe5b9e5038b5366952d7c22d11036c3",
+    "root_spike.json": "cd1117a18f542715eb01ed1de5c1ca9560bd8bef89e7c455f71f03b16fcca2f0",
+    "plot_overlap.py": "fc7f2a6055bddc3b54e00c1b55961d6e13de07591a34fa550ca863343bd15025",
+    "ccl_integrand_0.npz": "5ddd2a5f62c1e08d6e05b2fa3e09af055d38cb8027131f1498f8ee2a0fa5a4f1",
+    "ccl_integrand_1.npz": "e03efeb9a26cff577c978ae8f4b4ebd7e82304c27c358f4be6599e681ace5252",
+    "ccl_scan.json": "897563cd75d2791ec0c7cfda233d93f3d0218b9bab80fa5ba662be5ecc0094ce",
+    "cocoa_case0_level0.npz": "1d3cee7cb0f82aaea6d1d76b293d5703c23328b77d6eb4244e825702a0fff7a0",
+    "shared_input_2.npz": "7be9c223794964e81a81c33bc61b34ebf589ab0bfa6ac5542f5f198fc870863a",
+    "cocoa_case0_level1.npz": "f6c7d048306576e114cd6fd53ab5db7226f818b513c4d6810c81232e5ab99be2",
+    "cocoa_case0_level3.npz": "ae08f128981f40c51b3a3a02d959aad8073dc839af6ee81c3947e540603f105f",
+    "shared_input_1.npz": "fd994cfaa591c7a0b7a3b33993acc661c526141ce282a53329bf2089498e411a",
+    "root_spike_integrand.npz": "64229fd7f726587abf472874b8708ee9d8019337cbba549ccc5bc1b4190fa58a",
+    "shared_cases.json": "d92fbedc7977f44f1be4c01bed50fa6abcb1d16f8c82d0dcdb6615205e0de4e4",
+    "trigger_scan.json": "7c7b1c2cd36c9dd731168615a4b29c1fc8c5f917b555b1bec7727c5e8605b804",
+    "shared_input_0.npz": "ab7d92b352ebc1594e9b995cbd4e79fe456fc60197d0b3c8c4ae253253b828f3",
+    "cocoa_case0_level2.npz": "291e098fec0f626c19d253e9f65bbc8802b38612326f012f6aa0a998f6f68157",
+    "diagnose_trigger.py": "237781003249ec08ba4afd84a0e441db29493e38d909f171c4894cd56b176b64",
+    "cocoa_convergence.json": "43afe7a8544558a596cfc59553f36d93049f753ac6dca9a36768896a0167ed2f",
+    "scan_ccl.py": "f54911f9a265fe81e056db99a1b1c23ebaacd77bad99f06777f1b56aee557ab9",
+    "trigger_nodes.npz": "463ed8967d1680beaa248bad58212159feb6b3218f4be856f7ce93273ea002f8",
+    "cocoa_case0_level4.npz": "c5148075be4ae2772eeaf9ed3f93d43971818f416cdf167e37bb23e6caf3187b",
+    "cocoa_case2_level1.npz": "523aaa3bbea8ed65e8344f590ffa70c9e42db8938d6ec4a459c21a267ed07c14",
+    "cocoa_case2_level0.npz": "9458c67480110b93f0c94ecb5c4de66515da01d851c1d680ebffa1ff3711153e",
+    "gsl_probe.json": "25681563e32ce4f2864282550b8837e2bf4f725a986e362144abc924de896f40",
+    "cocoa_case1_level0_nodes.npz": "e9e8f9c1044e4b8ffeae2d81940c8b2607e017c2b75ec8d097060ec17da1c02d",
+    "plot_node_counts.json": "f96975ea13687da782ef21a3d9078d27a4bdcc7b2991a665d7aa8b53a204e5db",
+    "export_ccl_cases.py": "edf092fac27dae5798391328e6c897052edadd92015e76b537ac56e8c96d5e47",
+    "cocoa_case2_level2.npz": "8b1d9d61f4643581303f5f171373d02ef5f559fa4f06079004c219de434beaa6",
+    "cocoa_case2_level3.npz": "597c91a9c6992d31c2a3d8e2469a64fa4a52750669dad936056a070bd0ee101b",
+    "first_panel_roots.json": "08091f570b86f7538727cb3be67d6b78082f70ebd66e0f6da651a8918d5cc5ff",
+    "check_cocoa_case.py": "8b2da94d1d5e80435ae6b635d0238ed7954b3552cff10deeb8a6b59a14889c9f",
+    "cocoa_case2_level4.npz": "9d57df930b2d4e1640e398c06906d711d37172fc6ca045b9fde38b02562a2f32"
+  }
+}
