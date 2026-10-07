@@ -1,0 +1,1394 @@
+{
+  "schema": "native-ccl-integrator-timing-v1",
+  "status": "completed",
+  "baseline_only": false,
+  "ccl_version": "3.3.3",
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": "d18b0df501683b02b675833f3f256e1bf16c1baffe110f1e85c8891786aca0f2",
+  "shim_source_sha256": "2e9bdb90bb7fa83a3d5898334826e09c4a6328b62e22ae1b30246bbff3bfb11b",
+  "shim_binary_sha256": "0007e82c0e1ab0403a5e487b19cfe9d1a29366dfd98de8c31e4698817aa1004b",
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "threads": 6,
+  "blas_threads": 1,
+  "repetitions": 9,
+  "native_default_epsrel": 0.0001,
+  "strict_reference_epsrel": 1e-08,
+  "scope": "Warmed native CCL kernels; no Python integrand callbacks. Setup/CAMB excluded from both timing scopes.",
+  "public_call_scope": "Python angular_cl and CCL tracer collections, per-call QAG workspaces, and native projection. In CQUAD mode the outer QAG workspace is unused but still allocated.",
+  "kernel_scope": "Sum of native GSL integration-call durations, excluding workspace allocation. Includes native CQUAD fallbacks in QAG mode. With multiple threads this sum is not wall time.",
+  "cquad_scope": "Isolated native CQUAD diagnostic using cached per-thread workspace, not a released CCL3.3.3 API option or a benchmark of PR1313 split-QAG mitigation.",
+  "instrumentation_control": "Separate-process warmed public QAG repetitions without preloading. Instrumented/unmodified timing ratio includes process-to-process variation; no correction is subtracted from the paired QAG/CQUAD ratio.",
+  "selected_workload": "all_pairs_26ell",
+  "cases": [
+    {
+      "case": {
+        "id": "u000__pr_original",
+        "cosmology_id": "u000",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.1002693872933842,
+          "wa": 0.18973039311613954,
+          "Omega_m": 0.30018165926114865
+        },
+        "family": "pr_original",
+        "arm": "uniform",
+        "camb_dark_energy_model": "ppf"
+      },
+      "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "setup_seconds_not_benchmarked": 0.4542667920468375,
+      "bias": [
+        1.2882862947382896,
+        1.3911617915123047,
+        1.5127744139039963,
+        1.6384225927848317,
+        1.7747440942958812
+      ],
+      "omp_threads_after_setup_before_restore": 6,
+      "verified_omp_threads_for_timing": 6,
+      "workloads": {
+        "all_pairs_26ell": {
+          "shape": [
+            15,
+            26
+          ],
+          "multipoles": [
+            30.0,
+            36.06793303852239,
+            43.36319312237781,
+            52.134024862481255,
+            62.678883925621186,
+            75.35659294528742,
+            90.59855161206048,
+            108.92341643103035,
+            130.95474967204973,
+            157.44223807493174,
+            189.28720334405796,
+            227.57327250875517,
+            273.603251806773,
+            328.94345884295564,
+            395.47702156692236,
+            475.46795773833395,
+            571.6382153889741,
+            687.260295830332,
+            826.2686110014494,
+            993.3933644477727,
+            1194.3215116604913,
+            1435.8902769679146,
+            1726.3198120114705,
+            2075.4929127568093,
+            2495.2913133080137,
+            3000.0
+          ],
+          "pairs": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "baseline_qag_bitwise_equal": true,
+          "warm_qag": {
+            "public_seconds_per_workload": 0.006238375,
+            "kernel_seconds_per_workload": 0.02597,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 390,
+              "cquad_calls": 0,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 0,
+              "kernel_nanoseconds": 25970000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {
+                  "0": 390
+                },
+                "cquad": {}
+              }
+            },
+            "warnings": []
+          },
+          "warm_cquad": {
+            "public_seconds_per_workload": 0.007038458,
+            "kernel_seconds_per_workload": 0.029502,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 0,
+              "cquad_calls": 390,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 6,
+              "kernel_nanoseconds": 29502000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {},
+                "cquad": {
+                  "0": 390
+                }
+              }
+            },
+            "warnings": []
+          },
+          "strict_reference": {
+            "public_seconds_per_workload": 0.284395458,
+            "kernel_seconds_per_workload": 1.494295,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 0,
+              "cquad_calls": 390,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 0,
+              "kernel_nanoseconds": 1494295000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {},
+                "cquad": {
+                  "0": 390
+                }
+              }
+            },
+            "warnings": []
+          },
+          "samples": {
+            "qag_quad": [
+              {
+                "public_seconds_per_workload": 0.005986958375,
+                "kernel_seconds_per_workload": 0.025966,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207728000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 0,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.005947338625,
+                "kernel_seconds_per_workload": 0.025956625,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207653000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 1,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.0059034375,
+                "kernel_seconds_per_workload": 0.025904,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207232000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 2,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.005947375,
+                "kernel_seconds_per_workload": 0.025973375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207787000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 3,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.005899198,
+                "kernel_seconds_per_workload": 0.025909625,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207277000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 4,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.00589254175,
+                "kernel_seconds_per_workload": 0.02590875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207270000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 5,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.005884599,
+                "kernel_seconds_per_workload": 0.0259605,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207684000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 6,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.005939916625,
+                "kernel_seconds_per_workload": 0.025879125,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 207033000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 7,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.005941296875,
+                "kernel_seconds_per_workload": 0.025867375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 206939000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 8,
+                "position_in_interleaving": 0
+              }
+            ],
+            "cquad_diagnostic": [
+              {
+                "public_seconds_per_workload": 0.006374328125,
+                "kernel_seconds_per_workload": 0.028366875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226935000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 0,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.0063185105,
+                "kernel_seconds_per_workload": 0.028299,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226392000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 1,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.0063246875,
+                "kernel_seconds_per_workload": 0.028315875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226527000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 2,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006336927125,
+                "kernel_seconds_per_workload": 0.028362875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226903000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 3,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006308708375,
+                "kernel_seconds_per_workload": 0.028221125,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 225769000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 4,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.00632140625,
+                "kernel_seconds_per_workload": 0.028246125,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 225969000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 5,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.00629544275,
+                "kernel_seconds_per_workload": 0.02827075,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226166000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 6,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.00632810425,
+                "kernel_seconds_per_workload": 0.028325375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226603000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 7,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006326828125,
+                "kernel_seconds_per_workload": 0.028256875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 226055000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 8,
+                "position_in_interleaving": 1
+              }
+            ]
+          },
+          "accepted_accuracy_reference_check": null,
+          "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+          "max_fractional_error_vs_strict_reference": {
+            "qag_quad": 2.336765520549733e-05,
+            "cquad_diagnostic": 1.94876121899501e-05
+          },
+          "summary": {
+            "qag_quad": {
+              "public_seconds_per_workload": {
+                "mean": 0.0059269624166666665,
+                "sample_scatter": 3.374239275828994e-05,
+                "median": 0.005939916625
+              },
+              "kernel_seconds_per_workload": {
+                "mean": 0.025925041666666666,
+                "sample_scatter": 3.976198718625609e-05,
+                "median": 0.025909625
+              }
+            },
+            "cquad_diagnostic": {
+              "public_seconds_per_workload": {
+                "mean": 0.006326104777777778,
+                "sample_scatter": 2.1713153296678804e-05,
+                "median": 0.0063246875
+              },
+              "kernel_seconds_per_workload": {
+                "mean": 0.028296097222222222,
+                "sample_scatter": 5.126458549227155e-05,
+                "median": 0.028299
+              }
+            }
+          },
+          "cquad_over_qag_ratio": {
+            "public_seconds_per_workload": 1.0673434945341849,
+            "kernel_seconds_per_workload": 1.091458119375143
+          },
+          "unmodified_qag_control": {
+            "public_seconds_per_workload": {
+              "mean": 0.005967439805555555,
+              "sample_scatter": 9.538032863253957e-05,
+              "median": 0.00594855725
+            },
+            "repetitions": 9,
+            "batch": 8,
+            "instrumented_over_unmodified_mean_ratio": 0.9932169589961838,
+            "interpretation": "Instrumentation-overhead control from a separate fresh process; includes process-to-process timing variation. Primary method comparison remains the interleaved instrumented QAG/CQUAD ratio."
+          },
+          "interpretation": "Ratio is cost at the same requested tolerance; when QAG is inaccurate it is not a speed comparison at matched achieved accuracy."
+        }
+      },
+      "baseline_json_sha256": "9cf79646367f7a66494db401781d139c07394b6487fe68cb326250602cf30770",
+      "baseline_arrays_sha256": "88ae91e2da8d78ea6f697b3fcdfa73fd02c7e062d4c0d3647652b4ddd9919a15",
+      "arrays_sha256": "b5fd96f30f7483dc9cbe6eafb1721d767061e92be95293c8a7c7021b3992c737"
+    },
+    {
+      "case": {
+        "id": "known__pr_original",
+        "cosmology_id": "known",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "family": "pr_original",
+        "arm": "targeted_control",
+        "camb_dark_energy_model": "fluid"
+      },
+      "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "setup_seconds_not_benchmarked": 0.42528358299750835,
+      "bias": [
+        1.2925866563960364,
+        1.3967716559412415,
+        1.519854473326647,
+        1.6470071446882328,
+        1.784974013589498
+      ],
+      "omp_threads_after_setup_before_restore": 6,
+      "verified_omp_threads_for_timing": 6,
+      "workloads": {
+        "all_pairs_26ell": {
+          "shape": [
+            15,
+            26
+          ],
+          "multipoles": [
+            30.0,
+            36.06793303852239,
+            43.36319312237781,
+            52.134024862481255,
+            62.678883925621186,
+            75.35659294528742,
+            90.59855161206048,
+            108.92341643103035,
+            130.95474967204973,
+            157.44223807493174,
+            189.28720334405796,
+            227.57327250875517,
+            273.603251806773,
+            328.94345884295564,
+            395.47702156692236,
+            475.46795773833395,
+            571.6382153889741,
+            687.260295830332,
+            826.2686110014494,
+            993.3933644477727,
+            1194.3215116604913,
+            1435.8902769679146,
+            1726.3198120114705,
+            2075.4929127568093,
+            2495.2913133080137,
+            3000.0
+          ],
+          "pairs": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "baseline_qag_bitwise_equal": true,
+          "warm_qag": {
+            "public_seconds_per_workload": 0.00649,
+            "kernel_seconds_per_workload": 0.027996,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 390,
+              "cquad_calls": 0,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 0,
+              "kernel_nanoseconds": 27996000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {
+                  "0": 390
+                },
+                "cquad": {}
+              }
+            },
+            "warnings": []
+          },
+          "warm_cquad": {
+            "public_seconds_per_workload": 0.006750542,
+            "kernel_seconds_per_workload": 0.02947,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 0,
+              "cquad_calls": 390,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 0,
+              "kernel_nanoseconds": 29470000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {},
+                "cquad": {
+                  "0": 390
+                }
+              }
+            },
+            "warnings": []
+          },
+          "strict_reference": {
+            "public_seconds_per_workload": 0.280743375,
+            "kernel_seconds_per_workload": 1.47927,
+            "batch": 1,
+            "counters": {
+              "qag_calls": 0,
+              "cquad_calls": 390,
+              "unexpected_callbacks": 0,
+              "workspace_allocations": 0,
+              "kernel_nanoseconds": 1479270000,
+              "qag_failures": 0,
+              "cquad_failures": 0,
+              "fallback_cquad_calls": 0,
+              "status_counts": {
+                "qag": {},
+                "cquad": {
+                  "0": 390
+                }
+              }
+            },
+            "warnings": []
+          },
+          "samples": {
+            "qag_quad": [
+              {
+                "public_seconds_per_workload": 0.006357078125,
+                "kernel_seconds_per_workload": 0.027965375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223723000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 0,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006308458375,
+                "kernel_seconds_per_workload": 0.028100125,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 224801000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 1,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006274864625,
+                "kernel_seconds_per_workload": 0.027947375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223579000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 2,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006314953125,
+                "kernel_seconds_per_workload": 0.027994875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223959000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 3,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006323609375,
+                "kernel_seconds_per_workload": 0.027961625,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223693000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 4,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006278703125,
+                "kernel_seconds_per_workload": 0.027995875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223967000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 5,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006307145875,
+                "kernel_seconds_per_workload": 0.027975375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 223803000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 6,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.0064865,
+                "kernel_seconds_per_workload": 0.028445125,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 227561000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 7,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.0063383855,
+                "kernel_seconds_per_workload": 0.02804,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 3120,
+                  "cquad_calls": 0,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 224320000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {
+                      "0": 3120
+                    },
+                    "cquad": {}
+                  }
+                },
+                "warnings": [],
+                "repetition": 8,
+                "position_in_interleaving": 0
+              }
+            ],
+            "cquad_diagnostic": [
+              {
+                "public_seconds_per_workload": 0.006699203125,
+                "kernel_seconds_per_workload": 0.02957925,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236634000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 0,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006655197875,
+                "kernel_seconds_per_workload": 0.02954525,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236362000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 1,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006610724,
+                "kernel_seconds_per_workload": 0.02958225,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236658000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 2,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.00661275525,
+                "kernel_seconds_per_workload": 0.029533875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236271000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 3,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006640260375,
+                "kernel_seconds_per_workload": 0.029550375,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236403000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 4,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006639677,
+                "kernel_seconds_per_workload": 0.0295215,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236172000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 5,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.006639223875,
+                "kernel_seconds_per_workload": 0.029581875,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236655000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 6,
+                "position_in_interleaving": 1
+              },
+              {
+                "public_seconds_per_workload": 0.006621635375,
+                "kernel_seconds_per_workload": 0.0295165,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 236132000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 7,
+                "position_in_interleaving": 0
+              },
+              {
+                "public_seconds_per_workload": 0.00658200525,
+                "kernel_seconds_per_workload": 0.02945825,
+                "batch": 8,
+                "counters": {
+                  "qag_calls": 0,
+                  "cquad_calls": 3120,
+                  "unexpected_callbacks": 0,
+                  "workspace_allocations": 0,
+                  "kernel_nanoseconds": 235666000,
+                  "qag_failures": 0,
+                  "cquad_failures": 0,
+                  "fallback_cquad_calls": 0,
+                  "status_counts": {
+                    "qag": {},
+                    "cquad": {
+                      "0": 3120
+                    }
+                  }
+                },
+                "warnings": [],
+                "repetition": 8,
+                "position_in_interleaving": 1
+              }
+            ]
+          },
+          "accepted_accuracy_reference_check": null,
+          "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+          "max_fractional_error_vs_strict_reference": {
+            "qag_quad": 0.00023506309697651773,
+            "cquad_diagnostic": 1.3261874296288667e-05
+          },
+          "summary": {
+            "qag_quad": {
+              "public_seconds_per_workload": {
+                "mean": 0.006332188680555555,
+                "sample_scatter": 6.34207760655627e-05,
+                "median": 0.006314953125
+              },
+              "kernel_seconds_per_workload": {
+                "mean": 0.028047305555555554,
+                "sample_scatter": 0.00015640953244696416,
+                "median": 0.027994875
+              }
+            },
+            "cquad_diagnostic": {
+              "public_seconds_per_workload": {
+                "mean": 0.006633409125,
+                "sample_scatter": 3.28744092467121e-05,
+                "median": 0.006639223875
+              },
+              "kernel_seconds_per_workload": {
+                "mean": 0.029541013888888887,
+                "sample_scatter": 4.0031503436183464e-05,
+                "median": 0.02954525
+              }
+            }
+          },
+          "cquad_over_qag_ratio": {
+            "public_seconds_per_workload": 1.0475697203037255,
+            "kernel_seconds_per_workload": 1.0532567497571068
+          },
+          "unmodified_qag_control": {
+            "public_seconds_per_workload": {
+              "mean": 0.006299423027777778,
+              "sample_scatter": 2.6292177024183467e-05,
+              "median": 0.006299974
+            },
+            "repetitions": 9,
+            "batch": 8,
+            "instrumented_over_unmodified_mean_ratio": 1.0052013736231549,
+            "interpretation": "Instrumentation-overhead control from a separate fresh process; includes process-to-process timing variation. Primary method comparison remains the interleaved instrumented QAG/CQUAD ratio."
+          },
+          "interpretation": "Ratio is cost at the same requested tolerance; when QAG is inaccurate it is not a speed comparison at matched achieved accuracy."
+        }
+      },
+      "baseline_json_sha256": "9cf79646367f7a66494db401781d139c07394b6487fe68cb326250602cf30770",
+      "baseline_arrays_sha256": "23b6aaa19fde54eb300392ac4332c34405fef776951bf61563794de3bae791eb",
+      "arrays_sha256": "c004bc2354d297c6ac627373f60852a9fd6f052549ec56116660fb36af6076c0"
+    }
+  ]
+}

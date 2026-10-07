@@ -1,0 +1,294 @@
+{
+  "status": "completed",
+  "problem": null,
+  "Omega_m": 0.3156,
+  "wa": -0.1,
+  "family": "pr_original",
+  "evaluations": [
+    {
+      "kronrod": 3.133608419782182e-07,
+      "gauss": 3.3312915505800383e-07,
+      "estimated_error": 5.178146879250063e-07,
+      "callback_errors": [],
+      "w0": -1.15,
+      "signed_rule_difference": -1.9768313079785626e-08,
+      "integration_logk_bounds": [
+        -2.8911166347132933,
+        0.20544253425162237
+      ]
+    },
+    {
+      "kronrod": 3.152460786454623e-07,
+      "gauss": 3.2827109517123477e-07,
+      "estimated_error": 5.204667902169179e-07,
+      "callback_errors": [],
+      "w0": -1.11875,
+      "signed_rule_difference": -1.3025016525772492e-08,
+      "integration_logk_bounds": [
+        -2.8868954760015755,
+        0.2072800447520562
+      ]
+    },
+    {
+      "kronrod": 3.173709927767907e-07,
+      "gauss": 3.236178488240223e-07,
+      "estimated_error": 5.235166151031115e-07,
+      "callback_errors": [],
+      "w0": -1.0875,
+      "signed_rule_difference": -6.246856047231586e-09,
+      "integration_logk_bounds": [
+        -2.882488325293483,
+        0.2091220994075303
+      ]
+    },
+    {
+      "kronrod": 3.1975517870255923e-07,
+      "gauss": 3.239015263364093e-07,
+      "estimated_error": 5.272632582255154e-07,
+      "callback_errors": [],
+      "w0": -1.05625,
+      "signed_rule_difference": -4.146347633850085e-09,
+      "integration_logk_bounds": [
+        -2.8766854741233576,
+        0.21096867334911854
+      ]
+    },
+    {
+      "kronrod": 3.2230750755449867e-07,
+      "gauss": 3.1973825764092734e-07,
+      "estimated_error": 5.054639249716388e-07,
+      "callback_errors": [],
+      "w0": -1.025,
+      "signed_rule_difference": 2.569249913571334e-09,
+      "integration_logk_bounds": [
+        -2.8718702062265344,
+        0.21281974148022367
+      ]
+    },
+    {
+      "kronrod": 3.212996601669785e-07,
+      "gauss": 3.2129479848734536e-07,
+      "estimated_error": 4.166525189160097e-11,
+      "callback_errors": [],
+      "w0": -1.0369556091966725,
+      "signed_rule_difference": 4.861679633142048e-12,
+      "integration_logk_bounds": [
+        -2.8737377210456403,
+        0.21211103158644418
+      ]
+    },
+    {
+      "kronrod": 3.212978066495556e-07,
+      "gauss": 3.21297800795259e-07,
+      "estimated_error": 1.7410358617506558e-15,
+      "callback_errors": [],
+      "w0": -1.0369782486195065,
+      "signed_rule_difference": 5.85429659055183e-15,
+      "integration_logk_bounds": [
+        -2.873741227343147,
+        0.2121096901780977
+      ]
+    },
+    {
+      "kronrod": 3.2129776752469345e-07,
+      "gauss": 3.2129774085660416e-07,
+      "estimated_error": 1.6927137126016527e-14,
+      "callback_errors": [],
+      "w0": -1.0369782759140251,
+      "signed_rule_difference": 2.6668089284648667e-14,
+      "integration_logk_bounds": [
+        -2.8737412315703375,
+        0.21210968856087167
+      ]
+    },
+    {
+      "kronrod": 3.205138048372246e-07,
+      "gauss": 3.2258693363314153e-07,
+      "estimated_error": 3.6729178667865214e-07,
+      "callback_errors": [],
+      "w0": -1.0466141379570124,
+      "signed_rule_difference": -2.0731287959169268e-09,
+      "integration_logk_bounds": [
+        -2.8752234032687674,
+        0.21153896767443264
+      ]
+    },
+    {
+      "kronrod": 3.212977733627068e-07,
+      "gauss": 3.212978057618718e-07,
+      "estimated_error": 2.2667122005458132e-14,
+      "callback_errors": [],
+      "w0": -1.0369783998651874,
+      "signed_rule_difference": -3.23991650277481e-14,
+      "integration_logk_bounds": [
+        -2.873741250767055,
+        0.2121096812166485
+      ]
+    },
+    {
+      "kronrod": 3.212977877227228e-07,
+      "gauss": 3.2129779814966284e-07,
+      "estimated_error": 4.138385652821139e-15,
+      "callback_errors": [],
+      "w0": -1.0369783318763464,
+      "signed_rule_difference": -1.0426940058256212e-14,
+      "integration_logk_bounds": [
+        -2.8737412402374036,
+        0.21210968524505125
+      ]
+    },
+    {
+      "kronrod": 3.212977917514823e-07,
+      "gauss": 3.212978008046066e-07,
+      "estimated_error": 3.348061024399576e-15,
+      "callback_errors": [],
+      "w0": -1.036978316146051,
+      "signed_rule_difference": -9.053124297972898e-15,
+      "integration_logk_bounds": [
+        -2.8737412378012017,
+        0.21210968617708603
+      ]
+    },
+    {
+      "kronrod": 3.2129779988358047e-07,
+      "gauss": 3.2129780525027317e-07,
+      "estimated_error": 1.528113895050488e-15,
+      "callback_errors": [],
+      "w0": -1.0369782960300382,
+      "signed_rule_difference": -5.366692704162913e-15,
+      "integration_logk_bounds": [
+        -2.87374123468577,
+        0.21210968736897895
+      ]
+    },
+    {
+      "kronrod": 3.2129780446643444e-07,
+      "gauss": 3.212978110934325e-07,
+      "estimated_error": 2.096867068791904e-15,
+      "callback_errors": [],
+      "w0": -1.0369782859720318,
+      "signed_rule_difference": -6.626998055640711e-15,
+      "integration_logk_bounds": [
+        -2.873741233128053,
+        0.2121096879649253
+      ]
+    },
+    {
+      "kronrod": 3.2129780835850367e-07,
+      "gauss": 3.21297815182422e-07,
+      "estimated_error": 2.191020118445896e-15,
+      "callback_errors": [],
+      "w0": -1.0369782809430284,
+      "signed_rule_difference": -6.823918339861199e-15,
+      "integration_logk_bounds": [
+        -2.8737412323491953,
+        0.21210968826289886
+      ]
+    },
+    {
+      "kronrod": 3.2129781218990447e-07,
+      "gauss": 3.2129783479059533e-07,
+      "estimated_error": 1.3206210134562283e-14,
+      "callback_errors": [],
+      "w0": -1.0369782784285269,
+      "signed_rule_difference": -2.2600690858525668e-14,
+      "integration_logk_bounds": [
+        -2.8737412319597664,
+        0.21210968841188518
+      ]
+    },
+    {
+      "kronrod": 3.2129780874154716e-07,
+      "gauss": 3.212978145091458e-07,
+      "estimated_error": 1.7025041539823239e-15,
+      "callback_errors": [],
+      "w0": -1.036978277171276,
+      "signed_rule_difference": -5.767598639114734e-15,
+      "integration_logk_bounds": [
+        -2.873741231765052,
+        0.21210968848637862
+      ]
+    },
+    {
+      "kronrod": 3.212978087452499e-07,
+      "gauss": 3.212978144405419e-07,
+      "estimated_error": 1.6705890004449225e-15,
+      "callback_errors": [],
+      "w0": -1.036978276835554,
+      "signed_rule_difference": -5.695291989209726e-15,
+      "integration_logk_bounds": [
+        -2.8737412317130575,
+        0.2121096885062702
+      ]
+    },
+    {
+      "kronrod": 3.2129776751911483e-07,
+      "gauss": 3.212977409506535e-07,
+      "estimated_error": 1.6832369986479317e-14,
+      "callback_errors": [],
+      "w0": -1.0369782763747897,
+      "signed_rule_difference": 2.6568461322332176e-14,
+      "integration_logk_bounds": [
+        -2.8737412316416973,
+        0.21210968853357096
+      ]
+    },
+    {
+      "kronrod": 3.212978087461068e-07,
+      "gauss": 3.2129781442380395e-07,
+      "estimated_error": 1.6628533962816011e-15,
+      "callback_errors": [],
+      "w0": -1.0369782767542186,
+      "signed_rule_difference": -5.677697156131564e-15,
+      "integration_logk_bounds": [
+        -2.873741231700461,
+        0.2121096885110894
+      ]
+    },
+    {
+      "kronrod": 3.2129776751681794e-07,
+      "gauss": 3.212977409893763e-07,
+      "estimated_error": 1.67934030967974e-14,
+      "callback_errors": [],
+      "w0": -1.0369782765645041,
+      "signed_rule_difference": 2.6527441634279018e-14,
+      "integration_logk_bounds": [
+        -2.873741231671079,
+        0.21210968852233064
+      ]
+    },
+    {
+      "kronrod": 3.212978087467128e-07,
+      "gauss": 3.2129781441359773e-07,
+      "estimated_error": 1.6581057215128114e-15,
+      "callback_errors": [],
+      "w0": -1.0369782767042182,
+      "signed_rule_difference": -5.66688493937854e-15,
+      "integration_logk_bounds": [
+        -2.8737412316927173,
+        0.212109688514052
+      ]
+    },
+    {
+      "kronrod": 3.212978087475607e-07,
+      "gauss": 3.212978143993461e-07,
+      "estimated_error": 1.6514830699407477e-15,
+      "callback_errors": [],
+      "w0": -1.0369782766343612,
+      "signed_rule_difference": -5.651785359483871e-15,
+      "integration_logk_bounds": [
+        -2.873741231681898,
+        0.21210968851819087
+      ]
+    }
+  ],
+  "candidate_roots": [
+    -1.0369782766343612
+  ],
+  "maximum_roots_for_this_run": 1,
+  "unsuccessful_brackets": [],
+  "saved_search_reuse": null,
+  "candidate_acceptance": "Finite positive K41; initial GSL error and |K41-G20| each <= 1e-4 |K41|; no detected local jump. Full native/reference checks still required.",
+  "excluded_from_incidence": true,
+  "elapsed_seconds_for_resource_planning": 9.934522458002903
+}

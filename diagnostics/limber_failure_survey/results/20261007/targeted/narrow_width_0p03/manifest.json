@@ -1,0 +1,55 @@
+{
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "frozen_input_sha256": "08ade45f772525918ef3d8edc07e5a666516ff814446eb2a1950d099c328cd69",
+  "prepared_script_sha256": {
+    "ccl_helpers.py": "44f5af7752642925aebd4f10ab528a44d669c86063a138c7865af04c012a6cf6",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "60d48c55711080a8152e05c07bf707bc271d5ca3ffa8f7931ac0cb7935663f1f",
+    "run_cocoa.py": "7b06e89c060ea8afaa5e2a387ead9107cdc6c99f96333b4e0d7e7f5c652f1369",
+    "summarize.py": "2fb06bf3c6bdc0af5dc705b7de6484a10a0a1dfc6196ff7a7a916e3bb4151cc6"
+  },
+  "sampling_description": "Node-guided synthetic peak-position search at fixed cosmology; excluded from all incidence estimates.",
+  "primary_statistic": "Per-family fraction of valid primary-pair spectra exceeding each prespecified relative-integration-error threshold; not a posterior or a general failure probability.",
+  "families": {
+    "narrow_0p03_root0": {
+      "definition": {
+        "kind": "positive_mixture",
+        "shared_fraction": 0.15,
+        "shared_mean_z": 0.8614306607620387,
+        "shared_sigma_z": 0.03,
+        "z_nodes": 20001,
+        "refined_z_nodes": 40001,
+        "name": "narrow_0p03_root0"
+      },
+      "nodes": 20001,
+      "minimum_value": 1.815079360070621e-179,
+      "npz_sha256": "8726d723225576550f75ac227e8cce641a8573e70c011263fcbfc2db22600fc4",
+      "text_sha256": "c40d16b9d1777185d3cbe86ed16eec4a776dbdaec05f190d7aa77642899c75cb",
+      "refined_npz_sha256": "026cd9d260a90eea2fb1d95324824d667aa47e3d359d9e4b3e2b9b9b889e2907"
+    }
+  },
+  "cases": [
+    {
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0389272675840322,
+        "wa": 0.0,
+        "Omega_m": 0.3156
+      },
+      "camb_dark_energy_model": "ppf",
+      "id": "peak_0p03_0",
+      "cosmology_id": "fixed_ppf",
+      "family": "narrow_0p03_root0",
+      "arm": "targeted_narrow_overlap"
+    }
+  ],
+  "pilot_case_ids": [
+    "peak_0p03_0"
+  ]
+}

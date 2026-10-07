@@ -1,0 +1,17 @@
+{
+  "source_sha256": "365cdf1d247ef70e9d9daf0aea38576ef75edae33957434d82500f2d09a1f19d",
+  "script_sha256": "fbfd071746cfe5834ba66606a5411ae037507da0d38d5daa960dcec9c126cf37",
+  "tests_run": 3,
+  "successful": true,
+  "convergence_rtol": 0.0001,
+  "reference_rtol": 1e-05,
+  "atol": 0,
+  "max_fractional_change_all_pairs_by_level": [
+    0.007051913399533705,
+    0.00018437458058051526,
+    2.361023851993327e-05,
+    3.2601072520455077e-06,
+    0.0
+  ],
+  "interpretation": "The expected default rejection is a regression diagnostic, not a passing convergence result. Level 2 passes 0.01% against level 4 on all 15 pairs; levels 3/4 also agree within 0.001%. This tests quadrature only."
+}

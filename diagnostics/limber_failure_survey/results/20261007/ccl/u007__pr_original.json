@@ -1,0 +1,349 @@
+{
+  "case": {
+    "id": "u007__pr_original",
+    "cosmology_id": "u007",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.0121051236648018,
+      "wa": -0.05284714786859501,
+      "Omega_m": 0.31139525083543673
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "2be9a3c9d993ed65d389a60b9b71ae692bc6f34f240de129ee55b335f57ac0cb",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "4e7ff97bbd42c57a3b7643e0f59eadf662c12f8354873e5a2b314c05dc72b7a1",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "summarize.py": "7e6537a55a4fad932f40c810a8cd21714b52b33e42fb0b7e9de4dc00a367198c",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.5370053690545226e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.537026841780066e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 4.1379275234853545e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 4.137963769565729e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.6289484299290818e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.6289579684337925e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0786840696874131e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0786938758740863e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.891605212517475e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.891747558727424e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.1729569108338137e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1729486152088534e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.5286568851997133e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.528587963291357e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.463034687656744e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.463024532490493e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.1477620433879499e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1477509960785158e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.0289590512470908e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.028965346003849e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.3814208290709205e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.381446724962032e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.488143662971181e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4881429172340113e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 9.069608033242288e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.069596412360865e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.359264090789739e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.359311439223559e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.83920227219403e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.839090433212875e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.290015582129833,
+    1.3930319076330475,
+    1.514802902873709,
+    1.6406942006243583,
+    1.7773951361016698
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.359264090789739e-07,
+        "estimated_error": 1.2963461986181865e-11,
+        "status": [
+          0
+        ],
+        "calls": 205,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.3592851402812194e-07,
+        "estimated_error": 3.332890708230537e-14,
+        "status": [
+          0
+        ],
+        "calls": 7967,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.3592851266771223e-07,
+        "estimated_error": 3.126895428776906e-14,
+        "status": [
+          0,
+          0
+        ],
+        "calls": 4100,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.3592851520337857e-07,
+        "estimated_error": 3.300960114023408e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5166,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": 4.0497000197703414e-09,
+      "reference_value": 3.3592851402812194e-07,
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -6.266062748783163e-06,
+      "initial_rules": {
+        "kronrod": 3.228325922077614e-07,
+        "gauss": 3.137921264516031e-07,
+        "estimated_error": 5.315135598140908e-07,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.0121051236648018,
+      "wa": -0.05284714786859501,
+      "Omega_m": 0.31139525083543673
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "3a9b60155a8e9ee4e2e84681877bd332139838c4f7d01c4a1507e4921d0ab688",
+    "path": "shared/u007.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.03573291702196,
+  "elapsed_is_not_benchmark": true
+}

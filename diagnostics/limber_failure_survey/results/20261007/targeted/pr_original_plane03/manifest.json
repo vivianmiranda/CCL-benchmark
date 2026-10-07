@@ -1,0 +1,66 @@
+{
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "frozen_input_sha256": "08ade45f772525918ef3d8edc07e5a666516ff814446eb2a1950d099c328cd69",
+  "prepared_script_sha256": {
+    "ccl_helpers.py": "44f5af7752642925aebd4f10ab528a44d669c86063a138c7865af04c012a6cf6",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "60d48c55711080a8152e05c07bf707bc271d5ca3ffa8f7931ac0cb7935663f1f",
+    "run_cocoa.py": "7b06e89c060ea8afaa5e2a387ead9107cdc6c99f96333b4e0d7e7f5c652f1369",
+    "summarize.py": "2fb06bf3c6bdc0af5dc705b7de6484a10a0a1dfc6196ff7a7a916e3bb4151cc6"
+  },
+  "sampling_description": "Deliberate initial-rule crossing search. Excluded from every failure-frequency denominator.",
+  "primary_statistic": "Per-family fraction of valid primary-pair spectra exceeding each prespecified relative-integration-error threshold; not a posterior or a general failure probability.",
+  "families": {
+    "pr_original": {
+      "definition": {
+        "name": "pr_original",
+        "kind": "frozen_pr1313",
+        "input_refinement": "original frozen samples retained"
+      },
+      "npz_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "text_sha256": "93181e780c55c607930476a45b412d5aae69b2868bcc838ec2f114672dfecd17",
+      "nodes": 500,
+      "minimum_value": 0.0
+    },
+    "shared_narrow_peak": {
+      "definition": {
+        "name": "shared_narrow_peak",
+        "kind": "positive_mixture",
+        "shared_fraction": 0.15,
+        "shared_mean_z": 1.0,
+        "shared_sigma_z": 0.01,
+        "z_nodes": 5001,
+        "refined_z_nodes": 10001
+      },
+      "npz_sha256": "26b2dca4eb2e4d656323e1bc1b1d63c678e582eb9828c5d2758c91deffe6d727",
+      "text_sha256": "df179079e157fa83486a654e0533974d5d27dfb21144fc6cba0392ab2d4d41b3",
+      "nodes": 5001,
+      "minimum_value": 0.0,
+      "refined_npz_sha256": "0ee4e3b7587bc18058813a453ebe8a3591949decf11e9295b304578116f20e21"
+    }
+  },
+  "cases": [
+    {
+      "id": "t03r00__pr_original",
+      "cosmology_id": "t03r00",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "Omega_m": 0.3156,
+        "wa": -0.1,
+        "w0": -1.0369782766343612
+      },
+      "family": "pr_original",
+      "arm": "targeted_search",
+      "camb_dark_energy_model": "ppf"
+    }
+  ],
+  "pilot_case_ids": [
+    "t03r00__pr_original"
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "status": "completed",
+  "case": {
+    "id": "u027__shared_narrow_peak",
+    "cosmology_id": "u027",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -0.927779296550504,
+      "wa": -0.08674034623588485,
+      "Omega_m": 0.2815873158047288
+    },
+    "family": "shared_narrow_peak",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "collect_publication.py": "4cb4446b383ae4f2dd51049acd45aafce0c5cefbeb7a7eda3485d225f310cac9",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "hunt_narrow_overlap.py": "d478b4a22d147472f9bdbdc6e6db5840542e98b4f740646feaac21024bfb194c",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "0f6551d819eb14051022bbc2a9f2552e699e71da083981ce03abc6d69c166e6b",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "ee10659d1389a3e25fb2fc6fb6933f6410a5b5adf380c75dc18635d3771a3974",
+    "time_native_integrators.py": "c1a5af9be71f37059b2a1e76951451cb43ac8085f0d67fd14866074e814edbd7",
+    "validate_narrow_support.py": "147f6f99912960c2d72c3c96d164b0f70f2d9978a999009b77abe6f62185f469",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "core_commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+  "lsst_y1_commit": "c187522125986ad181985c39143aeebbaad50a61",
+  "shared_power_sha256": "079908ffa3ce4d643267cc8ac0fc8968f2b9b93d19db544c613957800cb03abb",
+  "nz_text_sha256": "df179079e157fa83486a654e0533974d5d27dfb21144fc6cba0392ab2d4d41b3",
+  "pairs": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "values": [
+        1.2652489393987775e-06,
+        1.2652649027620964e-06,
+        1.2652651116612085e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.651030365756867e-07,
+      "default_fractional_change": -1.2781718457199887e-05,
+      "common_CCL_CQUAD_reference_value": 1.265347719094184e-06,
+      "default_offset_from_CCL_CQUAD": -7.806525741183012e-05,
+      "refined_offset_from_CCL_CQUAD": -6.528437340114213e-05
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "values": [
+        4.5672373522236724e-07,
+        4.5674502899537936e-07,
+        4.5674492451383075e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 2.2875251159959475e-07,
+      "default_fractional_change": -4.6391958238078956e-05,
+      "common_CCL_CQUAD_reference_value": 4.5680470423838914e-07,
+      "default_offset_from_CCL_CQUAD": -0.0001772508366718606,
+      "refined_offset_from_CCL_CQUAD": -0.00013086494951508598
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "values": [
+        2.87874952431374e-07,
+        2.8789190749537907e-07,
+        2.8789195692857074e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.7170744259775717e-07,
+      "default_fractional_change": -5.9065551459513976e-05,
+      "common_CCL_CQUAD_reference_value": 2.879580386167003e-07,
+      "default_offset_from_CCL_CQUAD": -0.000288535738489748,
+      "refined_offset_from_CCL_CQUAD": -0.00022948374161391172
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "values": [
+        3.224600539344705e-07,
+        3.224806837149053e-07,
+        3.2248067155199386e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 3.771671441832325e-08,
+      "default_fractional_change": -6.393442876484468e-05,
+      "common_CCL_CQUAD_reference_value": 3.225501151509403e-07,
+      "default_offset_from_CCL_CQUAD": -0.00027921619692394817,
+      "refined_offset_from_CCL_CQUAD": -0.00021529553295596138
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "values": [
+        3.3230846093248403e-07,
+        3.323310911823586e-07,
+        3.3233100741184765e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 2.5206950038381137e-07,
+      "default_fractional_change": -6.784344181187674e-05,
+      "common_CCL_CQUAD_reference_value": 3.324055865828558e-07,
+      "default_offset_from_CCL_CQUAD": -0.00029219018660364693,
+      "refined_offset_from_CCL_CQUAD": -0.00022436196627984017
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "values": [
+        1.0157191997289711e-06,
+        1.0157144247268435e-06,
+        1.0157148971016103e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 4.6506629780562747e-07,
+      "default_fractional_change": 4.236058142925714e-06,
+      "common_CCL_CQUAD_reference_value": 1.0157856620641587e-06,
+      "default_offset_from_CCL_CQUAD": -6.542948741028454e-05,
+      "refined_offset_from_CCL_CQUAD": -6.966525044715954e-05
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "values": [
+        4.374071579852357e-07,
+        4.374237650761244e-07,
+        4.3742368227001883e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.8930412082340808e-07,
+      "default_fractional_change": -3.777638352220336e-05,
+      "common_CCL_CQUAD_reference_value": 4.374917217425145e-07,
+      "default_offset_from_CCL_CQUAD": -0.00019329224548980672,
+      "refined_offset_from_CCL_CQUAD": -0.00015552173701638417
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "values": [
+        3.6839130525742454e-07,
+        3.684119695911158e-07,
+        3.684119694364404e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 4.198437153490886e-10,
+      "default_fractional_change": -5.608986876148858e-05,
+      "common_CCL_CQUAD_reference_value": 3.684868066457452e-07,
+      "default_offset_from_CCL_CQUAD": -0.00025917179827950054,
+      "refined_offset_from_CCL_CQUAD": -0.00020309332099577304
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "values": [
+        3.8647188369605377e-07,
+        3.864949694466804e-07,
+        3.864948919054208e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 2.006268677856582e-07,
+      "default_fractional_change": -5.953043584505657e-05,
+      "common_CCL_CQUAD_reference_value": 3.8657585504442096e-07,
+      "default_offset_from_CCL_CQUAD": -0.00026895458423092933,
+      "refined_offset_from_CCL_CQUAD": -0.00020943661623884502
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "values": [
+        9.377960639836478e-07,
+        9.378146915779087e-07,
+        9.378150609826794e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 3.9389937955824905e-07,
+      "default_fractional_change": -2.0256658078920964e-05,
+      "common_CCL_CQUAD_reference_value": 9.378915656926006e-07,
+      "default_offset_from_CCL_CQUAD": -0.00010182595989360888,
+      "refined_offset_from_CCL_CQUAD": -8.157095416960747e-05
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "values": [
+        5.304279190773835e-07,
+        5.304524727042506e-07,
+        5.304524799229084e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.3608490889716052e-08,
+      "default_fractional_change": -4.6301688566785515e-05,
+      "common_CCL_CQUAD_reference_value": 5.305316382525103e-07,
+      "default_offset_from_CCL_CQUAD": -0.0001955004520906023,
+      "refined_offset_from_CCL_CQUAD": -0.000149205671998498
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "values": [
+        4.372201917512737e-07,
+        4.372457692104153e-07,
+        4.372457082186304e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.3949087152020923e-07,
+      "default_fractional_change": -5.8357273443943036e-05,
+      "common_CCL_CQUAD_reference_value": 4.3733347371882023e-07,
+      "default_offset_from_CCL_CQUAD": -0.0002590288060578816,
+      "refined_offset_from_CCL_CQUAD": -0.0002006832439408468
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "values": [
+        1.035471100097603e-06,
+        1.0355039087462386e-06,
+        1.0355031800527263e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 7.037095843820396e-07,
+      "default_fractional_change": -3.098006432156186e-05,
+      "common_CCL_CQUAD_reference_value": 1.0355903039126362e-06,
+      "default_offset_from_CCL_CQUAD": -0.00011510711773066173,
+      "refined_offset_from_CCL_CQUAD": -8.4129659751353e-05
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "values": [
+        6.787579446416946e-07,
+        6.787936510844456e-07,
+        6.787935800086865e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.0470894418190824e-07,
+      "default_fractional_change": -5.2498090791441854e-05,
+      "common_CCL_CQUAD_reference_value": 6.78884926994985e-07,
+      "default_offset_from_CCL_CQUAD": -0.00018704547448489262,
+      "refined_offset_from_CCL_CQUAD": -0.00013455444754506551
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "values": [
+        1.128851132782466e-06,
+        1.128838051577729e-06,
+        1.1288381144042838e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 5.565594751733016e-08,
+      "default_fractional_change": 1.1532546621229045e-05,
+      "common_CCL_CQUAD_reference_value": 1.128939535810383e-06,
+      "default_offset_from_CCL_CQUAD": -7.830625566096483e-05,
+      "refined_offset_from_CCL_CQUAD": -8.983776622395467e-05
+    }
+  ],
+  "nodes": [
+    96,
+    512,
+    1024
+  ],
+  "scope": "Density-only all-pairs spectra from covariance module; not ordinary data-vector integration; no covariance matrix computed.",
+  "elapsed_seconds_for_resource_planning": 0.24089870799798518,
+  "elapsed_is_not_benchmark": true
+}

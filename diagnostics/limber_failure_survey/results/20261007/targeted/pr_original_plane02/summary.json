@@ -1,0 +1,395 @@
+{
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "rows": [
+    {
+      "case": {
+        "id": "t02r00__pr_original",
+        "cosmology_id": "t02r00",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "Omega_m": 0.29,
+          "wa": 0.1,
+          "w0": -1.1451270843404227
+        },
+        "family": "pr_original",
+        "arm": "targeted_search",
+        "camb_dark_energy_model": "ppf"
+      },
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "ccl_status": "completed",
+      "cocoa_status": "completed",
+      "ccl_reference_valid": true,
+      "ccl_reference_basis": "CQUAD plus split-QAG controls",
+      "ccl_support_reference_required": false,
+      "ccl_support_reference_checks": null,
+      "ccl_silent_success": true,
+      "ccl_reported_failure_or_warning": false,
+      "ccl_public_warnings": [],
+      "ccl_native_replay_status": [
+        0
+      ],
+      "cocoa_reference_valid": true,
+      "ccl_fractional_error": -0.03966263141865145,
+      "cocoa_fractional_error": -1.613489716345562e-05,
+      "common_CCL_CQUAD_reference_value": 3.1915005815599964e-07,
+      "cocoa_default_offset_from_CCL_CQUAD": 0.0005677342220991033,
+      "cocoa_refined_offset_from_CCL_CQUAD": 0.0005838785400826829,
+      "ccl_original_reference_checks": {
+        "native_qag_replay": {
+          "value": 3.064917270321171e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "status": [
+            0
+          ],
+          "calls": 41,
+          "callback_errors": [],
+          "epsrel": 0.0001,
+          "parts": 1
+        },
+        "cquad": {
+          "value": 3.1915005815599964e-07,
+          "estimated_error": 3.1834635364565896e-14,
+          "status": [
+            0
+          ],
+          "calls": 7511,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 1
+        },
+        "split2": {
+          "value": 3.1915005681048976e-07,
+          "estimated_error": 3.1836520004822315e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 4182,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 2
+        },
+        "split4": {
+          "value": 3.191500587871262e-07,
+          "estimated_error": 3.125159733027732e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 4674,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 4
+        },
+        "reference_valid": true,
+        "maximum_split_reference_fractional_change": 4.215916171723677e-09,
+        "reference_value": 3.1915005815599964e-07,
+        "pair": [
+          3,
+          4
+        ],
+        "primary": true,
+        "native_QAG_replay_matches": true,
+        "native_QAG_fractional_error": -0.03966263141865145,
+        "initial_rules": {
+          "kronrod": 3.064917270321171e-07,
+          "gauss": 3.0649171891069e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "callback_errors": []
+        }
+      },
+      "ccl_reference_checks": {
+        "native_qag_replay": {
+          "value": 3.064917270321171e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "status": [
+            0
+          ],
+          "calls": 41,
+          "callback_errors": [],
+          "epsrel": 0.0001,
+          "parts": 1
+        },
+        "cquad": {
+          "value": 3.1915005815599964e-07,
+          "estimated_error": 3.1834635364565896e-14,
+          "status": [
+            0
+          ],
+          "calls": 7511,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 1
+        },
+        "split2": {
+          "value": 3.1915005681048976e-07,
+          "estimated_error": 3.1836520004822315e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 4182,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 2
+        },
+        "split4": {
+          "value": 3.191500587871262e-07,
+          "estimated_error": 3.125159733027732e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 4674,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 4
+        },
+        "reference_valid": true,
+        "maximum_split_reference_fractional_change": 4.215916171723677e-09,
+        "reference_value": 3.1915005815599964e-07,
+        "pair": [
+          3,
+          4
+        ],
+        "primary": true,
+        "native_QAG_replay_matches": true,
+        "native_QAG_fractional_error": -0.03966263141865145,
+        "initial_rules": {
+          "kronrod": 3.064917270321171e-07,
+          "gauss": 3.0649171891069e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "callback_errors": []
+        }
+      },
+      "cocoa_reference_checks": {
+        "pair": [
+          3,
+          4
+        ],
+        "values": [
+          3.193312505659997e-07,
+          3.193363896375537e-07,
+          3.193364030260231e-07
+        ],
+        "reference_valid": true,
+        "512_vs_1024_fractional_change": 4.192591041007887e-08,
+        "default_fractional_change": -1.613489716345562e-05,
+        "common_CCL_CQUAD_reference_value": 3.1915005815599964e-07,
+        "default_offset_from_CCL_CQUAD": 0.0005677342220991033,
+        "refined_offset_from_CCL_CQUAD": 0.0005838785400826829
+      },
+      "ccl_resource_seconds": 1.0087976249633357,
+      "cocoa_resource_seconds": 0.2500674999319017
+    }
+  ],
+  "pair_rows": [
+    {
+      "case": {
+        "id": "t02r00__pr_original",
+        "cosmology_id": "t02r00",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "Omega_m": 0.29,
+          "wa": 0.1,
+          "w0": -1.1451270843404227
+        },
+        "family": "pr_original",
+        "arm": "targeted_search",
+        "camb_dark_energy_model": "ppf"
+      },
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "ccl_status": "completed",
+      "cocoa_status": "completed",
+      "ccl_reference_valid": true,
+      "ccl_reference_basis": "CQUAD plus split-QAG controls",
+      "ccl_support_reference_required": false,
+      "ccl_support_reference_checks": null,
+      "ccl_silent_success": true,
+      "ccl_reported_failure_or_warning": false,
+      "ccl_public_warnings": [],
+      "ccl_native_replay_status": [
+        0
+      ],
+      "cocoa_reference_valid": true,
+      "ccl_fractional_error": -0.03966263141865145,
+      "cocoa_fractional_error": -1.613489716345562e-05,
+      "common_CCL_CQUAD_reference_value": 3.1915005815599964e-07,
+      "cocoa_default_offset_from_CCL_CQUAD": 0.0005677342220991033,
+      "cocoa_refined_offset_from_CCL_CQUAD": 0.0005838785400826829,
+      "ccl_original_reference_checks": {
+        "native_qag_replay": {
+          "value": 3.064917270321171e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "status": [
+            0
+          ],
+          "calls": 41,
+          "callback_errors": [],
+          "epsrel": 0.0001,
+          "parts": 1
+        },
+        "cquad": {
+          "value": 3.1915005815599964e-07,
+          "estimated_error": 3.1834635364565896e-14,
+          "status": [
+            0
+          ],
+          "calls": 7511,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 1
+        },
+        "split2": {
+          "value": 3.1915005681048976e-07,
+          "estimated_error": 3.1836520004822315e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 4182,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 2
+        },
+        "split4": {
+          "value": 3.191500587871262e-07,
+          "estimated_error": 3.125159733027732e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 4674,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 4
+        },
+        "reference_valid": true,
+        "maximum_split_reference_fractional_change": 4.215916171723677e-09,
+        "reference_value": 3.1915005815599964e-07,
+        "pair": [
+          3,
+          4
+        ],
+        "primary": true,
+        "native_QAG_replay_matches": true,
+        "native_QAG_fractional_error": -0.03966263141865145,
+        "initial_rules": {
+          "kronrod": 3.064917270321171e-07,
+          "gauss": 3.0649171891069e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "callback_errors": []
+        }
+      },
+      "ccl_reference_checks": {
+        "native_qag_replay": {
+          "value": 3.064917270321171e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "status": [
+            0
+          ],
+          "calls": 41,
+          "callback_errors": [],
+          "epsrel": 0.0001,
+          "parts": 1
+        },
+        "cquad": {
+          "value": 3.1915005815599964e-07,
+          "estimated_error": 3.1834635364565896e-14,
+          "status": [
+            0
+          ],
+          "calls": 7511,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 1
+        },
+        "split2": {
+          "value": 3.1915005681048976e-07,
+          "estimated_error": 3.1836520004822315e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 4182,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 2
+        },
+        "split4": {
+          "value": 3.191500587871262e-07,
+          "estimated_error": 3.125159733027732e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 4674,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 4
+        },
+        "reference_valid": true,
+        "maximum_split_reference_fractional_change": 4.215916171723677e-09,
+        "reference_value": 3.1915005815599964e-07,
+        "pair": [
+          3,
+          4
+        ],
+        "primary": true,
+        "native_QAG_replay_matches": true,
+        "native_QAG_fractional_error": -0.03966263141865145,
+        "initial_rules": {
+          "kronrod": 3.064917270321171e-07,
+          "gauss": 3.0649171891069e-07,
+          "estimated_error": 2.912893030826118e-15,
+          "callback_errors": []
+        }
+      },
+      "cocoa_reference_checks": {
+        "pair": [
+          3,
+          4
+        ],
+        "values": [
+          3.193312505659997e-07,
+          3.193363896375537e-07,
+          3.193364030260231e-07
+        ],
+        "reference_valid": true,
+        "512_vs_1024_fractional_change": 4.192591041007887e-08,
+        "default_fractional_change": -1.613489716345562e-05,
+        "common_CCL_CQUAD_reference_value": 3.1915005815599964e-07,
+        "default_offset_from_CCL_CQUAD": 0.0005677342220991033,
+        "refined_offset_from_CCL_CQUAD": 0.0005838785400826829
+      },
+      "ccl_resource_seconds": 1.0087976249633357,
+      "cocoa_resource_seconds": 0.2500674999319017
+    }
+  ],
+  "frequencies": [],
+  "interpretation": "Conditional on the predeclared parameter ranges, uniform measure, fixed input families, ell and primary pair. Targeted points and selected secondary pairs are excluded. Partial results are not a completed failure-rate estimate. Wilson intervals are given only after all planned references are valid."
+}

@@ -1,0 +1,251 @@
+{
+  "rows": [
+    {
+      "case": {
+        "id": "u000__pr_original",
+        "cosmology_id": "u000",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.1002693872933842,
+          "wa": 0.18973039311613954,
+          "Omega_m": 0.30018165926114865
+        },
+        "family": "pr_original",
+        "arm": "uniform",
+        "camb_dark_energy_model": "ppf"
+      },
+      "threads": 1,
+      "workload": "point",
+      "QAG_ms": 0.08592098914930556,
+      "QAG_scatter_ms": 0.0006761942502232234,
+      "CQUAD_ms": 0.08598023350694445,
+      "CQUAD_scatter_ms": 0.0007020389290222956,
+      "CQUAD_over_QAG": 1.0006895213640516,
+      "error_percent": {
+        "qag_quad": 0.0006376719476230974,
+        "cquad_diagnostic": 8.702541685057241e-05
+      },
+      "reference_scope": "Verified against the accepted accuracy-study reference",
+      "unmodified_control_ratio": 0.9622269672151917
+    },
+    {
+      "case": {
+        "id": "u000__pr_original",
+        "cosmology_id": "u000",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.1002693872933842,
+          "wa": 0.18973039311613954,
+          "Omega_m": 0.30018165926114865
+        },
+        "family": "pr_original",
+        "arm": "uniform",
+        "camb_dark_energy_model": "ppf"
+      },
+      "threads": 1,
+      "workload": "all_pairs_26ell",
+      "QAG_ms": 24.649939666666665,
+      "QAG_scatter_ms": 0.1591499251028729,
+      "CQUAD_ms": 26.887337777777777,
+      "CQUAD_scatter_ms": 0.25512947898213223,
+      "CQUAD_over_QAG": 1.090766879812557,
+      "error_percent": {
+        "qag_quad": 0.002336765520549733,
+        "cquad_diagnostic": 0.0019487612189950099
+      },
+      "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+      "unmodified_control_ratio": 0.9523430243484422
+    },
+    {
+      "case": {
+        "id": "known__pr_original",
+        "cosmology_id": "known",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "family": "pr_original",
+        "arm": "targeted_control",
+        "camb_dark_energy_model": "fluid"
+      },
+      "threads": 1,
+      "workload": "point",
+      "QAG_ms": 0.028373498697916666,
+      "QAG_scatter_ms": 0.0008099449857773115,
+      "CQUAD_ms": 0.08321099175347221,
+      "CQUAD_scatter_ms": 0.002066450457338747,
+      "CQUAD_over_QAG": 2.9327011321160055,
+      "error_percent": {
+        "qag_quad": 4.022461089725882,
+        "cquad_diagnostic": 0.00022139896657114022
+      },
+      "reference_scope": "Verified against the accepted accuracy-study reference",
+      "unmodified_control_ratio": 0.9823243634892236
+    },
+    {
+      "case": {
+        "id": "known__pr_original",
+        "cosmology_id": "known",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "family": "pr_original",
+        "arm": "targeted_control",
+        "camb_dark_energy_model": "fluid"
+      },
+      "threads": 1,
+      "workload": "all_pairs_26ell",
+      "QAG_ms": 26.43671266666667,
+      "QAG_scatter_ms": 0.139752105933148,
+      "CQUAD_ms": 28.08921311111111,
+      "CQUAD_scatter_ms": 0.16739840962688732,
+      "CQUAD_over_QAG": 1.0625077885166878,
+      "error_percent": {
+        "qag_quad": 0.023506309697651773,
+        "cquad_diagnostic": 0.0013261874296288667
+      },
+      "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+      "unmodified_control_ratio": 0.9692901958868811
+    },
+    {
+      "case": {
+        "id": "u000__pr_original",
+        "cosmology_id": "u000",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.1002693872933842,
+          "wa": 0.18973039311613954,
+          "Omega_m": 0.30018165926114865
+        },
+        "family": "pr_original",
+        "arm": "uniform",
+        "camb_dark_energy_model": "ppf"
+      },
+      "threads": 6,
+      "workload": "all_pairs_26ell",
+      "QAG_ms": 5.926962416666666,
+      "QAG_scatter_ms": 0.03374239275828994,
+      "CQUAD_ms": 6.326104777777778,
+      "CQUAD_scatter_ms": 0.021713153296678805,
+      "CQUAD_over_QAG": 1.0673434945341849,
+      "error_percent": {
+        "qag_quad": 0.002336765520549733,
+        "cquad_diagnostic": 0.0019487612189950099
+      },
+      "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+      "unmodified_control_ratio": 0.9932169589961838
+    },
+    {
+      "case": {
+        "id": "known__pr_original",
+        "cosmology_id": "known",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "family": "pr_original",
+        "arm": "targeted_control",
+        "camb_dark_energy_model": "fluid"
+      },
+      "threads": 6,
+      "workload": "all_pairs_26ell",
+      "QAG_ms": 6.332188680555555,
+      "QAG_scatter_ms": 0.06342077606556269,
+      "CQUAD_ms": 6.633409125,
+      "CQUAD_scatter_ms": 0.032874409246712095,
+      "CQUAD_over_QAG": 1.0475697203037255,
+      "error_percent": {
+        "qag_quad": 0.023506309697651773,
+        "cquad_diagnostic": 0.0013261874296288667
+      },
+      "reference_scope": "Internal strict-CQUAD comparison at additional multipoles; not independently certified convergence",
+      "unmodified_control_ratio": 1.0052013736231549
+    },
+    {
+      "case": {
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "camb_dark_energy_model": "ppf",
+        "id": "peak_0p003_0",
+        "cosmology_id": "fixed_ppf",
+        "family": "narrow_0p003_root0",
+        "arm": "targeted_narrow_overlap"
+      },
+      "threads": 1,
+      "workload": "point",
+      "QAG_ms": 0.03059660720486111,
+      "QAG_scatter_ms": 0.0005452478118919435,
+      "CQUAD_ms": 0.16275417751736113,
+      "CQUAD_scatter_ms": 0.0005615608328448596,
+      "CQUAD_over_QAG": 5.319353758004357,
+      "error_percent": {
+        "qag_quad": 78.75054690898115,
+        "cquad_diagnostic": 0.000939429622215382
+      },
+      "reference_scope": "Verified against the accepted accuracy-study reference",
+      "unmodified_control_ratio": 0.9947741135370018
+    }
+  ],
+  "one_vs_six_thread_spectra_bitwise_equal": true,
+  "scope": "Warmed native CCL angular_cl; identical requested relative tolerance 1e-4. Setup/CAMB excluded. Isolated CQUAD substitution with reused per-thread workspace; no Python integrand callbacks.",
+  "machine": "Apple M2 Pro, macOS 13.7.5. Numerical/compiler jobs sequential; ordinary desktop background remained active.",
+  "limits": "Nine interleaved batches per method. Not full data-vector, covariance or MCMC timings. Cost at the same requested tolerance, not matched achieved accuracy when QAG fails. Additional grid reference errors use an internal strict-CQUAD control.",
+  "files": {
+    "paired_narrow_verified/timing.json": "2bf831a530edc939ce7bd511a2cbc757e9e1252610c15e5840fbbcb5b05051dc",
+    "paired_narrow_verified/peak_0p003_0.npz": "41907964358e8b0f7d3f1f1038552dde5fcb52290fdc53d0ed88b7f2f4664068",
+    "paired_6threads_verified/u000__pr_original.npz": "b5fd96f30f7483dc9cbe6eafb1721d767061e92be95293c8a7c7021b3992c737",
+    "paired_6threads_verified/timing.json": "487056f6a489e718c2a930ab9ac8555bca2713709cc87815171ee35ba3875cb9",
+    "paired_6threads_verified/known__pr_original.npz": "c004bc2354d297c6ac627373f60852a9fd6f052549ec56116660fb36af6076c0",
+    "baseline_6threads_verified/u000__pr_original.npz": "88ae91e2da8d78ea6f697b3fcdfa73fd02c7e062d4c0d3647652b4ddd9919a15",
+    "baseline_6threads_verified/timing.json": "9cf79646367f7a66494db401781d139c07394b6487fe68cb326250602cf30770",
+    "baseline_6threads_verified/known__pr_original.npz": "23b6aaa19fde54eb300392ac4332c34405fef776951bf61563794de3bae791eb",
+    "baseline_narrow_verified/timing.json": "9af3b275d176cd3291c1a940510681b1a4da8f4357a718e717562529531be644",
+    "baseline_narrow_verified/peak_0p003_0.npz": "ede7d087f4fb8a977ac067e769d6e10246521301d771bfc90eaff1d5c7608bdf",
+    "paired_1thread_verified/u000__pr_original.npz": "b9967df2dae14d158d4f4735cb9eebc1a7004be8dd1855709908409753244e7b",
+    "paired_1thread_verified/timing.json": "8dbed5de10e1b9ec0301b7a54177d15b78b8e114d48c1e7514918f782557ab4d",
+    "paired_1thread_verified/known__pr_original.npz": "7a67e055095d509aadf8a18163db4bb8b75faf98f6d19986426aa0d2027aa865",
+    "baseline_1thread_verified/u000__pr_original.npz": "c30167cf34994a0a525556cba4a94ebb0546c01e18ab462f806d4d316e78e5fc",
+    "baseline_1thread_verified/timing.json": "14205bb6a3638b82ebefad2424213bffbc622f168abe8367e7d8fd15275feff9",
+    "baseline_1thread_verified/known__pr_original.npz": "764ce2943da4669fb61214d394a3cd0b7e5386c13a1d02f9145fee564d043b65"
+  },
+  "discarded_harness_attempt": "Original point timing aborted because a thread-local workspace was allocated during a measured batch; preserved locally. Accepted runs set and verify the native OpenMP thread count after setup."
+}

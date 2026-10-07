@@ -1,0 +1,446 @@
+{
+  "overlap_figures": [
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        0,
+        0
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        0,
+        1
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        0,
+        2
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        0,
+        3
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        0,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        1,
+        1
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        1,
+        2
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        1,
+        3
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        1,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        2,
+        2
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        2,
+        3
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        2,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        3,
+        3
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        3,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p003_root0",
+      "pair": [
+        4,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p003_0"
+      ]
+    },
+    {
+      "family": "narrow_0p01_root0",
+      "pair": [
+        3,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p01_0"
+      ]
+    },
+    {
+      "family": "narrow_0p03_root0",
+      "pair": [
+        3,
+        4
+      ],
+      "paired_cases": 1,
+      "case_ids_in_plot": [
+        "peak_0p03_0"
+      ]
+    },
+    {
+      "family": "pr_original",
+      "pair": [
+        3,
+        4
+      ],
+      "paired_cases": 38,
+      "case_ids_in_plot": [
+        "u000__pr_original",
+        "u001__pr_original",
+        "u002__pr_original",
+        "u003__pr_original",
+        "u004__pr_original",
+        "u005__pr_original",
+        "u006__pr_original",
+        "u007__pr_original",
+        "u008__pr_original",
+        "u009__pr_original",
+        "u010__pr_original",
+        "u011__pr_original",
+        "u012__pr_original",
+        "u013__pr_original",
+        "u014__pr_original",
+        "u015__pr_original",
+        "u016__pr_original",
+        "u017__pr_original",
+        "u018__pr_original",
+        "u019__pr_original",
+        "u020__pr_original",
+        "u021__pr_original",
+        "u022__pr_original",
+        "u023__pr_original",
+        "u024__pr_original",
+        "u025__pr_original",
+        "u026__pr_original",
+        "u027__pr_original",
+        "u028__pr_original",
+        "u029__pr_original",
+        "known__pr_original",
+        "t02r00__pr_original",
+        "t03r00__pr_original",
+        "t04r00__pr_original",
+        "t05r00__pr_original",
+        "t06r00__pr_original",
+        "t07r00__pr_original",
+        "t08r00__pr_original"
+      ]
+    },
+    {
+      "family": "shared_narrow_peak",
+      "pair": [
+        0,
+        1
+      ],
+      "paired_cases": 30,
+      "case_ids_in_plot": [
+        "u000__shared_narrow_peak",
+        "u001__shared_narrow_peak",
+        "u002__shared_narrow_peak",
+        "u003__shared_narrow_peak",
+        "u004__shared_narrow_peak",
+        "u005__shared_narrow_peak",
+        "u006__shared_narrow_peak",
+        "u007__shared_narrow_peak",
+        "u008__shared_narrow_peak",
+        "u009__shared_narrow_peak",
+        "u010__shared_narrow_peak",
+        "u011__shared_narrow_peak",
+        "u012__shared_narrow_peak",
+        "u013__shared_narrow_peak",
+        "u014__shared_narrow_peak",
+        "u015__shared_narrow_peak",
+        "u016__shared_narrow_peak",
+        "u017__shared_narrow_peak",
+        "u018__shared_narrow_peak",
+        "u019__shared_narrow_peak",
+        "u020__shared_narrow_peak",
+        "u021__shared_narrow_peak",
+        "u022__shared_narrow_peak",
+        "u023__shared_narrow_peak",
+        "u024__shared_narrow_peak",
+        "u025__shared_narrow_peak",
+        "u026__shared_narrow_peak",
+        "u027__shared_narrow_peak",
+        "u028__shared_narrow_peak",
+        "u029__shared_narrow_peak"
+      ]
+    },
+    {
+      "family": "shared_narrow_peak",
+      "pair": [
+        1,
+        1
+      ],
+      "paired_cases": 30,
+      "case_ids_in_plot": [
+        "u000__shared_narrow_peak",
+        "u001__shared_narrow_peak",
+        "u002__shared_narrow_peak",
+        "u003__shared_narrow_peak",
+        "u004__shared_narrow_peak",
+        "u005__shared_narrow_peak",
+        "u006__shared_narrow_peak",
+        "u007__shared_narrow_peak",
+        "u008__shared_narrow_peak",
+        "u009__shared_narrow_peak",
+        "u010__shared_narrow_peak",
+        "u011__shared_narrow_peak",
+        "u012__shared_narrow_peak",
+        "u013__shared_narrow_peak",
+        "u014__shared_narrow_peak",
+        "u015__shared_narrow_peak",
+        "u016__shared_narrow_peak",
+        "u017__shared_narrow_peak",
+        "u018__shared_narrow_peak",
+        "u019__shared_narrow_peak",
+        "u020__shared_narrow_peak",
+        "u021__shared_narrow_peak",
+        "u022__shared_narrow_peak",
+        "u023__shared_narrow_peak",
+        "u024__shared_narrow_peak",
+        "u025__shared_narrow_peak",
+        "u026__shared_narrow_peak",
+        "u027__shared_narrow_peak",
+        "u028__shared_narrow_peak",
+        "u029__shared_narrow_peak"
+      ]
+    },
+    {
+      "family": "shared_narrow_peak",
+      "pair": [
+        1,
+        2
+      ],
+      "paired_cases": 29,
+      "case_ids_in_plot": [
+        "u000__shared_narrow_peak",
+        "u001__shared_narrow_peak",
+        "u002__shared_narrow_peak",
+        "u003__shared_narrow_peak",
+        "u004__shared_narrow_peak",
+        "u005__shared_narrow_peak",
+        "u006__shared_narrow_peak",
+        "u007__shared_narrow_peak",
+        "u008__shared_narrow_peak",
+        "u009__shared_narrow_peak",
+        "u010__shared_narrow_peak",
+        "u011__shared_narrow_peak",
+        "u012__shared_narrow_peak",
+        "u013__shared_narrow_peak",
+        "u014__shared_narrow_peak",
+        "u015__shared_narrow_peak",
+        "u016__shared_narrow_peak",
+        "u018__shared_narrow_peak",
+        "u019__shared_narrow_peak",
+        "u020__shared_narrow_peak",
+        "u021__shared_narrow_peak",
+        "u022__shared_narrow_peak",
+        "u023__shared_narrow_peak",
+        "u024__shared_narrow_peak",
+        "u025__shared_narrow_peak",
+        "u026__shared_narrow_peak",
+        "u027__shared_narrow_peak",
+        "u028__shared_narrow_peak",
+        "u029__shared_narrow_peak"
+      ]
+    },
+    {
+      "family": "shared_narrow_peak",
+      "pair": [
+        3,
+        4
+      ],
+      "paired_cases": 30,
+      "case_ids_in_plot": [
+        "u000__shared_narrow_peak",
+        "u001__shared_narrow_peak",
+        "u002__shared_narrow_peak",
+        "u003__shared_narrow_peak",
+        "u004__shared_narrow_peak",
+        "u005__shared_narrow_peak",
+        "u006__shared_narrow_peak",
+        "u007__shared_narrow_peak",
+        "u008__shared_narrow_peak",
+        "u009__shared_narrow_peak",
+        "u010__shared_narrow_peak",
+        "u011__shared_narrow_peak",
+        "u012__shared_narrow_peak",
+        "u013__shared_narrow_peak",
+        "u014__shared_narrow_peak",
+        "u015__shared_narrow_peak",
+        "u016__shared_narrow_peak",
+        "u017__shared_narrow_peak",
+        "u018__shared_narrow_peak",
+        "u019__shared_narrow_peak",
+        "u020__shared_narrow_peak",
+        "u021__shared_narrow_peak",
+        "u022__shared_narrow_peak",
+        "u023__shared_narrow_peak",
+        "u024__shared_narrow_peak",
+        "u025__shared_narrow_peak",
+        "u026__shared_narrow_peak",
+        "u027__shared_narrow_peak",
+        "u028__shared_narrow_peak",
+        "u029__shared_narrow_peak"
+      ]
+    }
+  ],
+  "source_summaries": [
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/summary.json",
+      "sha256": "1f183e2c0bf8d03dddae6482f7cc052df5ad61aabb951d8e086b7b3d6c59b534"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/narrow_width_0p003/summary.json",
+      "sha256": "2a14d26589081e9127df9585a2bd85b60b2507af7917b38e18cea7df21db66da"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/narrow_width_0p01/summary.json",
+      "sha256": "bd0b75a0136d59c97b3d4f8ecfefb3029c015848ec83dfe717d12b5864be5659"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/narrow_width_0p03/summary.json",
+      "sha256": "c721a4c7610198d82f52b538674f0f5b78697dc09c982b6948a30224b3315746"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane02/summary.json",
+      "sha256": "2fbfe32b95d0bc239a86807b666410d897d50f7644c294494739e3fe7a3b3c69"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane03/summary.json",
+      "sha256": "434a5e9f077025bf75d241c63b150ad669005390b4dcb2fe2dc3a6f03860bffc"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane04/summary.json",
+      "sha256": "18e165ae35c5624df313fd361b3ca0560d2eba1d030d003563360202bfb7b1d0"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane05/summary.json",
+      "sha256": "e0acb084f7936eacca80cc87a74091c0affe6c5a2ce78ef7172b3fb068d6f671"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane06/summary.json",
+      "sha256": "3891052e813a32eb810841375b2da9f043daace84561d6e92c43b5097d43ea8a"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane07/summary.json",
+      "sha256": "17d559094f6f5933de82fb4e416587d654969317496214d2c687beef79e55061"
+    },
+    {
+      "path": "/Users/vivianmiranda/data/COCOA/september2026/test/CCL-benchmark/work/limber_failure_survey_20261007/targeted/pr_original_plane08/summary.json",
+      "sha256": "a35f0cb3c3bfb151061be69e54cfffe88e3f9a4f56ab92edb57303b7b3fce33f"
+    }
+  ],
+  "triangle_highlight_fraction": 0.001,
+  "overlap_selection_fraction": 0.0001
+}

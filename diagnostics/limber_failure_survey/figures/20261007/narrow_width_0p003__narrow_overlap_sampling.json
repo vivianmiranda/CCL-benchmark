@@ -1,0 +1,26 @@
+{
+  "case": "peak_0p003_0",
+  "source_sha256": {
+    "summary": "2a14d26589081e9127df9585a2bd85b60b2507af7917b38e18cea7df21db66da",
+    "inputs": "2ac3f500c95fc1f45fa16f8798207061af6e224f58844204bdaf14b9c9b76321",
+    "integrand": "dc495c2ac11a4cf299b74ce9bf914e7f3dc9f87d2e194a2180fa1f95129318ae",
+    "cocoa": "bd68794e7f79562d8bf2b20b39a137c016e27e427e0e96a776b28b80a5fa82c5",
+    "integration_ladder": "365cdf1d247ef70e9d9daf0aea38576ef75edae33957434d82500f2d09a1f19d"
+  },
+  "script_sha256": "6731aa14858f7cabebe6efe7af66af245047524c08e224276a84ad4ec2098f7c",
+  "ccl_error_percent": -78.75054690989623,
+  "cocoa_own_error_percent": -0.5203600913121331,
+  "peak_logk": -2.220419653562429,
+  "FWHM_logk": [
+    -2.2218802698987954,
+    -2.2213933977866733,
+    -2.2209065256745513,
+    -2.220419653562429,
+    -2.219932781450307,
+    -2.219445909338185,
+    -2.218959037226063,
+    -2.218472165113941
+  ],
+  "kronrod_nodes_in_FWHM": 0,
+  "cocoa_nodes_in_FWHM": 1
+}

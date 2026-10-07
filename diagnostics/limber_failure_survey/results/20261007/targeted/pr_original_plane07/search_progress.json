@@ -1,0 +1,155 @@
+{
+  "Omega_m": 0.33,
+  "wa": 0.0,
+  "family": "pr_original",
+  "evaluations": [
+    {
+      "kronrod": 3.2098970400477414e-07,
+      "gauss": 3.5076240938468335e-07,
+      "estimated_error": 5.31281748052164e-07,
+      "callback_errors": [],
+      "w0": -1.15,
+      "signed_rule_difference": -2.9772705379909206e-08,
+      "integration_logk_bounds": [
+        -2.8739251178739513,
+        0.20732267530305873
+      ]
+    },
+    {
+      "kronrod": 3.2279336505707596e-07,
+      "gauss": 3.462323984971858e-07,
+      "estimated_error": 5.33851893692718e-07,
+      "callback_errors": [],
+      "w0": -1.11875,
+      "signed_rule_difference": -2.343903344010984e-08,
+      "integration_logk_bounds": [
+        -2.869729728805301,
+        0.20911357130292924
+      ]
+    },
+    {
+      "kronrod": 3.2483253673346215e-07,
+      "gauss": 3.419105905999441e-07,
+      "estimated_error": 5.36820800811461e-07,
+      "callback_errors": [],
+      "w0": -1.0875,
+      "signed_rule_difference": -1.7078053866481958e-08,
+      "integration_logk_bounds": [
+        -2.8653453435796052,
+        0.21090913243221232
+      ]
+    },
+    {
+      "kronrod": 3.271166697360694e-07,
+      "gauss": 3.3784489597938214e-07,
+      "estimated_error": 5.402038300962768e-07,
+      "callback_errors": [],
+      "w0": -1.05625,
+      "signed_rule_difference": -1.072822624331277e-08,
+      "integration_logk_bounds": [
+        -2.8607610062638504,
+        0.2127093354522408
+      ]
+    },
+    {
+      "kronrod": 3.2971415855157076e-07,
+      "gauss": 3.3898953374042643e-07,
+      "estimated_error": 5.443807352522964e-07,
+      "callback_errors": [],
+      "w0": -1.025,
+      "signed_rule_difference": -9.275375188855676e-09,
+      "integration_logk_bounds": [
+        -2.854770733409015,
+        0.21451415687727912
+      ]
+    },
+    {
+      "kronrod": 3.324212573063769e-07,
+      "gauss": 3.3553256521861516e-07,
+      "estimated_error": 5.484981290016133e-07,
+      "callback_errors": [],
+      "w0": -0.9937499999999999,
+      "signed_rule_difference": -3.111307912238241e-09,
+      "integration_logk_bounds": [
+        -2.8497477419734527,
+        0.2163235729778801
+      ]
+    },
+    {
+      "kronrod": 3.3539260164949586e-07,
+      "gauss": 3.3245596937920065e-07,
+      "estimated_error": 5.530753008382021e-07,
+      "callback_errors": [],
+      "w0": -0.9625,
+      "signed_rule_difference": 2.9366322702952117e-09,
+      "integration_logk_bounds": [
+        -2.844488126254368,
+        0.21813755978428176
+      ]
+    },
+    {
+      "kronrod": 3.339162350186462e-07,
+      "gauss": 3.338987499846482e-07,
+      "estimated_error": 2.786442668930396e-10,
+      "callback_errors": [],
+      "w0": -0.9776737212467408,
+      "signed_rule_difference": 1.7485033998001815e-11,
+      "integration_logk_bounds": [
+        -2.8470723715474686,
+        0.21725619267868485
+      ]
+    },
+    {
+      "kronrod": 3.3390763250982864e-07,
+      "gauss": 3.33907683985846e-07,
+      "estimated_error": 4.4510556232942205e-14,
+      "callback_errors": [],
+      "w0": -0.9777641005005955,
+      "signed_rule_difference": -5.147601734888693e-14,
+      "integration_logk_bounds": [
+        -2.8470875905867614,
+        0.21725094620767588
+      ]
+    },
+    {
+      "kronrod": 3.339076531876602e-07,
+      "gauss": 3.3390762442488053e-07,
+      "estimated_error": 1.8590962879939115e-14,
+      "callback_errors": [],
+      "w0": -0.9777638352047051,
+      "signed_rule_difference": 2.8762779687412364e-14,
+      "integration_logk_bounds": [
+        -2.8470875459163407,
+        0.21725096160791596
+      ]
+    },
+    {
+      "kronrod": 3.33907639818544e-07,
+      "gauss": 3.3390763982708645e-07,
+      "estimated_error": 9.515550712073895e-20,
+      "callback_errors": [],
+      "w0": -0.977763930303928,
+      "signed_rule_difference": -8.542433152178026e-18,
+      "integration_logk_bounds": [
+        -2.8470875619291136,
+        0.2172509560874729
+      ]
+    },
+    {
+      "kronrod": 3.339076398195183e-07,
+      "gauss": 3.3390763981829975e-07,
+      "estimated_error": 5.1265029270024436e-21,
+      "callback_errors": [],
+      "w0": -0.9777639302539276,
+      "signed_rule_difference": 1.2185627737437178e-18,
+      "integration_logk_bounds": [
+        -2.8470875619206946,
+        0.21725095609037565
+      ]
+    }
+  ],
+  "candidate_roots": [],
+  "unsuccessful_brackets": [],
+  "saved_search_reuse": null,
+  "excluded_from_incidence": true
+}

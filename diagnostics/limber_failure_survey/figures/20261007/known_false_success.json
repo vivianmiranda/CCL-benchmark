@@ -1,0 +1,21 @@
+{
+  "reference": "Refined CCL CQUAD; successful split-QAG controls verified separately",
+  "reference_value": 3.3653154695468126e-07,
+  "labels": [
+    "CCL default QAG",
+    "CoCoA fixed quadrature",
+    "CCL split-4 QAG check"
+  ],
+  "common_reference_offsets_percent": [
+    -4.022461089725882,
+    0.05677075121357511,
+    8.3482605273133e-07
+  ],
+  "cocoa_own_refinement_percent": -0.0016052763679330617,
+  "source_sha256": {
+    "ccl": "f25c572d327b01578f5ff2d947358b916d06fb51388727b4c7446f95c19695dd",
+    "cocoa": "e7a1bfcabf2d608327ca4956dc00711d3777e0aa9a26ab9fe1a043e490aec2a2",
+    "reference_supplements": "d6a5f12714f59ec13f436c7c4122e013b351418c721a3115b3d911560f3ce1d7"
+  },
+  "script_sha256": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda"
+}

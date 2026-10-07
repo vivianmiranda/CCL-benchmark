@@ -1,0 +1,417 @@
+{
+  "case": {
+    "id": "u014__pr_original",
+    "cosmology_id": "u014",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.0205488165442798,
+      "wa": -0.1876377740917654,
+      "Omega_m": 0.29147738666979023
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "c406468432d5c262caf1a6d6541237c7674b3d0a53994ea89fd1e56694c5a819",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "687da4e920f7f566c55d54c9c0cb3f4d2d4093ae660e597776dd3a2ed1a926dc",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.5031773419240853e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.5031719700139773e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 4.0253238224464916e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 4.0254544446698907e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.5825420977167992e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.5825333733237863e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0467089894076753e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0466971594156578e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.693722064496799e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.693728817747223e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.136448861319157e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1364492284866102e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.410679008938902e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.4107897204154777e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.4140534584929007e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.414056687846502e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.1105002239371316e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1105027347553658e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 9.936392695249903e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.936335066982661e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.260439799644685e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.260415413621722e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.4370817299126182e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.437071131914514e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 8.719984117078042e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.719936020348258e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.2382657335297723e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.238237986084321e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.554434906559267e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.554553945821328e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.283291861209631,
+    1.3844356629284356,
+    1.504569199202077,
+    1.6292477214821086,
+    1.7650134218687195
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.238265733529772e-07,
+        "estimated_error": 1.408953939015284e-11,
+        "status": [
+          0
+        ],
+        "calls": 287,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.238259247180916e-07,
+        "estimated_error": 3.2089818767570976e-14,
+        "status": [
+          0
+        ],
+        "calls": 7515,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.2382592492827563e-07,
+        "estimated_error": 1.0950832730419175e-13,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 3444,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.2382592454255795e-07,
+        "estimated_error": 2.883171385912841e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5494,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.2382592475103007e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.2382592475103007e-07,
+          "estimated_error": 3.226532442055239e-15,
+          "status": [
+            0
+          ],
+          "calls": 13685,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.238259247502484e-07,
+          "estimated_error": 3.2276443221423827e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 15550,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.238259237350438e-07,
+          "estimated_error": 2.86548515474665e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 6478,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.2382592475103007e-07,
+        "successful_split_QAG_controls": [
+          "original_split4",
+          "qag_split8"
+        ],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 2.4138469001400154e-12,
+          "original_cquad": 1.0171652409241005e-10,
+          "original_split4": 6.437783639512418e-10,
+          "qag_split8": 3.137445747647405e-09
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 2.002933976452681e-06,
+      "initial_rules": {
+        "kronrod": 3.107419140893983e-07,
+        "gauss": 3.3530371840825165e-07,
+        "estimated_error": 5.141412388407474e-07,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.0205488165442798,
+      "wa": -0.1876377740917654,
+      "Omega_m": 0.29147738666979023
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "31b80f1ce9bd2260d370c9139f325a296658d99e4a48247267e0c458de9be436",
+    "path": "shared/u014.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.4620989169925451,
+  "elapsed_is_not_benchmark": true
+}

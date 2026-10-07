@@ -1,0 +1,344 @@
+{
+  "case": {
+    "id": "u000__pr_original",
+    "cosmology_id": "u000",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1002693872933842,
+      "wa": 0.18973039311613954,
+      "Omega_m": 0.30018165926114865
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "44f5af7752642925aebd4f10ab528a44d669c86063a138c7865af04c012a6cf6",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "60d48c55711080a8152e05c07bf707bc271d5ca3ffa8f7931ac0cb7935663f1f",
+    "run_cocoa.py": "7b06e89c060ea8afaa5e2a387ead9107cdc6c99f96333b4e0d7e7f5c652f1369",
+    "summarize.py": "2fb06bf3c6bdc0af5dc705b7de6484a10a0a1dfc6196ff7a7a916e3bb4151cc6"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.4883340527068654e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4883570106690204e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 4.0066105794928524e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 4.006504085029785e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.5805288870718387e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.5805369232975706e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0469116623608889e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0469218422155121e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.703668995687436e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.703791396585242e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.1363329070749835e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1363225972085958e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.424513453565252e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.42443189935314e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.4200284445386891e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4200196311653045e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.1155042408772345e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1154905494855513e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.0013609145533856e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0013667204748581e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.288225560215182e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.288168170481887e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.4503548315680055e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4503641762209642e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 8.835445327307753e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.835404058511849e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.287217120578703e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.2871363966809734e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.686703977837814e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.686565029699373e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.2882862947382896,
+    1.3911617915123047,
+    1.5127744139039963,
+    1.6384225927848317,
+    1.7747440942958812
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.2872171205787036e-07,
+        "estimated_error": 1.1357818053646298e-11,
+        "status": [
+          0
+        ],
+        "calls": 287,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.2871961586351634e-07,
+        "estimated_error": 3.2821325270696383e-14,
+        "status": [
+          0
+        ],
+        "calls": 7503,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.287196171001012e-07,
+        "estimated_error": 1.07165338077607e-13,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 3526,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.2871961652742225e-07,
+        "estimated_error": 3.1979133640628304e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5494,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": false,
+      "maximum_split_reference_fractional_change": null,
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 6.376845958611099e-06,
+      "initial_rules": {
+        "kronrod": 3.155231967596201e-07,
+        "gauss": 3.1492694270378115e-07,
+        "estimated_error": 5.7095391113858174e-08,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1002693872933842,
+      "wa": 0.18973039311613954,
+      "Omega_m": 0.30018165926114865
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "c147ddcf43bb5a3a0452f7dd2f1ae3df31b04c4ffdb0bfac15a9bfc0d8b102c7",
+    "path": "shared/u000.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.058231082977727,
+  "elapsed_is_not_benchmark": true
+}
