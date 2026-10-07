@@ -1,0 +1,155 @@
+[
+  {
+    "case": 0,
+    "w": -1.0389772675840323,
+    "levels": [
+      {
+        "level": 0,
+        "cov_nodes": 96,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 6.94911481327054e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.6051355873680784e-05,
+        "reported_pair_at_ell": 3.3671835968466837e-07,
+        "reported_pair_at_ell_fractional_change": -1.6051355863133665e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00019692459202658164
+      },
+      {
+        "level": 1,
+        "cov_nodes": 128,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 1.626061474802043e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.626061474802043e-05,
+        "reported_pair_at_ell": 3.3671850749761047e-07,
+        "reported_pair_at_ell_fractional_change": -1.5612381969232203e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00013223663123429485
+      },
+      {
+        "level": 2,
+        "cov_nodes": 256,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 4.207526143051865e-07,
+        "reported_pair_max_abs_fractional_change_vs_level4": 2.163496950480237e-07,
+        "reported_pair_at_ell": 3.367237268115109e-07,
+        "reported_pair_at_ell_fractional_change": -1.120982061619813e-07,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00018176223859800444
+      },
+      {
+        "level": 3,
+        "cov_nodes": 512,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 9.37374116105616e-08,
+        "reported_pair_max_abs_fractional_change_vs_level4": 4.1266014938479145e-08,
+        "reported_pair_at_ell": 3.367237541836761e-07,
+        "reported_pair_at_ell_fractional_change": -3.080853172576781e-08,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      },
+      {
+        "level": 4,
+        "cov_nodes": 1024,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_at_ell": 3.3672376455764087e-07,
+        "reported_pair_at_ell_fractional_change": 0.0,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      }
+    ]
+  },
+  {
+    "case": 1,
+    "w": -1.0389272675840322,
+    "levels": [
+      {
+        "level": 0,
+        "cov_nodes": 96,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 6.948974076292913e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.6052763685547866e-05,
+        "reported_pair_at_ell": 3.367225984419582e-07,
+        "reported_pair_at_ell_fractional_change": -1.6052763679219595e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0001969259364954512
+      },
+      {
+        "level": 1,
+        "cov_nodes": 128,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 1.6260637537346412e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.6260637537346412e-05,
+        "reported_pair_at_ell": 3.3672274724728097e-07,
+        "reported_pair_at_ell_fractional_change": -1.561084818346714e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00013223884307500544
+      },
+      {
+        "level": 2,
+        "cov_nodes": 256,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 4.2678567191423156e-07,
+        "reported_pair_max_abs_fractional_change_vs_level4": 2.167068798852867e-07,
+        "reported_pair_at_ell": 3.3672796540950576e-07,
+        "reported_pair_at_ell_fractional_change": -1.1417975964711502e-07,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00018175034436751503
+      },
+      {
+        "level": 3,
+        "cov_nodes": 512,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 9.303785808434384e-08,
+        "reported_pair_max_abs_fractional_change_vs_level4": 4.084016413941072e-08,
+        "reported_pair_at_ell": 3.367279933284128e-07,
+        "reported_pair_at_ell_fractional_change": -3.126741876524619e-08,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      },
+      {
+        "level": 4,
+        "cov_nodes": 1024,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_at_ell": 3.367280038570283e-07,
+        "reported_pair_at_ell_fractional_change": 0.0,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      }
+    ]
+  },
+  {
+    "case": 2,
+    "w": -1.038877267584032,
+    "levels": [
+      {
+        "level": 0,
+        "cov_nodes": 96,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 6.948852206334344e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.6054442645518918e-05,
+        "reported_pair_at_ell": 3.367268090794376e-07,
+        "reported_pair_at_ell_fractional_change": -1.6054442637747357e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00019692777272917183
+      },
+      {
+        "level": 1,
+        "cov_nodes": 128,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 1.6260590619654458e-05,
+        "reported_pair_max_abs_fractional_change_vs_level4": 1.6260590619654458e-05,
+        "reported_pair_at_ell": 3.3672695896797385e-07,
+        "reported_pair_at_ell_fractional_change": -1.5609315829223647e-05,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0001322402585349769
+      },
+      {
+        "level": 2,
+        "cov_nodes": 256,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 4.3150819040160826e-07,
+        "reported_pair_max_abs_fractional_change_vs_level4": 2.166651715818091e-07,
+        "reported_pair_at_ell": 3.3673217603849487e-07,
+        "reported_pair_at_ell_fractional_change": -1.1608326444534356e-07,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.00018173848331470843
+      },
+      {
+        "level": 3,
+        "cov_nodes": 512,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 9.221039420914678e-08,
+        "reported_pair_max_abs_fractional_change_vs_level4": 4.035074285813067e-08,
+        "reported_pair_at_ell": 3.36732204389516e-07,
+        "reported_pair_at_ell_fractional_change": -3.1888703011517805e-08,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      },
+      {
+        "level": 4,
+        "cov_nodes": 1024,
+        "covariance_gg_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_max_abs_fractional_change_vs_level4": 0.0,
+        "reported_pair_at_ell": 3.3673221512746963e-07,
+        "reported_pair_at_ell_fractional_change": 0.0,
+        "data_vector_autos_max_abs_fractional_change_vs_level4": 0.0
+      }
+    ]
+  }
+]

@@ -7,9 +7,13 @@ shear $`\xi_\pm`$, galaxy-galaxy lensing $`\gamma_t`$ and galaxy clustering
 $`w(\theta)`$. Scripts, tables and figures:
 [`cocoa_comparison/`](cocoa_comparison).
 
+The separate [Limber integration diagnostic](#ccl_qag), recorded on
+2026-10-07 with CCL 3.3.3, reproduces a **4.02% error despite a successful
+GSL return code**. Its inputs, results and plots are archived below.
+
 > [!NOTE]
-> **Recorded comparison: 2026-10-01–02.** The tables, figures and timings
-> below describe the [recorded versions](#ccl_appendix_versions), not a
+> **Recorded 3x2pt comparison: 2026-10-01–02.** Its tables, figures and timings
+> describe the [recorded versions](#ccl_appendix_versions), not a
 > fresh comparison of the current CoCoA checkout. The M2 Pro timing table
 > uses accuracy-tested sampling in each code; see
 > [Execution time](#ccl_time).
@@ -34,7 +38,7 @@ Contents:
 
 1. [Summary](#ccl_summary)
 2. [Setup](#ccl_method)
-3. [Results](#ccl_results)
+3. [Results](#ccl_results) and [Limber false-convergence diagnostic](#ccl_qag)
 4. [Why galaxy-galaxy lensing and clustering differ](#ccl_fkem)
 5. [Figures](#ccl_figures)
 6. [TATT intrinsic alignments](#ccl_tatt)
@@ -202,6 +206,69 @@ One change at a time, fiducial cosmology, 3x2pt $`\Delta\chi^2`$:
 4. Row 5: the Limber $`C_\ell`$ agree ([Appendix](#ccl_appendix_cl)).
 5. Rows 6 to 8: the non-Limber term carries the difference, through the
    growth factor DESC-CCL receives.
+
+## Limber integration: false convergence <a name="ccl_qag"></a>
+
+Using the frozen galaxy distributions from
+[CCL PR #1313](https://github.com/LSSTDESC/CCL/pull/1313), CCL 3.3.3 with
+GSL 2.7 returns `GSL_SUCCESS` for an integral that is **4.0225% too low**.
+The reproduced case is lens bins **4 × 5** (one-based),
+$`\ell = 355.655882`$ and $`w_0 = -1.0389272676`$, with density-only
+Limber spectra. The reported rounded value, $`w_0=-1.0389`$, did not
+trigger the failure in this installation; the crossing depends on the
+numerical implementation as well as the cosmology.
+
+| Evaluation of the same CCL integrand | Angular spectrum |
+|---|---:|
+| Native CCL QAG, success after 41 evaluations | 3.22994696e-7 |
+| QAG with two independent initial intervals | 3.36533216e-7 |
+| GSL CQUAD diagnostic | 3.36531547e-7 |
+| Native CCL spline method | 3.36527215e-7 |
+
+**The failure is in the error estimate, not a physical singularity.**
+The product of the two galaxy distributions creates a narrow peak.
+Changing $`w_0`$ changes the distance mapping and moves the peak relative
+to the quadrature nodes. At the problematic point, the embedded
+41-point Kronrod and 20-point Gauss rules both underestimate the integral
+by almost the same amount. Their small disagreement allows QAG to stop
+before subdivision. A fallback that only handles a reported integration
+error cannot catch this successful but inaccurate return.
+
+![Narrow galaxy-bin overlap and the initial quadrature samples](diagnostics/limber_false_success/figures/narrow_overlap_money.png)
+
+Splitting the interval into two removes the 4% failure in this test.
+Moving an integration endpoint by only 0.001 in log wavenumber also
+removes it, while CQUAD changes by less than one part in a billion.
+The [cosmology scan](diagnostics/limber_false_success/figures/qag_trigger.png)
+shows the abrupt QAG decision against a smooth spline result.
+Known kernel support and structure can guide a minimum subdivision;
+agreement between embedded rules alone is not a guarantee of accuracy.
+
+**Which CoCoA calculation was checked?**
+
+- **Covariance-module all-pairs spectra:** these are angular spectra used
+  to construct covariances, not a covariance matrix. With fixed shared
+  inputs, the default 96-point rule on each of seven scale-factor panels
+  differs from 1024 points per panel by **0.0016%** at the affected pair
+  and multipole. Across three neighboring cosmologies, 15 galaxy pairs
+  and 26 multipoles, the largest change is **0.00695%**.
+- **Ordinary data-vector spectra:** the separate check covers galaxy
+  auto-spectra, with RSD included. Their largest default-to-refined change
+  is **0.0197%**. This path does not provide the same density-only
+  cross-bin spectrum and is not the blue sampling shown above.
+
+The CoCoA nodes are fixed before evaluating the integrand. Gauss–Legendre
+nodes cluster at both ends of each panel; here the predefined boundary
+at $`z=1`$ lies close to the peak at $`z\simeq0.994`$. This is not adaptive
+peak detection. The [annotated 96-point-rule figure](diagnostics/limber_false_success/figures/narrow_overlap_sampling.png)
+shows every node in the adjoining panels. These checks establish
+convergence for the tested inputs, not immunity for arbitrary redshift
+distributions or cosmologies.
+
+[Saved results and reproduction steps](diagnostics/limber_false_success/README.md)
+include input hashes, software versions and the separate CoCoA scopes.
+This diagnostic does not modify either production code or measure a
+Fisher-parameter bias.
 
 ## Why galaxy-galaxy lensing and clustering differ <a name="ccl_fkem"></a>
 

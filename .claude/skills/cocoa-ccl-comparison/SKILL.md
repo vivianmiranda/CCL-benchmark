@@ -79,6 +79,13 @@ reused. Read the relevant file before spawning a new review.
 
 ## Current-code reruns
 
+The separately authorized CCL 3.3.3 QAG false-success diagnostic is now
+permanent in `diagnostics/limber_false_success/`. Read
+`references/limber_false_success_20261007.md` before extending it. Its
+CoCoA all-pairs spectra come from the covariance module; do not relabel
+their node plot as ordinary data-vector integration or claim universal
+immunity. The original PR #1296 comparison and environment stay separate.
+
 Read `references/readme_audit_20261006.md` before refreshing the study.
 The saved October 1–2 results use CoCoA v5.02's growth reference at
 5e-4/Mpc; current LSST/Roman likelihoods use growth_k=0.05/Mpc. The export
