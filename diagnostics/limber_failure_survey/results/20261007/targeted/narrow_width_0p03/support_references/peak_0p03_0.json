@@ -1,0 +1,476 @@
+{
+  "case": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.0389272675840322,
+      "wa": 0.0,
+      "Omega_m": 0.3156
+    },
+    "camb_dark_energy_model": "ppf",
+    "id": "peak_0p03_0",
+    "cosmology_id": "fixed_ppf",
+    "family": "narrow_0p03_root0",
+    "arm": "targeted_narrow_overlap"
+  },
+  "status": "completed",
+  "original_result_sha256": "68f9d52e91de96f6e4d4e5f916d615e6a268cb45ff66132d15b0e5985339d1ec",
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "collect_publication.py": "4cb4446b383ae4f2dd51049acd45aafce0c5cefbeb7a7eda3485d225f310cac9",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "47ab9b65bef3e58da6808debb80f91e9410034c580527a5fe3f7cd9f6253d015",
+    "hunt_narrow_overlap.py": "96487983f8b2ffd7329cab101461c4e427a1b2e45c063d10e1a38f80f9304ae1",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "0f6551d819eb14051022bbc2a9f2552e699e71da083981ce03abc6d69c166e6b",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "9cad5a9132cd217f22de849b898fb18302c11315fe8f07e0aa046ea71991ae38",
+    "summarize.py": "ee10659d1389a3e25fb2fc6fb6933f6410a5b5adf380c75dc18635d3771a3974",
+    "time_native_integrators.py": "c1d50ada081ce0e2adc24a744bc82a52aa52eca5eabf1b93b3e72d6d94a28030",
+    "validate_narrow_support.py": "147f6f99912960c2d72c3c96d164b0f70f2d9978a999009b77abe6f62185f469",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "input_definition": {
+    "kind": "positive_mixture",
+    "shared_fraction": 0.15,
+    "shared_mean_z": 0.8614306607620387,
+    "shared_sigma_z": 0.03,
+    "z_nodes": 20001,
+    "refined_z_nodes": 40001,
+    "name": "narrow_0p03_root0"
+  },
+  "references": [
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "physical_support": {
+        "redshifts": [
+          0.6814306607620386,
+          0.8614306607620387,
+          1.0414306607620387
+        ],
+        "logk": [
+          -1.9685108881483808,
+          -2.1536335652835805,
+          -2.29472873133102
+        ],
+        "sigma_offsets": [
+          -6,
+          0,
+          6
+        ]
+      },
+      "refined_physical_support": {
+        "redshifts": [
+          0.6814306607620386,
+          0.7714306607620387,
+          0.8314306607620386,
+          0.8614306607620387,
+          0.8914306607620387,
+          0.9514306607620386,
+          1.0414306607620387
+        ],
+        "logk": [
+          -1.9685108881483808,
+          -2.06788610480949,
+          -2.126373067313292,
+          -2.1536335652835805,
+          -2.179698241983385,
+          -2.2285639216085738,
+          -2.29472873133102
+        ],
+        "sigma_offsets": [
+          -6,
+          -3,
+          -1,
+          0,
+          1,
+          3,
+          6
+        ]
+      },
+      "support_CQUAD": {
+        "method": "native GSL CQUAD on physically partitioned native CCL integrand",
+        "epsrel_per_interval": 1e-08,
+        "native_domain_retained": true,
+        "edges_logk": [
+          -2.843282732069862,
+          -2.29472873133102,
+          -2.1536335652835805,
+          -1.9685108881483808,
+          0.2040338518654134
+        ],
+        "intervals": [
+          {
+            "value": 4.9106929875383906e-08,
+            "estimated_error": 4.910506835241367e-16,
+            "status": [
+              0
+            ],
+            "calls": 20073,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.843282732069862,
+              -2.29472873133102
+            ]
+          },
+          {
+            "value": 3.073963309314028e-07,
+            "estimated_error": 3.062243153912561e-15,
+            "status": [
+              0
+            ],
+            "calls": 7445,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.29472873133102,
+              -2.1536335652835805
+            ]
+          },
+          {
+            "value": 1.706364042394455e-07,
+            "estimated_error": 1.6903957486455597e-15,
+            "status": [
+              0
+            ],
+            "calls": 7095,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.1536335652835805,
+              -1.9685108881483808
+            ]
+          },
+          {
+            "value": 7.0770888495952445e-09,
+            "estimated_error": 7.06159408508211e-17,
+            "status": [
+              0
+            ],
+            "calls": 16641,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -1.9685108881483808,
+              0.2040338518654134
+            ]
+          }
+        ],
+        "value": 5.342167538958274e-07,
+        "successful": true,
+        "calls": 51254
+      },
+      "support_CQUAD_refined": {
+        "method": "native GSL CQUAD on physically partitioned native CCL integrand",
+        "epsrel_per_interval": 1e-08,
+        "native_domain_retained": true,
+        "edges_logk": [
+          -2.843282732069862,
+          -2.29472873133102,
+          -2.2285639216085738,
+          -2.179698241983385,
+          -2.1536335652835805,
+          -2.126373067313292,
+          -2.06788610480949,
+          -1.9685108881483808,
+          0.2040338518654134
+        ],
+        "intervals": [
+          {
+            "value": 4.9106929875383906e-08,
+            "estimated_error": 4.910506835241367e-16,
+            "status": [
+              0
+            ],
+            "calls": 20073,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.843282732069862,
+              -2.29472873133102
+            ]
+          },
+          {
+            "value": 1.0339049626920864e-07,
+            "estimated_error": 9.970546539516785e-16,
+            "status": [
+              0
+            ],
+            "calls": 2563,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.29472873133102,
+              -2.2285639216085738
+            ]
+          },
+          {
+            "value": 8.294853103272934e-08,
+            "estimated_error": 8.201879831047146e-16,
+            "status": [
+              0
+            ],
+            "calls": 2955,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.2285639216085738,
+              -2.179698241983385
+            ]
+          },
+          {
+            "value": 1.2105730349002376e-07,
+            "estimated_error": 1.2009544688106911e-15,
+            "status": [
+              0
+            ],
+            "calls": 1259,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.179698241983385,
+              -2.1536335652835805
+            ]
+          },
+          {
+            "value": 1.1597462919313462e-07,
+            "estimated_error": 1.132448370244731e-15,
+            "status": [
+              0
+            ],
+            "calls": 1419,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.1536335652835805,
+              -2.126373067313292
+            ]
+          },
+          {
+            "value": 4.783225007413555e-08,
+            "estimated_error": 4.752455901262359e-16,
+            "status": [
+              0
+            ],
+            "calls": 3011,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.126373067313292,
+              -2.06788610480949
+            ]
+          },
+          {
+            "value": 6.829525090429439e-09,
+            "estimated_error": 6.804758798674641e-17,
+            "status": [
+              0
+            ],
+            "calls": 3727,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.06788610480949,
+              -1.9685108881483808
+            ]
+          },
+          {
+            "value": 7.0770888495952445e-09,
+            "estimated_error": 7.06159408508211e-17,
+            "status": [
+              0
+            ],
+            "calls": 16641,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -1.9685108881483808,
+              0.2040338518654134
+            ]
+          }
+        ],
+        "value": 5.342167538746405e-07,
+        "successful": true,
+        "calls": 51648
+      },
+      "fine_input_support_CQUAD": {
+        "method": "native GSL CQUAD on physically partitioned native CCL integrand",
+        "epsrel_per_interval": 1e-08,
+        "native_domain_retained": true,
+        "edges_logk": [
+          -2.843282732069862,
+          -2.29472873133102,
+          -2.2285639216085738,
+          -2.179698241983385,
+          -2.1536335652835805,
+          -2.126373067313292,
+          -2.06788610480949,
+          -1.9685108881483808,
+          0.2040338518654134
+        ],
+        "intervals": [
+          {
+            "value": 4.910693112283048e-08,
+            "estimated_error": 4.903901809644246e-16,
+            "status": [
+              0
+            ],
+            "calls": 19493,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.843282732069862,
+              -2.29472873133102
+            ]
+          },
+          {
+            "value": 1.033904994650319e-07,
+            "estimated_error": 9.892824866440586e-16,
+            "status": [
+              0
+            ],
+            "calls": 2585,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.29472873133102,
+              -2.2285639216085738
+            ]
+          },
+          {
+            "value": 8.294852278101869e-08,
+            "estimated_error": 8.188523575940138e-16,
+            "status": [
+              0
+            ],
+            "calls": 2183,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.2285639216085738,
+              -2.179698241983385
+            ]
+          },
+          {
+            "value": 1.2105730122139088e-07,
+            "estimated_error": 1.125941151145425e-15,
+            "status": [
+              0
+            ],
+            "calls": 1139,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.179698241983385,
+              -2.1536335652835805
+            ]
+          },
+          {
+            "value": 1.1597463286051297e-07,
+            "estimated_error": 1.062799520157463e-15,
+            "status": [
+              0
+            ],
+            "calls": 965,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.1536335652835805,
+              -2.126373067313292
+            ]
+          },
+          {
+            "value": 4.783225257704442e-08,
+            "estimated_error": 4.598911706164952e-16,
+            "status": [
+              0
+            ],
+            "calls": 1949,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.126373067313292,
+              -2.06788610480949
+            ]
+          },
+          {
+            "value": 6.8295245092971374e-09,
+            "estimated_error": 6.818696535891546e-17,
+            "status": [
+              0
+            ],
+            "calls": 3331,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -2.06788610480949,
+              -1.9685108881483808
+            ]
+          },
+          {
+            "value": 7.077088715431665e-09,
+            "estimated_error": 7.06098807151819e-17,
+            "status": [
+              0
+            ],
+            "calls": 16755,
+            "callback_errors": [],
+            "epsrel": 1e-08,
+            "parts": 1,
+            "logk_bounds": [
+              -1.9685108881483808,
+              0.2040338518654134
+            ]
+          }
+        ],
+        "value": 5.342167532525581e-07,
+        "successful": true,
+        "calls": 48400
+      },
+      "support_reference_value": 5.342167538746405e-07,
+      "support_reference_valid": true,
+      "original_reference_confirmed": true,
+      "fractional_comparisons": {
+        "coarse_support": 3.965983097486969e-11,
+        "fine_input": 1.1644756270356993e-09,
+        "original_reference": 7.378841981875439e-11
+      },
+      "reference_tolerance": 1e-05,
+      "input_refinement_tolerance": 1e-05
+    }
+  ],
+  "elapsed_is_not_benchmark": true,
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 2.4127145829843357
+}

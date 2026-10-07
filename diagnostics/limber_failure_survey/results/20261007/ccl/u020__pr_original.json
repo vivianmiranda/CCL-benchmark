@@ -1,0 +1,352 @@
+{
+  "case": {
+    "id": "u020__pr_original",
+    "cosmology_id": "u020",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1499645929758646,
+      "wa": -0.1365781511654866,
+      "Omega_m": 0.27207074676173326
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "collect_publication.py": "8a04253f84fb4e33f0e4ba21ebfe13835674b88115ef6b3c9c9282e12a67e7cd",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "hunt_narrow_overlap.py": "d478b4a22d147472f9bdbdc6e6db5840542e98b4f740646feaac21024bfb194c",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "b48389b9f702e526757992ef9f3908686ecb7d2c5e46df46d2bd5dc57f2a31d3",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "48fba760e46bf84bd76d4ad0fc1e097989ff12cf65b6eefbd9dbb769ab777d6d",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.4162062645901007e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4162057370088592e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 3.7760368360887514e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.776188350552218e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.4868630709656037e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.486856589333793e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 9.833934557155245e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.834053147364077e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.321396720426139e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.32139753995814e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.0630901240291072e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.063089156224445e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.1934898612591794e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.193464760347471e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.3250054511417794e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.3250034008847494e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.0450933804050328e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.045091486086445e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 9.323337303903193e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.323235362693983e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.04437335999032e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.0443251271970594e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.3536021939680393e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.3535916708611415e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 8.171126383280216e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.171095574412285e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.0699962969762826e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.070012607834866e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.167302978659012e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.167242840356507e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.281003631459903,
+    1.3831127804239058,
+    1.505005584003095,
+    1.631841632033634,
+    1.7700866533240271
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.0699962969762826e-07,
+        "estimated_error": 2.1254520116203964e-11,
+        "status": [
+          0
+        ],
+        "calls": 287,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.070015861616271e-07,
+        "estimated_error": 3.0653773171742235e-14,
+        "status": [
+          0
+        ],
+        "calls": 7861,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.070015892301673e-07,
+        "estimated_error": 3.0401228895479175e-14,
+        "status": [
+          0,
+          0
+        ],
+        "calls": 4182,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.0700158888347884e-07,
+        "estimated_error": 2.933161142352198e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5248,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": 9.995193339662478e-09,
+      "reference_value": 3.070015861616271e-07,
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -6.372813975641378e-06,
+      "initial_rules": {
+        "kronrod": 2.953706697882058e-07,
+        "gauss": 3.297736200609686e-07,
+        "estimated_error": 4.892071025412376e-07,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1499645929758646,
+      "wa": -0.1365781511654866,
+      "Omega_m": 0.27207074676173326
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "ad376b215e2b86f4a93b1e59ad6232bdefff7fa3f6419f89db038af348456157",
+    "path": "shared/u020.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.0428252080455422,
+  "elapsed_is_not_benchmark": true
+}

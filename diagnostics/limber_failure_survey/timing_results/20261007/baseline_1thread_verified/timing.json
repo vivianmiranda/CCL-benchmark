@@ -1,0 +1,460 @@
+{
+  "schema": "native-ccl-integrator-timing-v1",
+  "status": "completed",
+  "baseline_only": true,
+  "ccl_version": "3.3.3",
+  "ccl_binary_sha256": "1d5c7ee7f2018a91353c9be42478ce125db01c1ba38621e441a377b65b32ec0a",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": "d18b0df501683b02b675833f3f256e1bf16c1baffe110f1e85c8891786aca0f2",
+  "shim_source_sha256": "2e9bdb90bb7fa83a3d5898334826e09c4a6328b62e22ae1b30246bbff3bfb11b",
+  "shim_binary_sha256": null,
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "threads": 1,
+  "blas_threads": 1,
+  "repetitions": 9,
+  "native_default_epsrel": 0.0001,
+  "strict_reference_epsrel": 1e-08,
+  "scope": "Warmed native CCL kernels; no Python integrand callbacks. Setup/CAMB excluded from both timing scopes.",
+  "public_call_scope": "Python angular_cl and CCL tracer collections, per-call QAG workspaces, and native projection. In CQUAD mode the outer QAG workspace is unused but still allocated.",
+  "kernel_scope": "Sum of native GSL integration-call durations, excluding workspace allocation. Includes native CQUAD fallbacks in QAG mode. With multiple threads this sum is not wall time.",
+  "cquad_scope": "Isolated native CQUAD diagnostic using cached per-thread workspace, not a released CCL3.3.3 API option or a benchmark of PR1313 split-QAG mitigation.",
+  "instrumentation_control": "Separate-process warmed public QAG repetitions without preloading. Instrumented/unmodified timing ratio includes process-to-process variation; no correction is subtracted from the paired QAG/CQUAD ratio.",
+  "selected_workload": "both",
+  "cases": [
+    {
+      "case": {
+        "id": "u000__pr_original",
+        "cosmology_id": "u000",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.1002693872933842,
+          "wa": 0.18973039311613954,
+          "Omega_m": 0.30018165926114865
+        },
+        "family": "pr_original",
+        "arm": "uniform",
+        "camb_dark_energy_model": "ppf"
+      },
+      "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "setup_seconds_not_benchmarked": 1.9427734588971362,
+      "bias": [
+        1.2882862947382896,
+        1.3911617915123047,
+        1.5127744139039963,
+        1.6384225927848317,
+        1.7747440942958812
+      ],
+      "omp_threads_after_setup_before_restore": 1,
+      "verified_omp_threads_for_timing": 1,
+      "workloads": {
+        "point": {
+          "baseline_values_only": false,
+          "scope": "Warmed unmodified public angular_cl, no preloaded shim",
+          "warmup": {
+            "public_seconds_per_workload": 0.000138959,
+            "kernel_seconds_per_workload": 0.0,
+            "batch": 1,
+            "counters": {},
+            "warnings": []
+          },
+          "samples": [
+            {
+              "public_seconds_per_workload": 8.8083171875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 0
+            },
+            {
+              "public_seconds_per_workload": 8.85135078125e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 1
+            },
+            {
+              "public_seconds_per_workload": 9.773079296875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 2
+            },
+            {
+              "public_seconds_per_workload": 9.470654296875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 3
+            },
+            {
+              "public_seconds_per_workload": 9.05631484375e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 4
+            },
+            {
+              "public_seconds_per_workload": 8.582063671875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 5
+            },
+            {
+              "public_seconds_per_workload": 8.564176171875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 6
+            },
+            {
+              "public_seconds_per_workload": 8.647265625e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 7
+            },
+            {
+              "public_seconds_per_workload": 8.611279296875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 8
+            }
+          ],
+          "summary": {
+            "public_seconds_per_workload": {
+              "mean": 8.929389019097222e-05,
+              "sample_scatter": 4.295990326963953e-06,
+              "median": 8.8083171875e-05
+            }
+          }
+        },
+        "all_pairs_26ell": {
+          "baseline_values_only": false,
+          "scope": "Warmed unmodified public angular_cl, no preloaded shim",
+          "warmup": {
+            "public_seconds_per_workload": 0.025378333,
+            "kernel_seconds_per_workload": 0.0,
+            "batch": 1,
+            "counters": {},
+            "warnings": []
+          },
+          "samples": [
+            {
+              "public_seconds_per_workload": 0.024835208,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 0
+            },
+            {
+              "public_seconds_per_workload": 0.025515375,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 1
+            },
+            {
+              "public_seconds_per_workload": 0.027595,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 2
+            },
+            {
+              "public_seconds_per_workload": 0.025363791,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 3
+            },
+            {
+              "public_seconds_per_workload": 0.024838458,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 4
+            },
+            {
+              "public_seconds_per_workload": 0.026220208,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 5
+            },
+            {
+              "public_seconds_per_workload": 0.027137125,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 6
+            },
+            {
+              "public_seconds_per_workload": 0.025045084,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 7
+            },
+            {
+              "public_seconds_per_workload": 0.026400958,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 8
+            }
+          ],
+          "summary": {
+            "public_seconds_per_workload": {
+              "mean": 0.025883467444444443,
+              "sample_scatter": 0.0010112817787654579,
+              "median": 0.025515375
+            }
+          }
+        }
+      },
+      "arrays_sha256": "c30167cf34994a0a525556cba4a94ebb0546c01e18ab462f806d4d316e78e5fc"
+    },
+    {
+      "case": {
+        "id": "known__pr_original",
+        "cosmology_id": "known",
+        "parameters": {
+          "Omega_b": 0.0492,
+          "h": 0.6727,
+          "n_s": 0.9645,
+          "sigma8": 0.831,
+          "m_nu": 0.0,
+          "w0": -1.0389272675840322,
+          "wa": 0.0,
+          "Omega_m": 0.3156
+        },
+        "family": "pr_original",
+        "arm": "targeted_control",
+        "camb_dark_energy_model": "fluid"
+      },
+      "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "setup_seconds_not_benchmarked": 1.982127416995354,
+      "bias": [
+        1.2925866563960364,
+        1.3967716559412415,
+        1.519854473326647,
+        1.6470071446882328,
+        1.784974013589498
+      ],
+      "omp_threads_after_setup_before_restore": 1,
+      "verified_omp_threads_for_timing": 1,
+      "workloads": {
+        "point": {
+          "baseline_values_only": false,
+          "scope": "Warmed unmodified public angular_cl, no preloaded shim",
+          "warmup": {
+            "public_seconds_per_workload": 6.6667e-05,
+            "kernel_seconds_per_workload": 0.0,
+            "batch": 1,
+            "counters": {},
+            "warnings": []
+          },
+          "samples": [
+            {
+              "public_seconds_per_workload": 2.78427734375e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 0
+            },
+            {
+              "public_seconds_per_workload": 2.855615234375e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 1
+            },
+            {
+              "public_seconds_per_workload": 2.769270703125e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 2
+            },
+            {
+              "public_seconds_per_workload": 2.75489921875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 3
+            },
+            {
+              "public_seconds_per_workload": 2.924039453125e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 4
+            },
+            {
+              "public_seconds_per_workload": 2.71529921875e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 5
+            },
+            {
+              "public_seconds_per_workload": 2.896175390625e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 6
+            },
+            {
+              "public_seconds_per_workload": 3.476253515625e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 7
+            },
+            {
+              "public_seconds_per_workload": 2.819808203125e-05,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 256,
+              "counters": {},
+              "warnings": [],
+              "repetition": 8
+            }
+          ],
+          "summary": {
+            "public_seconds_per_workload": {
+              "mean": 2.888404253472222e-05,
+              "sample_scatter": 2.3062461773033358e-06,
+              "median": 2.819808203125e-05
+            }
+          }
+        },
+        "all_pairs_26ell": {
+          "baseline_values_only": false,
+          "scope": "Warmed unmodified public angular_cl, no preloaded shim",
+          "warmup": {
+            "public_seconds_per_workload": 0.028572334,
+            "kernel_seconds_per_workload": 0.0,
+            "batch": 1,
+            "counters": {},
+            "warnings": []
+          },
+          "samples": [
+            {
+              "public_seconds_per_workload": 0.027014333,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 0
+            },
+            {
+              "public_seconds_per_workload": 0.028208667,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 1
+            },
+            {
+              "public_seconds_per_workload": 0.028351833,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 2
+            },
+            {
+              "public_seconds_per_workload": 0.026769459,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 3
+            },
+            {
+              "public_seconds_per_workload": 0.026616334,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 4
+            },
+            {
+              "public_seconds_per_workload": 0.02651425,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 5
+            },
+            {
+              "public_seconds_per_workload": 0.026713875,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 6
+            },
+            {
+              "public_seconds_per_workload": 0.026844,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 7
+            },
+            {
+              "public_seconds_per_workload": 0.028435959,
+              "kernel_seconds_per_workload": 0.0,
+              "batch": 1,
+              "counters": {},
+              "warnings": [],
+              "repetition": 8
+            }
+          ],
+          "summary": {
+            "public_seconds_per_workload": {
+              "mean": 0.02727430111111111,
+              "sample_scatter": 0.0008074533651935332,
+              "median": 0.026844
+            }
+          }
+        }
+      },
+      "arrays_sha256": "764ce2943da4669fb61214d394a3cd0b7e5386c13a1d02f9145fee564d043b65"
+    }
+  ]
+}

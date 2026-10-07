@@ -270,6 +270,142 @@ include input hashes, software versions and the separate CoCoA scopes.
 This diagnostic does not modify either production code or measure a
 Fisher-parameter bias.
 
+### Failure searches across cosmology
+
+**4.02% is the error in one spectrum, not the frequency of failures.**
+The follow-up draws 30 cosmologies uniformly in
+$`w_0\in[-1.15,-0.90]`$, $`w_a\in[-0.2,0.2]`$ and
+$`\Omega_m\in[0.27,0.33]`$, using seed 20261007. Both input families use
+the same draws. The primary check remains bins 4 × 5 at
+$`\ell=355.655882`$; new cosmologies use CAMB PPF, while the original
+reported control retains its fluid treatment.
+
+| Uniform input family | CCL QAG errors above 0.01% | CoCoA quadrature changes above 0.01% | Largest CCL error | Largest CoCoA change |
+|---|---:|---:|---:|---:|
+| Original PR distributions | 0/30 | 0/30 | 0.00148% | 0.00165% |
+| 15% shared population at z = 1, width 0.01 | 0/30 | 0/30 | 0.000926% | 0.00527% |
+
+The 0.1% and 1% thresholds also have zero primary failures. Each 0/30
+result has a **Wilson 95% interval of 0–11.35%** under this specified
+sampling measure. The families share cosmologies and are not 60 independent
+draws. Selected secondary pairs reach a 0.0215% QAG error; that screened
+subset is excluded from the primary frequency calculation.
+
+- **CCL error:** native QAG versus checked CQUAD, requiring QAG to return
+  success without a failure warning.
+- **CoCoA quadrature change:** its default 96-node spectrum versus 1024
+  nodes per panel, with the reference checked at 512 nodes.
+- **Cross-code offset:** comparing CoCoA directly with CCL CQUAD also
+  includes kernel and interpolation differences. It is not solely
+  quadrature error.
+
+A separate search deliberately aligns the embedded-rule estimates across
+nine fixed $`(\Omega_m,w_a)`$ planes. It finds **seven further false-success
+cosmologies**, with QAG errors from **−3.966% to −4.108%**; CoCoA's own
+quadrature changes remain below **0.00162%** there. Two bounded searches
+find no accepted crossing. These deliberately selected cases do not
+estimate prevalence in an MCMC or survey analysis.
+
+![Cosmology coordinates with measured CCL and CoCoA errors](diagnostics/limber_failure_survey/figures/20261007/pr_original_triangle.png)
+
+The triangle shows diagnostic coordinates, not a posterior. Each split
+marker includes both codes; diamonds are targeted/control cases. Red
+outlines identify quadrature errors above 0.1%. The
+[paired overlap figures](diagnostics/limber_failure_survey/README.md#redshift-overlap-atlas)
+show every distinct failing input/bin-pair product and both codes' results.
+
+### Narrow populations can also underresolve CoCoA
+
+At the fixed reported cosmology, another search moves a synthetic 15%
+shared Gaussian population through the initial quadrature nodes. The
+broad original distributions remain. All three examples below return
+`GSL_SUCCESS` after only 41 QAG evaluations.
+
+| Gaussian width in redshift (σ_z) | Selected mean redshift | CCL QAG error | CoCoA default quadrature change |
+|---|---:|---:|---:|
+| 0.030 | 0.861431 | −30.703% | −0.000817% |
+| 0.010 | 0.893444 | −58.518% | −0.000482% |
+| 0.003 | 0.940867 | **−78.751%** | **−0.520360%** |
+
+These are controlled stress inputs, not measured galaxy populations.
+Their CQUAD references pass additional subdivisions at the known peak
+and its wings, retain the full integration domain, and agree after
+doubling the input redshift sampling. Failed tight split-QAG controls
+remain recorded as failures; they are not counted as successful references.
+
+![Narrow-overlap sampling and the measured errors](diagnostics/limber_failure_survey/figures/20261007/narrow_width_0p003__narrow_overlap_sampling.png)
+
+**CoCoA is not immune to arbitrarily narrow inputs.** Its default also
+underresolves the width-0.003 case, but the explicit integration ladder
+detects and resolves this quadrature error. `accuracy_boost` refines
+tables; **`integration_accuracy` selects the quadrature rule**. They are
+independent controls.
+
+| integration_accuracy | Nodes per panel | Bins 4 × 5: change from level 4 | Largest absolute change among all 15 pairs |
+|---:|---:|---:|---:|
+| 0 | 96 | −0.520360% | 0.705191% |
+| 1 | 128 | −0.015490% | 0.018437% |
+| 2 | 256 | −0.001516% | 0.002361% |
+| 3 | 512 | −0.000241% | 0.000326% |
+| 4 | 1024 | Reference | Reference |
+
+![Increasing integration_accuracy resolves the narrow-input quadrature error](diagnostics/limber_failure_survey/figures/20261007/narrow_width_0p003__integration_accuracy_convergence.png)
+
+A **0.01% default-versus-refined check rejects level 0 and passes level 2
+for every pair**. Level 3 agrees with level 4 within 0.001% for every pair.
+The three [regression checks](diagnostics/limber_failure_survey/scripts/check_integration_ladder.py)
+verify the expected default rejection, the level-2 pass and reference
+agreement. Inputs, interpolation and the seven integration panels stay
+fixed. These are covariance-module angular spectra, not ordinary
+data-vector integration. The remaining refined CoCoA–CCL offset for bins
+4 × 5 is −0.01762%; quadrature refinement alone does not remove different
+kernel/interpolation conventions.
+
+### Native CQUAD versus QAG timings
+
+On the Apple M2 Pro, the **15-pair × 26-multipole** workload costs
+**5–9% more with CQUAD** in these two cosmologies. This samples 26
+logarithmically spaced multipoles from 30 to 3000, not the exact failing
+multipole. Times below are mean ± sample scatter across nine interleaved
+batches, with BLAS fixed to one thread.
+
+| Cosmology | OpenMP threads | Native QAG (ms) | Native CQUAD (ms) | CQUAD / QAG |
+|---|---:|---:|---:|---:|
+| First uniform draw | 1 | 24.650 ± 0.159 | 26.887 ± 0.255 | 1.091× |
+| Reported failure cosmology | 1 | 26.437 ± 0.140 | 28.089 ± 0.167 | 1.063× |
+| First uniform draw | 6 | 5.927 ± 0.034 | 6.326 ± 0.022 | 1.067× |
+| Reported failure cosmology | 6 | 6.332 ± 0.063 | 6.633 ± 0.033 | 1.048× |
+
+The isolated failing multipole gives a different cost comparison because
+QAG stops prematurely. These one-thread timings include the public
+`angular_cl` call and use the same requested relative tolerance, 1e-4:
+
+| Single bins-4 × 5 spectrum | QAG (ms) | CQUAD (ms) | CQUAD / QAG | Absolute QAG error | Absolute CQUAD error |
+|---|---:|---:|---:|---:|---:|
+| First uniform draw | 0.08592 | 0.08598 | 1.001× | 0.000638% | 0.000087% |
+| Original reported failure | 0.02837 | 0.08321 | 2.933× | 4.02246% | 0.000221% |
+| Narrow width-0.003 target | 0.03060 | 0.16275 | 5.319× | 78.75055% | 0.000939% |
+
+**This measures native integration cost, not a full covariance or MCMC.**
+CCL 3.3.3 has no public CQUAD option; an isolated process-local diagnostic
+substitutes native GSL CQUAD while retaining CCL's actual C integrand.
+No Python callbacks run inside the timed integrals. CQUAD reuses a
+workspace per thread; the outer CCL QAG workspace allocation remains in
+both public-call timings. CAMB/setup, first calls, plotting and file I/O
+are excluded. This is not a timing of PR #1313's split-QAG safeguard.
+
+Instrumented QAG is bitwise equal to unmodified CCL; one- and six-thread
+spectra also agree bitwise. The point references match the accepted
+accuracy archives. Grid errors use a tighter internal CQUAD control and
+are not independently certified at every extra multipole. Separate
+unmodified-QAG controls differ in timing by up to 4.8%, including
+process variation. The [timing record](diagnostics/limber_failure_survey/timing_results/20261007/summary.json)
+retains every sample, scope and fingerprint. A fast incorrect QAG answer
+is not a performance win at matched achieved accuracy.
+
+[Complete follow-up results and reproduction steps](diagnostics/limber_failure_survey/README.md)
+include the sampling limits, all targeted cosmologies and saved input products.
+
 ## Why galaxy-galaxy lensing and clustering differ <a name="ccl_fkem"></a>
 
 Below $`\ell = 150`$, both codes compute $`C_{gs}`$ and $`C_{gg}`$ beyond

@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "Omega_b": 0.0492,
+    "h": 0.6727,
+    "n_s": 0.9645,
+    "sigma8": 0.831,
+    "m_nu": 0.0,
+    "w0": -0.927779296550504,
+    "wa": -0.08674034623588485,
+    "Omega_m": 0.2815873158047288
+  },
+  "camb_dark_energy_model": "ppf",
+  "sha256": "079908ffa3ce4d643267cc8ac0fc8968f2b9b93d19db544c613957800cb03abb",
+  "path": "shared/u027.npz",
+  "seed_k_nodes": 1500,
+  "cocoa_refinement": 8,
+  "dense_k_nodes": 11993
+}

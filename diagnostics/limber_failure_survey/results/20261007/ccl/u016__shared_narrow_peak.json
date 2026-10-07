@@ -1,0 +1,2337 @@
+{
+  "case": {
+    "id": "u016__shared_narrow_peak",
+    "cosmology_id": "u016",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.123969590527876,
+      "wa": -0.056442088620142744,
+      "Omega_m": 0.31847210266309045
+    },
+    "family": "shared_narrow_peak",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "hunt_narrow_overlap.py": "d478b4a22d147472f9bdbdc6e6db5840542e98b4f740646feaac21024bfb194c",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "c406468432d5c262caf1a6d6541237c7674b3d0a53994ea89fd1e56694c5a819",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "48fba760e46bf84bd76d4ad0fc1e097989ff12cf65b6eefbd9dbb769ab777d6d",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.2143809202896092e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.2155949431023885e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 4.4174423592797763e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.991774830969674e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 2.8080614103643096e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.3709286552030245e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.168107702611317e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.3620051557123634e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.287964293668803e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.479205838398176e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 9.858190883643097e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.058450845972196e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 4.287305862090916e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 5.155702770301297e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.6419156189306366e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 5.285009203170904e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.847302276062862e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 5.778016180856218e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 9.211930328665277e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.85819099420484e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 5.234509188941264e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.78155091616631e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 4.3773376282636744e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.238000262053829e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0273555067469942e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1661381995314487e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.837031207545442e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.361060356374301e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.1367837988116617e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4683916869519961e-06,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.2978986745148966,
+    1.4054715858347677,
+    1.5328409226794868,
+    1.66452067034638,
+    1.8073670057983915
+  ],
+  "ell": 355.655882,
+  "input_sha256": "26b2dca4eb2e4d656323e1bc1b1d63c678e582eb9828c5d2758c91deffe6d727",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 6.837031207545443e-07,
+        "estimated_error": 3.554544813825677e-11,
+        "status": [
+          0
+        ],
+        "calls": 861,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 6.836980171319239e-07,
+        "estimated_error": 6.827636422944336e-14,
+        "status": [
+          0
+        ],
+        "calls": 25313,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 6.836978245643701e-07,
+        "estimated_error": 1.0554675006255284e-11,
+        "status": [
+          18,
+          18
+        ],
+        "calls": 5904,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 6.836980123213519e-07,
+        "estimated_error": 1.099600602188805e-12,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 13530,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 6.836980176032817e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 6.836980176032817e-07,
+          "estimated_error": 6.833131565771771e-15,
+          "status": [
+            0
+          ],
+          "calls": 46481,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 6.836980176676563e-07,
+          "estimated_error": 6.830696210313719e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 53596,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 6.836980466606649e-07,
+          "estimated_error": 1.0256234527472385e-12,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 18368,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 6.836980176032817e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              18
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 9.415646040622505e-11,
+          "original_cquad": 6.894238513410755e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 7.464042795390924e-06,
+      "initial_rules": {
+        "kronrod": 2.3417756626919968e-07,
+        "gauss": 2.2649783822884794e-07,
+        "estimated_error": 3.786574274071496e-07,
+        "callback_errors": []
+      },
+      "input_grid_refined_reference": {
+        "value": 6.836977435220194e-07,
+        "estimated_error": 6.835960127107846e-14,
+        "status": [
+          0
+        ],
+        "calls": 26587,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "input_grid_fractional_change": 4.008805865041154e-07,
+      "input_grid_valid": true
+    },
+    {
+      "native_qag_replay": {
+        "value": 4.417442359279774e-07,
+        "estimated_error": 4.31396604619722e-11,
+        "status": [
+          0
+        ],
+        "calls": 2419,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 4.417438688480109e-07,
+        "estimated_error": 4.4051987801893e-14,
+        "status": [
+          0
+        ],
+        "calls": 25953,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 4.417443790381089e-07,
+        "estimated_error": 7.311945278718873e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 8282,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 4.417438850857337e-07,
+        "estimated_error": 1.1709229579009305e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 16400,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 4.417438686757836e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 4.417438686757836e-07,
+          "estimated_error": 4.410310876612939e-15,
+          "status": [
+            0
+          ],
+          "calls": 47579,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 4.417438686651521e-07,
+          "estimated_error": 4.416583052295674e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 50924,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 4.4174388029486575e-07,
+          "estimated_error": 4.2565899570177917e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 21812,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 4.417438686757836e-07,
+        "successful_split_QAG_controls": [
+          "qag_split8"
+        ],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 2.406719268321922e-11,
+          "original_cquad": 3.898803502266901e-10,
+          "qag_split8": 2.6302758193708087e-08
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        0,
+        1
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 8.313690806893703e-07
+    },
+    {
+      "native_qag_replay": {
+        "value": 2.80806141036431e-07,
+        "estimated_error": 2.3196282629342327e-11,
+        "status": [
+          0
+        ],
+        "calls": 1107,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 2.8080837440161137e-07,
+        "estimated_error": 2.8036666327831594e-14,
+        "status": [
+          0
+        ],
+        "calls": 28835,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 2.808083732865591e-07,
+        "estimated_error": 2.4847805084335396e-11,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 7626,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 2.80808370982455e-07,
+        "estimated_error": 4.620989305137134e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 14514,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 2.808083743300755e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 2.808083743300755e-07,
+          "estimated_error": 2.8057288777795385e-15,
+          "status": [
+            0
+          ],
+          "calls": 51995,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 2.8080837433099333e-07,
+          "estimated_error": 2.8054125259409654e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 54336,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 2.808083729033539e-07,
+          "estimated_error": 2.7089161926171576e-13,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 22222,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 2.808083743300755e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 3.268496584496461e-12,
+          "original_cquad": 2.547497768290441e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        0,
+        2
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -7.9530877592493e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 3.1681077026113166e-07,
+        "estimated_error": 1.4739730148432318e-11,
+        "status": [
+          0
+        ],
+        "calls": 451,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.168120472997796e-07,
+        "estimated_error": 3.1650810836160105e-14,
+        "status": [
+          0
+        ],
+        "calls": 27817,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.168144230915966e-07,
+        "estimated_error": 1.7116640342410567e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 6642,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.1681205030240555e-07,
+        "estimated_error": 2.8297653848665366e-12,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 11644,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.1681204746726965e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.1681204746726965e-07,
+          "estimated_error": 3.1632485005093783e-15,
+          "status": [
+            0
+          ],
+          "calls": 49691,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.1681204746465756e-07,
+          "estimated_error": 3.1603811126419876e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 51726,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.168120501453198e-07,
+          "estimated_error": 2.6449622210078694e-12,
+          "status": [
+            18,
+            18,
+            0,
+            18,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 20090,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.1681204746726965e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              0,
+              18,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 8.244960270076263e-12,
+          "original_cquad": 5.286733273379696e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        0,
+        3
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -4.031431721562839e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 3.287964293668803e-07,
+        "estimated_error": 3.1668007709589947e-11,
+        "status": [
+          0
+        ],
+        "calls": 1025,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.2879822740811446e-07,
+        "estimated_error": 3.2870535709669255e-14,
+        "status": [
+          0
+        ],
+        "calls": 25943,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.287982142985676e-07,
+        "estimated_error": 8.338615821221542e-13,
+        "status": [
+          18,
+          18
+        ],
+        "calls": 7462,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.287982736051397e-07,
+        "estimated_error": 2.690792728284999e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 13202,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.2879822756751965e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.2879822756751965e-07,
+          "estimated_error": 3.286927036747598e-15,
+          "status": [
+            0
+          ],
+          "calls": 46929,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.287982275764044e-07,
+          "estimated_error": 3.2808799180811485e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 48704,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.287982078787002e-07,
+          "estimated_error": 1.2528015268817014e-13,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 20828,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.2879822756751965e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              18
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 2.702194024095661e-11,
+          "original_cquad": 4.84811635281801e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        0,
+        4
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -5.469009528025204e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 9.858190883643099e-07,
+        "estimated_error": 7.645530831919229e-11,
+        "status": [
+          0
+        ],
+        "calls": 943,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 9.858730319105272e-07,
+        "estimated_error": 9.838560080099036e-14,
+        "status": [
+          0
+        ],
+        "calls": 21185,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 9.858730129250554e-07,
+        "estimated_error": 1.513852273756663e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 11726,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 9.858730009719638e-07,
+        "estimated_error": 4.92089742106631e-13,
+        "status": [
+          18,
+          0,
+          0,
+          0
+        ],
+        "calls": 14350,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 9.858730320556466e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 9.858730320556466e-07,
+          "estimated_error": 9.840450073595644e-15,
+          "status": [
+            0
+          ],
+          "calls": 40541,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 9.85873032058719e-07,
+          "estimated_error": 9.839157645333515e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 45550,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 9.85873032264923e-07,
+          "estimated_error": 3.640583817656433e-13,
+          "status": [
+            0,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 17138,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 9.858730320556466e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              0,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 3.1163960301228144e-12,
+          "original_cquad": 1.4719891971992638e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        1,
+        1
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -5.47166720085146e-05
+    },
+    {
+      "native_qag_replay": {
+        "value": 4.287305862090916e-07,
+        "estimated_error": 3.599984750558554e-11,
+        "status": [
+          0
+        ],
+        "calls": 1927,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 4.287295074719472e-07,
+        "estimated_error": 4.276977713140317e-14,
+        "status": [
+          0
+        ],
+        "calls": 26241,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 4.287295661514263e-07,
+        "estimated_error": 2.3989531567452174e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 9840,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 4.2872951014988425e-07,
+        "estimated_error": 9.28453219716661e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 14760,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 4.287295074200009e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 4.287295074200009e-07,
+          "estimated_error": 4.285111466967042e-15,
+          "status": [
+            0
+          ],
+          "calls": 47917,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 4.2872950742791973e-07,
+          "estimated_error": 4.2848281178683e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 52716,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 4.2872951214134235e-07,
+          "estimated_error": 8.989387930459546e-13,
+          "status": [
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 18778,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 4.287295074200009e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 1.8470558416083804e-11,
+          "original_cquad": 1.2116330161404676e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        1,
+        2
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 2.5162464258876582e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 3.641915618930636e-07,
+        "estimated_error": 3.5633099857259274e-11,
+        "status": [
+          0
+        ],
+        "calls": 1189,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.6419067013392637e-07,
+        "estimated_error": 3.6307098959682673e-14,
+        "status": [
+          0
+        ],
+        "calls": 28647,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.641905887858568e-07,
+        "estimated_error": 3.3558518857437037e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 9430,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.641906680626484e-07,
+        "estimated_error": 1.197427368031513e-12,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 12546,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.6419067009327286e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.6419067009327286e-07,
+          "estimated_error": 3.639996693956545e-15,
+          "status": [
+            0
+          ],
+          "calls": 50837,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.641906700976908e-07,
+          "estimated_error": 3.6403703097372695e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 55498,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.6419067510924644e-07,
+          "estimated_error": 8.593761941279888e-13,
+          "status": [
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 20418,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.6419067009327286e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 1.213074085626431e-11,
+          "original_cquad": 1.1162692992172651e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        1,
+        3
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 2.448716741154655e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 3.847302276062863e-07,
+        "estimated_error": 2.1865315470083606e-11,
+        "status": [
+          0
+        ],
+        "calls": 1107,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.847278143566723e-07,
+        "estimated_error": 3.8390015607333647e-14,
+        "status": [
+          0
+        ],
+        "calls": 28381,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.847269682248173e-07,
+        "estimated_error": 2.487673618023549e-12,
+        "status": [
+          18,
+          18
+        ],
+        "calls": 9102,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.847278242112985e-07,
+        "estimated_error": 7.337696168302311e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 13612,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.8472781401084476e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.8472781401084476e-07,
+          "estimated_error": 3.844960898601867e-15,
+          "status": [
+            0
+          ],
+          "calls": 50025,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.847278139949931e-07,
+          "estimated_error": 3.84391963190358e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 55648,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.8472782653229576e-07,
+          "estimated_error": 4.1467752753898257e-13,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 20582,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.8472781401084476e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              18
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 4.120226382298142e-11,
+          "original_cquad": 8.988887412186841e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        1,
+        4
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 6.273514296495364e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 9.211930328665274e-07,
+        "estimated_error": 9.144525036168864e-11,
+        "status": [
+          0
+        ],
+        "calls": 2009,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 9.21189711507925e-07,
+        "estimated_error": 9.20135255022712e-14,
+        "status": [
+          0
+        ],
+        "calls": 22171,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 9.211897150472835e-07,
+        "estimated_error": 2.9538079366066243e-13,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 16728,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 9.211897109776226e-07,
+        "estimated_error": 1.1444691575357844e-13,
+        "status": [
+          0,
+          18,
+          0,
+          0
+        ],
+        "calls": 20500,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 9.211897111458365e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 9.211897111458365e-07,
+          "estimated_error": 9.19525941858339e-15,
+          "status": [
+            0
+          ],
+          "calls": 42357,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 9.21189711145753e-07,
+          "estimated_error": 9.207729502129287e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 48486,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 9.211897110649827e-07,
+          "estimated_error": 9.048504876279954e-14,
+          "status": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 23452,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 9.211897111458365e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              0,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 9.070522111187529e-14,
+          "original_cquad": 3.9306624621815445e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        2,
+        2
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 3.605902943792927e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 5.234509188941265e-07,
+        "estimated_error": 4.73588776874194e-11,
+        "status": [
+          0
+        ],
+        "calls": 861,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 5.234413402137074e-07,
+        "estimated_error": 5.230765423896286e-14,
+        "status": [
+          0
+        ],
+        "calls": 25935,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 5.234415338857612e-07,
+        "estimated_error": 6.687806169545279e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 7954,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 5.234415026713276e-07,
+        "estimated_error": 2.9743300018672103e-12,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 12956,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 5.234413402479757e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 5.234413402479757e-07,
+          "estimated_error": 5.229968135583376e-15,
+          "status": [
+            0
+          ],
+          "calls": 48089,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 5.234413402488386e-07,
+          "estimated_error": 5.231926819791286e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 53852,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 5.23441500614252e-07,
+          "estimated_error": 2.965029664028699e-12,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 15990,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 5.234413402479757e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 1.6482371023585074e-12,
+          "original_cquad": 6.546729824918884e-11
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        2,
+        3
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 1.8299368838681218e-05
+    },
+    {
+      "native_qag_replay": {
+        "value": 4.377337628263674e-07,
+        "estimated_error": 4.286712327988632e-11,
+        "status": [
+          0
+        ],
+        "calls": 1271,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 4.3773348234388444e-07,
+        "estimated_error": 4.3602747778593164e-14,
+        "status": [
+          0
+        ],
+        "calls": 27159,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 4.3773371698082675e-07,
+        "estimated_error": 3.0582003618172725e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 8364,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 4.3773353137452625e-07,
+        "estimated_error": 1.7302740131062892e-12,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 11480,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 4.3773348241215074e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 4.3773348241215074e-07,
+          "estimated_error": 4.371501512261861e-15,
+          "status": [
+            0
+          ],
+          "calls": 49517,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 4.3773348242395203e-07,
+          "estimated_error": 4.370607272266958e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 55262,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 4.3773350011054927e-07,
+          "estimated_error": 1.67567888323802e-12,
+          "status": [
+            18,
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 17384,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 4.3773348241215074e-07,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 2.6959989796182526e-11,
+          "original_cquad": 1.559540274698179e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        2,
+        4
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 6.406049066765007e-07
+    },
+    {
+      "native_qag_replay": {
+        "value": 1.0273555067469942e-06,
+        "estimated_error": 9.397376611914679e-11,
+        "status": [
+          0
+        ],
+        "calls": 1353,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 1.0273502341426107e-06,
+        "estimated_error": 1.0250119604736531e-13,
+        "status": [
+          0
+        ],
+        "calls": 23087,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 1.0273502345049066e-06,
+        "estimated_error": 9.140956543301314e-13,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 12054,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 1.027350221919268e-06,
+        "estimated_error": 6.644355792483835e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 14514,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 1.0273502343239789e-06,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 1.0273502343239789e-06,
+          "estimated_error": 1.0272006047355167e-14,
+          "status": [
+            0
+          ],
+          "calls": 42043,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 1.0273502343367172e-06,
+          "estimated_error": 1.025529000978959e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 48510,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 1.0273502265824378e-06,
+          "estimated_error": 6.014422125353863e-13,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 18860,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 1.0273502343239789e-06,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 1.2399192783618673e-11,
+          "original_cquad": 1.7653978279241755e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        3,
+        3
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 5.132059972545733e-06
+    },
+    {
+      "native_qag_replay": {
+        "value": 1.136783798811662e-06,
+        "estimated_error": 9.701243265167728e-11,
+        "status": [
+          0
+        ],
+        "calls": 1517,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 1.1367805980720173e-06,
+        "estimated_error": 1.1348802777238e-13,
+        "status": [
+          0
+        ],
+        "calls": 23917,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 1.136780606624654e-06,
+        "estimated_error": 3.716610297999508e-12,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 9840,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 1.1367805999967033e-06,
+        "estimated_error": 7.522119463277384e-13,
+        "status": [
+          18,
+          18,
+          0,
+          0
+        ],
+        "calls": 14350,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 1.1367805980911217e-06,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 1.1367805980911217e-06,
+          "estimated_error": 1.1351892598768647e-14,
+          "status": [
+            0
+          ],
+          "calls": 43427,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 1.1367805980962422e-06,
+          "estimated_error": 1.1366703508489109e-14,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 51376,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 1.1367805761640242e-06,
+          "estimated_error": 6.390851081096689e-13,
+          "status": [
+            18,
+            18,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 19926,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 1.1367805980911217e-06,
+        "successful_split_QAG_controls": [],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "original_split4",
+            "status": [
+              18,
+              18,
+              0,
+              0
+            ],
+            "callback_errors": []
+          },
+          {
+            "key": "qag_split8",
+            "status": [
+              18,
+              18,
+              18,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 4.504396855509185e-12,
+          "original_cquad": 1.680566796835592e-11
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        4,
+        4
+      ],
+      "primary": false,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 2.8156009570512452e-06
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.123969590527876,
+      "wa": -0.056442088620142744,
+      "Omega_m": 0.31847210266309045
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "e66c38f7761c881145852d6ebc272f5092f2b883bd5af3957205d93a9202985a",
+    "path": "shared/u016.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 31.512129458016716,
+  "elapsed_is_not_benchmark": true
+}

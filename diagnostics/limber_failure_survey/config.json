@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "seed": 20261007,
+  "random_generator": "PCG64",
+  "uniform_cosmologies": 30,
+  "parameter_order": ["w0", "wa", "Omega_m"],
+  "uniform_ranges": {"w0": [-1.15, -0.90], "wa": [-0.2, 0.2], "Omega_m": [0.27, 0.33]},
+  "fixed_cosmology": {"Omega_b": 0.0492, "h": 0.6727, "n_s": 0.9645, "sigma8": 0.831, "m_nu": 0.0},
+  "survey_camb_dark_energy_model": "ppf",
+  "known_control_camb_dark_energy_model": "fluid",
+  "families": [
+    {"name": "pr_original", "kind": "frozen_pr1313", "input_refinement": "original frozen samples retained"},
+    {"name": "shared_narrow_peak", "kind": "positive_mixture", "shared_fraction": 0.15,
+     "shared_mean_z": 1.0, "shared_sigma_z": 0.01, "z_nodes": 5001, "refined_z_nodes": 10001}
+  ],
+  "primary_pair_zero_based": [3, 4],
+  "ell": 355.655882,
+  "failure_fractional_thresholds": [0.0001, 0.001, 0.01],
+  "reference_epsrel": 1e-7,
+  "reference_consistency_fractional_tolerance": 1e-5,
+  "input_refinement_fractional_tolerance": 1e-5,
+  "screen_additional_pair_threshold": 0.001,
+  "cocoa_nodes_per_panel": [96, 512, 1024],
+  "cocoa_reference_consistency_fractional_tolerance": 1e-5,
+  "a_panel_redshifts": [3.5, 2.0, 1.5, 1.0, 0.7, 0.4, 0.2, 0.00001],
+  "threads": 6,
+  "case_wall_seconds": 600,
+  "known_control": {"w0": -1.0389272675840322, "wa": 0.0, "Omega_m": 0.3156},
+  "targeted_search": {
+    "Omega_m": [0.29, 0.3156, 0.33], "wa": [-0.1, 0.0, 0.1],
+    "w0_bracket_nodes": 9, "maximum_function_evaluations_per_plane": 60,
+    "maximum_roots_per_plane": 2,
+    "excluded_from_incidence_denominator": true
+  }
+}

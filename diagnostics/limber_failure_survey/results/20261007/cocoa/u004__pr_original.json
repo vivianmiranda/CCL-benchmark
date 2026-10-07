@@ -1,0 +1,266 @@
+{
+  "status": "completed",
+  "case": {
+    "id": "u004__pr_original",
+    "cosmology_id": "u004",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -0.9948141661095792,
+      "wa": 0.1972579961586033,
+      "Omega_m": 0.2799260434628717
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "collect_publication.py": "4cb4446b383ae4f2dd51049acd45aafce0c5cefbeb7a7eda3485d225f310cac9",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "hunt_narrow_overlap.py": "d478b4a22d147472f9bdbdc6e6db5840542e98b4f740646feaac21024bfb194c",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "0f6551d819eb14051022bbc2a9f2552e699e71da083981ce03abc6d69c166e6b",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "ee10659d1389a3e25fb2fc6fb6933f6410a5b5adf380c75dc18635d3771a3974",
+    "time_native_integrators.py": "c1a5af9be71f37059b2a1e76951451cb43ac8085f0d67fd14866074e814edbd7",
+    "validate_narrow_support.py": "147f6f99912960c2d72c3c96d164b0f70f2d9978a999009b77abe6f62185f469",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "core_commit": "959bb1d9fb54deafa6fe934c0327054bdede8a5e",
+  "lsst_y1_commit": "c187522125986ad181985c39143aeebbaad50a61",
+  "shared_power_sha256": "843cf5fed38b6410ffc61687ebb51e960eea74c0370d45fd9ce13d700d7062d0",
+  "nz_text_sha256": "93181e780c55c607930476a45b412d5aae69b2868bcc838ec2f114672dfecd17",
+  "pairs": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "values": [
+        1.524414332257627e-06,
+        1.52441656094586e-06,
+        1.5244165908078177e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.9589105670902995e-08,
+      "default_fractional_change": -1.4815833180303883e-06
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "values": [
+        4.1006125287912776e-07,
+        4.100659658876604e-07,
+        4.1006596070070285e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.2649080893822884e-08,
+      "default_fractional_change": -1.1480644643180327e-05
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "values": [
+        1.612057006123031e-07,
+        1.6120600215516895e-07,
+        1.6120600210056743e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 3.387063962634329e-10,
+      "default_fractional_change": -1.8702049576768687e-06
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "values": [
+        1.066717599027913e-07,
+        1.0667266687079898e-07,
+        1.066726677538221e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 8.277875940265744e-09,
+      "default_fractional_change": -8.51062460427432e-06
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "values": [
+        6.79704515170431e-08,
+        6.797027269407424e-08,
+        6.797027235767319e-08
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 4.949237908391524e-09,
+      "default_fractional_change": 2.6358489335631674e-06
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "values": [
+        1.158726886510369e-06,
+        1.1587138138891585e-06,
+        1.1587138377410942e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 2.058483727918059e-08,
+      "default_fractional_change": 1.1261425254316393e-05
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "values": [
+        3.4857066916430925e-07,
+        3.4856823632207873e-07,
+        3.485682223029818e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 4.021909072449148e-08,
+      "default_fractional_change": 7.019748705872075e-06
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "values": [
+        1.4422734137052281e-07,
+        1.4422729881678403e-07,
+        1.442272995967986e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 5.408231085191062e-09,
+      "default_fractional_change": 2.8963812215287987e-07
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "values": [
+        1.1273021366710544e-07,
+        1.1272910688454816e-07,
+        1.1272910642325141e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 4.0920820065792896e-09,
+      "default_fractional_change": 9.822164737771644e-06
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "values": [
+        1.0155210355549472e-06,
+        1.0155155366567926e-06,
+        1.0155155401503662e-06
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 3.4401971271691423e-09,
+      "default_fractional_change": 5.411443118052972e-06
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "values": [
+        3.35915074930051e-07,
+        3.359189103479434e-07,
+        3.359189059532929e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.3082474437098313e-08,
+      "default_fractional_change": -1.140460740378657e-05
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "values": [
+        1.464414658618021e-07,
+        1.464401259454388e-07,
+        1.4644012431153883e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.1157460955146803e-08,
+      "default_fractional_change": 9.161083887265775e-06
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "values": [
+        8.958325820022868e-07,
+        8.958414916233196e-07,
+        8.958415032578981e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 1.2987317998813808e-08,
+      "default_fractional_change": -9.958520094111023e-06
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "values": [
+        3.3019723595448464e-07,
+        3.3020265018775185e-07,
+        3.3020266088443135e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 3.239428625345653e-08,
+      "default_fractional_change": -1.642909215870958e-05,
+      "common_CCL_CQUAD_reference_value": 3.3000974392357365e-07,
+      "default_offset_from_CCL_CQUAD": 0.0005681408939077759,
+      "refined_offset_from_CCL_CQUAD": 0.0005845795901784356
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "values": [
+        8.714298780742105e-07,
+        8.713687963353245e-07,
+        8.7136872414899e-07
+      ],
+      "reference_valid": true,
+      "512_vs_1024_fractional_change": 8.284246666434569e-08,
+      "default_fractional_change": 7.018145536519249e-05
+    }
+  ],
+  "nodes": [
+    96,
+    512,
+    1024
+  ],
+  "scope": "Density-only all-pairs spectra from covariance module; not ordinary data-vector integration; no covariance matrix computed.",
+  "elapsed_seconds_for_resource_planning": 0.24422404204960912,
+  "elapsed_is_not_benchmark": true
+}

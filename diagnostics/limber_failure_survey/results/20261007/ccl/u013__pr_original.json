@@ -1,0 +1,350 @@
+{
+  "case": {
+    "id": "u013__pr_original",
+    "cosmology_id": "u013",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -0.9934242869264637,
+      "wa": 0.15144289051865828,
+      "Omega_m": 0.27629961656460433
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "c406468432d5c262caf1a6d6541237c7674b3d0a53994ea89fd1e56694c5a819",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "687da4e920f7f566c55d54c9c0cb3f4d2d4093ae660e597776dd3a2ed1a926dc",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.5202588609296575e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.5202664890166857e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 4.0776236403873454e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 4.0777389279518997e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.6037509658958637e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.603762248948053e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0608158173364288e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0608114015199273e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.759363491965173e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.759306950443954e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.1528604085292518e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.152883401699263e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.4606866959758224e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.4607731164245313e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.4330370897472777e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.433028285949142e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.120340590564106e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1203406802354994e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.009064449419993e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0090490881609811e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.332596990953601e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.332552413117001e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.454153983300905e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4541610312437103e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 8.889265236512876e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.88919708989707e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.274020481740067e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.274048244523141e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.654678516194143e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.654786548854597e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.2736152318552838,
+    1.3694435431239342,
+    1.4826964089449222,
+    1.5998322133035896,
+    1.7271437805436556
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.2740204817400666e-07,
+        "estimated_error": 7.33233573798433e-12,
+        "status": [
+          0
+        ],
+        "calls": 287,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.2739995273649363e-07,
+        "estimated_error": 3.2508877814433055e-14,
+        "status": [
+          0
+        ],
+        "calls": 7895,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.273999548792312e-07,
+        "estimated_error": 3.2430841710054276e-14,
+        "status": [
+          0,
+          0
+        ],
+        "calls": 4428,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.273999547595837e-07,
+        "estimated_error": 3.173533217970509e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5330,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": 6.5447094410586715e-09,
+      "reference_value": 3.2739995273649363e-07,
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": 6.400237677395282e-06,
+      "initial_rules": {
+        "kronrod": 3.1733815224802123e-07,
+        "gauss": 2.806011375704756e-07,
+        "estimated_error": 5.211495701797294e-07,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -0.9934242869264637,
+      "wa": 0.15144289051865828,
+      "Omega_m": 0.27629961656460433
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "e59f2a841de41a0c30b03a9acf8bcff5876407f6824b9eeb764f41a1107dd84b",
+    "path": "shared/u013.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.0449520839611068,
+  "elapsed_is_not_benchmark": true
+}

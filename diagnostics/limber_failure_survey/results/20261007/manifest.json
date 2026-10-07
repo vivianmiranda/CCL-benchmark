@@ -1,0 +1,1088 @@
+{
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "frozen_input_sha256": "08ade45f772525918ef3d8edc07e5a666516ff814446eb2a1950d099c328cd69",
+  "prepared_script_sha256": {
+    "ccl_helpers.py": "44f5af7752642925aebd4f10ab528a44d669c86063a138c7865af04c012a6cf6",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "60d48c55711080a8152e05c07bf707bc271d5ca3ffa8f7931ac0cb7935663f1f",
+    "run_cocoa.py": "7b06e89c060ea8afaa5e2a387ead9107cdc6c99f96333b4e0d7e7f5c652f1369",
+    "summarize.py": "2fb06bf3c6bdc0af5dc705b7de6484a10a0a1dfc6196ff7a7a916e3bb4151cc6"
+  },
+  "sampling_description": "Independent uniform cosmology draws; same draws paired across families. Targeted controls never enter incidence denominators.",
+  "primary_statistic": "Per-family fraction of valid primary-pair spectra exceeding each prespecified relative-integration-error threshold; not a posterior or a general failure probability.",
+  "families": {
+    "pr_original": {
+      "definition": {
+        "name": "pr_original",
+        "kind": "frozen_pr1313",
+        "input_refinement": "original frozen samples retained"
+      },
+      "npz_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+      "text_sha256": "93181e780c55c607930476a45b412d5aae69b2868bcc838ec2f114672dfecd17",
+      "nodes": 500,
+      "minimum_value": 0.0
+    },
+    "shared_narrow_peak": {
+      "definition": {
+        "name": "shared_narrow_peak",
+        "kind": "positive_mixture",
+        "shared_fraction": 0.15,
+        "shared_mean_z": 1.0,
+        "shared_sigma_z": 0.01,
+        "z_nodes": 5001,
+        "refined_z_nodes": 10001
+      },
+      "npz_sha256": "26b2dca4eb2e4d656323e1bc1b1d63c678e582eb9828c5d2758c91deffe6d727",
+      "text_sha256": "df179079e157fa83486a654e0533974d5d27dfb21144fc6cba0392ab2d4d41b3",
+      "nodes": 5001,
+      "minimum_value": 0.0,
+      "refined_npz_sha256": "0ee4e3b7587bc18058813a453ebe8a3591949decf11e9295b304578116f20e21"
+    }
+  },
+  "cases": [
+    {
+      "id": "u000__pr_original",
+      "cosmology_id": "u000",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1002693872933842,
+        "wa": 0.18973039311613954,
+        "Omega_m": 0.30018165926114865
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u000__shared_narrow_peak",
+      "cosmology_id": "u000",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1002693872933842,
+        "wa": 0.18973039311613954,
+        "Omega_m": 0.30018165926114865
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u001__pr_original",
+      "cosmology_id": "u001",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9227611937127999,
+        "wa": -0.06803597340498874,
+        "Omega_m": 0.2957396643981538
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u001__shared_narrow_peak",
+      "cosmology_id": "u001",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9227611937127999,
+        "wa": -0.06803597340498874,
+        "Omega_m": 0.2957396643981538
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u002__pr_original",
+      "cosmology_id": "u002",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0825819273611605,
+        "wa": 0.15498218941914338,
+        "Omega_m": 0.2844589671694919
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u002__shared_narrow_peak",
+      "cosmology_id": "u002",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0825819273611605,
+        "wa": 0.15498218941914338,
+        "Omega_m": 0.2844589671694919
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u003__pr_original",
+      "cosmology_id": "u003",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1259381264523696,
+        "wa": -0.13175174093449393,
+        "Omega_m": 0.27417927938342174
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u003__shared_narrow_peak",
+      "cosmology_id": "u003",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1259381264523696,
+        "wa": -0.13175174093449393,
+        "Omega_m": 0.27417927938342174
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u004__pr_original",
+      "cosmology_id": "u004",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9948141661095792,
+        "wa": 0.1972579961586033,
+        "Omega_m": 0.2799260434628717
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u004__shared_narrow_peak",
+      "cosmology_id": "u004",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9948141661095792,
+        "wa": 0.1972579961586033,
+        "Omega_m": 0.2799260434628717
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u005__pr_original",
+      "cosmology_id": "u005",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9416696913004581,
+        "wa": -5.785954214915234e-05,
+        "Omega_m": 0.32855914539613457
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u005__shared_narrow_peak",
+      "cosmology_id": "u005",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9416696913004581,
+        "wa": -5.785954214915234e-05,
+        "Omega_m": 0.32855914539613457
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u006__pr_original",
+      "cosmology_id": "u006",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0532382583580484,
+        "wa": 0.058976038093067173,
+        "Omega_m": 0.27127459578269664
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u006__shared_narrow_peak",
+      "cosmology_id": "u006",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0532382583580484,
+        "wa": 0.058976038093067173,
+        "Omega_m": 0.27127459578269664
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u007__pr_original",
+      "cosmology_id": "u007",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0121051236648018,
+        "wa": -0.05284714786859501,
+        "Omega_m": 0.31139525083543673
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u007__shared_narrow_peak",
+      "cosmology_id": "u007",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0121051236648018,
+        "wa": -0.05284714786859501,
+        "Omega_m": 0.31139525083543673
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u008__pr_original",
+      "cosmology_id": "u008",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.147126916954763,
+        "wa": 0.17334715609905865,
+        "Omega_m": 0.324588698153692
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u008__shared_narrow_peak",
+      "cosmology_id": "u008",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.147126916954763,
+        "wa": 0.17334715609905865,
+        "Omega_m": 0.324588698153692
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u009__pr_original",
+      "cosmology_id": "u009",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.089826335436141,
+        "wa": -0.0937016615174601,
+        "Omega_m": 0.28925856917428866
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u009__shared_narrow_peak",
+      "cosmology_id": "u009",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.089826335436141,
+        "wa": -0.0937016615174601,
+        "Omega_m": 0.28925856917428866
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u010__pr_original",
+      "cosmology_id": "u010",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.93254394018353,
+        "wa": -0.055064813181714495,
+        "Omega_m": 0.3237456168038631
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u010__shared_narrow_peak",
+      "cosmology_id": "u010",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.93254394018353,
+        "wa": -0.055064813181714495,
+        "Omega_m": 0.3237456168038631
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u011__pr_original",
+      "cosmology_id": "u011",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9216687554009018,
+        "wa": 0.17709542069325374,
+        "Omega_m": 0.32051925882181725
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u011__shared_narrow_peak",
+      "cosmology_id": "u011",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9216687554009018,
+        "wa": 0.17709542069325374,
+        "Omega_m": 0.32051925882181725
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u012__pr_original",
+      "cosmology_id": "u012",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9167206837744393,
+        "wa": -0.07952110280452036,
+        "Omega_m": 0.3200705230528257
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u012__shared_narrow_peak",
+      "cosmology_id": "u012",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9167206837744393,
+        "wa": -0.07952110280452036,
+        "Omega_m": 0.3200705230528257
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u013__pr_original",
+      "cosmology_id": "u013",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9934242869264637,
+        "wa": 0.15144289051865828,
+        "Omega_m": 0.27629961656460433
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u013__shared_narrow_peak",
+      "cosmology_id": "u013",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9934242869264637,
+        "wa": 0.15144289051865828,
+        "Omega_m": 0.27629961656460433
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u014__pr_original",
+      "cosmology_id": "u014",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0205488165442798,
+        "wa": -0.1876377740917654,
+        "Omega_m": 0.29147738666979023
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u014__shared_narrow_peak",
+      "cosmology_id": "u014",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0205488165442798,
+        "wa": -0.1876377740917654,
+        "Omega_m": 0.29147738666979023
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u015__pr_original",
+      "cosmology_id": "u015",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9665845590241451,
+        "wa": 0.1364481371177383,
+        "Omega_m": 0.2953680979935377
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u015__shared_narrow_peak",
+      "cosmology_id": "u015",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9665845590241451,
+        "wa": 0.1364481371177383,
+        "Omega_m": 0.2953680979935377
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u016__pr_original",
+      "cosmology_id": "u016",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.123969590527876,
+        "wa": -0.056442088620142744,
+        "Omega_m": 0.31847210266309045
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u016__shared_narrow_peak",
+      "cosmology_id": "u016",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.123969590527876,
+        "wa": -0.056442088620142744,
+        "Omega_m": 0.31847210266309045
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u017__pr_original",
+      "cosmology_id": "u017",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9863136319128594,
+        "wa": -0.14035967642089872,
+        "Omega_m": 0.31553203896891824
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u017__shared_narrow_peak",
+      "cosmology_id": "u017",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9863136319128594,
+        "wa": -0.14035967642089872,
+        "Omega_m": 0.31553203896891824
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u018__pr_original",
+      "cosmology_id": "u018",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.981320808575147,
+        "wa": -0.10920027338129326,
+        "Omega_m": 0.30923545153207066
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u018__shared_narrow_peak",
+      "cosmology_id": "u018",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.981320808575147,
+        "wa": -0.10920027338129326,
+        "Omega_m": 0.30923545153207066
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u019__pr_original",
+      "cosmology_id": "u019",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0139158027458408,
+        "wa": 0.16319523114763523,
+        "Omega_m": 0.27045898116296546
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u019__shared_narrow_peak",
+      "cosmology_id": "u019",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0139158027458408,
+        "wa": 0.16319523114763523,
+        "Omega_m": 0.27045898116296546
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u020__pr_original",
+      "cosmology_id": "u020",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1499645929758646,
+        "wa": -0.1365781511654866,
+        "Omega_m": 0.27207074676173326
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u020__shared_narrow_peak",
+      "cosmology_id": "u020",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1499645929758646,
+        "wa": -0.1365781511654866,
+        "Omega_m": 0.27207074676173326
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u021__pr_original",
+      "cosmology_id": "u021",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9313257172921825,
+        "wa": 0.19744427716128554,
+        "Omega_m": 0.3244302864602791
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u021__shared_narrow_peak",
+      "cosmology_id": "u021",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9313257172921825,
+        "wa": 0.19744427716128554,
+        "Omega_m": 0.3244302864602791
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u022__pr_original",
+      "cosmology_id": "u022",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0799903204755512,
+        "wa": -0.16306926721320197,
+        "Omega_m": 0.3199730006640549
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u022__shared_narrow_peak",
+      "cosmology_id": "u022",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0799903204755512,
+        "wa": -0.16306926721320197,
+        "Omega_m": 0.3199730006640549
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u023__pr_original",
+      "cosmology_id": "u023",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1234633337435127,
+        "wa": 0.045590549895745625,
+        "Omega_m": 0.3261987905996773
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u023__shared_narrow_peak",
+      "cosmology_id": "u023",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1234633337435127,
+        "wa": 0.045590549895745625,
+        "Omega_m": 0.3261987905996773
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u024__pr_original",
+      "cosmology_id": "u024",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9353635585077228,
+        "wa": -0.14075168765829008,
+        "Omega_m": 0.2919150092587248
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u024__shared_narrow_peak",
+      "cosmology_id": "u024",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.9353635585077228,
+        "wa": -0.14075168765829008,
+        "Omega_m": 0.2919150092587248
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u025__pr_original",
+      "cosmology_id": "u025",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0237897643350464,
+        "wa": 0.09716584865118016,
+        "Omega_m": 0.3256008911507824
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u025__shared_narrow_peak",
+      "cosmology_id": "u025",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0237897643350464,
+        "wa": 0.09716584865118016,
+        "Omega_m": 0.3256008911507824
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u026__pr_original",
+      "cosmology_id": "u026",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1389143398314074,
+        "wa": 0.018365063500236145,
+        "Omega_m": 0.3127334427881465
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u026__shared_narrow_peak",
+      "cosmology_id": "u026",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.1389143398314074,
+        "wa": 0.018365063500236145,
+        "Omega_m": 0.3127334427881465
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u027__pr_original",
+      "cosmology_id": "u027",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.927779296550504,
+        "wa": -0.08674034623588485,
+        "Omega_m": 0.2815873158047288
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u027__shared_narrow_peak",
+      "cosmology_id": "u027",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -0.927779296550504,
+        "wa": -0.08674034623588485,
+        "Omega_m": 0.2815873158047288
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u028__pr_original",
+      "cosmology_id": "u028",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.007768666174558,
+        "wa": -0.0973278332418782,
+        "Omega_m": 0.32408957179537123
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u028__shared_narrow_peak",
+      "cosmology_id": "u028",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.007768666174558,
+        "wa": -0.0973278332418782,
+        "Omega_m": 0.32408957179537123
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u029__pr_original",
+      "cosmology_id": "u029",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.063750994661187,
+        "wa": -0.17986922474254197,
+        "Omega_m": 0.2856474019847268
+      },
+      "family": "pr_original",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "u029__shared_narrow_peak",
+      "cosmology_id": "u029",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.063750994661187,
+        "wa": -0.17986922474254197,
+        "Omega_m": 0.2856474019847268
+      },
+      "family": "shared_narrow_peak",
+      "arm": "uniform",
+      "camb_dark_energy_model": "ppf"
+    },
+    {
+      "id": "known__pr_original",
+      "cosmology_id": "known",
+      "parameters": {
+        "Omega_b": 0.0492,
+        "h": 0.6727,
+        "n_s": 0.9645,
+        "sigma8": 0.831,
+        "m_nu": 0.0,
+        "w0": -1.0389272675840322,
+        "wa": 0.0,
+        "Omega_m": 0.3156
+      },
+      "family": "pr_original",
+      "arm": "targeted_control",
+      "camb_dark_energy_model": "fluid"
+    }
+  ],
+  "pilot_case_ids": [
+    "known__pr_original",
+    "u000__pr_original",
+    "u000__shared_narrow_peak"
+  ]
+}

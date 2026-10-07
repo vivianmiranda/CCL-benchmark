@@ -1,0 +1,420 @@
+{
+  "case": {
+    "id": "u026__pr_original",
+    "cosmology_id": "u026",
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1389143398314074,
+      "wa": 0.018365063500236145,
+      "Omega_m": 0.3127334427881465
+    },
+    "family": "pr_original",
+    "arm": "uniform",
+    "camb_dark_energy_model": "ppf"
+  },
+  "config_sha256": "22bc8921dd698d9928a65a20dedf9d5905fed0342b3d6c0e020f79ea325b98b9",
+  "status": "completed",
+  "ccl_version": "3.3.3",
+  "python": "3.12.13 | packaged by conda-forge | (main, Aug 11 2026, 10:25:41) [Clang 19.1.7 ]",
+  "platform": "macOS-13.7.5-arm64-arm-64bit",
+  "script_sha256": {
+    "ccl_helpers.py": "d9371211c6d22b9af356c38318f577d75646b28ce0301b63df1cf7f0c37e7c37",
+    "collect_publication.py": "42504b1cc7453b5ec66ff4cd625dda0e3c5912b572e25416143580c839115c7e",
+    "common.py": "65c2bfb2b1a464a3b519022fd3a25d7a07e2d8c42aa44e8f3a2db09e4d68f868",
+    "hunt.py": "11b686d9feac852b270171ea1bac8cd28b2f6e17594fc73973359c107ce060e0",
+    "hunt_narrow_overlap.py": "d478b4a22d147472f9bdbdc6e6db5840542e98b4f740646feaac21024bfb194c",
+    "plot_known_case.py": "905b2cda455277d8f501aa42a829094820b31c2433a74aab30cf73092a881cda",
+    "plot_paired.py": "0f6551d819eb14051022bbc2a9f2552e699e71da083981ce03abc6d69c166e6b",
+    "prepare.py": "77331ff0eac225ad89d5a4fae9f40a25bb18c25e38c9b474925686b524df9e71",
+    "run_batch.py": "d52138353b9dcd684cd3b6ae58954b12557f974d2fc2587ee30319b3cc1b4cda",
+    "run_ccl.py": "bd977eec898c9d6d8e857baa1aae4c90821f9b5847d928696eb42ebce0e43a1b",
+    "run_cocoa.py": "435b1b5b6a94adf531f4ede81c80b1fb44094ec89b854ee614f9a45d4033ff1a",
+    "run_targeted.py": "585720a25629e4a2eff40d6e7aa8cd9a68427a60566b4761fce8ba3a071c775e",
+    "summarize.py": "686e8b5dfb7b480619f0b1100a4e931a69cfbfd42d3d52e74636da205e2542ff",
+    "validate_narrow_support.py": "1905cfb6b062d7a97e53caa11be623d6bf9c8022a16e36a6e49dcf259fb1cdb9",
+    "validate_references.py": "fa7cdbfdd2b6f25fb49e0b21bc9b1b1d650115fa6234b4868f561840d894507b"
+  },
+  "native": [
+    {
+      "pair": [
+        0,
+        0
+      ],
+      "qag_quad": {
+        "value": 1.4764543674718273e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.476478275876248e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        1
+      ],
+      "qag_quad": {
+        "value": 3.9764124459581766e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.976512205408011e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        2
+      ],
+      "qag_quad": {
+        "value": 1.5689326461603283e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.5689223975022907e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.0403165406309332e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.0403262954366625e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        0,
+        4
+      ],
+      "qag_quad": {
+        "value": 6.671682775256268e-08,
+        "warnings": []
+      },
+      "spline": {
+        "value": 6.671767761496104e-08,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        1
+      ],
+      "qag_quad": {
+        "value": 1.1280156822491704e-06,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1279941478863523e-06,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        2
+      ],
+      "qag_quad": {
+        "value": 3.4035122641492216e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.403585333386827e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        3
+      ],
+      "qag_quad": {
+        "value": 1.4126007936755823e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.4125991168493663e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        1,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.1120038449214853e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.1120022924474808e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        2
+      ],
+      "qag_quad": {
+        "value": 9.939400655464894e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 9.939329065880559e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        3
+      ],
+      "qag_quad": {
+        "value": 3.2566729706143913e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.25674246545703e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        2,
+        4
+      ],
+      "qag_quad": {
+        "value": 1.4437562378990598e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 1.443762741359588e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        3
+      ],
+      "qag_quad": {
+        "value": 8.787102102334539e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.787079594763615e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        3,
+        4
+      ],
+      "qag_quad": {
+        "value": 3.2795695543925064e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 3.279648355672997e-07,
+        "warnings": []
+      }
+    },
+    {
+      "pair": [
+        4,
+        4
+      ],
+      "qag_quad": {
+        "value": 8.646832585852414e-07,
+        "warnings": []
+      },
+      "spline": {
+        "value": 8.646755863710404e-07,
+        "warnings": []
+      }
+    }
+  ],
+  "bias": [
+    1.2959655190639636,
+    1.4028129079734688,
+    1.5293352941899656,
+    1.660145880649026,
+    1.8020582685456128
+  ],
+  "ell": 355.655882,
+  "input_sha256": "e88df63595517624927efd51b6c6a0584507b8dd3e5f2fb6bb88a312f8cf527b",
+  "gsl_version": "2.7",
+  "gsl_library": "/Users/vivianmiranda/miniforge/envs/tjcovbenchmark/lib/libgsl.dylib",
+  "references": [
+    {
+      "native_qag_replay": {
+        "value": 3.2795695543925064e-07,
+        "estimated_error": 2.4476792051044862e-11,
+        "status": [
+          0
+        ],
+        "calls": 287,
+        "callback_errors": [],
+        "epsrel": 0.0001,
+        "parts": 1
+      },
+      "cquad": {
+        "value": 3.2796067697116446e-07,
+        "estimated_error": 3.2722440709595784e-14,
+        "status": [
+          0
+        ],
+        "calls": 7825,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 1
+      },
+      "split2": {
+        "value": 3.279606789787511e-07,
+        "estimated_error": 1.8936259002864326e-13,
+        "status": [
+          18,
+          0
+        ],
+        "calls": 3936,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 2
+      },
+      "split4": {
+        "value": 3.2796067779844624e-07,
+        "estimated_error": 3.08911492312026e-14,
+        "status": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "calls": 5248,
+        "callback_errors": [],
+        "epsrel": 1e-07,
+        "parts": 4
+      },
+      "reference_valid": true,
+      "maximum_split_reference_fractional_change": null,
+      "reference_value": 3.2796067708120346e-07,
+      "supplementary_reference_checks": {
+        "cquad_refined": {
+          "value": 3.2796067708120346e-07,
+          "estimated_error": 3.2732588221181496e-15,
+          "status": [
+            0
+          ],
+          "calls": 13987,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 1
+        },
+        "cquad_refined_split2": {
+          "value": 3.279606770794201e-07,
+          "estimated_error": 3.276671990425433e-15,
+          "status": [
+            0,
+            0
+          ],
+          "calls": 15988,
+          "callback_errors": [],
+          "epsrel": 1e-08,
+          "parts": 2
+        },
+        "qag_split8": {
+          "value": 3.279606772306509e-07,
+          "estimated_error": 3.05273493998478e-14,
+          "status": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "calls": 6314,
+          "callback_errors": [],
+          "epsrel": 1e-07,
+          "parts": 8
+        },
+        "acceptance_protocol": "Both refined CQUAD evaluations must succeed and agree; every available successful split-QAG control must agree. Failed controls remain recorded and do not pass.",
+        "reference_valid": true,
+        "reference_value": 3.2796067708120346e-07,
+        "successful_split_QAG_controls": [
+          "original_split4",
+          "qag_split8"
+        ],
+        "failed_split_QAG_controls": [
+          {
+            "key": "original_split2",
+            "status": [
+              18,
+              0
+            ],
+            "callback_errors": []
+          }
+        ],
+        "fractional_reference_comparisons": {
+          "cquad_refined_split2": 5.437761352311554e-12,
+          "original_cquad": 3.3552494116406706e-10,
+          "original_split4": 2.186977932083778e-09,
+          "qag_split8": 4.5568704365450685e-10
+        },
+        "acceptance_tolerance": 1e-05
+      },
+      "pair": [
+        3,
+        4
+      ],
+      "primary": true,
+      "native_QAG_replay_matches": true,
+      "native_QAG_fractional_error": -1.1347829825036904e-05,
+      "initial_rules": {
+        "kronrod": 3.14591417310269e-07,
+        "gauss": 3.28175409987555e-07,
+        "estimated_error": 5.195488784997304e-07,
+        "callback_errors": []
+      }
+    }
+  ],
+  "shared_power": {
+    "parameters": {
+      "Omega_b": 0.0492,
+      "h": 0.6727,
+      "n_s": 0.9645,
+      "sigma8": 0.831,
+      "m_nu": 0.0,
+      "w0": -1.1389143398314074,
+      "wa": 0.018365063500236145,
+      "Omega_m": 0.3127334427881465
+    },
+    "camb_dark_energy_model": "ppf",
+    "sha256": "c7d21621fc094b444908c10bc11dc855f71009af93d19b8add1120e7b18cdb01",
+    "path": "shared/u026.npz",
+    "seed_k_nodes": 1500,
+    "cocoa_refinement": 8,
+    "dense_k_nodes": 11993
+  },
+  "warnings": [],
+  "elapsed_seconds_for_resource_planning": 1.4895124579779804,
+  "elapsed_is_not_benchmark": true
+}
