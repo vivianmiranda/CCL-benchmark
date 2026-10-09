@@ -93,6 +93,15 @@ script still hardcodes 5e-4/Mpc. Match that input and the IA convention
 before running a current-code comparison. Do not relabel the saved
 `growth_sub` diagnostic or old timings as a new comparison.
 
+Checked 2026-10-09: CoCoA's covariance-only adoption of the log-domain
+power reader, z slice and fused trispectrum driver (core 23b0127) does
+not touch any path this study uses — data-vector likelihood evaluation,
+the exported C_l bindings, or the covariance module's all-pairs Limber
+spectra feeding the false-success diagnostic. The sibling OneCov/TJPCov
+pilots verified Gaussian/SSC and all saved spectra bit-for-bit across
+that core change. No refresh of this repository was needed; the recorded
+study stays pinned to its version table.
+
 ## 1. Pipeline
 
 1. CoCoA side, cocoa env (`start_cocoa.sh` sourced), from `Cocoa/`:
